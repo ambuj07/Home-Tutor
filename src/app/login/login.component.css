@@ -1,0 +1,20 @@
+.requirement-section{
+    background-image: url('/assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.overlay{
+    min-height: 100vh;
+    background: rgba(93, 151, 158, 0.5);
+}
+.btn-register{
+    padding: 0px 40px;
+    border-radius: 50px;
+}
+.modal-header {
+    background: #058472;
+}
+.modal-body{
+    text-align: center;
+    padding: 0;
+}

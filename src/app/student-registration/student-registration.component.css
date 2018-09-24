@@ -1,0 +1,16 @@
+.mainDiv {
+    padding: 15px;
+    text-align: center;
+}
+.requirement-section{
+    background-image: url('/assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.overlay{
+    min-height: 100vh;
+    background: rgba(93, 151, 158, 0.5);
+}
+form.registration-form .fieldset {
+    display: none;
+}

@@ -1,0 +1,36 @@
+.mainDiv {
+    position: absolute;
+    width: 80%;
+    transform: translate(-50% ,-50%);
+    top: 50%;
+    left: 50%;
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    border: 2px double #d0d0d0;
+}
+.requirement-section{
+    background-image: url('/assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.overlay{
+    min-height: 100vh;
+    background: rgba(93, 151, 158, 0.5);
+}
+.button-header {
+    font-size: 26px;
+    font-weight: bold;
+    font-style: italic;
+    color: #378472;
+}
+.btn-main {
+    color: #fff;
+    background-color: #058472;
+    border-color: #058472;
+    border-radius: 30px;
+    width: 300px;
+}
+.btn-main:hover,.btn-main:active,.btn-main:focus {
+    background-color: #047162;
+}
