@@ -13,7 +13,8 @@ import { NearbyTutorsComponent } from './nearby-tutors/nearby-tutors.component';
 import { TutorRegistrationComponent } from './tutor-registration/tutor-registration.component';
 import { NearbyStudendsComponent } from './nearby-studends/nearby-studends.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+import { TutorProfileComponent } from './tutor-profile/tutor-profile.component'
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ProfileComponent } from './profile/profile.component'
     TutorRegistrationComponent,
     NearbyStudendsComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    TutorProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,10 @@ import { ProfileComponent } from './profile/profile.component'
       {
         path : 'login',
         component : LoginComponent
+      },
+      {
+        path : 'logout',
+        component : TutorialComponent
       },
       {
         path: 'studentRegistration',
@@ -58,8 +64,12 @@ import { ProfileComponent } from './profile/profile.component'
         component : NearbyStudendsComponent
       },
       {
-        path : 'profile',
+        path : 'profile/student/:id',
         component : ProfileComponent
+      },
+      {
+        path : 'profile/tutor/:id',
+        component : TutorProfileComponent
       }
    ])
   ],

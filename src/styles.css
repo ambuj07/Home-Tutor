@@ -13,9 +13,28 @@ a.navbar-brand {
     color: #212529;
     font-weight: bold;
 }
-a.nav-link {
+a.nav-link,a.nav-link:hover,a.nav-link:focus {
     color: white;
     font-weight: bold;
+}
+.navbar-expand .navbar-nav .dropdown-menu{
+    left: auto;
+    right: -5px;
+    min-width: 110px !important;
+    background: #f79932 !important;
+    padding: 0;
+    border-bottom: 0;
+    border-radius: 0px;
+}
+.navbar-expand .navbar-nav .dropdown-menu a.dropdown-item {
+    border-bottom: 1px solid #ccc;
+    padding: 8px !important;
+    color: white;
+    font-weight: bold;
+}
+.navbar-expand .navbar-nav .dropdown-menu a.dropdown-item:hover,.navbar-expand .navbar-nav .dropdown-menu a.dropdown-item:active,.navbar-expand .navbar-nav .dropdown-menu a.dropdown-item:focus {
+    background-color: #f79932 !important;
+    opacity: 0.7;
 }
 a,a:hover,a:active,a:focus{
     text-decoration: none !important;
@@ -36,6 +55,7 @@ a,a:hover,a:active,a:focus{
 input[type="text"],
 input[type="email"],
 input[type="date"],
+input[type="password"],
 select.form-control {
     height: 50px;
     margin: 0;
@@ -356,10 +376,13 @@ form .form-bottom .input-error {
     line-height: 14px !important;
     font-size: 14px !important;
     font-weight: bold !important;
-    padding: 0px 10px !important;
-    background-color: #f76932 !important;
+    background-color: #226e81 !important;
     border: none !important;
     padding: 8px !important;
+    position: relative;
+    bottom: -10px;
+    width: 100%;
+    border-radius: 2px !important;
 }
 .btn-details:hover,.btn-details:active {
     opacity: 0.7;
@@ -437,4 +460,25 @@ form .form-bottom .input-error {
   }
   .pagination {
     justify-content: center;
+  }
+  .nav-justified .nav-link {
+    color: #096e7a !important;
+    border: 1px solid #ccc;
+    border-radius: 0px !important;
+    background: #ccc;
+  }
+  .nav-justified .nav-link.active {
+    background: #096e81 !important;
+    color: white !important;
+    border-color: #096e81 !important;
+  }
+  .tab-content .tab-pane{
+      max-width: 100%;
+  }
+  .job-detail-sort {
+    font-size:15px;
+  }
+  .job-detail-sort .fa {
+      color: #f76932;
+      margin-right: 5px;
   }

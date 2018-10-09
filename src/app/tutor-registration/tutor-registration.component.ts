@@ -209,7 +209,10 @@ export class TutorRegistrationComponent implements OnInit {
                 data: data,
                 success: function(resultData) { 
                     console.log(resultData);
-                    window.location.href = '/nearbyStudents';
+                    localStorage.setItem("userName",resultData.detail.name);
+                    localStorage.setItem("type",resultData.type);
+                    localStorage.setItem("userId",resultData.refId);
+                    window.location.href = '/profile/tutor/'+resultData.refId;
                  }
             });  
           }

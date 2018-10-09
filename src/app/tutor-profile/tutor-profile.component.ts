@@ -1,17 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
 declare var $:any;
 
 @Component({
-  selector: 'app-nearby-tutors',
-  templateUrl: './nearby-tutors.component.html',
-  styleUrls: ['./nearby-tutors.component.css']
+  selector: 'app-tutor-profile',
+  templateUrl: './tutor-profile.component.html',
+  styleUrls: ['./tutor-profile.component.css']
 })
-export class NearbyTutorsComponent implements OnInit {
+export class TutorProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor( private route: ActivatedRoute) {}
 
   ngOnInit() {
-      $(document).ready(function(){
+   var id;
+   this.route.params.subscribe(params => {
+        id = params["id"];
+      });
+        $.get("http://localhost:8080/tutor/"+id,function(data){
+          $("#name").text(data.name);
+          $("#find").text("Job");
+          $("#mobile").text(data.mobile);
+          $("#email").text(data.email);
+          $("#gender").text(data.gender);
+          $("#location").text(data.location);
+          $(".classCategory").text(data.classcategory);
+          $(".class").text(data.particularClass);
+          $(".subject").text(data.subjects);
+          $("#category").text(data.category);
+        })
+    $(".profileNav .nav-link").click(function(){
+      var navclick = $(this).attr("data-value");
+      if(navclick == "Basic"){
+        $(".slidable").slideDown();
+        $(".total-credit").css("position","absolute");
+      }else{
+        $(".slidable").slideUp();
+        $(".total-credit").css("position","relative");
+      }
+    });
+
+    //code for fetching data
+
+     $(document).ready(function(){
         getPageData(0);
       });
       $(document).on('click','.btn-page',function(e){
@@ -32,7 +62,7 @@ export class NearbyTutorsComponent implements OnInit {
       function getPageData(pageNumber){
         $.ajax({
           type: 'GET',
-          url: "http://localhost:8080/tutor?page="+pageNumber,
+          url: "http://localhost:8080/job?page="+pageNumber,
           //dataType: "json",
           contentType: "application/json;charset=utf-8",
           success: function(resultData) { 
@@ -44,14 +74,21 @@ export class NearbyTutorsComponent implements OnInit {
               var html = '';
               if(len > 0){
                 for(var i = 0; i < len; i++){
-                  html += '<div class="col-md-3 col-xs-1">';
+                  html += '<div class="col-md-4 col-xs-1">';
                   html += '<div class="tutorgrid">';
                   html += '<div class="text-centered">';
                   html += '<img src="/assets/userIcon.png" width="36px">';
-                  html += '<div class="profile-name">'+resultData.contents[i].name+'</div>'
-                  html += ' <div class="profile-heading">'+resultData.contents[i].subjects+' Teacher</div>'
-                  html += '<div class="experiance">(CBSE)</div>';
-                  html += '<a href="/profile?role=tutor&id='+resultData.contents[i].id+'" class="btn btn-primary btn-details">Show Details</a>';
+                  html += '<div class="profile-name">'+resultData.contents[i].student.name+'</div>'
+                  html += '<div class="job-detail-sort">';
+                  html += '<div><i class="fa fa-mobile" aria-hidden="true"></i>'+resultData.contents[i].student.mobile+'</div>'
+                  html += '<div><i class="fa fa-envelope-o" aria-hidden="true"></i>'+resultData.contents[i].student.email+'</div>'
+                  html += '<div><i class="fa fa-map-marker" aria-hidden="true"></i>'+resultData.contents[i].location+','+resultData.contents[i].city+'</div>'
+                  html += '<hr style="margin: 10px;">';
+                  html += '<div>Class : '+resultData.contents[i].className+'</div>';
+                  html += '<div>Subject : '+resultData.contents[i].subject+'</div>';
+                  html += '<div>Preferred gender : '+resultData.contents[i].gender+'</div>';
+                  html += '</div>';
+                  html += '<a href="#" class="btn btn-primary btn-details">Apply For This Job</a>';
                   html += '</div>';
                   html += '</div>';
                   html += '</div>';
@@ -85,6 +122,7 @@ export class NearbyTutorsComponent implements OnInit {
             }
           });
         }
-    }
 
   }
+
+}

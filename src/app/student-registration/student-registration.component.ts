@@ -293,7 +293,10 @@ export class StudentRegistrationComponent implements OnInit {
                 data: data,
                 success: function(resultData) { 
                     console.log(resultData);
-                    window.location.href = '/nearbyTutors';
+                    localStorage.setItem("userName",resultData.detail.name);
+                    localStorage.setItem("type",resultData.type);
+                    localStorage.setItem("userId",resultData.refId);
+                    window.location.href = '/profile/student/'+resultData.refId;
                  }
             });  
           }

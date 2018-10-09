@@ -1,11 +1,22 @@
-<nav class="navbar fixed-top bg-light">
+<nav class="navbar navbar-expand fixed-top bg-light">
   <a class="navbar-brand" href="#">Tutorial</a>
-  <ul class="navbar-nav ml-auto">
+  <ul class="navbar-nav ml-auto before-login-menu">
     <li class="nav-item">
       <a class="nav-link" href="/login"> 
           <i class="fa fa-user-circle-o" aria-hidden="true"></i> Login
       </a>
     </li>
+  </ul>
+  <ul class="navbar-nav ml-auto  after-login-menu">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          <span id="userName">User</span>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="" id="viewProfile"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+          <a class="dropdown-item" href="" id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        </div>
+      </li>
   </ul>
 
 </nav>
