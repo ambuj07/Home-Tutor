@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 declare var $:any;
-declare var google:any;
 
 @Component({
-  selector: 'app-student-registration',
-  templateUrl: './student-registration.component.html',
-  styleUrls: ['./student-registration.component.css']
+  selector: 'app-find-more-tutors',
+  templateUrl: './find-more-tutors.component.html',
+  styleUrls: ['./find-more-tutors.component.css']
 })
-export class StudentRegistrationComponent implements OnInit {
+export class FindMoreTutorsComponent implements OnInit {
 
-  constructor() { }
+  constructor( private route: ActivatedRoute) {}
 
   ngOnInit() {
-      const baseUrl = environment.baseUrl;
+    const baseUrl = environment.baseUrl;
+    var id;
+   this.route.params.subscribe(params => {
+        id = params["id"];
+      });
     $(document).ready(function () {
       $('.registration-form .fieldset:first-child').fadeIn('slow');
   
@@ -64,7 +68,7 @@ export class StudentRegistrationComponent implements OnInit {
           });
   
       });
-
+  
       //show on change
       const prepAndKg = ['Prep','Nursurry','LKG','UKG']
       const oneToFive = ['1st','2nd','3rd','4th','5th'];
@@ -83,32 +87,32 @@ export class StudentRegistrationComponent implements OnInit {
             for(var i=0; i<prepAndKg.length; i++)
             classHtml += '<option value="'+prepAndKg[i]+'">'+prepAndKg[i]+'</option>';
         }
-
+  
         if(classGroup == "1to5"){
             for(var i=0; i<oneToFive.length; i++)
             classHtml += '<option value="'+oneToFive[i]+'">'+oneToFive[i]+'</option>';
         }
-
+  
         if(classGroup == "6to8"){
             for(var i=0; i<sixToEight.length; i++)
             classHtml += '<option value="'+sixToEight[i]+'">'+sixToEight[i]+'</option>';
         }
-
+  
         if(classGroup == "9to10"){
             for(var i=0; i<nineToTen.length; i++)
             classHtml += '<option value="'+nineToTen[i]+'">'+nineToTen[i]+'</option>';
         }
-
+  
         if(classGroup == "11to12"){
             for(var i=0; i<elevenToTwelve.length; i++)
             classHtml += '<option value="'+elevenToTwelve[i]+'">'+elevenToTwelve[i]+'</option>';
         }
-
+  
         if(classGroup == "graduation"){
             for(var i=0; i<graduation.length; i++)
             classHtml += '<option value="'+graduation[i]+'">'+graduation[i]+'</option>';
         }
-
+  
         if(classGroup == "competetive"){
             for(var i=0; i<competetive.length; i++)
             classHtml += '<option value="'+competetive[i]+'">'+competetive[i]+'</option>';
@@ -122,7 +126,7 @@ export class StudentRegistrationComponent implements OnInit {
         $("#chooseClassDiv").prop('hidden',false);
         $("#chooseSubjectDiv").prop('hidden',true);
       });
-
+  
       const prepAndKgSubject = ['All Subject','English','Hindi','Math']
       const oneToFiveSubject = ['All Subject','English','Hindi','Math','Sanskrit','Science','Social Science']
       const sixToEightSubject = ['All Subject','English','Hindi','Math','Sanskrit','Science','Social Science','Computers']
@@ -147,129 +151,52 @@ export class StudentRegistrationComponent implements OnInit {
             for(var i=0; i<oneToFiveSubject.length; i++)
             subjectHtml += '<option value="'+oneToFiveSubject[i]+'">'+oneToFiveSubject[i]+'</option>';
         }
-
+  
         if(classGroup == "6to8"){
             for(var i=0; i<sixToEightSubject.length; i++)
             subjectHtml += '<option value="'+sixToEightSubject[i]+'">'+sixToEightSubject[i]+'</option>';
         }
-
+  
         if(classGroup == "9to10"){
             for(var i=0; i<nineToTenSubject.length; i++)
             subjectHtml += '<option value="'+nineToTenSubject[i]+'">'+nineToTenSubject[i]+'</option>';
         }
-
+  
         if(classGroup == "11to12"){
             for(var i=0; i<elevenToTwelveSubject.length; i++)
             subjectHtml += '<option value="'+elevenToTwelveSubject[i]+'">'+elevenToTwelveSubject[i]+'</option>';
         }
-
+  
         if(classGroup == "graduation"){
             for(var i=0; i<graduationSubject.length; i++)
             subjectHtml += '<option value="'+graduationSubject[i]+'">'+graduationSubject[i]+'</option>';
         }
-
+  
         if(chooseClass == "IIT"){
             for(var i=0; i<iitSubject.length; i++)
             subjectHtml += '<option value="'+iitSubject[i]+'">'+iitSubject[i]+'</option>';
         }
-
+  
         if(chooseClass == "MEDICAL"){
             for(var i=0; i<medicalSubject.length; i++)
             subjectHtml += '<option value="'+medicalSubject[i]+'">'+medicalSubject[i]+'</option>';
         }
-
+  
         if(chooseClass == "Dance"){
             for(var i=0; i<danceSubject.length; i++)
             subjectHtml += '<option value="'+danceSubject[i]+'">'+danceSubject[i]+'</option>';
         }
-
+  
         if(chooseClass == "Music"){
             for(var i=0; i<musicSubject.length; i++)
             subjectHtml += '<option value="'+musicSubject[i]+'">'+musicSubject[i]+'</option>';
         }
-
+  
         $("#chooseSubject").html(subjectHtml);
         $("#chooseSubjectDiv").prop('hidden',false);
       });
-
-     
-
-      $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyCTXSw8ekU_Kua38p6IvBgTU1_74sJYiEY&libraries=places", function(){
   
-    //   var placeSearch, autocomplete;
-    //   var componentForm = {
-    //     address: 'address'
-    //   };
-      
-    //   function initAutocomplete() {
-    //     autocomplete = new google.maps.places.Autocomplete(
-    //       (document.getElementById('address')), {
-    //         zoom: 13
-    //       });
-    //     fillInAddress();
-    //   }
-      
-    //   function fillInAddress() {
-    //     var place = autocomplete.getPlace();
-    //     console.log(autocomplete.getPlace()+" awddw");
-      
-    //     for (var component in componentForm) {
-    //         (<HTMLInputElement>document.getElementById(component)).value = '';
-    //     }
-      
-    //    for (var i = 0; i < place.address_components.length; i++) {
-    //       var addressType = place.address_components[i].types[0];
-    //       console.log(place.address_components[i]+"sdcsd cds");
-    //       if (componentForm[addressType]) {
-    //         var val = place.address_components[i][componentForm[addressType]];
-    //         (<HTMLInputElement>document.getElementById(addressType)).value = val;
-    //       }
-    //     }
-    //   }
-    bindAutocomplete();
-    function bindAutocomplete() {
-    
-        var defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(20.5937, 78.9629), new google.maps.LatLng(20.5937, 78.9629));
-    
-        var options = {
-            bounds: defaultBounds,
-            zoom: 13,
-            types: ['geocode']
-        };
-    
-        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'), options);
-    
-        google.maps.event.addListener(autocomplete, 'place_changed', function () {
-            var place = autocomplete.getPlace();
-            console.log(place);
-        });
-    }
-      
-      function geolocate() {
-          if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var geolocation = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-              $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng="+geolocation.lat+","+geolocation.lng+"&sensor=true",function(data){
-                console.log(data)  
-                $("#address").val(data.results[0].formatted_address);
-                  console.log(data.results[0].formatted_address+" dsdsdds");
-              });
-          });
-        }	
-      }
-      $("#getLocation").on('click',function(){
-          $("#address").val("please wait getting your location");
-          geolocate();
-      })
-      
-
-    //   $("#address").on('input',function(){
-    //     initAutocomplete();
-    //   })
-    $("#submit").click(function(){
+      $("#submit").click(function(){
         var error = false;  
           $(this).parents('.fieldset').find('select').each(function () {
                 if ($(this).is(":visible") && ($(this).val() == null || $(this).val() == "")) {
@@ -280,31 +207,26 @@ export class StudentRegistrationComponent implements OnInit {
                 }
           });
           if(!error){
-            var name = $("#name").val();
-            var location = $("#address").val(); 
-            var mobile = $("#mobileNumber").val(); 
-            var email = $("#email").val(); 
+            var prefferedGender = $("#prefferedGender").val();
+            var locality = $("#locality").val(); 
+            var city = $("#city").val(); 
             var classcategory = $("#classGroup").val();  
             var particularClass = $("#chooseClass").val(); 
             var subjects = $("#chooseSubject").val(); 
-            var data = '{"id":null,"name":"'+name+'","location":"'+location+'","mobile":"'+mobile+'","email":"'+email+'","category":"","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'"}';
+            var data = '{"student":{"id":'+id+'},"gender":"'+prefferedGender+'","location":"'+locality+'","city":"'+city+'","className":"'+particularClass+'","subject":"'+subjects+'"}';
             $.ajax({
                 type: 'POST',
-                url: baseUrl+"/student",
+                url: baseUrl+"/job",
                 contentType: "application/json;charset=utf-8",
                 data: data,
                 success: function(resultData) { 
                     console.log(resultData);
-                    localStorage.setItem("userName",resultData.detail.name);
-                    localStorage.setItem("type",resultData.type);
-                    localStorage.setItem("userId",resultData.refId);
-                    window.location.href = '/dashboard/student/'+resultData.refId;
+                    window.location.href = '/nearbyTutors';
                  }
             });  
           }
     });
     });
-  });
   }
 
 }

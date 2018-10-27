@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
 declare var $:any;
 
 @Component({
@@ -11,10 +12,11 @@ export class NearbyStudendsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const baseUrl = environment.baseUrl;
     $(document).ready(function(){
       $.ajax({
         type: 'GET',
-        url: "http://localhost:8080/student",
+        url: baseUrl+"/student",
         //dataType: "json",
         contentType: "application/json;charset=utf-8",
         success: function(resultData) { 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
 declare var $:any;
 declare var google:any;
 
@@ -12,6 +13,7 @@ export class TutorRegistrationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const baseUrl = environment.baseUrl;
     $(document).ready(function(){
       //show on change
       const prepAndKg = ['Prep','Nursurry','LKG','UKG']
@@ -204,7 +206,7 @@ export class TutorRegistrationComponent implements OnInit {
             var data = '{"id":null,"name":"'+name+'","location":"'+location+'","mobile":"'+mobile+'","email":"'+email+'","category":"'+category+'","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'"}';
             $.ajax({
                 type: 'POST',
-                url: "http://localhost:8080/tutor",
+                url: baseUrl+"/tutor",
                 contentType: "application/json;charset=utf-8",
                 data: data,
                 success: function(resultData) { 
@@ -212,7 +214,7 @@ export class TutorRegistrationComponent implements OnInit {
                     localStorage.setItem("userName",resultData.detail.name);
                     localStorage.setItem("type",resultData.type);
                     localStorage.setItem("userId",resultData.refId);
-                    window.location.href = '/profile/tutor/'+resultData.refId;
+                    window.location.href = '/dashboard/tutor/'+resultData.refId;
                  }
             });  
           }

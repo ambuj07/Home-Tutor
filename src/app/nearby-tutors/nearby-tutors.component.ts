@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
 declare var $:any;
 
 @Component({
@@ -11,6 +12,7 @@ export class NearbyTutorsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const baseUrl = environment.baseUrl;
       $(document).ready(function(){
         getPageData(0);
       });
@@ -19,12 +21,12 @@ export class NearbyTutorsComponent implements OnInit {
         var pageNumber = $(this).text();
         getPageData(parseInt(pageNumber)-1);
       });
-      $(document).on('click','.btn-prev',function(e){
+      $(document).on('click','.btn-prev-page',function(e){
         e.preventDefault();
         var pageNumber = $('.active').text();
         getPageData(parseInt(pageNumber)-2);
       });
-      $(document).on('click','.btn-next',function(e){
+      $(document).on('click','.btn-next-page',function(e){
         e.preventDefault();
         var pageNumber = $('.active').text();
         getPageData(parseInt(pageNumber));
@@ -32,7 +34,7 @@ export class NearbyTutorsComponent implements OnInit {
       function getPageData(pageNumber){
         $.ajax({
           type: 'GET',
-          url: "http://localhost:8080/tutor?page="+pageNumber,
+          url: baseUrl+"/tutor?page="+pageNumber,
           //dataType: "json",
           contentType: "application/json;charset=utf-8",
           success: function(resultData) { 
@@ -62,14 +64,14 @@ export class NearbyTutorsComponent implements OnInit {
                 var htmlPage = '';
                 htmlPage +='<ul class="pagination">'
                 htmlPage += '<li class="page-item">';
-                htmlPage += '<a class="page-link btn-prev" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span>';
+                htmlPage += '<a class="page-link btn-prev-page" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span>';
                 htmlPage += '<span class="sr-only">Previous</span></a>';
                 htmlPage += '</li>';
                 for(var i=1; i <= pageSize; i++){
                   htmlPage += '<li class="page-item"><a class="page-link btn-page" id="page_'+i+'" href="#">'+i+'</a></li>';
                 }
                 htmlPage += '<li class="page-item">';
-                htmlPage += '<a class="page-link btn-next" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span>';
+                htmlPage += '<a class="page-link btn-next-page" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span>';
                 htmlPage += '<span class="sr-only">Next</span></a>';
                 htmlPage += '</li>';
                 htmlPage +='</ul>'
@@ -77,10 +79,10 @@ export class NearbyTutorsComponent implements OnInit {
                 $("#page_"+page).closest('li').addClass("active");
               }  
               if(pageNumber == 0){
-                $(".btn-prev").closest('li').addClass('disabled');
+                $(".btn-prev-page").closest('li').addClass('disabled');
               }
               if(!isNext){
-                $(".btn-next").closest('li').addClass('disabled');
+                $(".btn-next-page").closest('li').addClass('disabled');
               } 
             }
           });

@@ -1,0 +1,65 @@
+<div class="col-md-6 mx-md-auto" style="margin-top: 20px;">
+  <form role="form" class="registration-form" action="javascript:void(0);">
+      <div class="fieldset">
+          <div class="form-top">
+              <div class="form-top-left">
+                  <div><i class="fa fa-hand-o-right" aria-hidden="true"></i> Tell us your requirement. We will help you to find the best.</div>
+              </div>
+          </div>
+          <div class="form-bottom">
+              <div class="form-group">
+                  <select class="form-control" id="classGroup" name="classGroup" required>
+                      <option value="" disabled>Select a category</option>
+                      <option value="prep_and_kg">Prep and KG</option>
+                      <option value="1to5">1st to 5th</option>
+                      <option value="6to8">6th to 8th</option>
+                      <option value="9to10">9th to 10th</option>
+                      <option value="11to12">11th to 12th</option>
+                      <option value="graduation">Graduation</option>
+                      <option value="competetive">Competetive</option>
+                      <option value="passion">Passion</option>
+                  </select>
+              </div>
+              <div class="form-group" id="chooseClassDiv" hidden>
+                      <select class="form-control" id="chooseClass" name="chooseClass">
+                          <option value="" disabled>Choose Your Class</option>
+                      
+                      </select>
+              </div>    
+              <div class="form-group" id="chooseSubjectDiv" hidden>
+                  <select class="form-control" id="chooseSubject" name="chooseSubject">
+                      
+                  </select>
+              </div>
+              <div style="text-align:right">
+                  <button type="button" class="btn btn-next">Next</button>
+              </div>
+          </div>
+      </div>
+      <div  class="fieldset">
+          <div class="form-top">
+              <div class="form-top-left">
+                  <div><i class="fa fa-hand-o-right" aria-hidden="true"></i> Need some personal detail to show your perfect match</div>
+              </div>
+          </div>
+          <div class="form-bottom">
+              <div class="form-group">
+                  <select class="form-control" id="prefferedGender" name="prefferedGender" required>
+                      <option value="" disabled>Preffered Tutor</option>
+                      <option value="MALE">Male</option>
+                      <option value="FEMALE">Female</option>
+                      <option value="ANY">Any</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <input type="text" placeholder="Enter Your Locality"  name="locality" class="form-control" id="locality">
+              </div>
+              <div class="form-group">
+                  <input type="text" placeholder="Enter Your City"  name="city" class="form-control" id="city">
+              </div>
+              <button type="button" class="btn btn-previous">Previous</button>
+              <button type="button" id="submit" class="btn" style="float: right;">Submit</button>
+          </div>
+      </div>
+  </form>
+</div>

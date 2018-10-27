@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { Router } from "@angular/router";
+import { environment } from '../../environments/environment';
 declare var $:any;
 
 @Component({
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    const baseUrl = environment.baseUrl;
     //this.router.navigate(['profile'])
     var $this = this;
     $(document).ready(function(){
@@ -22,7 +24,7 @@ export class LoginComponent implements OnInit {
         var data = '{"userId":"'+phone+'","password":"'+password+'"}';
             $.ajax({
                 type: 'POST',
-                url: "http://localhost:8080/login",
+                url: baseUrl+"/login",
                 contentType: "application/json;charset=utf-8",
                 data: data,
                 success: function(resultData) { 
@@ -31,9 +33,9 @@ export class LoginComponent implements OnInit {
                     localStorage.setItem("type",resultData.type);
                     localStorage.setItem("userId",resultData.refId);
                     if(resultData.type == "STUDENT"){
-                      window.location.href = '/profile/student/'+resultData.refId
+                      window.location.href = '/dashboard/student/'+resultData.refId
                     }else if(resultData.type == "TUTOR"){
-                      window.location.href = '/profile/tutor/'+resultData.refId
+                      window.location.href = '/dashboard/tutor/'+resultData.refId
                     }
                  }
             });

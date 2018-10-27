@@ -26,10 +26,10 @@ export class HeaderComponent implements OnInit {
     $("#viewProfile").click(function(e){
       e.preventDefault();
       if(type == "TUTOR"){
-        window.location.href = '/profile/tutor/'+userId;
+        window.location.href = '/dashboard/tutor/'+userId;
       }
       if(type == "STUDENT"){
-        window.location.href = 'profile/student/'+userId;
+        window.location.href = '/dashboard/student/'+userId;
       }
     });
     $("#logout").click(function(e){
