@@ -128,7 +128,7 @@ export class FindJobsComponent implements OnInit {
         var data = '{"tutorId":"'+tutorId+'"}';
             $.ajax({
                 type: 'PUT',
-                url: baseUrl+"/"+jobID+"/apply",
+                url: baseUrl+"/job/"+jobID+"/apply?tutorId="+tutorId,
                 contentType: "application/json;charset=utf-8",
                 data: data,
                 success: function(resultData) { 
