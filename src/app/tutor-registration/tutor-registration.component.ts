@@ -180,13 +180,13 @@ export class TutorRegistrationComponent implements OnInit {
         }	
       }
       $("#getLocation").on('click',function(){
-          $("#address").val("please wait getting your location");
+          $("#address").attr("placeholder", "Please wait getting your location");
           geolocate();
       })
 
       $("#submit").click(function(){
         var error = false;  
-          $(this).parents('.fieldset').find('select').each(function () {
+          $(this).parents('.fieldset').find('select,input').each(function () {
                 if ($(this).is(":visible") && ($(this).val() == null || $(this).val() == "")) {
                     $(this).addClass('input-error');
                     error = true;
@@ -202,8 +202,10 @@ export class TutorRegistrationComponent implements OnInit {
             var category = $("#tutorType").val(); 
             var classcategory = $("#classGroup").val();  
             var particularClass = $("#chooseClass").val(); 
-            var subjects = $("#chooseSubject").val(); 
-            var data = '{"id":null,"name":"'+name+'","location":"'+location+'","mobile":"'+mobile+'","email":"'+email+'","category":"'+category+'","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'"}';
+            var subjects = $("#chooseSubject").val();
+            var chooseGender = $("#chooseGender").val(); 
+            var qualification = $("#qualification").val();
+            var data = '{"id":null,"name":"'+name+'","location":"'+location+'","mobile":"'+mobile+'","email":"'+email+'","category":"'+category+'","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'","gender":"'+chooseGender+'","qualification":"'+qualification+'"}';
             $.ajax({
                 type: 'POST',
                 url: baseUrl+"/tutor",
@@ -214,10 +216,14 @@ export class TutorRegistrationComponent implements OnInit {
                     localStorage.setItem("userName",resultData.detail.name);
                     localStorage.setItem("type",resultData.type);
                     localStorage.setItem("userId",resultData.refId);
+                    localStorage.setItem("from_reg","Yes");
                     window.location.href = '/dashboard/tutor/'+resultData.refId;
                  }
             });  
           }
+      });
+      $('.fieldset').find('select,input').change(function(){
+        $(this).removeClass('input-error');
       });
     });
     });

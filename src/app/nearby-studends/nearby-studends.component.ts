@@ -30,7 +30,7 @@ export class NearbyStudendsComponent implements OnInit {
               html += '<div class="profile-name">'+resultData[i].name+'</div>'
               html += ' <div class="profile-heading">Class '+resultData[i].particularClass+'</div>'
               html += '<div class="experiance">(CBSE)</div>';
-              html += '<a href="/profile?role=student&id='+resultData[i].id+'" class="btn btn-primary btn-details">Show Details</a>';
+              html += '<a href="javascript:void(0)" class="btn btn-primary btn-details">Show Details</a>';
               html += '</div>';
               html += '</div>';
               html += '</div>';

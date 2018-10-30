@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+.registrationDiv{
+    padding: 50px !important;
+    border: 3px solid #dbe3d9;
+    width: 80%;
+    margin: 80px auto 0px !important;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    display: none;
+}
 .sidenav {
     height: 100%;
     width: 0;

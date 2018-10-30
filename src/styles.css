@@ -44,25 +44,25 @@ a,a:hover,a:active,a:focus{
     padding: 0 !important;
 }
 .btn-location{
-    min-width: 60px !important;
+    min-width: 50px !important;
     border: 1px solid #ddd !important;
-    font-size: 25px !important;
+    font-size: 22px !important;
     line-height: 10px !important;
     padding: 5px !important;
     text-align: center !important;
-    height: 50px !important;
+    height: 40px !important;
 }
 input[type="text"],
 input[type="email"],
 input[type="date"],
 input[type="password"],
 select.form-control {
-    height: 50px;
+    height: 40px;
     margin: 0;
-    padding: 0 20px;
+    padding: 0 15px;
     vertical-align: middle;
     background: #f8f8f8;
-    border: 3px solid #ddd;
+    border: 2px solid #ddd;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
@@ -84,10 +84,10 @@ select.form-control {
 input[type="file"] {
     height: 35px;
     margin: 0;
-    padding: 0 20px;
+    padding: 0 15px;
     vertical-align: bottom;
     background: #f8f8f8;
-    border: 3px solid #ddd;
+    border: 2px solid #ddd;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
@@ -149,9 +149,12 @@ textarea::-webkit-input-placeholder,
 textarea.form-control::-webkit-input-placeholder {
     color: #888;
 }
+.form-group {
+    margin-bottom: 12px !important;
+}
 
 button.btn {
-    height: 50px;
+    height: 45px;
     margin: 0;
     padding: 0 20px;
     vertical-align: middle;
@@ -160,7 +163,7 @@ button.btn {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: normal;
-    line-height: 50px;
+    line-height: 45px;
     color: #fff;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -357,7 +360,6 @@ form .form-bottom button.btn {
 
 form .form-bottom .input-error {
     border-color: #d03e3e;
-    color: #d03e3e;
 }
 .tutorgrid {
     margin: 10px;
@@ -384,7 +386,7 @@ form .form-bottom .input-error {
     width: 100%;
     border-radius: 2px !important;
 }
-.btn-details:hover,.btn-details:active {
+.btn-details:hover,.btn-details:active,.btn-details:focus {
     opacity: 0.7;
 }
 .profile-name {
@@ -482,3 +484,21 @@ form .form-bottom .input-error {
       color: #f76932;
       margin-right: 5px;
   }
+  #snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 9;
+    bottom: 30px;
+    font-size: 17px;
+    right: 30px;
+}
+
+#snackbar.show {
+    visibility: visible;
+}

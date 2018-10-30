@@ -298,6 +298,7 @@ export class StudentRegistrationComponent implements OnInit {
                     localStorage.setItem("userName",resultData.detail.name);
                     localStorage.setItem("type",resultData.type);
                     localStorage.setItem("userId",resultData.refId);
+                    localStorage.setItem("from_reg","Yes");
                     window.location.href = '/dashboard/student/'+resultData.refId;
                  }
             });  

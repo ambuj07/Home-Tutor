@@ -220,8 +220,7 @@ export class FindMoreTutorsComponent implements OnInit {
                 contentType: "application/json;charset=utf-8",
                 data: data,
                 success: function(resultData) { 
-                    console.log(resultData);
-                    window.location.href = '/nearbyTutors';
+                    window.location.href = '/dashboard/student/'+id;
                  }
             });  
           }

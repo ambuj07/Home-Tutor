@@ -63,7 +63,7 @@ export class FindJobsComponent implements OnInit {
                 html += '<div>Subject : '+resultData.contents[i].subject+'</div>';
                 html += '<div>Preferred gender : '+resultData.contents[i].gender+'</div>';
                 html += '</div>';
-                html += '<a href="#" data-id="'+resultData.contents[i].student.id+'" data-toggle="modal" data-target="#myProfileModal" class="btn btn-primary btn-details viewFullProfileBtn">View Full Profile</a>';
+                html += '<a href="#" data-id="'+resultData.contents[i].id+'" data-toggle="modal" data-target="#myProfileModal" class="btn btn-primary btn-details viewFullProfileBtn">View Full Profile</a>';
                 html += '</div>';
                 html += '</div>';
                 html += '</div>';
@@ -99,28 +99,54 @@ export class FindJobsComponent implements OnInit {
       }
 
       $(document).on('click','.viewFullProfileBtn',function(){
-        var stuID = $(this).attr("data-id");
+        var jobID = $(this).attr("data-id");
         var html = '';
-        $.get(baseUrl+"/student/"+stuID,function(data){
+        $.get(baseUrl+"/job/"+jobID,function(data){
                 html += '<div class="tutorgrid">';
                 html += '<div class="text-centered">';
                 html += '<img src="/assets/userIcon.png" width="36px">';
-                html += '<div class="profile-name">'+data.name+'</div>'
+                html += '<div class="profile-name">'+data.student.name+'</div>'
                 html += '<div class="job-detail-sort">';
-                html += '<div><i class="fa fa-mobile" aria-hidden="true"></i>'+data.mobile+'</div>'
-                html += '<div><i class="fa fa-envelope-o" aria-hidden="true"></i>'+data.email+'</div>'
+                html += '<div><i class="fa fa-mobile" aria-hidden="true"></i>'+data.student.mobile+'</div>'
+                html += '<div><i class="fa fa-envelope-o" aria-hidden="true"></i>'+data.student.email+'</div>'
                 html += '<div><i class="fa fa-map-marker" aria-hidden="true"></i>'+data.location+'</div>'
                 html += '<hr style="margin: 10px;">';
-                html += '<div>Class : '+data.particularClass+'</div>';
+                html += '<div>Class : '+data.className+'</div>';
                 html += '<div>Subject : '+data.subject+'</div>';
                 html += '<div>Preferred gender : '+data.gender+'</div>';
                 html += '</div>';
-                html += '<a href="javascript:void(0)" class="btn btn-primary btn-details">Apply For This Job</a>';
+                html += '<a href="javascript:void(0)" job-id="'+jobID+'" class="btn btn-primary btn-details applyForJobBtn">Apply For This Job</a>';
                 html += '</div>';
                 html += '</div>';
                 $(".modal-body").html(html);
         })
       });
+
+      $(document).on('click','.applyForJobBtn',function(){
+        var jobID = $(this).attr("job-id");
+        var tutorId = localStorage.getItem('userId');
+        var data = '{"tutorId":"'+tutorId+'"}';
+            $.ajax({
+                type: 'PUT',
+                url: baseUrl+"/"+jobID+"/apply",
+                contentType: "application/json;charset=utf-8",
+                data: data,
+                success: function(resultData) { 
+                  $("#myProfileModal").modal('hide');
+                  showToast("You have successfully applied for the job.")
+                 },
+                 error: function(resultData){
+                   $("#myProfileModal").modal('hide');
+                   showToast("Something went wrong at server side, Please try again.")
+                 }
+            });
+      });
+      function showToast(data) {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        x.innerText = data;
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      }
 
   }
 
