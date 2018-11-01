@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 declare var $:any;
 
 @Component({
@@ -8,16 +10,51 @@ declare var $:any;
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor( private route: ActivatedRoute) {}
 
   ngOnInit() {
-    var reg = localStorage.getItem('from_reg');
-    if(reg == 'Yes'){
-      $('.registrationDiv').css("display","block");
-      localStorage.setItem('from_reg','No');
-    }else{
-      $('.registrationDiv').css("display","none");
-    }
+
+    var baseUrl = environment.baseUrl;
+
+    var id;
+    this.route.params.subscribe(params => {
+        id = params["id"];
+    });
+    
+    $(document).ready(function(){
+      $('#dashboardView').css('display','block');
+      var reg = localStorage.getItem('from_reg');
+      if(reg == 'Yes'){
+        $('.registrationDiv').css("display","block");
+        localStorage.setItem('from_reg','No');
+      }else{
+        $('.registrationDiv').css("display","none");
+      }
+      $.get(baseUrl+"/jobApplication/"+id,function(response){
+        console.log(response);
+        var html = "";
+        if(response.contents.length > 0){
+          html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Student</th><th>Class</th><th>Subject</th><th>Location</th><th>Job Status</th><th>Application Status</th></tr>';
+          for(var i = 0; i < response.contents.length; i++){
+              html += '<tr>';
+              html += '<td>'+response.contents[i].id+'</td>';
+              html += '<td>'+response.contents[i].job.createdOn.split("T")[0]+'</td>';
+              html += '<td>'+response.contents[i].job.student.name+'</td>';
+              html += '<td>'+response.contents[i].job.className+'</td>';
+              html += '<td>'+response.contents[i].job.subject+'</td>';
+              html += '<td>'+response.contents[i].job.location+'</td>';
+              html += '<td>'+response.contents[i].job.status+'</td>';
+              html += '<td>'+response.contents[i].status+'</td>';
+              html += '</tr>';
+          }
+          html += '</table>';
+        }else{
+          html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not applied for any job yet, <a href="javascript:void(0)" class="findJobs">Click here</a> to find a job.</div>'
+        }
+        $("#appliedJobs").html(html);
+      });
+    });
+    
     $(".sidenav a").click(function(){
       closeNav();
       $(".sidenav a").removeClass("active");
@@ -60,7 +97,7 @@ export class DashboardComponent implements OnInit {
       $('#nearbyStudentsView').css('display','block');
       $("#viewTabName").text("Nearby Students");
     });
-    $("#findJobs").click(function(){
+    $(document).on('click',".findJobs",function(){
       $('.registrationDiv').css("display","none");
       $('.allNavElements').css('display','none');
       $('#findJobsView').css('display','block');

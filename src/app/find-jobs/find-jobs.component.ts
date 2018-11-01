@@ -115,7 +115,7 @@ export class FindJobsComponent implements OnInit {
                 html += '<div>Subject : '+data.subject+'</div>';
                 html += '<div>Preferred gender : '+data.gender+'</div>';
                 html += '</div>';
-                html += '<a href="javascript:void(0)" job-id="'+jobID+'" class="btn btn-primary btn-details applyForJobBtn">Apply For This Job</a>';
+                html += '<button type="button" job-id="'+jobID+'" class="btn btn-primary btn-details applyForJobBtn">Apply For This Job</button>';
                 html += '</div>';
                 html += '</div>';
                 $(".modal-body").html(html);
@@ -125,19 +125,21 @@ export class FindJobsComponent implements OnInit {
       $(document).on('click','.applyForJobBtn',function(){
         var jobID = $(this).attr("job-id");
         var tutorId = localStorage.getItem('userId');
-        var data = '{"tutorId":"'+tutorId+'"}';
             $.ajax({
                 type: 'PUT',
-                url: baseUrl+"/"+jobID+"/apply",
-                contentType: "application/json;charset=utf-8",
-                data: data,
+                url: baseUrl+"/job/"+jobID+"/apply?tutorId="+tutorId,
                 success: function(resultData) { 
                   $("#myProfileModal").modal('hide');
+                  console.log(resultData)
                   showToast("You have successfully applied for the job.")
+                  setTimeout(function(){ 
+                    window.location.href = "/dashboard/tutor/"+tutorId;
+                   }, 3000);
                  },
                  error: function(resultData){
                    $("#myProfileModal").modal('hide');
-                   showToast("Something went wrong at server side, Please try again.")
+                   console.log(resultData.responseJSON.message)
+                   showToast(resultData.responseJSON.message)
                  }
             });
       });

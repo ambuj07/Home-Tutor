@@ -86,7 +86,11 @@ import { FindMoreTutorsComponent } from './find-more-tutors/find-more-tutors.com
       {
         path : 'dashboard/student/:id',
         component : StudentDashboardComponent
-      }
+      },
+      {
+        path: '**',
+        redirectTo : ''
+     },
    ])
   ],
   providers: [],

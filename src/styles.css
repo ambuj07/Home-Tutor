@@ -491,12 +491,14 @@ form .form-bottom .input-error {
     color: #fff;
     text-align: center;
     border-radius: 2px;
-    padding: 16px;
+    border-radius: 2px;
+    padding: 15px;
     position: fixed;
     z-index: 9;
-    bottom: 30px;
-    font-size: 17px;
-    right: 30px;
+    bottom: 0;
+    font-size: 18px;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #snackbar.show {

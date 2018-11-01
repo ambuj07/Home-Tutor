@@ -43,6 +43,7 @@ export class TutorProfileComponent implements OnInit {
           $(".class").text(data.particularClass);
           $(".subject").text(data.subjects);
           $("#category").text(data.category);
+          $(".total-credit").text("Available Credit "+data.credit)
         })
     $(".profileNav .nav-link").click(function(){
       var navclick = $(this).attr("data-value");

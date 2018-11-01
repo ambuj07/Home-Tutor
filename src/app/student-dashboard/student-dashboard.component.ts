@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 declare var $:any;
 
 @Component({
@@ -8,16 +10,49 @@ declare var $:any;
 })
 export class StudentDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor( private route: ActivatedRoute) {}
 
   ngOnInit() {
-    var reg = localStorage.getItem('from_reg');
-    if(reg == 'Yes'){
-      $('.registrationDiv').css("display","block");
-      localStorage.setItem('from_reg','No');
-    }else{
-      $('.registrationDiv').css("display","none");
-    }
+
+    var baseUrl = environment.baseUrl;
+
+    var id;
+    this.route.params.subscribe(params => {
+        id = params["id"];
+    });
+    $(document).ready(function(){
+      $('#dashboardView').css('display','block');
+      var reg = localStorage.getItem('from_reg');
+      if(reg == 'Yes'){
+        $('.registrationDiv').css("display","block");
+        localStorage.setItem('from_reg','No');
+      }else{
+        $('.registrationDiv').css("display","none");
+      }
+      $.get(baseUrl+"/job/"+id,function(response){
+        console.log(response);
+        var html = "";
+        if(response.student != undefined){
+          html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Class</th><th>Subject</th><th>Location</th><th>Preferred Tutor</><th>Job Status</th></tr>';
+          //for(var i = 0; i < response.contents.length; i++){
+              html += '<tr>';
+              html += '<td>'+response.id+'</td>';
+              html += '<td>'+response.createdOn.split("T")[0]+'</td>';
+              html += '<td>'+response.className+'</td>';
+              html += '<td>'+response.subject+'</td>';
+              html += '<td>'+response.location+'</td>';
+              html += '<td>'+response.gender+'</td>';
+              html += '<td>'+response.status+'</td>';
+              html += '</tr>';
+          //}
+          html += '</table>';
+        }else{
+          html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not posted any requirement yet, <a href="javascript:void(0)" class="findMoreTutors">Click here</a> to post your requirement.</div>'
+        }
+        $("#postedRequirements").html(html);
+      });
+    });
+
     $(".sidenav a").click(function(){
       closeNav();
       $(".sidenav a").removeClass("active");
@@ -36,6 +71,7 @@ export class StudentDashboardComponent implements OnInit {
     $("#closeSideNav").click(function(){
       closeNav();
     })
+    
     $("#dashboard").click(function(){
       $('.registrationDiv').css("display","none");
       $('.allNavElements').css('display','none');
@@ -60,7 +96,7 @@ export class StudentDashboardComponent implements OnInit {
       $('#nearbyTutorsView').css('display','block');
       $("#viewTabName").text("Nearby Tutors");
     });
-    $("#findMoreTutors").click(function(){
+    $(document).on('click','.findMoreTutors',function(){
       $('.registrationDiv').css("display","none");
       $('.allNavElements').css('display','none');
       $('#findMoreTutorsView').css('display','block');
