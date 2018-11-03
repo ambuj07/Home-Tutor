@@ -500,6 +500,12 @@ form .form-bottom .input-error {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+button.btn.btn-xs {
+    padding: 2px 10px;
+    line-height: 22px;
+    height: 25px;
+    font-size: 13px;
+}
 
 #snackbar.show {
     visibility: visible;

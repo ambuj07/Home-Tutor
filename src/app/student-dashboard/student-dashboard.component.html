@@ -23,6 +23,51 @@
       
     </div>
   </div>
+  <div id="pagination1">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          
+        </ul>
+      </nav>
+    </div>
+  <!-- Job application Modal -->
+ <div class="modal fade" id="viewJobApplicationModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- change status Modal -->
+ <div class="modal fade" id="changeStatusModal">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="changeStatusForm">
+            <div class="form-group">
+                <select class="form-control" id="changeStatus" name="changeStatus">
+                    <option value="" disabled selected>Select Status</option>
+                    <option value="CANCELLED">CANCELLED</option>
+                    <option value="CLOSED">CLOSED</option>
+                </select>
+                <input type="hidden" id="jobId" name="jobId">
+            </div>
+            <div style="text-align:right">
+                <button type="button" class="btn saveStatus">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="allNavElements" id="profileView">

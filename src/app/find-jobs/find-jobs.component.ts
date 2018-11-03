@@ -17,24 +17,14 @@ export class FindJobsComponent implements OnInit {
     //code for fetching data
 
     $(document).ready(function(){
-      getPageData(0);
+      getJobDataByPage(0);
     });
-    $(document).on('click','.btn-page',function(e){
+    $(document).on('click','.btn-job-page',function(e){
       e.preventDefault();
       var pageNumber = $(this).text();
-      getPageData(parseInt(pageNumber)-1);
+      getJobDataByPage(parseInt(pageNumber)-1);
     });
-    $(document).on('click','.btn-prev',function(e){
-      e.preventDefault();
-      var pageNumber = $('.active').text();
-      getPageData(parseInt(pageNumber)-2);
-    });
-    $(document).on('click','.btn-next',function(e){
-      e.preventDefault();
-      var pageNumber = $('.active').text();
-      getPageData(parseInt(pageNumber));
-    });
-    function getPageData(pageNumber){
+    function getJobDataByPage(pageNumber){
       $.ajax({
         type: 'GET',
         url: baseUrl+"/job?page="+pageNumber,
@@ -44,8 +34,7 @@ export class FindJobsComponent implements OnInit {
             console.log(resultData);
             var len = resultData.contents.length;
             var isNext = resultData.next;
-            var pageSize = resultData.size;
-            var page = (resultData.page +1);
+            var pageSize = resultData.page;
             var html = '';
             if(len > 0){
               for(var i = 0; i < len; i++){
@@ -73,27 +62,12 @@ export class FindJobsComponent implements OnInit {
             if(pageSize > 1){
               var htmlPage = '';
               htmlPage +='<ul class="pagination">'
-              htmlPage += '<li class="page-item">';
-              htmlPage += '<a class="page-link btn-prev" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span>';
-              htmlPage += '<span class="sr-only">Previous</span></a>';
-              htmlPage += '</li>';
               for(var i=1; i <= pageSize; i++){
-                htmlPage += '<li class="page-item"><a class="page-link btn-page" id="page_'+i+'" href="#">'+i+'</a></li>';
+                htmlPage += '<li class="page-item"><a class="page-link btn-job-page" href="#">'+i+'</a></li>';
               }
-              htmlPage += '<li class="page-item">';
-              htmlPage += '<a class="page-link btn-next" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span>';
-              htmlPage += '<span class="sr-only">Next</span></a>';
-              htmlPage += '</li>';
               htmlPage +='</ul>'
-              $("#pagination").html(htmlPage);
-              $("#page_"+page).closest('li').addClass("active");
+              $("#pagination1").html(htmlPage);
             }  
-            if(pageNumber == 0){
-              $(".btn-prev").closest('li').addClass('disabled');
-            }
-            if(!isNext){
-              $(".btn-next").closest('li').addClass('disabled');
-            } 
           }
         });
       }
@@ -118,7 +92,7 @@ export class FindJobsComponent implements OnInit {
                 html += '<button type="button" job-id="'+jobID+'" class="btn btn-primary btn-details applyForJobBtn">Apply For This Job</button>';
                 html += '</div>';
                 html += '</div>';
-                $(".modal-body").html(html);
+                $("#myProfileModal").find(".modal-body").html(html);
         })
       });
 
