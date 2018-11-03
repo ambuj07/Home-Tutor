@@ -34,7 +34,7 @@ export class StudentDashboardComponent implements OnInit {
         var html = "";
         if(response.totalSize > 0){
           html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Class</th><th>Subject</th><th>Location</th><th>Preferred Tutor</><th>Job Status</th></tr>';
-          for(var i = 0; i < response.totalSize; i++){
+          for(var i = 0; i < response.contents.length; i++){
               html += '<tr>';
               html += '<td>'+response.contents[i].id+'</td>';
               html += '<td>'+response.contents[i].createdOn.split("T")[0]+'</td>';
