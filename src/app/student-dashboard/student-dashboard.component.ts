@@ -29,7 +29,7 @@ export class StudentDashboardComponent implements OnInit {
       }else{
         $('.registrationDiv').css("display","none");
       }
-      $.get(baseUrl+"/job/"+id,function(response){
+      $.get(baseUrl+"/job/student/"+id,function(response){
         console.log(response);
         var html = "";
         if(response.student != undefined){
