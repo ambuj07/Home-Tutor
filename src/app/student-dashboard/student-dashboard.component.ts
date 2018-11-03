@@ -30,21 +30,21 @@ export class StudentDashboardComponent implements OnInit {
         $('.registrationDiv').css("display","none");
       }
       $.get(baseUrl+"/job/student/"+id,function(response){
-        console.log(response);
+        console.log("Jobs posted > "+response.totalSize);
         var html = "";
-        if(response.student != undefined){
+        if(response.totalSize > 0){
           html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Class</th><th>Subject</th><th>Location</th><th>Preferred Tutor</><th>Job Status</th></tr>';
-          //for(var i = 0; i < response.contents.length; i++){
+          for(var i = 0; i < response.totalSize; i++){
               html += '<tr>';
-              html += '<td>'+response.id+'</td>';
-              html += '<td>'+response.createdOn.split("T")[0]+'</td>';
-              html += '<td>'+response.className+'</td>';
-              html += '<td>'+response.subject+'</td>';
-              html += '<td>'+response.location+'</td>';
-              html += '<td>'+response.gender+'</td>';
-              html += '<td>'+response.status+'</td>';
+              html += '<td>'+response.contents[i].id+'</td>';
+              html += '<td>'+response.contents[i].createdOn.split("T")[0]+'</td>';
+              html += '<td>'+response.contents[i].className+'</td>';
+              html += '<td>'+response.contents[i].subject+'</td>';
+              html += '<td>'+response.contents[i].location+'</td>';
+              html += '<td>'+response.contents[i].gender+'</td>';
+              html += '<td>'+response.contents[i].status+'</td>';
               html += '</tr>';
-          //}
+          }
           html += '</table>';
         }else{
           html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not posted any requirement yet, <a href="javascript:void(0)" class="findMoreTutors">Click here</a> to post your requirement.</div>'
