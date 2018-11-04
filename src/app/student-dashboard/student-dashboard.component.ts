@@ -124,7 +124,7 @@ export class StudentDashboardComponent implements OnInit {
                 console.log(resultData) 
                 $("#changeStatusModal").modal('hide');
                 showToast("Status Updated successfully.")
-                $("#status_"+resultData.id).text(resultData.status);
+                $("#status_"+jobID).text(status);
                 return false;
                },
                error: function(resultData){
