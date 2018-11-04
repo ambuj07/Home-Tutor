@@ -198,14 +198,14 @@ export class FindMoreTutorsComponent implements OnInit {
   
       $("#submit").click(function(){
         var error = false;  
-          $(this).parents('.fieldset').find('select').each(function () {
-                if ($(this).is(":visible") && ($(this).val() == null || $(this).val() == "")) {
-                    $(this).addClass('input-error');
-                    error = true;
-                } else {
-                    $(this).removeClass('input-error');
-                }
-          });
+        $(".registration-form").find('input[type="text"],input[type="email"]').each(function () {
+            if ($(this).val() == "") {
+                $(this).addClass('input-error');
+                error = true;
+            } else {
+                $(this).removeClass('input-error');
+            }
+        });
           if(!error){
             var prefferedGender = $("#prefferedGender").val();
             var locality = $("#locality").val(); 

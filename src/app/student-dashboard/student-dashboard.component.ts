@@ -48,7 +48,7 @@ export class StudentDashboardComponent implements OnInit {
                 html += '<td>'+response.contents[i].subject+'</td>';
                 html += '<td>'+response.contents[i].location+'</td>';
                 html += '<td>'+response.contents[i].gender+'</td>';
-                html += '<td>'+response.contents[i].status+' <button data-id="'+response.contents[i].id+'" data-toggle="modal" data-target="#changeStatusModal" class="btn btn-xs changeStatusBtn"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                html += '<td><span id="status_'+response.contents[i].id+'">'+response.contents[i].status+'</span> <button data-id="'+response.contents[i].id+'" data-toggle="modal" data-target="#changeStatusModal" class="btn btn-xs changeStatusBtn"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                 if(response.contents[i].applications.length > 0){
                   var data = JSON.stringify(response.contents[i].applications)
                   html += "<td>"+response.contents[i].applications.length+" tutor applied <button data='"+data+"' data-toggle='modal' data-target='#viewJobApplicationModal' class='btn btn-xs viewJobDetailBtn'><i class='fa fa-eye' aria-hidden='true'></i></button></td>";
@@ -105,22 +105,30 @@ export class StudentDashboardComponent implements OnInit {
         var jobId = $(this).attr("data-id");
         $("#changeStatusForm").find("#jobId").val(jobId);
       });
-      $(document).on('click','.saveStatus',function(){
+      $(document).on('click','.saveStatus',function(event){
         var jobID = $("#changeStatusForm").find("#jobId").val();
         var status = $("#changeStatusForm").find("#changeStatus").val();
         if (status == null || status == "") {
           $("#changeStatusForm").find("#changeStatus").css('border-color','red');
         } else {
+            $("#changeStatusForm").find("#changeStatus").css('border-color','#ddd');
             $.ajax({
               type: 'PUT',
-              url: baseUrl+"/job/"+jobID+"/?status="+status,
-              success: function(resultData) { 
+              url: baseUrl+"/job/"+jobID+"/status?status="+status,
+              contentType: "application/json;charset=utf-8",
+              headers: {
+                'userId': id,
+                'role': 'STUDENT'
+              },
+              success: function(resultData) {
+                console.log(resultData) 
                 $("#changeStatusModal").modal('hide');
                 showToast("Status Updated successfully.")
+                $("#status_"+resultData.id).text(resultData.status);
+                return false;
                },
                error: function(resultData){
                  $("#changeStatusModal").modal('hide');
-                 showToast(resultData.responseJSON.message)
                }
           });
         }

@@ -51,10 +51,11 @@
           <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
         <div class="modal-body">
-          <form id="changeStatusForm">
+          <form id="changeStatusForm" onsubmit="return false;">
             <div class="form-group">
                 <select class="form-control" id="changeStatus" name="changeStatus">
                     <option value="" disabled selected>Select Status</option>
+                    <option value="OPEN">OPEN</option>
                     <option value="CANCELLED">CANCELLED</option>
                     <option value="CLOSED">CLOSED</option>
                 </select>
