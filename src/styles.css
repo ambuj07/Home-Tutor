@@ -510,3 +510,17 @@ button.btn.btn-xs {
 #snackbar.show {
     visibility: visible;
 }
+button.btn.dropdown-toggle {
+    background: #f8f8f8;
+    border: 2px solid #ccc;
+    color: #888;
+    height: 40px;
+    line-height: 40px;
+}
+.dropdown-item.active, .dropdown-item:active {
+    color: black !important;
+    background-color: #f8f8f8 !important;
+}
+.bootstrap-select .btn:focus {
+    outline: none !important;
+}

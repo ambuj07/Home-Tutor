@@ -9,12 +9,13 @@ declare var $:any;
 })
 export class FindJobsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
-  
   ngOnInit() {
-    const baseUrl = environment.baseUrl;
-    //code for fetching data
+      const baseUrl = environment.baseUrl;
+      $("#viewTabName").text("Find Jobs");
+      $(".sidenav a").removeClass("active");
+      $(".findJobs").addClass("active");
 
     $(document).ready(function(){
       getJobDataByPage(0);

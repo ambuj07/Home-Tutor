@@ -37,11 +37,13 @@ export class LoginComponent implements OnInit {
                   url: baseUrl+"/login",
                   contentType: "application/json;charset=utf-8",
                   data: data,
-                  success: function(resultData) { 
+                  success: function(resultData) {
+                      console.log(resultData) 
                       //$this.router.navigate(['/profile/'+resultData.type+'/'+resultData.refId])
                       localStorage.setItem("userName",resultData.detail.name);
                       localStorage.setItem("type",resultData.type);
                       localStorage.setItem("userId",resultData.refId);
+                      localStorage.setItem("token",resultData.token);
                       if(resultData.type == "STUDENT"){
                         window.location.href = '/dashboard/student/'+resultData.refId
                       }else if(resultData.type == "TUTOR"){

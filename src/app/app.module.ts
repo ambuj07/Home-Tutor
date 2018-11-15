@@ -18,7 +18,9 @@ import { TutorProfileComponent } from './tutor-profile/tutor-profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FindJobsComponent } from './find-jobs/find-jobs.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
-import { FindMoreTutorsComponent } from './find-more-tutors/find-more-tutors.component'
+import { FindMoreTutorsComponent } from './find-more-tutors/find-more-tutors.component';
+import { TutorMenuComponent } from './tutor-menu/tutor-menu.component';
+import { UpdateTutorProfileComponent } from './update-tutor-profile/update-tutor-profile.component'
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { FindMoreTutorsComponent } from './find-more-tutors/find-more-tutors.com
     DashboardComponent,
     FindJobsComponent,
     StudentDashboardComponent,
-    FindMoreTutorsComponent
+    FindMoreTutorsComponent,
+    TutorMenuComponent,
+    UpdateTutorProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +90,18 @@ import { FindMoreTutorsComponent } from './find-more-tutors/find-more-tutors.com
       {
         path : 'dashboard/student/:id',
         component : StudentDashboardComponent
+      },
+      {
+        path : 'profile/tutor/:id',
+        component : TutorProfileComponent
+      },
+      {
+        path : 'findJobs/tutor/:id',
+        component : FindJobsComponent
+      },
+      {
+        path : 'editProfile/tutor/:id',
+        component : UpdateTutorProfileComponent
       },
       {
         path: '**',

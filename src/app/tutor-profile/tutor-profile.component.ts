@@ -13,38 +13,39 @@ export class TutorProfileComponent implements OnInit {
   constructor( private route: ActivatedRoute) {}
 
   ngOnInit() {
-   const baseUrl = environment.baseUrl;
-   var id;
-   this.route.params.subscribe(params => {
+      const baseUrl = environment.baseUrl;
+      var id;
+      this.route.params.subscribe(params => {
         id = params["id"];
       });
-
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-        }
-      
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-        $("#openSideNav").click(function(){
-            openNav();
-        })
-        $("#closeSideNav").click(function(){
-          closeNav();
-        })
-        $.get(baseUrl+"/tutor/"+id,function(data){
-          $("#name").text(data.name);
-          $("#find").text("Job");
-          $("#mobile").text(data.mobile);
-          $("#email").text(data.email);
-          $("#gender").text(data.gender);
-          $("#location").text(data.location);
-          $(".classCategory").text(data.classcategory);
-          $(".class").text(data.particularClass);
-          $(".subject").text(data.subjects);
-          $("#category").text(data.category);
-          $(".total-credit").text("Available Credit "+data.credit)
-        })
+      $("#viewTabName").text("Profile");
+      $(".sidenav a").removeClass("active");
+      $("#profile").addClass("active");
+       
+      $.ajax({
+          type: 'GET',
+          url: baseUrl+"/tutor/"+id,
+          // beforeSend: function(xhr) {
+          //   xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+          // },
+          success : function(data){
+            $("#name").text(data.name);
+            $("#find").text("Job");
+            $("#mobile").text(data.mobile);
+            $("#email").text(data.email);
+            $("#gender").text(data.gender);
+            $("#location").text(data.location);
+            $(".classCategory").text(data.classcategory);
+            $(".class").text(data.particularClass);
+            $(".subject").text(data.subjects);
+            $("#category").text(data.category);
+            $(".total-credit").text("Available Credit "+data.credit)
+          },
+          error : function(data){
+            console.log(data)
+          }
+          
+        });
     $(".profileNav .nav-link").click(function(){
       var navclick = $(this).attr("data-value");
       if(navclick == "Basic"){

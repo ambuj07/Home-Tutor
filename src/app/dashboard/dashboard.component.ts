@@ -36,74 +36,57 @@ export class DashboardComponent implements OnInit {
         getAppliedJobByPage(parseInt(pageNumber)-1);
       });
 
+      // $.ajaxSetup({
+      //     headers: { "token": localStorage.getItem("token") }
+      //  });
+      //$http.defaults.headers.common.Authorization = $window.sessionStorage.token
       function getAppliedJobByPage(page){
-        $.get(baseUrl+"/jobApplication/"+id+"?page="+page,function(response){
-          console.log(response);
-          var html = "";
-          if(response.contents.length > 0){
-            html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Student</th><th>Class</th><th>Subject</th><th>Location</th><th>Job Status</th><th>Application Status</th></tr>';
-            for(var i = 0; i < response.contents.length; i++){
-                html += '<tr>';
-                html += '<td>'+response.contents[i].id+'</td>';
-                html += '<td>'+response.contents[i].job.createdOn.split("T")[0]+'</td>';
-                html += '<td>'+response.contents[i].job.student.name+'</td>';
-                html += '<td>'+response.contents[i].job.className+'</td>';
-                html += '<td>'+response.contents[i].job.subject+'</td>';
-                html += '<td>'+response.contents[i].job.location+'</td>';
-                html += '<td>'+response.contents[i].job.status+'</td>';
-                html += '<td>'+response.contents[i].status+'</td>';
-                html += '</tr>';
-            }
-            html += '</table>';
-            //pagination 
-            if(response.page > 1){
-              var htmlPage = '';
-              htmlPage +='<ul class="pagination">'
-              for(var i=1; i <= response.page; i++){
-                htmlPage += '<li class="page-item"><a class="page-link applied-page-btn" href="javascript:void(0)">'+i+'</a></li>';
+        $.ajax({
+          type: 'GET',
+          url: baseUrl+"/jobApplication/"+id+"?page="+page,
+          // beforeSend: function(xhr) {
+          //   xhr.setRequestHeader("Authorization", );
+          // },
+          headers: {
+            "Authorization": localStorage.getItem("token")
+          },
+          success : function(response){
+            console.log(response);
+            var html = "";
+            if(response.contents.length > 0){
+              html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Student</th><th>Class</th><th>Subject</th><th>Location</th><th>Job Status</th><th>Application Status</th></tr>';
+              for(var i = 0; i < response.contents.length; i++){
+                  html += '<tr>';
+                  html += '<td>'+response.contents[i].id+'</td>';
+                  html += '<td>'+response.contents[i].job.createdOn.split("T")[0]+'</td>';
+                  html += '<td>'+response.contents[i].job.student.name+'</td>';
+                  html += '<td>'+response.contents[i].job.className+'</td>';
+                  html += '<td>'+response.contents[i].job.subject+'</td>';
+                  html += '<td>'+response.contents[i].job.location+'</td>';
+                  html += '<td>'+response.contents[i].job.status+'</td>';
+                  html += '<td>'+response.contents[i].status+'</td>';
+                  html += '</tr>';
               }
-              htmlPage +='</ul>'
-              $("#pagination2").html(htmlPage);
-            }  
-            //pagination end
-          }else{
-            html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not applied for any job yet, <a href="javascript:void(0)" class="findJobs">Click here</a> to find a job.</div>'
+              html += '</table>';
+              //pagination 
+              if(response.page > 1){
+                var htmlPage = '';
+                htmlPage +='<ul class="pagination">'
+                for(var i=1; i <= response.page; i++){
+                  htmlPage += '<li class="page-item"><a class="page-link applied-page-btn" href="javascript:void(0)">'+i+'</a></li>';
+                }
+                htmlPage +='</ul>'
+                $("#pagination2").html(htmlPage);
+              }  
+              //pagination end
+            }else{
+              html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not applied for any job yet, <a href="javascript:void(0)" class="findJobs">Click here</a> to find a job.</div>'
+            }
+            $("#appliedJobs").html(html);
           }
-          $("#appliedJobs").html(html);
         });
       }
       
-    });
-    
-    $(".sidenav a").click(function(){
-      closeNav();
-      $(".sidenav a").removeClass("active");
-      $(this).addClass("active");
-    });
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
-  
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-    $("#openSideNav").click(function(){
-        openNav();
-    })
-    $("#closeSideNav").click(function(){
-      closeNav();
-    })
-    $("#dashboard").click(function(){
-      $('.registrationDiv').css("display","none");
-      $('.allNavElements').css('display','none');
-      $('#dashboardView').css('display','block');
-      $("#viewTabName").text("Tutor Dashboard");
-    });
-    $("#profile").click(function(){
-      $('.registrationDiv').css("display","none");
-      $('.allNavElements').css('display','none');
-      $('#profileView').css('display','block');
-      $("#viewTabName").text("Profile");
     });
     $("#editProfile").click(function(){
       $('.registrationDiv').css("display","none");
@@ -117,18 +100,6 @@ export class DashboardComponent implements OnInit {
       $('#nearbyStudentsView').css('display','block');
       $("#viewTabName").text("Nearby Students");
     });
-    $(document).on('click',".findJobs",function(){
-      $('.registrationDiv').css("display","none");
-      $('.allNavElements').css('display','none');
-      $('#findJobsView').css('display','block');
-      $("#viewTabName").text("Find Jobs");
-    }); 
-    $("#updateStatus").click(function(){
-      $('.registrationDiv').css("display","none");
-      $('.allNavElements').css('display','none');
-      $('#updateStatusView').css('display','block');
-      $("#viewTabName").text("Update Status");
-    }); 
   }
 
 }
