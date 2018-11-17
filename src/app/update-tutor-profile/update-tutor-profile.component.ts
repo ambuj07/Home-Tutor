@@ -71,7 +71,7 @@ export class UpdateTutorProfileComponent implements OnInit {
             addMore1 += subjectHtml;  
             addMore1 += '</select>';
             addMore1 += '</div>';
-            addMore1 += '<div class="col-md-1"><span class="removeClass removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;">-</span></div>'
+            addMore1 += '<div class="col-md-1"><span class="removeClass removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
             addMore1 += '</div>';
             $(".addMore_1").append(addMore1);
             $(".selectpicker").selectpicker('refresh');
@@ -84,20 +84,25 @@ export class UpdateTutorProfileComponent implements OnInit {
          });
          $("#saveClass").click(function(){
            var jsonObj = [];
+           var error = true;
             $(".formDiv_1").each(function(){
               var classVal = $(this).find('select.chooseClass').val();
               var subjectVal = $(this).find("select.chooseSubject").val();
               console.log(classVal+" "+subjectVal.length)
               if(classVal == null && subjectVal.length == 0){
+                error = true;
                 $(this).find(".chooseClass").find(".dropdown-toggle").css("border-color","red");
                 $(this).find(".chooseSubject").find(".dropdown-toggle").css("border-color","red");
               }else if(classVal == null){
+                error = true;
                 $(this).find(".chooseClass").find(".dropdown-toggle").css("border-color","red");
                 $(this).find(".chooseSubject").find(".dropdown-toggle").css("border-color","#ccc");
               }else if(subjectVal.length == 0){
+                error = true;
                 $(this).find(".chooseClass").find(".dropdown-toggle").css("border-color","#ccc");
                 $(this).find(".chooseSubject").find(".dropdown-toggle").css("border-color","red");
               }else{
+                error = false;
                 $(this).find(".chooseClass").find(".dropdown-toggle").css("border-color","#ccc");
                 $(this).find(".chooseSubject").find(".dropdown-toggle").css("border-color","#ccc");
                 for(var i=0; i<subjectVal.length;i++){
@@ -105,7 +110,8 @@ export class UpdateTutorProfileComponent implements OnInit {
                 }
               }
             });
-            if(jsonObj.length > 0){
+            if(!error && jsonObj.length > 0){
+              console.log(JSON.stringify(jsonObj));
               $.ajax({
                 type: 'POST',
                 url: baseUrl+"/tutor/"+id+"/map",
@@ -122,14 +128,96 @@ export class UpdateTutorProfileComponent implements OnInit {
                  }
             });
             }
-            console.log(jsonObj);
          });
+         
+        // Function for update qualification
+        function addMoreQualification(){
+            var addMore2 = '<div class="row formDiv_2" style="margin-bottom: 10px !important;">';
+            addMore2 += '<div class="col-md-3">';
+            addMore2 += '<input type="text" class="form-control degree" placeholder="Degree">'; 
+            addMore2 += '</div>';
+            addMore2 += '<div class="col-md-3">';
+            addMore2 += '<input type="text" class="form-control board" placeholder="Board/University">'; 
+            addMore2 += '</div>';
+            addMore2 += '<div class="col-md-3">';
+            addMore2 += '<input type="text" class="form-control institute" placeholder="Institute Name">'; 
+            addMore2 += '</div>';
+            addMore2 += '<div class="col-md-2">';
+            addMore2 += '<input type="text" class="form-control passingYear" placeholder="Year">'; 
+            addMore2 += '</div>';
+            addMore2 += '<div class="col-md-1"><span class="removeQualification removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
+            addMore2 += '</div>';
+            $(".addMore_2").append(addMore2);
+        }
+        $(document).on('click',".addMoreQualification",function(){
+          addMoreQualification();
+        });
+        $(document).on('click',".removeQualification",function(){
+          $(this).closest(".formDiv_2").remove();
+        });
+
+        $("#saveQualification").click(function(){
+          var jsonObj = [];
+          var error = true;
+           $(".formDiv_2").each(function(){
+             var degreeVal = $(this).find('.degree').val();
+             var boardVal = $(this).find('.board').val();
+             var instituteVal = $(this).find('.institute').val();
+             var yearVal = $(this).find('.passingYear').val();
+             console.log(degreeVal+" "+boardVal+" "+instituteVal+" "+yearVal)
+             if(degreeVal == "" || boardVal == "" || instituteVal == "" || yearVal == ""){
+               error = true;
+               $(this).find('.form-control').css("border-color","red");
+               if(degreeVal != ""){
+                $(this).find('.degree').css("border-color","#ccc");
+               }
+               if(boardVal != ""){
+                $(this).find('.board').css("border-color","#ccc");
+               }
+               if(instituteVal != ""){
+                $(this).find('.institute').css("border-color","#ccc");
+               }
+               if(yearVal != ""){
+                $(this).find('.passingYear').css("border-color","#ccc");
+               }
+             }else{
+              $(this).find('.form-control').css("border-color","#ccc");
+              jsonObj.push({"degree": degreeVal,"board" : boardVal,"instituteName":instituteVal,"year":yearVal});
+              error = false;
+             }
+           });
+           if(!error && jsonObj.length > 0){
+            console.log(JSON.stringify(jsonObj));
+             $.ajax({
+               type: 'POST',
+               url: baseUrl+"/tutor/"+id+"/education",
+               contentType: "application/json;charset=utf-8",
+               data: JSON.stringify(jsonObj),
+               success: function(resultData) { 
+                 showToast("Classes and subjects saved successfully.")
+                 setTimeout(function(){ 
+                   window.location.href = "editProfile/tutor/"+id;
+                  }, 3000);
+                },
+                error :function(resultData){
+                  console.log(resultData);
+                }
+           });
+           }
+        });
+
+
+
+         //general functions
          function showToast(data) {
           var x = document.getElementById("snackbar");
           x.className = "show";
           x.innerText = data;
           setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
+        $(document).on('change','.selectpicker',function() {
+          $(this).next().blur();
+        });
   }
 
 }
