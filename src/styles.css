@@ -52,6 +52,9 @@ a,a:hover,a:active,a:focus{
     text-align: center !important;
     height: 40px !important;
 }
+.form-control[readonly] {
+    background-color: #f8f8f8 !important;
+}
 input[type="text"],
 input[type="email"],
 input[type="date"],

@@ -13,15 +13,7 @@
                             <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name" required>
                         </div>
                         <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" placeholder="Enter Your Location" id="address" class="form-control" name="address" required>
-                            <div class="input-group-append">
-                                <button class="btn btn-location" id="getLocation" type="button"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span></button>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Enter Your Mobile Number(only 10 digt)"  name="mobileNumber" class="form-control" id="mobileNumber" required>
+                            <input type="text" placeholder="Enter Your Mobile Number(only 10 digt)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
                         </div>
                         <div class="form-group">
                             <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email" required>
@@ -35,24 +27,20 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="classGroup" name="classGroup" required>
-                                <option value="" disabled>Choose Your Group</option>
-                                <option value="prep_and_kg">Prep and KG</option>
-                                <option value="1to5">1st to 5th</option>
-                                <option value="6to8">6th to 8th</option>
-                                <option value="9to10">9th to 10th</option>
-                                <option value="11to12">11th to 12th</option>
-                                <option value="graduation">Graduation</option>
-                                <option value="competetive">Competetive</option>
-                                <option value="passion">Passion</option>
-                            </select>
+                            <div class="input-group">
+                                <input type="text" placeholder="Enter Your Pin Code" id="pinCode" class="form-control" name="pinCode" required>
+                            </div>
                         </div>
-                        <div class="form-group" id="chooseClassDiv" hidden>
-                                <select class="form-control" id="chooseClass" name="chooseClass">
-                                    <option value="" disabled>Choose Your Class</option>
-                                
-                                </select>
-                        </div>    
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" placeholder="Locality" id="location" class="form-control" name="location" required readonly>
+                            </div>
+                        </div>  
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" placeholder="City" id="city" class="form-control" name="city" required readonly>
+                            </div>
+                        </div> 
                         <div class="form-group" id="chooseSubjectDiv" hidden>
                             <select class="form-control" id="chooseSubject" name="chooseSubject">
                                 
