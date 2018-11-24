@@ -4,6 +4,9 @@
   <div class="accordion_container">
     <div class="accordion_head">Classes And Subjects<span class="plusminus">-</span></div>
     <div class="accordion_body">
+       <table class="table table-bordered" id="classTable">
+            
+       </table>
        <div class="addMore_1">
           <div class="row formDiv_1" style="margin-bottom: 10px !important;">
               <div class="col-md-5">
@@ -47,8 +50,43 @@
          </div>
     </div>
     <div class="accordion_head">Work Locations<span class="plusminus">+</span></div>
-    <div class="accordion_body" style="display: none;">
-      <p>Third Accordian Body, it will have description</p>
+    <div class="accordion_body" style="display: none;"> 
+        <div><h5 style="padding-left: 15px;">Enter upto 10 area pin codes(Zip code), Where you can work. Each zip code should be 6 digits</h5></div>
+        <div class="row">
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 1">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 2">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 3">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 4">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 5">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 6">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 7">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 8">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 9">
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <input type="text" class="form-control pinCode" placeholder="Zip Code 10">
+        </div>        
+        </div>
+        <div style="text-align:right;padding: 20px 15px 0px;">
+            <button type="button" id="saveZipCode" class="btn btn-primary" style="width: 120px;">save</button>
+        </div>
     </div>
   </div>
   

@@ -129,6 +129,16 @@ export class UpdateTutorProfileComponent implements OnInit {
             });
             }
          });
+
+        //  $.ajax({
+        //     type: 'GET',
+        //     url: baseUrl+"/tutor/"+id+"/map",
+        //     success: function(resultData) { 
+        //       console.log(resultData);
+        //       var classTable = '';
+
+        //     }
+        //   });
          
         // Function for update qualification
         function addMoreQualification(){
@@ -206,7 +216,42 @@ export class UpdateTutorProfileComponent implements OnInit {
            }
         });
 
-
+        //zip code function 
+        $("#saveZipCode").click(function(){
+          var jsonObj = [];
+          var error = false;
+           $(".pinCode").each(function(){
+             var pinCode = $(this).val();
+             console.log(pinCode);
+             if(pinCode != "" && (pinCode.length != 6 || isNaN(pinCode))){
+               error = true;
+               $(this).css("border-color","red");
+             }else if(pinCode != ""){
+              $(this).css("border-color","#ccc");
+              jsonObj.push(pinCode);
+             }
+           });
+           if(!error && jsonObj.length > 0){
+            console.log(JSON.stringify(jsonObj));
+             $.ajax({
+               type: 'POST',
+               url: baseUrl+"/tutor/"+id+"/zip",
+               contentType: "application/json;charset=utf-8",
+               data: JSON.stringify(jsonObj),
+               success: function(resultData) { 
+                 showToast("Working locations saved successfully.")
+                 setTimeout(function(){ 
+                   window.location.href = "editProfile/tutor/"+id;
+                  }, 3000);
+                },
+                error :function(resultData){
+                  console.log(resultData);
+                }
+           });
+           }else{
+            showToast("Please enter valid Pin code");
+           }
+        });
 
          //general functions
          function showToast(data) {

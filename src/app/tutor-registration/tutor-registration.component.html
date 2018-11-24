@@ -13,13 +13,13 @@
                             <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Enter Your Mobile Number(only 10 digt)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
+                            <input type="text" placeholder="Enter Your Mobile Number(only 10 digits)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
                         </div>
                         <div class="form-group">
                             <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="tutorType" name="tutorType" required>
+                            <select class="form-control selectpicker" id="tutorType" name="tutorType" required>
                                 <option value="" disabled>Mode Of Teaching</option>
                                 <option value="Home Tutor">Home Tutor</option>
                                 <option value="Online Tutor">Online Tutor</option>
@@ -28,26 +28,28 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Enter Your Pin Code" id="pinCode" class="form-control" name="pinCode" required>
+                                <input type="text" placeholder="Enter Your Pin Code (6 digits)" id="pinCode" class="form-control" name="pinCode" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Locality" id="location" class="form-control" name="location" required readonly>
+                                <input type="text" placeholder="Enter Your Locality(Ex. Mayur Vihar Phase-3)" id="location" class="form-control" name="location" required>
                             </div>
                         </div>  
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="City" id="city" class="form-control" name="city" required readonly>
+                                <select id="city" class="form-control selectpicker" data-size="5" name="city" required>
+                                    
+                                </select>
                             </div>
                         </div> 
                         <div class="form-group" id="chooseSubjectDiv" hidden>
-                            <select class="form-control" id="chooseSubject" name="chooseSubject">
+                            <select class="form-control selectpicker" id="chooseSubject" name="chooseSubject">
                                 
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="chooseGender" name="chooseGender">
+                            <select class="form-control selectpicker" id="chooseGender" name="chooseGender">
                                 <option value="" disabled>Gender</option>
                                 <option value="MALE">Male</option>
                                 <option value="FEMALE">Female</option>
@@ -55,7 +57,16 @@
                         </div>
                         <div class="form-group">
                             <div class="form-group">
-                                <input type="text" placeholder="Highest Qualification"  name="qualification" class="form-control" id="qualification">
+                                <select class="form-control selectpicker" name="qualification" id="qualification">
+                                    <option value="" disabled selected>Highest Qualification</option>
+                                    <option value="1">Matriculation</option>
+                                    <option value="2">Intermidiate</option>
+                                    <option value="3">Diploma</option>
+                                    <option value="4">Graduation</option>
+                                    <option value="5">BE/BTECH</option>
+                                    <option value="6">Post Graduation</option>
+                                    <option value="7">PHD</option>
+                                </select>
                             </div>
                         </div>
                         <div style="text-align:right">
