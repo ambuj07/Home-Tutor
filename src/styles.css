@@ -152,9 +152,40 @@ textarea::-webkit-input-placeholder,
 textarea.form-control::-webkit-input-placeholder {
     color: #888;
 }
+.custom-control.custom-checkbox {
+    margin-bottom: 3px;
+}
+.custom-control-label::after {
+    background-size: 75% 75% !important;
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #058472 !important;
+}
+.custom-checkbox .custom-control-label::before {
+    border-radius: 2px !important;
+}
+.custom-control-label::before {
+    top: 2px !important;
+    left: -25px !important;
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+}
+label.custom-control-label {
+    color: #3a3a3a;
+    font-size: 15px;
+    font-weight: normal;
+}
+label {
+    font-weight: bold;
+    color: #2f2f2f;
+}
 .form-group {
     margin-bottom: 12px !important;
 }
+
 
 button.btn {
     height: 45px;
@@ -526,4 +557,11 @@ button.btn.dropdown-toggle {
 }
 .bootstrap-select .btn:focus {
     outline: none !important;
+}
+.note-para {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: #378472;
 }

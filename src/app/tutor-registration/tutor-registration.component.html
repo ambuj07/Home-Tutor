@@ -13,40 +13,107 @@
                             <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Enter Your Mobile Number(only 10 digits)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
-                        </div>
-                        <div class="form-group">
                             <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control selectpicker" id="tutorType" name="tutorType" required>
-                                <option value="" disabled>Mode Of Teaching</option>
-                                <option value="Home Tutor">Home Tutor</option>
-                                <option value="Online Tutor">Online Tutor</option>
-                                <option value="Coaching Center">Coaching Center</option>
+                            <input type="text" placeholder="Mobile Number(only 10 digits)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="WhatsApp Number(only 10 digits)"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
+                        </div>
+                        <div style="text-align:right">
+                            <button type="button" class="btn btn-next">Start</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="fieldset">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <div><i class="fa fa-hand-o-right" aria-hidden="true"></i> Need some personal detail to show your perfect match</div>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <div class="form-group">
+                            <label>Mode of Teaching<font color="red">*</font></label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" value="Home Tutor" class="custom-control-input tutorType" id="tutorType1" name="tutorType1">
+                                <label class="custom-control-label" for="tutorType1">Home Tutor (Travel at Student Place)</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" value="Faculty" class="custom-control-input tutorType" id="tutorType2" name="tutorType2">
+                                <label class="custom-control-label" for="tutorType2">Faculty (Looking a Coaching Center where i can teach)</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" value="Run a Coaching Center" class="custom-control-input tutorType" id="tutorType3" name="tutorType3">
+                                <label class="custom-control-label" for="tutorType3">Run a Coaching Center (Teaching at my Place)</label>
+                            </div>
+                        </div>
+                        <p class="note-para">Note : Select your Prime CLASS/SUBJECTS/LOCATION here ,You can add more later from your dashboard.</p>
+                        <div class="form-group">
+                            <select class="form-control selectpicker" data-size="5" id="chooseClass" name="chooseClass">
+                                
                             </select>
                         </div>
                         <div class="form-group">
+                            <select class="form-control selectpicker" data-size="5" id="chooseSubject" title="Select subjects according to class" name="chooseSubject" multiple>
+                                
+                            </select>
+                        </div>
+                        <div style="text-align:right">
+                            <button type="button" class="btn btn-next">Next</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="fieldset">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <div><i class="fa fa-hand-o-right" aria-hidden="true"></i> Need some personal detail to show your perfect match</div>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Enter Your Pin Code (6 digits)" id="pinCode" class="form-control" name="pinCode" required>
+                                <select id="states" class="form-control selectpicker" data-size="5" name="states" data-live-search="true" required>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select id="city" class="form-control selectpicker" data-size="5" name="city" data-live-search="true" required>
+                                    
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <input type="text" placeholder="Enter Your Locality(Ex. Mayur Vihar Phase-3)" id="location" class="form-control" name="location" required>
                             </div>
-                        </div>  
+                        </div>   
                         <div class="form-group">
                             <div class="input-group">
-                                <select id="city" class="form-control selectpicker" data-size="5" name="city" required>
-                                    
-                                </select>
+                                <input type="text" placeholder="Enter Your Pin Code (6 digits)" id="pinCode" class="form-control" name="pinCode" required>
                             </div>
-                        </div> 
-                        <div class="form-group" id="chooseSubjectDiv" hidden>
-                            <select class="form-control selectpicker" id="chooseSubject" name="chooseSubject">
-                                
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control selectpicker" name="qualification" id="qualification">
+                                <option value="" disabled selected>Highest Qualification</option>
+                                <option value="1">BA</option>
+                                <option value="2">B.COM</option>
+                                <option value="3">B.SC</option>
+                                <option value="4">BBA</option>
+                                <option value="5">B.TECH</option>
+                                <option value="6">MBBS</option>
+                                <option value="8">M.COM</option>
+                                <option value="9">M.SC</option>
+                                <option value="10">MBA</option>
+                                <option value="11">OTHER</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="date" placeholder="Enter Your Pin Code (6 digits)" id="dob" class="form-control" name="dob" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <select class="form-control selectpicker" id="chooseGender" name="chooseGender">
@@ -56,21 +123,19 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <div class="form-group">
-                                <select class="form-control selectpicker" name="qualification" id="qualification">
-                                    <option value="" disabled selected>Highest Qualification</option>
-                                    <option value="1">Matriculation</option>
-                                    <option value="2">Intermidiate</option>
-                                    <option value="3">Diploma</option>
-                                    <option value="4">Graduation</option>
-                                    <option value="5">BE/BTECH</option>
-                                    <option value="6">Post Graduation</option>
-                                    <option value="7">PHD</option>
-                                </select>
+                            <select class="form-control selectpicker" id="jobType" name="jobType">
+                                <option value="" disabled>Job Type</option>
+                                <option value="PATRTIME">Part Time</option>
+                                <option value="FULLTIME">Full Time</option>
+                            </select>
+                        </div>
+                        <div class="form-group" class="partTimeReason" style="margin-bottom: 10px;" hidden>
+                            <div class="input-group">
+                                <input type="text" placeholder="What are you doing these days" id="partTimeReason" class="form-control" name="partTimeReason" required>
                             </div>
                         </div>
                         <div style="text-align:right">
-                            <button type="button" id="submit" class="btn btn-next">Submit</button>
+                            <button type="button" id="submit" class="btn btn-next">Join Now</button>
                         </div>
                     </div>
                 </div>
