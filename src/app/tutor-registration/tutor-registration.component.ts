@@ -57,7 +57,7 @@ export class TutorRegistrationComponent implements OnInit {
       });
 
       $("#jobType").on('change',function(){
-        if($(this).val() == 'PATRTIME'){
+        if($(this).val() == 'PARTTIME'){
           $(".partTimeReason").prop('hidden',false);
         }else{
           $(".partTimeReason").prop('hidden',true);
@@ -160,7 +160,7 @@ export class TutorRegistrationComponent implements OnInit {
             var qualification = $("#qualification").val();
             var zipCodeVal = $("#pinCode").val();
             var zipCodeArr = [];
-            zipCodeArr.push(zipCodeVal);
+            zipCodeArr.push({"zip":zipCodeVal});           
             var zipCode = JSON.stringify(zipCodeArr);
             var whatsappNumber = $("#whatsappNumber").val();
             var tutorType = [];
