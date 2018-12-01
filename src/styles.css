@@ -52,6 +52,15 @@ a,a:hover,a:active,a:focus{
     text-align: center !important;
     height: 40px !important;
 }
+.btn-register {
+    width: 50%;
+    margin-top: 10px !important;
+}
+.reg-heading {
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+}
 .form-control[readonly] {
     background-color: #f8f8f8 !important;
 }

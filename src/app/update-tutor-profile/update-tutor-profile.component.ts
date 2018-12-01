@@ -130,15 +130,40 @@ export class UpdateTutorProfileComponent implements OnInit {
             }
          });
 
-        //  $.ajax({
-        //     type: 'GET',
-        //     url: baseUrl+"/tutor/"+id+"/map",
-        //     success: function(resultData) { 
-        //       console.log(resultData);
-        //       var classTable = '';
-
-        //     }
-        //   });
+         $.ajax({
+            type: 'GET',
+            url: baseUrl+"/tutor/"+id+"/map",
+            success: function(resultData) { 
+              console.log(resultData);
+              var grouped = {};
+              resultData.forEach(function (a) {
+                  grouped[a.classGroup.id] = grouped[a.classGroup.id] || [];
+                  grouped[a.classGroup.id].push(a.subjectMaster.id);
+              });
+              var i = 0;
+              for (var key in grouped) {
+                i++;
+                var addMore1 = '<div class="row formDiv_1" style="margin-bottom: 10px !important;">';
+                    addMore1 += '<div class="col-md-5">';
+                    addMore1 += '<select id="preClass'+i+'" class="selectpicker form-control chooseClass">'; 
+                    addMore1 += classHtml;         
+                    addMore1 += '</select>';
+                    addMore1 += '</div>';
+                    addMore1 += '<div class="col-md-6">';
+                    addMore1 += '<select id="preSubject'+i+'" class="selectpicker form-control chooseSubject" title="Select subjects" multiple>';             
+                    addMore1 += subjectHtml;  
+                    addMore1 += '</select>';
+                    addMore1 += '</div>';
+                    addMore1 += '<div class="col-md-1"><span class="removeClass removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
+                    addMore1 += '</div>';
+                    $(".addMore_1").append(addMore1);
+                    $("select#preClass"+i).val(key);
+                    $("select#preSubject"+i).selectpicker('val', grouped[key]);
+                    $(".selectpicker").selectpicker('refresh');
+             }
+              
+            }
+          });
          
         // Function for update qualification
         function addMoreQualification(){
@@ -216,6 +241,33 @@ export class UpdateTutorProfileComponent implements OnInit {
            }
         });
 
+        $.ajax({
+          type: 'GET',
+          url: baseUrl+"/tutor/"+id+"/education",
+          success: function(resultData) { 
+            console.log(resultData);
+            var grouped = {};
+            resultData.forEach(function (a) {
+              var addMore2 = '<div class="row formDiv_2" style="margin-bottom: 10px !important;">';
+              addMore2 += '<div class="col-md-3">';
+              addMore2 += '<input type="text" value="'+a.degree+'" class="form-control degree" placeholder="Degree">'; 
+              addMore2 += '</div>';
+              addMore2 += '<div class="col-md-3">';
+              addMore2 += '<input type="text" value="'+a.board+'" class="form-control board" placeholder="Board/University">'; 
+              addMore2 += '</div>';
+              addMore2 += '<div class="col-md-3">';
+              addMore2 += '<input type="text" value="'+a.instituteName+'" class="form-control institute" placeholder="Institute Name">'; 
+              addMore2 += '</div>';
+              addMore2 += '<div class="col-md-2">';
+              addMore2 += '<input type="text" value="'+a.year+'" class="form-control passingYear" placeholder="Year">'; 
+              addMore2 += '</div>';
+              addMore2 += '<div class="col-md-1"><span class="removeQualification removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
+              addMore2 += '</div>';
+              $(".addMore_2").append(addMore2);
+            });            
+          }
+        });
+
         //zip code function 
         $("#saveZipCode").click(function(){
           var jsonObj = [];
@@ -251,6 +303,24 @@ export class UpdateTutorProfileComponent implements OnInit {
            }else{
             showToast("Please enter valid Pin code");
            }
+        });
+
+        $.ajax({
+          type: 'GET',
+          url: baseUrl+"/tutor/"+id+"/zip",
+          success: function(resultData) { 
+            console.log(resultData);
+            var grouped = {};
+            resultData.forEach(function (a) {
+              var keepGoing = true;
+              $(".pinCode").each(function(){
+                if(keepGoing && $(this).val() == ""){
+                  $(this).val(a.zip);
+                  keepGoing = false;
+                }
+              });
+            });            
+          }
         });
 
          //general functions

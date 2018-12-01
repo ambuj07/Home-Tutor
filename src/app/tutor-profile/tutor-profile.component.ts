@@ -35,12 +35,56 @@ export class TutorProfileComponent implements OnInit {
             $("#email").text(data.email);
             $("#gender").text(data.gender);
             $("#location").text(data.location);
+            $("#experience").text(data.experience);
             $("#qualification").text(data.qualification);
             $(".classCategory").text(data.classcategory);
             $(".class").text(data.particularClass);
             $(".subject").text(data.subjects);
             $("#category").text(data.category);
-            $(".total-credit").text("Available Credit "+data.credit)
+            $(".total-credit").text("Available Credit "+data.credit);
+            if(data.mapping.length > 0){
+              var grouped = {};
+              data.mapping.forEach(function (a) {
+                grouped[a.classGroup.name] = grouped[a.classGroup.name] || [];
+                grouped[a.classGroup.name].push(a.subjectMaster.name);
+              });
+              var tableHtml = '';
+              for (var key in grouped) {
+                tableHtml += '<tr>';
+                tableHtml += '<td>'+key+'</td>'
+                tableHtml += '<td>'+grouped[key]+'</td>'
+                tableHtml += '</tr>';
+              }
+              $("#classesAndSubjectTable").append(tableHtml);
+            }
+            if(data.education.length > 0){
+              var eduTable = '';
+              data.education.forEach(function(a){
+                eduTable += '<tr>';
+                eduTable += '<td>'+a.degree+'</td>'
+                eduTable += '<td>'+a.board+'</td>'
+                eduTable += '<td>'+a.instituteName+'</td>'
+                eduTable += '<td>'+a.year+'</td>'
+                eduTable += '</tr>';
+              }); 
+              $("#educationalTable").append(eduTable);
+            }
+            if(data.zipCode.length > 0){
+              var zipTable = '';
+              zipTable += '<tr>';
+              var i = 0;
+              data.zipCode.forEach(function(a){
+                i++;
+                zipTable += '<th>Zip Code '+i+'</th>'
+              }); 
+              zipTable += '</tr>';
+              zipTable += '<tr>';
+              data.zipCode.forEach(function(a){
+                zipTable += '<td>'+a.zip+'</td>'
+              }); 
+              zipTable += '</tr>';
+              $("#zipCodeTable").append(zipTable);
+            }
           },
           error : function(data){
             console.log(data)
