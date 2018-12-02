@@ -15,8 +15,12 @@
     background-size: cover;
 }
 .overlay{
-    min-height: 100vh;
+    min-height: 50vh;
+    position: relative;
     background: rgba(93, 151, 158, 0.5);
+}
+.search-section{
+    margin-top: 30px;
 }
 .button-header {
     font-size: 26px;

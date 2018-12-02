@@ -156,7 +156,7 @@ export class UpdateTutorProfileComponent implements OnInit {
                     addMore1 += '</div>';
                     addMore1 += '<div class="col-md-1"><span class="removeClass removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
                     addMore1 += '</div>';
-                    $(".addMore_1").append(addMore1);
+                    $(".addMore_1").prepend(addMore1);
                     $("select#preClass"+i).val(key);
                     $("select#preSubject"+i).selectpicker('val', grouped[key]);
                     $(".selectpicker").selectpicker('refresh');
@@ -180,6 +180,7 @@ export class UpdateTutorProfileComponent implements OnInit {
             addMore2 += '<div class="col-md-2">';
             addMore2 += '<input type="text" class="form-control passingYear" placeholder="Year">'; 
             addMore2 += '</div>';
+            addMore2 += '<input type="hidden" class="educationId" value="">';
             addMore2 += '<div class="col-md-1"><span class="removeQualification removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
             addMore2 += '</div>';
             $(".addMore_2").append(addMore2);
@@ -188,6 +189,16 @@ export class UpdateTutorProfileComponent implements OnInit {
           addMoreQualification();
         });
         $(document).on('click',".removeQualification",function(){
+          var eduId = $(this).closest(".formDiv_2").find(".educationId").val();
+          if(eduId != "" && eduId != null && eduId != undefined){
+            $.ajax({
+              url: baseUrl+"/tutor/education/"+eduId,
+              type: 'DELETE',
+              success: function(result) {
+                showToast("Deleted successfully.")
+              }
+            });
+          }
           $(this).closest(".formDiv_2").remove();
         });
 
@@ -199,6 +210,10 @@ export class UpdateTutorProfileComponent implements OnInit {
              var boardVal = $(this).find('.board').val();
              var instituteVal = $(this).find('.institute').val();
              var yearVal = $(this).find('.passingYear').val();
+             var educationId = $(this).find('.educationId').val();
+             if(educationId == "" || educationId == undefined){
+              educationId = null;
+             } 
              console.log(degreeVal+" "+boardVal+" "+instituteVal+" "+yearVal)
              if(degreeVal == "" || boardVal == "" || instituteVal == "" || yearVal == ""){
                error = true;
@@ -217,7 +232,7 @@ export class UpdateTutorProfileComponent implements OnInit {
                }
              }else{
               $(this).find('.form-control').css("border-color","#ccc");
-              jsonObj.push({"degree": degreeVal,"board" : boardVal,"instituteName":instituteVal,"year":yearVal});
+              jsonObj.push({"id":educationId,"degree": degreeVal,"board" : boardVal,"instituteName":instituteVal,"year":yearVal});
               error = false;
              }
            });
@@ -261,9 +276,10 @@ export class UpdateTutorProfileComponent implements OnInit {
               addMore2 += '<div class="col-md-2">';
               addMore2 += '<input type="text" value="'+a.year+'" class="form-control passingYear" placeholder="Year">'; 
               addMore2 += '</div>';
+              addMore2 += '<input type="hidden" class="educationId" value="'+a.id+'">';
               addMore2 += '<div class="col-md-1"><span class="removeQualification removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
               addMore2 += '</div>';
-              $(".addMore_2").append(addMore2);
+              $(".addMore_2").prepend(addMore2);
             });            
           }
         });
@@ -274,13 +290,14 @@ export class UpdateTutorProfileComponent implements OnInit {
           var error = false;
            $(".pinCode").each(function(){
              var pinCode = $(this).val();
+             var pinId = $(this).attr("data-id");
              console.log(pinCode);
              if(pinCode != "" && (pinCode.length != 6 || isNaN(pinCode))){
                error = true;
                $(this).css("border-color","red");
-             }else if(pinCode != ""){
+             }else if(pinCode != "" || pinId != ""){
               $(this).css("border-color","#ccc");
-              jsonObj.push(pinCode);
+              jsonObj.push({"id":pinId,"zip":pinCode});
              }
            });
            if(!error && jsonObj.length > 0){
@@ -316,6 +333,7 @@ export class UpdateTutorProfileComponent implements OnInit {
               $(".pinCode").each(function(){
                 if(keepGoing && $(this).val() == ""){
                   $(this).val(a.zip);
+                  $(this).attr("data-id",a.id);
                   keepGoing = false;
                 }
               });

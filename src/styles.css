@@ -452,6 +452,16 @@ form .form-bottom .input-error {
     color: #7b7776;
     font-weight: bold;
 }
+
+.heading2 {
+    text-align: center;
+    font-size: 24px;
+    text-decoration: underline;
+    text-decoration-color: #f26832;
+    text-decoration-style: double;
+    font-weight: bold;
+    color: #565656;
+}
 /*the container must be positioned relative:*/
 .custom-select {
     position: relative;
