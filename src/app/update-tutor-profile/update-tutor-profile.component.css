@@ -34,7 +34,12 @@
     color: green;
 }
 .col-md-2.col-xs-4 {
-  margin-top: 12px;
+  margin-top: 11px;
 }
-
+.education-table th{
+  background: #236e81;
+  color: white;
+  font-size: 12px !important;
+  min-width: 150px;
+}
   

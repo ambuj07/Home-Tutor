@@ -570,6 +570,11 @@ button.btn.dropdown-toggle {
     height: 40px;
     line-height: 40px;
 }
+.search-form button.btn.dropdown-toggle {
+    height: 45px;
+    line-height: 45px;
+    border-radius: 0px;
+}
 .dropdown-item.active, .dropdown-item:active {
     color: black !important;
     background-color: #f8f8f8 !important;

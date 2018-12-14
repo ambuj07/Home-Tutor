@@ -62,9 +62,41 @@ export class TutorProfileComponent implements OnInit {
               data.education.forEach(function(a){
                 eduTable += '<tr>';
                 eduTable += '<td>'+a.degree+'</td>'
-                eduTable += '<td>'+a.board+'</td>'
-                eduTable += '<td>'+a.instituteName+'</td>'
-                eduTable += '<td>'+a.year+'</td>'
+                if(a.stream != undefined && a.stream != null){
+                  eduTable += '<td>'+a.stream +'</td>'
+                }else{
+                  eduTable += '<td></td>'
+                }
+                if(a.board != undefined && a.board != null){
+                  eduTable += '<td>'+a.board +'</td>'
+                }else{
+                  eduTable += '<td></td>'
+                }
+                if(a.state != undefined && a.state != null){
+                  eduTable += '<td>'+a.state +'</td>'
+                }else{
+                  eduTable += '<td></td>'
+                }
+                if(a.year != undefined && a.year != null){
+                  eduTable += '<td>'+a.year +'</td>'
+                }else{
+                  eduTable += '<td></td>'
+                }
+                if(a.mode != undefined && a.mode != null){
+                  eduTable += '<td>'+a.mode +'</td>'
+                }else{
+                  eduTable += '<td></td>'
+                }
+                if(a.marksObtained != undefined && a.marksObtained != null){
+                  eduTable += '<td>'+a.marksObtained +'</td>'
+                }else{
+                  eduTable += '<td></td>'
+                }
+                if(a.type != undefined && a.type != null){
+                  eduTable += '<td>'+a.type +'</td>'
+                }else{
+                  eduTable += '<td></td>'
+                }
                 eduTable += '</tr>';
               }); 
               $("#educationalTable").append(eduTable);

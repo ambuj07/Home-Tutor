@@ -38,3 +38,8 @@
 .btn-main:hover,.btn-main:active,.btn-main:focus {
     background-color: #047162;
 }
+.search-form button,.search-form input{
+    height: 45px !important;
+    line-height: 45px !important;
+    border-radius:0px; 
+}
