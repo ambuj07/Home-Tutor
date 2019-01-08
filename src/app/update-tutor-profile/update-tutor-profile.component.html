@@ -22,30 +22,12 @@
               <div class="col-md-1"><span class="addMoreClass addBtn">+</span></div>
             </div>
        </div>
-       <div style="text-align:right;padding: 25px 40px 0px;">
-         <button type="button" id="saveClass" class="btn btn-primary" style="width: 120px;">save</button>
+       <div style="text-align:right;padding: 25px 40px 0px;text-align: center;">
+         <button type="button" id="saveClass" class="btn btn-primary" style="width: 300px;">Save Classes and Subject</button>
        </div>
     </div>
     <div class="accordion_head">Educational Qualification<span class="plusminus">+</span></div>
     <div class="accordion_body" style="display: none;">
-        <!-- <div class="addMore_2">
-            <div class="row formDiv_2" style="margin-bottom: 10px !important;">
-                <div class="col-md-3">
-                    <input type="text" class="form-control degree" placeholder="Degree">
-                </div>
-                <div class="col-md-3">
-                    <input type="text" class="form-control board" placeholder="Board/Unversity">
-                </div>
-                <div class="col-md-3">
-                    <input type="text" class="form-control institute" placeholder="Institute Name">
-                </div>
-                <div class="col-md-2">
-                    <input type="text" class="form-control passingYear" placeholder="Year">
-                </div>
-                <input type="hidden" class="educationId" value="">
-                <div class="col-md-1"><span class="addMoreQualification addBtn">+</span></div>
-              </div>
-         </div> -->
          <div class="table-responsive">
          <table class="table table-bordered education-table" style="min-width:700px">
             <tr>
@@ -246,10 +228,200 @@
             <input data-id="" type="text" class="form-control pinCode" placeholder="Zip Code 10">
         </div>        
         </div>
-        <div style="text-align:right;padding: 20px 15px 0px;">
-            <button data-id="" type="button" id="saveZipCode" class="btn btn-primary" style="width: 120px;">save</button>
+        <div  style="text-align:right;padding: 25px 40px 0px;text-align: center;">
+            <button data-id="" type="button" id="saveZipCode" class="btn btn-primary" style="width: 300px;">Save Location</button>
         </div>
     </div>
+
+    <div class="accordion_head">Work Experience<span class="plusminus">+</span></div>
+    <div class="accordion_body" style="display: none;">
+       <div>
+          <div class="formDiv_4" style="margin-bottom: 10px !important;">
+            <div class="col-xs-12 tutorCheck">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="HOME_TUTOR" class="custom-control-input tutorType" id="tutorType1" name="tutorType1">
+                    <label class="custom-control-label" for="tutorType1">HOME TUTOR</label>
+                </div>
+                <div class="showOnCheck">
+                    <div style="display:inline-block">
+                        <label>From</label>
+                        <input type="date" id="from1" class="form-control" name="from1" required>
+                    </div>
+                    <div  style="display:inline-block">
+                        <label>To</label>
+                        <input type="date" id="to1" class="form-control" name="to1" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-xs-12 tutorCheck">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="ONLINE_TUTOR" class="custom-control-input tutorType" id="tutorType2" name="tutorType2">
+                    <label class="custom-control-label" for="tutorType2">ONLINE TUTOR</label>
+                </div>
+                <div class="showOnCheck">
+                    <div style="display:inline-block">
+                        <label>From</label>
+                        <input type="date" id="from2" class="form-control" name="from2" required>
+                    </div>
+                    <div  style="display:inline-block">
+                        <label>To</label>
+                        <input type="date" id="to2" class="form-control" name="to2" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-xs-12 tutorCheck">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="TEACHING_AT_MY_PLACE" class="custom-control-input tutorType" id="tutorType3" name="tutorType3">
+                    <label class="custom-control-label" for="tutorType3">TEACHING AT MY PLACE</label>
+                </div>
+                <div class="showOnCheck">
+                    <div style="display:inline-block">
+                        <label>From</label>
+                        <input type="date" id="from3" class="form-control" name="from3" required>
+                    </div>
+                    <div  style="display:inline-block">
+                        <label>To</label>
+                        <input type="date" id="to3" class="form-control" name="to3" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-xs-12 tutorCheck">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="FACUTLTY_AT_INSTITUTE" class="custom-control-input tutorType" id="tutorType4" name="tutorType4">
+                    <label class="custom-control-label" for="tutorType4">FACUTLTY AT INSTITUTE</label>
+                </div>
+                <div class="table-responsive showOnCheck">
+                    <table class="table table-bordered faiTable" style="min-width:700px">
+                        <tr>
+                            <th>Name Of Institute</th>
+                            <th>Address/Location</th>
+                            <th>Position</th>
+                            <th>From</th>
+                            <th>To</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="faiName" class="form-control" name="faiName" required></td>
+                            <td><input type="text" id="faiAddress" class="form-control" name="faiAddress" required></td>
+                            <td><input type="text" id="faiposition" class="form-control" name="faiposition" required></td>
+                            <td><input type="date" id="faiFrom" class="form-control" name="faiFrom" required></td>
+                            <td><input type="date" id="faiTo" class="form-control" name="faiTo" required></td>
+                        </tr>
+                     </table>
+                </div>
+            </div>
+            <hr>
+            <div class="col-xs-12 tutorCheck">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="FACULTY_AT_SCHOOL" class="custom-control-input tutorType" id="tutorType5" name="tutorType5">
+                    <label class="custom-control-label" for="tutorType5">FACULTY AT SCHOOL</label>
+                </div>
+                <div class="table-responsive showOnCheck">
+                    <table class="table table-bordered fasTable" style="min-width:700px">
+                        <tr>
+                            <th>Name Of Institute</th>
+                            <th>Address/Location</th>
+                            <th>Position</th>
+                            <th>From</th>
+                            <th>To</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="fasName" class="form-control" name="fasName" required></td>
+                            <td><input type="text" id="fasAddress" class="form-control" name="fasAddress" required></td>
+                            <td><input type="text" id="fasposition" class="form-control" name="fasposition" required></td>
+                            <td><input type="date" id="fasFrom" class="form-control" name="fasFrom" required></td>
+                            <td><input type="date" id="fasTo" class="form-control" name="fasTo" required></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <hr>
+          </div>
+       </div>
+       <div style="text-align:right;padding: 25px 40px 0px;text-align: center;">
+         <button type="button" id="saveExperiences" class="btn btn-primary" style="width: 300px;">Save Experience</button>
+       </div>
+    </div>
+
+    <div class="accordion_head">Address<span class="plusminus">+</span></div>
+    <div class="accordion_body" style="display: none;">
+        <div>
+            <div class="formDiv_5" style="margin-bottom: 10px !important;">
+                <div class="col-xs-12">
+                    <label>Current Address</label>
+                    <table class="table table-mob">
+                        <tr><td><input id="Address1" placeholder="Flat/House No./Building" type="text" name="address1" class="form-control" autocomplete="off" required></td></tr>
+                        <tr><td><input id="Address2" placeholder="Colony/Street/Locality" type="text" name="address2" class="form-control" autocomplete="off" required></td></tr>
+                        <tr><td><input id="postalCode" type="number" placeholder="Postal Code" name="postalCode" class="form-control" autocomplete="off" required></td></tr>
+                        <tr>
+                            <td>
+                                <select class="form-control city" data-size="3" data-live-search="true">
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-control states" data-size="3" data-live-search="true">
+
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div style="text-align: center;">
+                    <label>IS IT YOUR OWN HOUSE ?</label>
+                    <div class="btn-group ownHouseRadio" data-toggle="buttons">
+                        <label class="btn btn-default-radio width100px">
+                            <input type="radio" name="isOwnHouse" value="Yes" autocomplete="off"> YES
+                        </label>
+                        <label class="btn btn-default-radio width100px">
+                            <input type="radio" name="isOwnHouse" value="No" autocomplete="off"> NO
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-12" id="addressProofDiv" hidden>
+                    <div class="input-group" style="width: 300px;margin: 20px auto;">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="addressProof"/>
+                            <label class="custom-file-label" for="addressProof">Upload Proof</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12" id="permanentAddress" hidden>
+                    <br>
+                    <label>Permanent Address</label>
+                    <table class="table table-mob">
+                        <tr><td><input id="Address1" placeholder="Flat/House No./Building" type="text" name="address1" class="form-control" autocomplete="off" required></td></tr>
+                        <tr><td><input id="Address2" placeholder="Colony/Street/Locality" type="text" name="address2" class="form-control" autocomplete="off" required></td></tr>
+                        <tr><td><input id="postalCode" type="number" placeholder="Postal Code" name="postalCode" class="form-control" autocomplete="off" required></td></tr>
+                        <tr>
+                            <td>
+                                <select class="form-control city" data-size="3" data-live-search="true">
+
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-control states" data-size="3" data-live-search="true">
+
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div style="text-align:right;padding: 25px 40px 0px;text-align: center;">
+            <button type="button" id="saveAddress" class="btn btn-primary" style="width: 300px;">Save Address</button>
+        </div>
+    </div>
+
   </div>
   
 </div><!-- container -->

@@ -42,4 +42,30 @@
   font-size: 12px !important;
   min-width: 150px;
 }
-  
+.table-mob > tbody > tr > td{
+  border: 1px solid #dddddd;
+  padding: 0px;
+}
+.btn-default-radio:hover, 
+	.btn-default-radio:focus, 
+	.btn-default-radio:active, 
+	.btn-default-radio.active{
+		background-color: #236e81;
+		border-color: #236e81;
+    box-shadow: none;
+    color: white;
+	}
+	.btn-default-radio {
+	    color: #333;
+	    background-color: #e2e2e2;
+	    border-color: #e2e2e2;
+      padding: 3px 5px;
+      border-radius: 0px;
+      margin-left: 10px !important;
+  }
+  .width100px{
+    width:100px;
+  }
+  .showOnCheck{
+    display: none;
+  }

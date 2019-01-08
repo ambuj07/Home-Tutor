@@ -174,95 +174,12 @@ export class UpdateTutorProfileComponent implements OnInit {
         }
         $(".states").html(statesHtml).selectpicker();
 
-        function addMoreQualification(){
-            var addMore2 = '<div class="row formDiv_2" style="margin-bottom: 10px !important;">';
-            addMore2 += '<div class="col-md-3">';
-            addMore2 += '<input type="text" class="form-control degree" placeholder="Degree">'; 
-            addMore2 += '</div>';
-            addMore2 += '<div class="col-md-3">';
-            addMore2 += '<input type="text" class="form-control board" placeholder="Board/University">'; 
-            addMore2 += '</div>';
-            addMore2 += '<div class="col-md-3">';
-            addMore2 += '<input type="text" class="form-control institute" placeholder="Institute Name">'; 
-            addMore2 += '</div>';
-            addMore2 += '<div class="col-md-2">';
-            addMore2 += '<input type="text" class="form-control passingYear" placeholder="Year">'; 
-            addMore2 += '</div>';
-            addMore2 += '<input type="hidden" class="educationId" value="">';
-            addMore2 += '<div class="col-md-1"><span class="removeQualification removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
-            addMore2 += '</div>';
-            $(".addMore_2").append(addMore2);
+        var cities = ["Adilabad", "Agra", "Ahmedabad", "Ahmednagar", "Aizawl", "Ajitgarh (Mohali)", "Ajmer", "Akola", "Alappuzha", "Aligarh", "Alirajpur", "Allahabad", "Almora", "Alwar", "Ambala", "Ambedkar Nagar", "Amravati", "Amreli district", "Amritsar", "Anand", "Anantapur", "Anantnag", "Angul", "Anjaw", "Anuppur", "Araria", "Ariyalur", "Arwal", "Ashok Nagar", "Auraiya", "Aurangabad", "Aurangabad", "Azamgarh", "Badgam", "Bagalkot", "Bageshwar", "Bagpat", "Bahraich", "Baksa", "Balaghat", "Balangir", "Balasore", "Ballia", "Balrampur", "Banaskantha", "Banda", "Bandipora", "Bangalore Rural", "Bangalore Urban", "Banka", "Bankura", "Banswara", "Barabanki", "Baramulla", "Baran", "Bardhaman", "Bareilly", "Bargarh (Baragarh)", "Barmer", "Barnala", "Barpeta", "Barwani", "Bastar", "Basti", "Bathinda", "Beed", "Begusarai", "Belgaum", "Bellary", "Betul", "Bhadrak", "Bhagalpur", "Bhandara", "Bharatpur", "Bharuch", "Bhavnagar", "Bhilwara", "Bhind", "Bhiwani", "Bhojpur", "Bhopal", "Bidar", "Bijapur", "Bijapur", "Bijnor", "Bikaner", "Bilaspur", "Bilaspur", "Birbhum", "Bishnupur", "Bokaro", "Bongaigaon", "Boudh (Bauda)", "Budaun", "Bulandshahr", "Buldhana", "Bundi", "Burhanpur", "Buxar", "Cachar", "Central Delhi", "Chamarajnagar", "Chamba", "Chamoli", "Champawat", "Champhai", "Chandauli", "Chandel", "Chandigarh", "Chandrapur", "Changlang", "Chatra", "Chennai", "Chhatarpur", "Chhatrapati Shahuji Maharaj Nagar", "Chhindwara", "Chikkaballapur", "Chikkamagaluru", "Chirang", "Chitradurga", "Chitrakoot", "Chittoor", "Chittorgarh", "Churachandpur", "Churu", "Coimbatore", "Cooch Behar", "Cuddalore", "Cuttack", "Dadra and Nagar Haveli", "Dahod", "Dakshin Dinajpur", "Dakshina Kannada", "Daman", "Damoh", "Dantewada", "Darbhanga", "Darjeeling", "Darrang", "Datia", "Dausa", "Davanagere", "Debagarh (Deogarh)", "Dehradun", "Deoghar", "Deoria", "Dewas", "Dhalai", "Dhamtari", "Dhanbad", "Dhar", "Dharmapuri", "Dharwad", "Dhemaji", "Dhenkanal", "Dholpur", "Dhubri", "Dhule", "Dibang Valley", "Dibrugarh", "Dima Hasao", "Dimapur", "Dindigul", "Dindori", "Diu", "Doda", "Dumka", "Dungapur", "Durg", "East Champaran", "East Delhi", "East Garo Hills", "East Khasi Hills", "East Siang", "East Sikkim", "East Singhbhum", "Eluru", "Ernakulam", "Erode", "Etah", "Etawah", "Faizabad", "Faridabad", "Faridkot", "Farrukhabad", "Fatehabad", "Fatehgarh Sahib", "Fatehpur", "Fazilka", "Firozabad", "Firozpur", "Gadag", "Gadchiroli", "Gajapati", "Ganderbal", "Gandhinagar", "Ganganagar", "Ganjam", "Garhwa", "Gautam Buddh Nagar", "Gaya", "Ghaziabad", "Ghazipur", "Giridih", "Goalpara", "Godda", "Golaghat", "Gonda", "Gondia", "Gopalganj", "Gorakhpur", "Gulbarga", "Gumla", "Guna", "Guntur", "Gurdaspur", "Gurgaon", "Gwalior", "Hailakandi", "Hamirpur", "Hamirpur", "Hanumangarh", "Harda", "Hardoi", "Haridwar", "Hassan", "Haveri district", "Hazaribag", "Hingoli", "Hissar", "Hooghly", "Hoshangabad", "Hoshiarpur", "Howrah", "Hyderabad", "Hyderabad", "Idukki", "Imphal East", "Imphal West", "Indore", "Jabalpur", "Jagatsinghpur", "Jaintia Hills", "Jaipur", "Jaisalmer", "Jajpur", "Jalandhar", "Jalaun", "Jalgaon", "Jalna", "Jalore", "Jalpaiguri", "Jammu", "Jamnagar", "Jamtara", "Jamui", "Janjgir-Champa", "Jashpur", "Jaunpur district", "Jehanabad", "Jhabua", "Jhajjar", "Jhalawar", "Jhansi", "Jharsuguda", "Jhunjhunu", "Jind", "Jodhpur", "Jorhat", "Junagadh", "Jyotiba Phule Nagar", "Kabirdham (formerly Kawardha)", "Kadapa", "Kaimur", "Kaithal", "Kakinada", "Kalahandi", "Kamrup", "Kamrup Metropolitan", "Kanchipuram", "Kandhamal", "Kangra", "Kanker", "Kannauj", "Kannur", "Kanpur", "Kanshi Ram Nagar", "Kanyakumari", "Kapurthala", "Karaikal", "Karauli", "Karbi Anglong", "Kargil", "Karimganj", "Karimnagar", "Karnal", "Karur", "Kasaragod", "Kathua", "Katihar", "Katni", "Kaushambi", "Kendrapara", "Kendujhar (Keonjhar)", "Khagaria", "Khammam", "Khandwa (East Nimar)", "Khargone (West Nimar)", "Kheda", "Khordha", "Khowai", "Khunti", "Kinnaur", "Kishanganj", "Kishtwar", "Kodagu", "Koderma", "Kohima", "Kokrajhar", "Kolar", "Kolasib", "Kolhapur", "Kolkata", "Kollam", "Koppal", "Koraput", "Korba", "Koriya", "Kota", "Kottayam", "Kozhikode", "Krishna", "Kulgam", "Kullu", "Kupwara", "Kurnool", "Kurukshetra", "Kurung Kumey", "Kushinagar", "Kutch", "Lahaul and Spiti", "Lakhimpur", "Lakhimpur Kheri", "Lakhisarai", "Lalitpur", "Latehar", "Latur", "Lawngtlai", "Leh", "Lohardaga", "Lohit", "Lower Dibang Valley", "Lower Subansiri", "Lucknow", "Ludhiana", "Lunglei", "Madhepura", "Madhubani", "Madurai", "Mahamaya Nagar", "Maharajganj", "Mahasamund", "Mahbubnagar", "Mahe", "Mahendragarh", "Mahoba", "Mainpuri", "Malappuram", "Maldah", "Malkangiri", "Mamit", "Mandi", "Mandla", "Mandsaur", "Mandya", "Mansa", "Marigaon", "Mathura", "Mau", "Mayurbhanj", "Medak", "Meerut", "Mehsana", "Mewat", "Mirzapur", "Moga", "Mokokchung", "Mon", "Moradabad", "Morena", "Mumbai City", "Mumbai suburban", "Munger", "Murshidabad", "Muzaffarnagar", "Muzaffarpur", "Mysore", "Nabarangpur", "Nadia", "Nagaon", "Nagapattinam", "Nagaur", "Nagpur", "Nainital", "Nalanda", "Nalbari", "Nalgonda", "Namakkal", "Nanded", "Nandurbar", "Narayanpur", "Narmada", "Narsinghpur", "Nashik", "Navsari", "Nawada", "Nawanshahr", "Nayagarh", "Neemuch", "Nellore", "New Delhi", "Nilgiris", "Nizamabad", "North 24 Parganas", "North Delhi", "North East Delhi", "North Goa", "North Sikkim", "North Tripura", "North West Delhi", "Nuapada", "Ongole", "Osmanabad", "Pakur", "Palakkad", "Palamu", "Pali", "Palwal", "Panchkula", "Panchmahal", "Panchsheel Nagar district (Hapur)", "Panipat", "Panna", "Papum Pare", "Parbhani", "Paschim Medinipur", "Patan", "Pathanamthitta", "Pathankot", "Patiala", "Patna", "Pauri Garhwal", "Perambalur", "Phek", "Pilibhit", "Pithoragarh", "Pondicherry", "Poonch", "Porbandar", "Pratapgarh", "Pratapgarh", "Pudukkottai", "Pulwama", "Pune", "Purba Medinipur", "Puri", "Purnia", "Purulia", "Raebareli", "Raichur", "Raigad", "Raigarh", "Raipur", "Raisen", "Rajauri", "Rajgarh", "Rajkot", "Rajnandgaon", "Rajsamand", "Ramabai Nagar (Kanpur Dehat)", "Ramanagara", "Ramanathapuram", "Ramban", "Ramgarh", "Rampur", "Ranchi", "Ratlam", "Ratnagiri", "Rayagada", "Reasi", "Rewa", "Rewari", "Ri Bhoi", "Rohtak", "Rohtas", "Rudraprayag", "Rupnagar", "Sabarkantha", "Sagar", "Saharanpur", "Saharsa", "Sahibganj", "Saiha", "Salem", "Samastipur", "Samba", "Sambalpur", "Sangli", "Sangrur", "Sant Kabir Nagar", "Sant Ravidas Nagar", "Saran", "Satara", "Satna", "Sawai Madhopur", "Sehore", "Senapati", "Seoni", "Seraikela Kharsawan", "Serchhip", "Shahdol", "Shahjahanpur", "Shajapur", "Shamli", "Sheikhpura", "Sheohar", "Sheopur", "Shimla", "Shimoga", "Shivpuri", "Shopian", "Shravasti", "Sibsagar", "Siddharthnagar", "Sidhi", "Sikar", "Simdega", "Sindhudurg", "Singrauli", "Sirmaur", "Sirohi", "Sirsa", "Sitamarhi", "Sitapur", "Sivaganga", "Siwan", "Solan", "Solapur", "Sonbhadra", "Sonipat", "Sonitpur", "South 24 Parganas", "South Delhi", "South Garo Hills", "South Goa", "South Sikkim", "South Tripura", "South West Delhi", "Sri Muktsar Sahib", "Srikakulam", "Srinagar", "Subarnapur (Sonepur)", "Sultanpur", "Sundergarh", "Supaul", "Surat", "Surendranagar", "Surguja", "Tamenglong", "Tarn Taran", "Tawang", "Tehri Garhwal", "Thane", "Thanjavur", "The Dangs", "Theni", "Thiruvananthapuram", "Thoothukudi", "Thoubal", "Thrissur", "Tikamgarh", "Tinsukia", "Tirap", "Tiruchirappalli", "Tirunelveli", "Tirupur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Tonk", "Tuensang", "Tumkur", "Udaipur", "Udalguri", "Udham Singh Nagar", "Udhampur", "Udupi", "Ujjain", "Ukhrul", "Umaria", "Una", "Unnao", "Upper Siang", "Upper Subansiri", "Uttar Dinajpur", "Uttara Kannada", "Uttarkashi", "Vadodara", "Vaishali", "Valsad", "Varanasi", "Vellore", "Vidisha", "Viluppuram", "Virudhunagar", "Visakhapatnam", "Vizianagaram", "Vyara", "Warangal", "Wardha", "Washim", "Wayanad", "West Champaran", "West Delhi", "West Garo Hills", "West Kameng", "West Khasi Hills", "West Siang", "West Sikkim", "West Singhbhum", "West Tripura", "Wokha", "Yadgir", "Yamuna Nagar", "Yanam", "Yavatmal", "Zunheboto"];
+        var cityHtml = '<option value="" selected disabled>Select Your City</option>';
+        for(var i = 0; i<= cities.length; i++){
+          cityHtml += '<option value="'+cities[i]+'">'+cities[i]+'</option>';
         }
-        $(document).on('click',".addMoreQualification",function(){
-          addMoreQualification();
-        });
-        $(document).on('click',".removeQualification",function(){
-          var eduId = $(this).closest(".formDiv_2").find(".educationId").val();
-          if(eduId != "" && eduId != null && eduId != undefined){
-            $.ajax({
-              url: baseUrl+"/tutor/education/"+eduId,
-              type: 'DELETE',
-              success: function(result) {
-                showToast("Deleted successfully.")
-              }
-            });
-          }
-          $(this).closest(".formDiv_2").remove();
-        });
-
-        // $("#saveQualification").click(function(){
-        //   var jsonObj = [];
-        //   var error = true;
-        //    $(".formDiv_2").each(function(){
-        //      var degreeVal = $(this).find('.degree').val();
-        //      var boardVal = $(this).find('.board').val();
-        //      var instituteVal = $(this).find('.institute').val();
-        //      var yearVal = $(this).find('.passingYear').val();
-        //      var educationId = $(this).find('.educationId').val();
-        //      if(educationId == "" || educationId == undefined){
-        //       educationId = null;
-        //      } 
-        //      console.log(degreeVal+" "+boardVal+" "+instituteVal+" "+yearVal)
-        //      if(degreeVal == "" || boardVal == "" || instituteVal == "" || yearVal == ""){
-        //        error = true;
-        //        $(this).find('.form-control').css("border-color","red");
-        //        if(degreeVal != ""){
-        //         $(this).find('.degree').css("border-color","#ccc");
-        //        }
-        //        if(boardVal != ""){
-        //         $(this).find('.board').css("border-color","#ccc");
-        //        }
-        //        if(instituteVal != ""){
-        //         $(this).find('.institute').css("border-color","#ccc");
-        //        }
-        //        if(yearVal != ""){
-        //         $(this).find('.passingYear').css("border-color","#ccc");
-        //        }
-        //      }else{
-        //       $(this).find('.form-control').css("border-color","#ccc");
-        //       jsonObj.push({"id":educationId,"degree": degreeVal,"board" : boardVal,"instituteName":instituteVal,"year":yearVal});
-        //       error = false;
-        //      }
-        //    });
-        //    if(!error && jsonObj.length > 0){
-        //     console.log(JSON.stringify(jsonObj));
-        //      $.ajax({
-        //        type: 'POST',
-        //        url: baseUrl+"/tutor/"+id+"/education",
-        //        contentType: "application/json;charset=utf-8",
-        //        data: JSON.stringify(jsonObj),
-        //        success: function(resultData) { 
-        //          showToast("Classes and subjects saved successfully.")
-        //          setTimeout(function(){ 
-        //            window.location.href = "editProfile/tutor/"+id;
-        //           }, 3000);
-        //         },
-        //         error :function(resultData){
-        //           console.log(resultData);
-        //         }
-        //    });
-        //    }
-        // });
+        $(".city").html(cityHtml).selectpicker();
 
         $("#saveQualification").click(function(){
             var jsonObj = [];
@@ -357,7 +274,7 @@ export class UpdateTutorProfileComponent implements OnInit {
           type: 'GET',
           url: baseUrl+"/tutor/"+id+"/education",
           success: function(resultData) { 
-            console.log(resultData.length);    
+            console.log(resultData);    
             var grouped = {};
             resultData.forEach(function (a) {
               if(a.degree == "intermidiate"){
@@ -365,6 +282,7 @@ export class UpdateTutorProfileComponent implements OnInit {
                 $("#intermidiate").find(".examStream").val(a.stream);
                 $("#intermidiate").find(".board").val(a.board);
                 $("#intermidiate").find("select.states").val(a.state);
+                $(".states").selectpicker('refresh');
                 $("#intermidiate").find(".passingYear").val(a.year);
                 $("#intermidiate").find(".modeOfStudy ").val(a.mode);
                 $("#intermidiate").find(".markObtained").val(a.marksObtained);
@@ -375,6 +293,7 @@ export class UpdateTutorProfileComponent implements OnInit {
                 $("#graduation").find(".examStream").val(a.stream);
                 $("#graduation").find(".board").val(a.board);
                 $("#graduation").find("select.states").val(a.state);
+                $(".states").selectpicker('refresh');
                 $("#graduation").find(".passingYear").val(a.year);
                 $("#graduation").find(".modeOfStudy ").val(a.mode);
                 $("#graduation").find(".markObtained").val(a.marksObtained);
@@ -385,6 +304,7 @@ export class UpdateTutorProfileComponent implements OnInit {
                 $("#master").find(".examStream").val(a.stream);
                 $("#master").find(".board").val(a.board);
                 $("#master").find("select.states").val(a.state);
+                $(".states").selectpicker('refresh');
                 $("#master").find(".passingYear").val(a.year);
                 $("#master").find(".modeOfStudy ").val(a.mode);
                 $("#master").find(".markObtained").val(a.marksObtained);
@@ -395,6 +315,7 @@ export class UpdateTutorProfileComponent implements OnInit {
                 $("#other").find(".examStream").val(a.stream);
                 $("#other").find(".board").val(a.board);
                 $("#other").find("select.states").val(a.state);
+                $(".states").selectpicker('refresh');
                 $("#other").find(".passingYear").val(a.year);
                 $("#other").find(".modeOfStudy ").val(a.mode);
                 $("#other").find(".markObtained").val(a.marksObtained);
@@ -458,6 +379,84 @@ export class UpdateTutorProfileComponent implements OnInit {
                 }
               });
             });            
+          }
+        });
+
+        //experiance update function
+        $(".formDiv_4 .tutorType").change(function(){
+            var check = $(this).is(":checked");
+            if(check){
+              $(this).closest(".tutorCheck").find(".showOnCheck").css("display","block");
+            }else{
+              $(this).closest(".tutorCheck").find(".showOnCheck").css("display","none");
+            }
+        });
+        $("#saveExperiences").click(function(){
+          var jsonObj = [];
+          $(".formDiv_4 .tutorType").each(function(){
+            if($(this).is(":checked")){
+              var grouped = [];
+              var tutorType = $(this).val();
+              grouped.push({"tutorTupe":tutorType});
+              if(tutorType == "HOME_TUTOR"){
+                grouped.push({"From":$("#from1").val()});
+                grouped.push({"To":$("#to1").val()});
+              }
+              if(tutorType == "ONLINE_TUTOR"){
+                  grouped.push({"From":$("#from2").val()});
+                  grouped.push({"To":$("#to2").val()});
+              }
+              if(tutorType == "TEACHING_AT_MY_PLACE"){
+                grouped.push({"From":$("#from3").val()});
+                grouped.push({"To":$("#to3").val()});
+              }
+              if(tutorType == "FACUTLTY_AT_INSTITUTE"){
+                grouped.push({"Institute":$("#faiName").val()});
+                grouped.push({"Address":$("#faiAddress").val()});
+                grouped.push({"Position":$("#faiposition").val()});
+                grouped.push({"From":$("#faiFrom").val()});
+                grouped.push({"To":$("#faiTo").val()});
+              }
+              if(tutorType == "FACULTY_AT_SCHOOL"){
+                grouped.push({"Institute":$("#fasName").val()});
+                grouped.push({"Address":$("#fasAddress").val()});
+                grouped.push({"Position":$("#fasposition").val()});
+                grouped.push({"From":$("#fasFrom").val()});
+                grouped.push({"To":$("#fasTo").val()});
+              }
+              jsonObj.push(grouped);
+            }
+          });
+           if(jsonObj.length > 0){
+            console.log(JSON.stringify(jsonObj));
+             $.ajax({
+               type: 'POST',
+               url: baseUrl+"/tutor/"+id+"/experience",
+               contentType: "application/json;charset=utf-8",
+               data: JSON.stringify(jsonObj),
+               success: function(resultData) { 
+                 showToast("Working locations saved successfully.")
+                 setTimeout(function(){ 
+                   window.location.href = "editProfile/tutor/"+id;
+                  }, 3000);
+                },
+                error :function(resultData){
+                  console.log(resultData);
+                }
+           });
+           }else{
+            showToast("Please choose atleast one value");
+           }
+        });
+        //Address update
+        $("input[name='isOwnHouse']").change(function(){
+          var radioValue = $("input[name='isOwnHouse']:checked").val();
+          if(radioValue == "No"){
+            $("#permanentAddress").prop('hidden',false);
+            $("#addressProofDiv").prop('hidden',true);
+          }else{
+            $("#permanentAddress").prop('hidden',true);
+            $("#addressProofDiv").prop('hidden',false);
           }
         });
 
