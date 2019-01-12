@@ -395,34 +395,36 @@ export class UpdateTutorProfileComponent implements OnInit {
           var jsonObj = [];
           $(".formDiv_4 .tutorType").each(function(){
             if($(this).is(":checked")){
-              var grouped = [];
+              var grouped = {};
               var tutorType = $(this).val();
-              grouped.push({"tutorTupe":tutorType});
+              var expid = $(this).closest(".tutorCheck").find(".expid").val();
+              grouped["id"]= expid;
+              grouped["tutorType"]= tutorType;
               if(tutorType == "HOME_TUTOR"){
-                grouped.push({"From":$("#from1").val()});
-                grouped.push({"To":$("#to1").val()});
+                grouped["fromDate"]= $("#from1").val();
+                grouped["toDate"]= $("#to1").val();
               }
               if(tutorType == "ONLINE_TUTOR"){
-                  grouped.push({"From":$("#from2").val()});
-                  grouped.push({"To":$("#to2").val()});
+                grouped["fromDate"]= $("#from2").val();
+                grouped["toDate"]= $("#to2").val();
               }
               if(tutorType == "TEACHING_AT_MY_PLACE"){
-                grouped.push({"From":$("#from3").val()});
-                grouped.push({"To":$("#to3").val()});
+                grouped["fromDate"]= $("#from3").val();
+                grouped["toDate"]= $("#to3").val();
               }
               if(tutorType == "FACUTLTY_AT_INSTITUTE"){
-                grouped.push({"Institute":$("#faiName").val()});
-                grouped.push({"Address":$("#faiAddress").val()});
-                grouped.push({"Position":$("#faiposition").val()});
-                grouped.push({"From":$("#faiFrom").val()});
-                grouped.push({"To":$("#faiTo").val()});
+                grouped["institute"]= $("#faiName").val();
+                grouped["address"]= $("#faiAddress").val();
+                grouped["position"]= $("#faiposition").val();
+                grouped["fromDate"]= $("#faiFrom").val();
+                grouped["toDate"]= $("#faiTo").val();
               }
               if(tutorType == "FACULTY_AT_SCHOOL"){
-                grouped.push({"Institute":$("#fasName").val()});
-                grouped.push({"Address":$("#fasAddress").val()});
-                grouped.push({"Position":$("#fasposition").val()});
-                grouped.push({"From":$("#fasFrom").val()});
-                grouped.push({"To":$("#fasTo").val()});
+                grouped["institute"]= $("#fasName").val();
+                grouped["address"]= $("#fasAddress").val();
+                grouped["position"]= $("#fasposition").val();
+                grouped["fromDate"]= $("#fasFrom").val();
+                grouped["toDate"]= $("#fasTo").val();
               }
               jsonObj.push(grouped);
             }
@@ -447,6 +449,61 @@ export class UpdateTutorProfileComponent implements OnInit {
            }else{
             showToast("Please choose atleast one value");
            }
+        });
+        $.ajax({
+          type: 'GET',
+          url: baseUrl+"/tutor/"+id+"/experience",
+          success: function(resultData) { 
+            console.log(resultData);
+            resultData.forEach(function (a) {
+              if(a.tutorType == "HOME_TUTOR"){
+                $("#from1").val(a.fromDate);
+                $("#to1").val(a.toDate);
+                $(".homeTutor").find(".expid").val(a.id);
+                $(".homeTutor").find(".tutorType").prop('checked', true);
+              }
+              if(a.tutorType == "ONLINE_TUTOR"){
+                $("#from2").val(a.fromDate);
+                $("#to2").val(a.toDate);
+                $(".onlineTutor").find(".expid").val(a.id);
+                $(".onlineTutor").find(".tutorType").prop('checked', true);
+
+              }
+              if(a.tutorType == "TEACHING_AT_MY_PLACE"){
+                $("#from3").val(a.fromDate);
+                $("#to3").val(a.toDate);
+                $(".teachingAtMyPlace").find(".expid").val(a.id);
+                $(".teachingAtMyPlace").find(".tutorType").prop('checked', true);
+              }
+              if(a.tutorType == "FACUTLTY_AT_INSTITUTE"){
+                $("#faiName").val(a.institute);
+                $("#faiAddress").val(a.address);
+                $("#faiposition").val(a.position);
+                $("#faiFrom").val(a.fromDate);
+                $("#faiTo").val(a.toDate);
+                $(".facultyAtInstitute").find(".expid").val(a.id);
+                $(".facultyAtInstitute").find(".tutorType").prop('checked', true);
+              }
+              if(a.tutorType == "FACULTY_AT_SCHOOL"){
+                $("#fasName").val(a.institute);
+                $("#fasAddress").val(a.address);
+                $("#fasposition").val(a.position);
+                $("#fasFrom").val(a.fromDate);
+                $("#fasTo").val(a.toDate);
+                $(".facultyAtSchool").find(".expid").val(a.id);
+                $(".facultyAtSchool").find(".tutorType").prop('checked', true);
+              }
+            });
+            $(".formDiv_4 .tutorType").each(function(){
+              var check = $(this).is(":checked");
+              console.log(check)
+              if(check){
+                $(this).closest(".tutorCheck").find(".showOnCheck").css("display","block");
+              }else{
+                $(this).closest(".tutorCheck").find(".showOnCheck").css("display","none");
+              }
+            });            
+          }
         });
         //Address update
         $("input[name='isOwnHouse']").change(function(){
