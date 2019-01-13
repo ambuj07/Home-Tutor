@@ -41,6 +41,12 @@ export class TutorProfileComponent implements OnInit {
             $(".class").text(data.particularClass);
             $(".subject").text(data.subjects);
             $("#category").text(data.category);
+            if(data.imageUrl != null){
+              $(".profilePic").attr("src",data.imageUrl);
+              localStorage.setItem("profilePicUrl",data.imageUrl);
+            }else{
+              $(".profilePic").attr("src","/assets/userIcon.png");
+            }
             $(".total-credit").text("Available Credit "+data.credit);
             if(data.mapping.length > 0){
               var grouped = {};
@@ -133,6 +139,24 @@ export class TutorProfileComponent implements OnInit {
         $(".total-credit").css("position","relative");
       }
     });
+
+    //upload profile pic
+    $("#uploadProfilePic").change(function(){
+      var fileInput = document.getElementById('uploadProfilePic');
+      var file = (<HTMLInputElement>fileInput).files[0];
+      var formData = new FormData();
+      formData.append('file', file);
+      $.ajax({
+             url: baseUrl+"/tutor/"+id+"/upload",
+             type : 'POST',
+             data : formData,
+             processData: false,
+             contentType: false,  
+             success : function(data) {
+                location.reload(true); 
+             }
+      });
+    })
   }
 
 }

@@ -496,7 +496,6 @@ export class UpdateTutorProfileComponent implements OnInit {
             });
             $(".formDiv_4 .tutorType").each(function(){
               var check = $(this).is(":checked");
-              console.log(check)
               if(check){
                 $(this).closest(".tutorCheck").find(".showOnCheck").css("display","block");
               }else{
@@ -515,6 +514,59 @@ export class UpdateTutorProfileComponent implements OnInit {
             $("#permanentAddress").prop('hidden',true);
             $("#addressProofDiv").prop('hidden',false);
           }
+        });
+
+        $("#saveAddress").click(function(){
+          var jsonObj = [];
+          var currAddress1 = $("#currentAddress").find("#currAddress1").val();
+          var currAddress2 = $("#currentAddress").find("#currAddress2").val();
+          var currPostalCode = $("#currentAddress").find("#currPostalCode").val();
+          var currCity = $("#currentAddress").find("select.city").val();
+          var currState = $("#currentAddress").find("select.states").val();
+          var currAddressId = $("#currAddessId").val();
+          var radioValue = $("input[name='isOwnHouse']:checked").val();
+          var perAddress1 = $("#permanentAddress").find("#perAddress1").val();
+          var perAddress2 = $("#permanentAddress").find("#perAddress2").val();
+          var perPostalCode = $("#permanentAddress").find("#perPostalCode").val();
+          var perCity = $("#permanentAddress").find("select.city").val();
+          var perState = $("#permanentAddress").find("select.states").val();
+          var perAddressId = $("#perAddessId").val();
+          if(currAddress1 != "" && currAddress2 != "" && currPostalCode && currCity != "" && currState != ""){
+            jsonObj.push({"id":currAddressId,"addressType":"currentAddress","line1":currAddress1,"line2":currAddress2,"zip":currPostalCode,"city":currCity,"state":currState});
+            if(radioValue != undefined){
+              jsonObj.push({"isOwnHouse":radioValue});
+              if(perAddress1 != "" && perAddress2 != "" && perPostalCode && perCity != "" && perState != ""){
+                jsonObj.push({"id":perAddressId,"addressType":"permanentAddress","line1":perAddress1,"line2":perAddress2,"zip":perPostalCode,"city":perCity,"state":perState});
+              }else{
+                showToast("All address fields are mandatory");
+              }    
+            }else{
+              showToast("Please select is this your own house ?");
+            }
+          }else{
+            showToast("All address fields are mandatory")
+          }
+          console.log(JSON.stringify(jsonObj));
+          //  if(jsonObj.length > 0){
+          //   console.log(JSON.stringify(jsonObj));
+          //    $.ajax({
+          //      type: 'POST',
+          //      url: baseUrl+"/tutor/"+id+"/address",
+          //      contentType: "application/json;charset=utf-8",
+          //      data: JSON.stringify(jsonObj),
+          //      success: function(resultData) { 
+          //        showToast("Working locations saved successfully.")
+          //        setTimeout(function(){ 
+          //          window.location.href = "editProfile/tutor/"+id;
+          //         }, 3000);
+          //       },
+          //       error :function(resultData){
+          //         console.log(resultData);
+          //       }
+          //  });
+          //  }else{
+          //   showToast("Please choose atleast one value");
+          //  }
         });
 
          //general functions

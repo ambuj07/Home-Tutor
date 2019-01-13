@@ -18,6 +18,13 @@ export class TutorMenuComponent implements OnInit {
         id = params["id"];
     });
 
+    var profilePicUrl = localStorage.getItem("profilePicUrl");
+    if(profilePicUrl != undefined && profilePicUrl != null && profilePicUrl != ""){
+      $(".profilePic").attr("src",profilePicUrl);
+    }else{
+      $(".profilePic").attr("src","/assets/userIcon.png");
+    }
+
     function openNav() {
       document.getElementById("mySidenav").style.width = "250px";
     }
