@@ -227,23 +227,23 @@ export class TutorRegistrationComponent implements OnInit {
             data += '"jobType":"'+jobType+'","partTimeReason":"'+partTimeReason+'",';
             data += '"fluencyInEnglish":"'+fluencyInEnglish+'","experience":"'+teachingExperience+'"}';
             console.log(data)
-            // $.ajax({
-            //     type: 'POST',
-            //     url: baseUrl+"/tutor",
-            //     contentType: "application/json;charset=utf-8",
-            //     data: data,
-            //     success: function(resultData) { 
-            //         console.log(resultData);
-            //         localStorage.setItem("userName",resultData.detail.name);
-            //         localStorage.setItem("type",resultData.type);
-            //         localStorage.setItem("userId",resultData.refId);
-            //         localStorage.setItem("from_reg","Yes");
-            //         window.location.href = '/dashboard/tutor/'+resultData.refId;
-            //      },
-            //      error: function(resultData){
-            //        showToast("Something went wrong at server side, Please try after sometime.")
-            //      }
-            // });  
+            $.ajax({
+                type: 'POST',
+                url: baseUrl+"/tutor",
+                contentType: "application/json;charset=utf-8",
+                data: data,
+                success: function(resultData) { 
+                    console.log(resultData);
+                    localStorage.setItem("userName",resultData.detail.name);
+                    localStorage.setItem("type",resultData.type);
+                    localStorage.setItem("userId",resultData.refId);
+                    localStorage.setItem("from_reg","Yes");
+                    window.location.href = '/dashboard/tutor/'+resultData.refId;
+                 },
+                 error: function(resultData){
+                   showToast("Something went wrong at server side, Please try after sometime.")
+                 }
+            });  
           }
       });
       $('.fieldset').find('select,input').change(function(){
