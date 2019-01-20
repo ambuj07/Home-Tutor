@@ -24,18 +24,49 @@ export class TutorRegistrationComponent implements OnInit {
       $('.registration-form .btn-next').on('click', function () {
           var parent_fieldset = $(this).parents('.fieldset');
           var next_step = true;
+          var mobileRegex = /^[1-9]\d{9}$/;
+          var mobile = $("#mobileNumber").val();
+          var whatsapp = $("#whatsappNumber").val();
+          var emailRegex = /^\w+([-+.'][^\s]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+          var allFilled = true;
   
           $(this).parents('.fieldset').find('select,input').each(function () {
             if ($(this).is(":visible") && ($(this).val() == null || $(this).val() == "")) {
                 $(this).addClass('input-error');
                 $(this).closest(".bootstrap-select").find(".dropdown-toggle").css("border-color","#d03e3e");
                 next_step = false;
+                allFilled = false;
                 showToast("All fields are Mandatory");
             } else {
                 $(this).removeClass('input-error');
-                $(this).closest(".bootstrap-select").find(".dropdown-toggle").css("border-color","#ccc");
+                $(this).closest(".bootstrap-select").find(".dropdown-toggle").css("border-color","#ccc"); 
             }
           });
+          if(allFilled){
+            if(!emailRegex.test($("#email").val())){
+              next_step = false;
+              $("#email").addClass('input-error');
+              showToast("Please enter a valid email");
+              return false;
+            }else{
+              $("#email").removeClass('input-error');
+            }
+            if(!mobileRegex.test(mobile)){
+              next_step = false;
+              $("#mobileNumber").addClass('input-error');
+              showToast("Invalid Mobile Number : Should be only 10 digit");
+              return false;
+            }else{
+              $("#mobileNumber").removeClass('input-error');
+            }
+            if(!mobileRegex.test(whatsapp)){
+              next_step = false;
+              $("#whatsappNumber").addClass('input-error');
+              showToast("Invalid WhatsApp Number : Should be only 10 digit");
+            }else{
+              $("#whatsappNumber").removeClass('input-error');
+            } 
+          }
           if($(".tutorType").is(":visible")){
             var tutorType = [];
               $('.tutorType').each(function(){

@@ -35,8 +35,8 @@ export class TutorialComponent implements OnInit {
             }
           }
         });
-        $("#chooseClass").html(classHtml).selectpicker('refresh');
-        $("#chooseSubject").html(subjectHtml).selectpicker('refresh');
+        //$("#chooseClass").html(classHtml).selectpicker('refresh');
+        //$("#chooseSubject").html(subjectHtml).selectpicker('refresh');
     })
     $("#find").click(function(){
       var zip = $("#zipCode").val();
