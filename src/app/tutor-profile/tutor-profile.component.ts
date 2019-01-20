@@ -32,14 +32,20 @@ export class TutorProfileComponent implements OnInit {
             $("#name").text(data.name);
             $("#find").text("Job");
             $("#mobile").text(data.mobile);
+            $("#whatsappNumber").text(data.whatsappNumber)
             $("#email").text(data.email);
             $("#gender").text(data.gender);
-            $("#location").text(data.location);
+            $("#age").text(data.age);
+            $("#location").text(data.location+", "+data.state+", "+data.city+", "+data.zipCode[0].zip);
             $("#experience").text(data.experience);
             $("#qualification").text(data.qualification);
-            $(".classCategory").text(data.classcategory);
-            $(".class").text(data.particularClass);
-            $(".subject").text(data.subjects);
+            if(data.types.length > 0){
+              data.types.forEach(function(a){
+                $("#tutorType").append(a.teacherType+", ");
+              })
+            }
+            $("#jobType").text(data.jobType);
+            $("#fluencyInEnglish").text(data.fluencyInEnglish);
             $("#category").text(data.category);
             if(data.imageUrl != null){
               $(".profilePic").attr("src",data.imageUrl);

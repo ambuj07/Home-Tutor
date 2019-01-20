@@ -67,6 +67,15 @@ export class TutorRegistrationComponent implements OnInit {
       $('.selectpicker').selectpicker();
     });
 
+    //qualification
+    $("#qualification").on('change',function(){
+        if($(this).val() == 'OTHER'){
+          $(".otherQualification").prop('hidden',false);
+        }else{
+          $(".otherQualification").prop('hidden',true);
+        }
+    });
+
     //states and city
     var states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry"];
     var statesHtml = '<option value="" selected disabled>Select Your State</option>';
@@ -158,6 +167,9 @@ export class TutorRegistrationComponent implements OnInit {
             var mappingStr = JSON.stringify(mapping);
             var chooseGender = $("#chooseGender").val(); 
             var qualification = $("#qualification").val();
+            if(qualification == "OTHER"){
+              qualification = $("#otherQualification").val();
+            }
             var zipCodeVal = $("#pinCode").val();
             var zipCodeArr = [];
             zipCodeArr.push({"zip":zipCodeVal});           
@@ -175,28 +187,32 @@ export class TutorRegistrationComponent implements OnInit {
             var dob = $("#dob").val();
             var jobType = $("#jobType").val();
             var partTimeReason = $("#partTimeReason").val();
+            var teachingExperience = $("#teachingExperience").val();
+            var fluencyInEnglish = $("#fluencyInEnglish").val();
             var data = '{"id":null,"name":"'+name+'","location":"'+location+'","mobile":"'+mobile+'",';
             data += '"email":"'+email+'","zipCode":'+zipCode+',"city":"'+city+'","state":"'+state+'",';
             data += '"types":'+tutorTypeStr+',"mapping":'+mappingStr+',"gender":"'+chooseGender+'",';
             data += '"qualification":"'+qualification+'","whatsappNumber":"'+whatsappNumber+'","dob":"'+dob+'",';
-            data += '"jobType":"'+jobType+'","partTimeReason":"'+partTimeReason+'"}';
-            $.ajax({
-                type: 'POST',
-                url: baseUrl+"/tutor",
-                contentType: "application/json;charset=utf-8",
-                data: data,
-                success: function(resultData) { 
-                    console.log(resultData);
-                    localStorage.setItem("userName",resultData.detail.name);
-                    localStorage.setItem("type",resultData.type);
-                    localStorage.setItem("userId",resultData.refId);
-                    localStorage.setItem("from_reg","Yes");
-                    window.location.href = '/dashboard/tutor/'+resultData.refId;
-                 },
-                 error: function(resultData){
-                   showToast("Something went wrong at server side, Please try after sometime.")
-                 }
-            });  
+            data += '"jobType":"'+jobType+'","partTimeReason":"'+partTimeReason+'",';
+            data += '"fluencyInEnglish":"'+fluencyInEnglish+'","experience":"'+teachingExperience+'"}';
+            console.log(data)
+            // $.ajax({
+            //     type: 'POST',
+            //     url: baseUrl+"/tutor",
+            //     contentType: "application/json;charset=utf-8",
+            //     data: data,
+            //     success: function(resultData) { 
+            //         console.log(resultData);
+            //         localStorage.setItem("userName",resultData.detail.name);
+            //         localStorage.setItem("type",resultData.type);
+            //         localStorage.setItem("userId",resultData.refId);
+            //         localStorage.setItem("from_reg","Yes");
+            //         window.location.href = '/dashboard/tutor/'+resultData.refId;
+            //      },
+            //      error: function(resultData){
+            //        showToast("Something went wrong at server side, Please try after sometime.")
+            //      }
+            // });  
           }
       });
       $('.fieldset').find('select,input').change(function(){

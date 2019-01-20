@@ -19,10 +19,35 @@
       </div>
   </div>
 </div>
-
-<div class="allNavElements" id="editProfileView">
-  <div>Under Developement</div>
-</div>
+<!-- change status Modal -->
+<div class="modal fade" id="changeStatusModal">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="changeStatusForm" onsubmit="return false;">
+            <div class="form-group">
+                <select class="form-control" id="changeStatus" name="changeStatus">
+                    <option value="" disabled selected>Select Status</option>
+                    <option value="APPLIED">APPLIED</option>
+                    <option value="DEMO_SCHEDULED">DEMO_SCHEDULED</option>
+                    <option value="DEMO_COMPLETED">DEMO_COMPLETED</option>
+                    <option value="REJECTED">REJECTED</option>
+                    <option value="CLOSED">CLOSED</option>
+                    <option value="CANCELLED">CANCELLED</option>
+                </select>
+                <input type="hidden" id="jobId" name="jobId">
+            </div>
+            <div style="text-align:right">
+                <button type="button" class="btn saveStatus">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="allNavElements" id="nearbyStudentsView">
   <app-nearby-studends></app-nearby-studends>

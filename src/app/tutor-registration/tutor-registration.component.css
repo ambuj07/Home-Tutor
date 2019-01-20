@@ -10,3 +10,6 @@
 form.registration-form .fieldset {
     display: none;
 }
+.custom-control.custom-checkbox {
+    margin-bottom: 15px !important;
+}

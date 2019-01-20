@@ -5,7 +5,7 @@
                 <div class="fieldset">
                     <div class="form-top">
                         <div class="form-top-left">
-                            <div class="reg-heading">Join As Teacher/Trainer/Professional/Institution</div>
+                            <div class="reg-heading">Join As Teacher/Trainer/Institution</div>
                         </div>
                     </div>
                     <div class="form-bottom">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-bottom">
                         <div class="form-group">
-                            <label>Mode of Teaching<font color="red">*</font></label>
+                            <label style="margin-bottom: 15px;">Mode of Teaching<font color="red">*</font></label>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" value="TUTOR" class="custom-control-input tutorType" id="tutorType1" name="tutorType1">
                                 <label class="custom-control-label" for="tutorType1">Home Tutor (Travel at Student Place)</label>
@@ -48,8 +48,21 @@
                                 <label class="custom-control-label" for="tutorType3">Run a Coaching Center (Teaching at my Place)</label>
                             </div>
                         </div>
-                        <p class="note-para">Note : Select your Prime CLASS/SUBJECTS/LOCATION here ,You can add more later from your dashboard.</p>
-                        <div class="form-group">
+                        <p class="note-para">Note : Select multiple applicable</p>
+                        <div style="text-align:center">
+                            <button type="button" class="btn btn-next btn-register">NEXT</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="fieldset">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <div class="reg-heading">CLASSES And SUBJECTS</div>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <label style="margin-bottom: 15px;">Select your Prime CLASSES And SUBJECTS <font color="red">*</font></label>
+                        <div class="form-group" style="margin-bottom: 20px !important;">
                             <select class="form-control selectpicker" data-size="5" id="chooseClass" name="chooseClass">
                                 
                             </select>
@@ -59,6 +72,8 @@
                                 
                             </select>
                         </div>
+                        <br>
+                        <p class="note-para">Note : You can add more later from your dashboard.</p>
                         <div style="text-align:center">
                             <button type="button" class="btn btn-next btn-register">NEXT</button>
                         </div>
@@ -98,21 +113,26 @@
                         <div class="form-group">
                             <select class="form-control selectpicker" name="qualification" id="qualification">
                                 <option value="" disabled selected>Highest Qualification</option>
-                                <option value="1">BA</option>
-                                <option value="2">B.COM</option>
-                                <option value="3">B.SC</option>
-                                <option value="4">BBA</option>
-                                <option value="5">B.TECH</option>
-                                <option value="6">MBBS</option>
-                                <option value="8">M.COM</option>
-                                <option value="9">M.SC</option>
-                                <option value="10">MBA</option>
-                                <option value="11">OTHER</option>
+                                <option value="BA">BA</option>
+                                <option value="B.COM">B.COM</option>
+                                <option value="B.SC">B.SC</option>
+                                <option value="BBA">BBA</option>
+                                <option value="B.TECH">B.TECH</option>
+                                <option value="MBBS">MBBS</option>
+                                <option value="M.COM">M.COM</option>
+                                <option value="M.SC">M.SC</option>
+                                <option value="MBA">MBA</option>
+                                <option value="OTHER">OTHER</option>
                             </select>
+                        </div>
+                        <div class="form-group" class="otherQualification" style="margin-bottom: 10px;" hidden>
+                            <div class="input-group">
+                                <input type="text" placeholder="What is your higest qualification" id="otherQualification" class="form-control" name="otherQualification" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="date" placeholder="Enter Your Pin Code (6 digits)" id="dob" class="form-control" name="dob" required>
+                                <input type="date" id="dob" class="form-control" name="dob" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -133,6 +153,26 @@
                             <div class="input-group">
                                 <input type="text" placeholder="What are you doing these days" id="partTimeReason" class="form-control" name="partTimeReason" required>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control selectpicker" id="teachingExperience" name="teachingExperience">
+                                <option value="" disabled>Total Teaching Experience</option>
+                                <option value="0-2">0 to 2 years</option>
+                                <option value="3-5">3 to 5 years</option>
+                                <option value="6-10">6 to 10 years</option>
+                                <option value="11-15">11 to 15 years</option>
+                                <option value="16-20">16 to 20 years</option>
+                                <option value="21-30">21 to 30 years</option>
+                                <option value="31-40">31 to 40 years</option>
+                                <option value="40+">More than 40 years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control selectpicker" id="fluencyInEnglish" name="fluencyInEnglish">
+                                <option value="" disabled>Fluency In English</option>
+                                <option value="Good">Good</option>
+                                <option value="Excellent">Excellent</option>
+                            </select>
                         </div>
                         <div style="text-align:center">
                             <button type="button" id="submit" class="btn btn-next btn-register">JOIN NOW</button>
