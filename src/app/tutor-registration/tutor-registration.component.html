@@ -16,10 +16,10 @@
                             <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Mobile Number(only 10 digits)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
+                            <input type="tel" placeholder="Mobile Number(only 10 digits)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="WhatsApp Number(only 10 digits)"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
+                            <input type="tel" placeholder="WhatsApp Number(only 10 digits)"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
                         </div>
                         <div style="text-align:center">
                             <button type="button" class="btn btn-next btn-register">START</button>
@@ -88,14 +88,14 @@
                     <div class="form-bottom">
                         <div class="form-group">
                             <div class="input-group">
-                                <select id="states" class="form-control selectpicker" data-size="5" name="states" data-live-search="true" required>
+                                <select id="states" class="form-control selectpicker" data-size="3" name="states" data-live-search="true" required>
                                     
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div id="cityDiv" class="form-group" hidden>
                             <div class="input-group">
-                                <select id="city" class="form-control selectpicker" data-size="5" name="city" data-live-search="true" required>
+                                <select id="city" class="form-control selectpicker" data-size="3" name="city" data-live-search="true" required>
                                     
                                 </select>
                             </div>
@@ -107,7 +107,7 @@
                         </div>   
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Enter Your Pin Code (6 digits)" id="pinCode" class="form-control" name="pinCode" required>
+                                <input type="tel" placeholder="Enter Your Pin Code (6 digits)" id="pinCode" class="form-control" name="pinCode" maxlength="6" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -132,7 +132,7 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="date" id="dob" class="form-control" name="dob" required>
+                                <input placeholder="Date Of Birth" type="date" id="dob" class="form-control" name="dob" required>
                             </div>
                         </div>
                         <div class="form-group">

@@ -582,6 +582,12 @@ button.btn.dropdown-toggle {
 .bootstrap-select .btn:focus {
     outline: none !important;
 }
+.bootstrap-select .dropdown-menu{
+    font-size: 15px !important;
+}
+.bs-searchbox input[type="text"]{
+    height: 35px !important;
+}
 .note-para {
     font-size: 14px;
     font-weight: bold;
