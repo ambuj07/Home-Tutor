@@ -36,7 +36,7 @@ export class TutorProfileComponent implements OnInit {
             $("#email").text(data.email);
             $("#gender").text(data.gender);
             $("#age").text(data.age);
-            $("#location").text(data.location+", "+data.state+", "+data.city+", "+data.zipCode[0].zip);
+            $("#location").text(data.location+", "+data.state+", "+data.city);
             $("#experience").text(data.experience);
             $("#qualification").text(data.qualification);
             if(data.types.length > 0){

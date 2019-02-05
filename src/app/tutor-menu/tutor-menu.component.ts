@@ -32,6 +32,22 @@ export class TutorMenuComponent implements OnInit {
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+      } else {
+      dropdownContent.style.display = "block";
+      }
+      });
+    }
     $("#openSideNav").click(function(){
         openNav();
     })
@@ -49,6 +65,21 @@ export class TutorMenuComponent implements OnInit {
     });
     $(document).on('click',".findJobs",function(){
       window.location.href = '/findJobs/tutor/'+id
+    });
+    $(document).on('click',".classAndSubject",function(){
+      window.location.href = '/tutor/classAndSubject/'+id
+    });
+    $(document).on('click',".educationQualification",function(){
+      window.location.href = '/tutor/education/'+id
+    });
+    $(document).on('click',".workLocation",function(){
+      window.location.href = '/tutor/workLocation/'+id
+    });
+    $(document).on('click',".workExperience",function(){
+      window.location.href = '/tutor/experience/'+id
+    });
+    $(document).on('click',".saveAddress",function(){
+      window.location.href = '/tutor/address/'+id
     });
   }
 

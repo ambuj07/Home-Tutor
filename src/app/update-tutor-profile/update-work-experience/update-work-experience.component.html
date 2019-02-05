@@ -1,0 +1,124 @@
+
+<app-tutor-menu></app-tutor-menu>
+<div style="margin-top: 10px;padding:10px">
+  <div class="accordion_container">
+    <div class="accordion_head">Work Experience</div>
+    <div class="accordion_body">
+       <div>
+          <div class="formDiv_4" style="margin-bottom: 10px !important;">
+            <div class="col-xs-12 tutorCheck homeTutor">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="HOME_TUTOR" class="custom-control-input tutorType" id="tutorType1" name="tutorType1">
+                    <label class="custom-control-label" for="tutorType1">HOME TUTOR</label>
+                </div>
+                <div class="showOnCheck">
+                    <div style="display:inline-block">
+                        <label>From</label>
+                        <input type="date" id="from1" class="form-control" name="from1" required>
+                    </div>
+                    <div  style="display:inline-block">
+                        <label>To</label>
+                        <input type="date" id="to1" class="form-control" name="to1" required>
+                    </div>
+                    <input type="hidden" class="expid" value="">
+                </div>
+            </div>
+            <hr>
+            <div class="col-xs-12 tutorCheck onlineTutor">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="ONLINE_TUTOR" class="custom-control-input tutorType" id="tutorType2" name="tutorType2">
+                    <label class="custom-control-label" for="tutorType2">ONLINE TUTOR</label>
+                </div>
+                <div class="showOnCheck">
+                    <div style="display:inline-block">
+                        <label>From</label>
+                        <input type="date" id="from2" class="form-control" name="from2" required>
+                    </div>
+                    <div  style="display:inline-block">
+                        <label>To</label>
+                        <input type="date" id="to2" class="form-control" name="to2" required>
+                    </div>
+                    <input type="hidden" class="expid" value="">
+                </div>
+            </div>
+            <hr>
+            <div class="col-xs-12 tutorCheck teachingAtMyPlace">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="TEACHING_AT_MY_PLACE" class="custom-control-input tutorType" id="tutorType3" name="tutorType3">
+                    <label class="custom-control-label" for="tutorType3">TEACHING AT MY PLACE</label>
+                </div>
+                <div class="showOnCheck">
+                    <div style="display:inline-block">
+                        <label>From</label>
+                        <input type="date" id="from3" class="form-control" name="from3" required>
+                    </div>
+                    <div  style="display:inline-block">
+                        <label>To</label>
+                        <input type="date" id="to3" class="form-control" name="to3" required>
+                    </div>
+                    <input type="hidden" class="expid" value="">
+                </div>
+            </div>
+            <hr>
+            <div class="col-xs-12 tutorCheck facultyAtInstitute">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="FACUTLTY_AT_INSTITUTE" class="custom-control-input tutorType" id="tutorType4" name="tutorType4">
+                    <label class="custom-control-label" for="tutorType4">FACUTLTY AT INSTITUTE</label>
+                </div>
+                <div class="table-responsive showOnCheck">
+                    <table class="table table-bordered faiTable" style="min-width:700px">
+                        <tr>
+                            <th>Name Of Institute</th>
+                            <th>Address/Location</th>
+                            <th>Position</th>
+                            <th>From</th>
+                            <th>To</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="faiName" class="form-control" name="faiName" required></td>
+                            <td><input type="text" id="faiAddress" class="form-control" name="faiAddress" required></td>
+                            <td><input type="text" id="faiposition" class="form-control" name="faiposition" required></td>
+                            <td><input type="date" id="faiFrom" class="form-control" name="faiFrom" required></td>
+                            <td><input type="date" id="faiTo" class="form-control" name="faiTo" required></td>
+                        </tr>
+                     </table>
+                     <input type="hidden" class="expid" value="">
+                </div>
+            </div>
+            <hr>
+            <div class="col-xs-12 tutorCheck facultyAtSchool">
+                <div class="custom-control custom-checkbox" style="margin-bottom: 10px;">
+                    <input type="checkbox" value="FACULTY_AT_SCHOOL" class="custom-control-input tutorType" id="tutorType5" name="tutorType5">
+                    <label class="custom-control-label" for="tutorType5">FACULTY AT SCHOOL</label>
+                </div>
+                <div class="table-responsive showOnCheck">
+                    <table class="table table-bordered fasTable" style="min-width:700px">
+                        <tr>
+                            <th>Name Of Institute</th>
+                            <th>Address/Location</th>
+                            <th>Position</th>
+                            <th>From</th>
+                            <th>To</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="fasName" class="form-control" name="fasName" required></td>
+                            <td><input type="text" id="fasAddress" class="form-control" name="fasAddress" required></td>
+                            <td><input type="text" id="fasposition" class="form-control" name="fasposition" required></td>
+                            <td><input type="date" id="fasFrom" class="form-control" name="fasFrom" required></td>
+                            <td><input type="date" id="fasTo" class="form-control" name="fasTo" required></td>
+                        </tr>
+                    </table>
+                    <input type="hidden" class="expid" value="">
+                </div>
+            </div>
+            <hr>
+          </div>
+       </div>
+       <div style="text-align:right;padding: 25px 40px 0px;text-align: center;">
+         <button type="button" id="saveExperiences" class="btn btn-primary" style="width: 300px;">Save Experience</button>
+       </div>
+    </div>
+
+  </div>
+  
+</div><!-- container -->

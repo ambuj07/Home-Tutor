@@ -20,7 +20,12 @@ import { FindJobsComponent } from './find-jobs/find-jobs.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { FindMoreTutorsComponent } from './find-more-tutors/find-more-tutors.component';
 import { TutorMenuComponent } from './tutor-menu/tutor-menu.component';
-import { UpdateTutorProfileComponent } from './update-tutor-profile/update-tutor-profile.component'
+import { UpdateTutorProfileComponent } from './update-tutor-profile/update-tutor-profile.component';
+import { UpdateClassAndSubjectComponent } from './update-tutor-profile/update-class-and-subject/update-class-and-subject.component';
+import { UpdateEducationQualificationComponent } from './update-tutor-profile/update-education-qualification/update-education-qualification.component';
+import { UpdateWorkLocationComponent } from './update-tutor-profile/update-work-location/update-work-location.component';
+import { UpdateWorkExperienceComponent } from './update-tutor-profile/update-work-experience/update-work-experience.component';
+import { UpdateTutorAddressComponent } from './update-tutor-profile/update-tutor-address/update-tutor-address.component'
 
 
 @NgModule({
@@ -40,7 +45,12 @@ import { UpdateTutorProfileComponent } from './update-tutor-profile/update-tutor
     StudentDashboardComponent,
     FindMoreTutorsComponent,
     TutorMenuComponent,
-    UpdateTutorProfileComponent
+    UpdateTutorProfileComponent,
+    UpdateClassAndSubjectComponent,
+    UpdateEducationQualificationComponent,
+    UpdateWorkLocationComponent,
+    UpdateWorkExperienceComponent,
+    UpdateTutorAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -102,6 +112,26 @@ import { UpdateTutorProfileComponent } from './update-tutor-profile/update-tutor
       {
         path : 'editProfile/tutor/:id',
         component : UpdateTutorProfileComponent
+      },
+      {
+        path : 'tutor/classAndSubject/:id',
+        component : UpdateClassAndSubjectComponent
+      },
+      {
+        path : 'tutor/education/:id',
+        component : UpdateEducationQualificationComponent
+      },
+      {
+        path : 'tutor/workLocation/:id',
+        component : UpdateWorkLocationComponent
+      },
+      {
+        path : 'tutor/experience/:id',
+        component : UpdateWorkExperienceComponent
+      },
+      {
+        path : 'tutor/address/:id',
+        component : UpdateTutorAddressComponent
       },
       {
         path: '**',
