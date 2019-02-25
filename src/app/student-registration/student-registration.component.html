@@ -10,7 +10,7 @@
                 </div>
                 <div class="form-bottom">
                     <div class="form-group">
-                        <select class="form-control" id="classGroup" name="classGroup" required>
+                        <select class="form-control selectpicker" id="classGroup" name="classGroup" required>
                             <option value="" disabled>Choose Your Group</option>
                             <option value="prep_and_kg">Prep and KG</option>
                             <option value="1to5">1st to 5th</option>
@@ -23,12 +23,12 @@
                         </select>
                     </div>
                     <div class="form-group" id="chooseClassDiv" hidden>
-                            <select class="form-control" id="chooseClass" name="chooseClass">
+                            <select class="form-control selectpicker" id="chooseClass" name="chooseClass">
                                 <option value="" disabled>Choose Your Class</option>
                             
                             </select>
                     </div>    
-                    <div class="form-group" id="chooseSubjectDiv" hidden>
+                    <div class="form-group selectpicker" id="chooseSubjectDiv" hidden>
                         <select class="form-control" id="chooseSubject" name="chooseSubject">
                             
                         </select>
@@ -38,29 +38,140 @@
                     </div>
                 </div>
             </div>
+
             <div  class="fieldset">
                 <div class="form-top">
                     <div class="form-top-left">
-                        <div><i class="fa fa-hand-o-right" aria-hidden="true"></i> Need some personal detail to show your perfect match</div>
+                        <div class="reg-heading">Address / Location</div>
                     </div>
                 </div>
                 <div class="form-bottom">
                     <div class="form-group">
-                        <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name">
-                    </div>
-                    <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" placeholder="Enter Your Location" id="address" class="form-control" name="address">
-                        <div class="input-group-append">
-                            <button class="btn btn-location" id="getLocation" type="button"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span></button>
+                        <div class="input-group">
+                            <input type="text" placeholder="Flat NO ; Street NO ; Apartment" id="addrLine1" class="form-control" name="addrLine1" required>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" placeholder="Enter Your Locality(Ex. Mayur Vihar Phase-3)" id="location" class="form-control" name="location" required>
+                        </div>
+                    </div>   
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="tel" placeholder="Enter Your Pin Code (6 digits)" id="pinCode" class="form-control" name="pinCode" maxlength="6" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Enter Your Mobile Number(only 10 digt)"  name="mobileNumber" class="form-control" id="mobileNumber">
+                        <div class="input-group">
+                            <select id="states" class="form-control selectpicker" data-size="3" name="states" data-live-search="true" required>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div id="cityDiv" class="form-group" hidden>
+                        <div class="input-group">
+                            <select id="city" class="form-control selectpicker" data-size="3" name="city" data-live-search="true" required>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-previous">Previous</button>
+                    <button type="button" class="btn btn-next" style="float: right;">Next</button>
+                </div>
+            </div>
+
+            <div class="fieldset">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <div class="reg-heading">Contact Details</div>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email">
+                        <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Mobile Number(only 10 digits)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="WhatsApp Number(only 10 digits)"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
+                    </div>
+                    <button type="button" class="btn btn-previous">Previous</button>
+                    <button type="button" class="btn btn-next" style="float: right;">Next</button>
+                </div>
+            </div>
+
+            <div  class="fieldset">
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <div class="reg-heading">Preference</div>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="tutorType" name="tutorType" required>
+                            <option value="" disabled>I am looking for</option>
+                            <option value="TUTOR">Home Tutor / Trainer</option>
+                            <option value="COACHING">Tuition Centre</option>
+                            <option value="ONLINE">Online Tutor / Trainer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="preferGender" name="preferGender" required>
+                            <option value="" disabled>Prefer Gender</option>
+                            <option value="Any The Best">Any The Best</option>
+                            <option value="Male Only">Male Only</option>
+                            <option value="Female Only">Female Only</option>
+                            <option value="Decide Later">Decide Later</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="preferTiming" name="preferTiming" required>
+                            <option value="" disabled>Prefer Timing</option>
+                            <option value="Between 7 AM to 9 AM">Between 7 AM to 9 AM</option>
+                            <option value="Between 9 AM to 12 PM">Between 9 AM to 12 PM</option>
+                            <option value="Between 12 PM to 3 PM">Between 12 PM to 3 PM</option>
+                            <option value="Between 3 PM to 5 PM">Between 3 PM to 5 PM</option>
+                            <option value="Between 5 PM to 7 PM">Between 5 PM to 7 PM</option>
+                            <option value="Between 7 PM to 9 PM">Between 7 PM to 9 PM</option>
+                            <option value="Decide Later">Decide Later</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="preferDay" name="preferDay" required>
+                            <option value="" disabled>Prefer Day</option>
+                            <option value="Once A Week">Once A Week</option>
+                            <option value="Twice A Week">Twice A Week</option>
+                            <option value="Thrice A Week">Thrice A Week</option>
+                            <option value="Four Days in A Week">Four Days in A Week</option>
+                            <option value="Five Days in A Week">Five Days in A Week</option>
+                            <option value="Six Days in A Week">Six Days in A Week</option>
+                            <option value="On Weekends">On Weekends</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Prefer Fee(RS Hourly / Monthly)"  name="preferFee" class="form-control" id="preferFee">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="studentPerformance" name="studentPerformance" required>
+                            <option value="" disabled>Student Performance</option>
+                            <option value="Average">Average</option>
+                            <option value="Good">Good</option>
+                            <option value="Excellent">Excellent</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="reasonForQuery" name="reasonForQuery" required>
+                            <option value="" disabled>I want to</option>
+                            <option value="Start immidiately ">Start immidiately </option>
+                            <option value="Just quire about fee and avaibility">Just quire about fee and avaibility</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Anything else please write here.." rows="2" id="anythingElse" name="anythingElse"></textarea>
                     </div>
                     <button type="button" class="btn btn-previous">Previous</button>
                     <button type="button" id="submit" class="btn" style="float: right;">Submit</button>
@@ -70,4 +181,17 @@
     </div>
 </div>
 </div>
- 
+<!-- data confirm modal-->
+<div class="modal fade" id="myProfileModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span style="font-size: 20px;font-weight: bold;color: #378472;">Review Your Data</span>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
