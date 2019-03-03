@@ -82,7 +82,7 @@ export class StudentRegistrationComponent implements OnInit {
               $(this).prev().fadeIn();
           });
       });
-
+    });
       //show on change
       const prepAndKg = ['Prep','Nursurry','LKG','UKG']
       const oneToFive = ['1st','2nd','3rd','4th','5th'];
@@ -424,8 +424,6 @@ export class StudentRegistrationComponent implements OnInit {
       $(document).on('change','.selectpicker',function() {
         $(this).next().blur();
       });
-
-  });
   }
 
 }
