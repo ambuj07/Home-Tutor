@@ -99,6 +99,13 @@
                     <div class="form-group">
                         <input type="tel" placeholder="WhatsApp Number(only 10 digits)"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
                     </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="chooseGender" name="chooseGender">
+                            <option value="" disabled>Gender</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
+                        </select>
+                    </div>
                     <button type="button" class="btn btn-previous">Previous</button>
                     <button type="button" class="btn btn-next" style="float: right;">Next</button>
                 </div>
@@ -153,7 +160,14 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Prefer Fee(RS Hourly / Monthly)"  name="preferFee" class="form-control" id="preferFee">
+                        <input type="text" placeholder="Prefer Fee(RS)"  name="preferFee" class="form-control" id="preferFee" style="width: 54%;display: inline;">
+                        <div style="width: 44%;float: right;">
+                            <select class="form-control selectpicker" id="hourlyMonthly" name="hourlyMonthly">
+                                <option value="" disabled>Hourly / Monthly</option>
+                                <option value="hour">Hourly</option>
+                                <option value="month">Monthly</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <select class="form-control selectpicker" id="studentPerformance" name="studentPerformance" required>

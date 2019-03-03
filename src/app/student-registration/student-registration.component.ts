@@ -351,25 +351,27 @@ export class StudentRegistrationComponent implements OnInit {
             var email = $("#email").val();  
             var mobile = $("#mobileNumber").val(); 
             var whatsappNumber = $("#whatsappNumber").val();
+            var chooseGender = $("#chooseGender").val();
             var turorType = $("#tutorType").val();
             var preferGender = $("#preferGender").val();
             var preferTiming = $("#preferTiming").val();
             var preferDay = $("#preferDay").val();
             var preferFee = $("#preferFee").val();
+            var hourlyMonthly = $("#hourlyMonthly").val();
             var studentPerformance = $("#studentPerformance").val();
             var reasonForQuery = $("#reasonForQuery").val();
             var anythingElse = $("#anythingElse").val();
-            data = '{"id":null,"category":"","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'","name":"'+name+'","addrLine1":"'+addrLine1+'","location":"'+location+'","zipCode":"'+zipCode+'","states":"'+states+'","city":"'+city+'","email":"'+email+'","mobile":"'+mobile+'","whatsappNumber":"'+whatsappNumber+'","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
+            data = '{"id":null,"category":"","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'","name":"'+name+'","addrLine1":"'+addrLine1+'","location":"'+location+'","zipCode":"'+zipCode+'","states":"'+states+'","city":"'+city+'","email":"'+email+'","mobile":"'+mobile+'","whatsappNumber":"'+whatsappNumber+'","gender":"'+chooseGender+'","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'/'+hourlyMonthly+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
             $("#myProfileModal").modal('show');
             var html = '<table class="table table-bordered">';
                 html += '<tr><td><b>Class Category : </b>'+classcategory+'</td><td><b>Class: </b>'+particularClass+'</td></tr>';
                 html += '<tr><td colspan="2"><b>Subjects : </b>'+subjects+'</td></tr>';
                 html += '<tr><td colspan="2"><b>Address: </b>'+addrLine1+', '+location+', '+city+', '+states+', '+zipCode+'</td></tr>';
-                html += '<tr><td><b>Name : </b>'+name+'</td><td>Email : </b>'+email+'</td></tr>';
-                html += '<tr><td><b>Mobile : </b>'+mobile+'</td><td>Whatsapp : </b>'+whatsappNumber+'</td></tr>';
+                html += '<tr><td><b>Name : </b>'+name+'</td><td><b>Email : </b>'+email+'</td></tr>';
+                html += '<tr><td><b>Mobile : </b>'+mobile+'</td><td><b>Whatsapp : </b>'+whatsappNumber+'</td></tr>';
                 html += '<tr><td><b>Turor Type : </b>'+turorType+'</td><td><b>Prefer Gender : </b>'+preferGender+'</td></tr>';
                 html += '<tr><td><b>Prefer Timing : </b>'+preferTiming+'</td><td><b>Prefer Day : </b>'+preferDay+'</td></tr>';
-                html += '<tr><td><b>Prefer Fee : </b>'+preferFee+'</td><td><b>Performance : </b>'+studentPerformance+'</td></tr>';
+                html += '<tr><td><b>Prefer Fee : </b>'+preferFee+'/'+hourlyMonthly+'</td><td><b>Performance : </b>'+studentPerformance+'</td></tr>';
                 html += '<tr><td colspan="2"><b>Reason For Query : </b>'+reasonForQuery+'</td></tr>';
                 html += '<tr><td colspan="2"><b>Anything Else : </b>'+anythingElse+'</td></tr>';
                 html += '</table>';
@@ -398,17 +400,17 @@ export class StudentRegistrationComponent implements OnInit {
     $(document).on('click','#submitData',function(){
         $.ajax({
             type: 'POST',
-            //url: baseUrl+"/student",
+            url: baseUrl+"/student",
             contentType: "application/json;charset=utf-8",
             data: data,
-            // success: function(resultData) { 
-            //     console.log(resultData);
-            //     localStorage.setItem("userName",resultData.detail.name);
-            //     localStorage.setItem("type",resultData.type);
-            //     localStorage.setItem("userId",resultData.refId);
-            //     localStorage.setItem("from_reg","Yes");
-            //     window.location.href = '/dashboard/student/'+resultData.refId;
-            // }
+            success: function(resultData) { 
+                console.log(resultData);
+                localStorage.setItem("userName",resultData.detail.name);
+                localStorage.setItem("type",resultData.type);
+                localStorage.setItem("userId",resultData.refId);
+                localStorage.setItem("from_reg","Yes");
+                window.location.href = '/profile/student/'+resultData.refId;
+            }
         }); 
     });
 

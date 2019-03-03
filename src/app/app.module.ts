@@ -25,7 +25,8 @@ import { UpdateClassAndSubjectComponent } from './update-tutor-profile/update-cl
 import { UpdateEducationQualificationComponent } from './update-tutor-profile/update-education-qualification/update-education-qualification.component';
 import { UpdateWorkLocationComponent } from './update-tutor-profile/update-work-location/update-work-location.component';
 import { UpdateWorkExperienceComponent } from './update-tutor-profile/update-work-experience/update-work-experience.component';
-import { UpdateTutorAddressComponent } from './update-tutor-profile/update-tutor-address/update-tutor-address.component'
+import { UpdateTutorAddressComponent } from './update-tutor-profile/update-tutor-address/update-tutor-address.component';
+import { StudentMenuComponent } from './student-menu/student-menu.component'
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { UpdateTutorAddressComponent } from './update-tutor-profile/update-tutor
     UpdateEducationQualificationComponent,
     UpdateWorkLocationComponent,
     UpdateWorkExperienceComponent,
-    UpdateTutorAddressComponent
+    UpdateTutorAddressComponent,
+    StudentMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -78,16 +80,24 @@ import { UpdateTutorAddressComponent } from './update-tutor-profile/update-tutor
         component : NearbyTutorsComponent
       },
       {
+        path : 'profile/student/:id',
+        component : ProfileComponent
+      },
+      {
+        path : 'profile/student/:id',
+        component : ProfileComponent
+      },
+      {
+        path : 'postNewRequirement/:id',
+        component : FindMoreTutorsComponent
+      },
+      {
         path : 'tutorRegistration',
         component : TutorRegistrationComponent
       },
       {
         path : 'nearbyStudents',
         component : NearbyStudendsComponent
-      },
-      {
-        path : 'profile/student/:id',
-        component : ProfileComponent
       },
       {
         path : 'profile/tutor/:id',

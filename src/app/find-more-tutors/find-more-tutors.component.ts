@@ -18,6 +18,9 @@ export class FindMoreTutorsComponent implements OnInit {
    this.route.params.subscribe(params => {
         id = params["id"];
       });
+    $("#viewTabName").text("Post New Requirement");
+    $(".sidenav a").removeClass("active");
+    $(".findMoreTutors").addClass("active");
     $(document).ready(function () {
       $('.registration-form .fieldset:first-child').fadeIn('slow');
   
