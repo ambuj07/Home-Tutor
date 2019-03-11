@@ -19,18 +19,24 @@
         </div>
     </div>
     </div>
-    <div class="search-section">
+    <div class="search-section" style="padding: 20px;">
     <div class="heading2">Find a Tutor. Get a Demo Session Now.</div>
     <div style="padding: 30px 0px;">
-        <div class="col-md-10" style="margin: 0px auto;">
-            <form role="form" class="form-inline search-form"  action="javascript:void(0);">
-                <input type="text" placeholder="Enter Your Area Pin code(Zip)"  name="zipCode" class="form-control" id="zipCode" style="width: 35%;">
-                <div style="width: 50%;margin-top: -7px;">
-                    <select class="form-control selectpicker" data-size="5" id="chooseClass" name="chooseClass">
-                                
-                    </select>
+        <div class="col-md-10 offset-1">
+            <form role="form" class="search-form"  action="javascript:void(0);">
+                <div class="row">
+                    <div class="col-md-4" style="padding:10px 0px;">
+                        <input type="text" placeholder="Enter Your Area Pin code(Zip)"  name="zipCode" class="form-control" id="zipCode">
+                    </div>
+                    <div class="col-md-6" style="padding: 10px 0px;">
+                        <select class="form-control selectpicker" data-size="5" id="chooseClass" name="chooseClass">
+                                    
+                        </select>
+                    </div>
+                    <div class="col-md-2" style="padding: 10px 0px;">
+                        <button style="width: 100%;" type="button" id="find" class="btn btn-login">Find Now</button>
+                    </div>
                 </div>
-                <button style="width:15%" type="button" id="find" class="btn btn-login">Find Now</button>
             </form>
         </div>
     </div>

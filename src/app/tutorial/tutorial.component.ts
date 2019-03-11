@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
 import { environment } from '../../environments/environment';
+declare var $:any;
 
 
 @Component({
@@ -35,13 +35,28 @@ export class TutorialComponent implements OnInit {
             }
           }
         });
-        //$("#chooseClass").html(classHtml).selectpicker('refresh');
+        $("#chooseClass").html(classHtml).selectpicker('refresh');
         //$("#chooseSubject").html(subjectHtml).selectpicker('refresh');
     })
     $("#find").click(function(){
       var zip = $("#zipCode").val();
       var classSel = $("select#chooseClass").val();
-      window.location.href = '/nearbyTutors?zip='+zip+'&class='+classSel;
+      if(zip == "" || zip == null){
+        $("#zipCode").addClass('input-error');
+        showToast("Zip code is mandatory.")
+      }else{
+        window.location.href = '/nearbyTutors?zip='+zip+'&class='+classSel;
+      }
+    });
+    //general functions
+    function showToast(data) {
+      var x = document.getElementById("snackbar");
+      x.className = "show";
+      x.innerText = data;
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+    $(document).on('change','.selectpicker',function() {
+      $(this).next().blur();
     });
   }
 
