@@ -33,6 +33,17 @@
                             
                         </select>
                     </div>
+                    <div class="form-group" id="boardDiv" hidden>
+                        <select class="form-control selectpicker" id="board" name="board" required>
+                                <option value="" selected disabled>Select Board</option>
+                                <option value="CBSE">CBSE</option>
+                                <option value="IB">IB</option>
+                                <option value="ISC">ISC</option>
+                                <option value="STATE BOARD">STATE BOARD</option>
+                                <option value="OPEN SCHOOL">OPEN SCHOOL</option>
+                                <option value="OTHER">OTHER</option>
+                        </select>
+                    </div>
                     <div style="text-align:right">
                         <button type="button" class="btn btn-next">Next</button>
                     </div>
@@ -119,37 +130,38 @@
                 </div>
                 <div class="form-bottom">
                     <div class="form-group">
+                        <label>I am looking for</label>
                         <select class="form-control selectpicker" id="tutorType" name="tutorType" required>
-                            <option value="" disabled>I am looking for</option>
-                            <option value="TUTOR">Home Tutor / Trainer</option>
+                            <option value="TUTOR" selected>Home Tutor / Trainer</option>
                             <option value="COACHING">Tuition Centre</option>
                             <option value="ONLINE">Online Tutor / Trainer</option>
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Prefer Tutor</label>
                         <select class="form-control selectpicker" id="preferGender" name="preferGender" required>
-                            <option value="" disabled>Prefer Gender</option>
-                            <option value="Any The Best">Any The Best</option>
+                            <option value="Any The Best" selected>Any The Best</option>
                             <option value="Male Only">Male Only</option>
                             <option value="Female Only">Female Only</option>
                             <option value="Decide Later">Decide Later</option>
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Prefer Timing</label>
                         <select class="form-control selectpicker" id="preferTiming" name="preferTiming" required>
-                            <option value="" disabled>Prefer Timing</option>
+                            <option value="Decide Later" selected>Decide Later</option>
                             <option value="Between 7 AM to 9 AM">Between 7 AM to 9 AM</option>
                             <option value="Between 9 AM to 12 PM">Between 9 AM to 12 PM</option>
                             <option value="Between 12 PM to 3 PM">Between 12 PM to 3 PM</option>
                             <option value="Between 3 PM to 5 PM">Between 3 PM to 5 PM</option>
                             <option value="Between 5 PM to 7 PM">Between 5 PM to 7 PM</option>
                             <option value="Between 7 PM to 9 PM">Between 7 PM to 9 PM</option>
-                            <option value="Decide Later">Decide Later</option>
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Prefer Day</label>
                         <select class="form-control selectpicker" id="preferDay" name="preferDay" required>
-                            <option value="" disabled>Prefer Day</option>
+                            <option value="Decide Later" selected>Decide Later</option>
                             <option value="Once A Week">Once A Week</option>
                             <option value="Twice A Week">Twice A Week</option>
                             <option value="Thrice A Week">Thrice A Week</option>
@@ -160,26 +172,27 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Prefer Fee(RS)"  name="preferFee" class="form-control" id="preferFee" style="width: 54%;display: inline;">
+                        <label>Prefer Fee (<i>*Not Finial, May be Negotiable</i>)</label>
+                        <input type="tel" placeholder="RS Hourly/Monthly"  name="preferFee" class="form-control" id="preferFee" style="width: 54%;display: inline;">
                         <div style="width: 44%;float: right;">
                             <select class="form-control selectpicker" id="hourlyMonthly" name="hourlyMonthly">
-                                <option value="" disabled>Hourly / Monthly</option>
+                                <option value="" disabled>Select Hourly/Monthly</option>
                                 <option value="hour">Hourly</option>
                                 <option value="month">Monthly</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Student Performance</label>
                         <select class="form-control selectpicker" id="studentPerformance" name="studentPerformance" required>
-                            <option value="" disabled>Student Performance</option>
                             <option value="Average">Average</option>
                             <option value="Good">Good</option>
                             <option value="Excellent">Excellent</option>
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>I want to</label>
                         <select class="form-control selectpicker" id="reasonForQuery" name="reasonForQuery" required>
-                            <option value="" disabled>I want to</option>
                             <option value="Start immidiately ">Start immidiately </option>
                             <option value="Just quire about fee and avaibility">Just quire about fee and avaibility</option>
                         </select>

@@ -139,6 +139,7 @@ export class StudentRegistrationComponent implements OnInit {
         $("#chooseClass").html(classHtml).selectpicker('refresh');
         $("#chooseClassDiv").prop('hidden',false);
         $("#chooseSubjectDiv").prop('hidden',true);
+        $("#boardDiv").prop('hidden',true);
       });
 
       const prepAndKgSubject = ['All Subject','English','Hindi','Math']
@@ -208,6 +209,10 @@ export class StudentRegistrationComponent implements OnInit {
 
         $("#chooseSubject").html(subjectHtml).selectpicker('refresh');
         $("#chooseSubjectDiv").prop('hidden',false);
+      });
+
+      $("#chooseSubjectDiv").on('change',function(){
+         $("#boardDiv").prop('hidden',false); 
       });
 
       //city and state
@@ -342,6 +347,7 @@ export class StudentRegistrationComponent implements OnInit {
             var classcategory = $("#classGroup").val();  
             var particularClass = $("#chooseClass").val(); 
             var subjects = $("#chooseSubject").val();
+            var board = $("#board").val();
             var addrLine1 = $("#addrLine1").val();
             var location = $("#location").val()
             var zipCode = $("#pinCode").val() 
@@ -364,19 +370,34 @@ export class StudentRegistrationComponent implements OnInit {
             data = '{"id":null,"category":"","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'","name":"'+name+'","addrLine1":"'+addrLine1+'","location":"'+location+'","zipCode":"'+zipCode+'","states":"'+states+'","city":"'+city+'","email":"'+email+'","mobile":"'+mobile+'","whatsappNumber":"'+whatsappNumber+'","gender":"'+chooseGender+'","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'/'+hourlyMonthly+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
             $("#myProfileModal").modal('show');
             var html = '<table class="table table-bordered">';
-                html += '<tr><td><b>Class Category : </b>'+classcategory+'</td><td><b>Class: </b>'+particularClass+'</td></tr>';
-                html += '<tr><td colspan="2"><b>Subjects : </b>'+subjects+'</td></tr>';
-                html += '<tr><td colspan="2"><b>Address: </b>'+addrLine1+', '+location+', '+city+', '+states+', '+zipCode+'</td></tr>';
-                html += '<tr><td><b>Name : </b>'+name+'</td><td><b>Email : </b>'+email+'</td></tr>';
-                html += '<tr><td><b>Mobile : </b>'+mobile+'</td><td><b>Whatsapp : </b>'+whatsappNumber+'</td></tr>';
-                html += '<tr><td><b>Turor Type : </b>'+turorType+'</td><td><b>Prefer Gender : </b>'+preferGender+'</td></tr>';
-                html += '<tr><td><b>Prefer Timing : </b>'+preferTiming+'</td><td><b>Prefer Day : </b>'+preferDay+'</td></tr>';
-                html += '<tr><td><b>Prefer Fee : </b>'+preferFee+'/'+hourlyMonthly+'</td><td><b>Performance : </b>'+studentPerformance+'</td></tr>';
-                html += '<tr><td colspan="2"><b>Reason For Query : </b>'+reasonForQuery+'</td></tr>';
-                html += '<tr><td colspan="2"><b>Anything Else : </b>'+anythingElse+'</td></tr>';
+                html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Contact Details</th></tr>'
+                html += '<tr><td style="width:50%"> Name  </td><td> <b>'+name+'</b></td></tr>';
+                html += '<tr><td> Mobile No.  </td><td> <b>'+mobile+'</b></td></tr>';
+                html += '<tr><td> WhatsApp No./Alternate No.  </td><td> <b>'+whatsappNumber+'</b></td></tr>';
+                html += '<tr><td> Email ID  </td><td> <b>'+email+'</b></td></tr>';
                 html += '</table>';
-                html += '<div style="text-align:center">';
-                html += '<button type="button" id="submitData" class="btn btn-next btn-register">POST YOUR REQUIREMENT NOW</button>';
+                html += '<br>'
+                html += '<table class="table table-bordered">';
+                html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Learning Need</th></tr>'
+                html += '<tr><td style="width:50%"> Class/Course/Exam  </td><td> <b>'+particularClass+', '+subjects+', '+board+'</b></td></tr>';
+                html += '<tr><td> Address </td><td> <b>'+addrLine1+', '+location+', '+city+', '+states+', '+zipCode+'</b></td></tr>';
+                html += '</table>';
+                html += '<br>'
+                html += '<table class="table table-bordered">';
+                html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Preference</th></tr>'
+                html += '<tr><td style="width:50%"> I am looking for  </td><td> <b>'+turorType+'</b></td></tr>';
+                html += '<tr><td> Prefer Tutor </td><td> <b>'+preferGender+'</b></td></tr>';
+                html += '<tr><td> Prefer Timing </td><td> <b>'+preferTiming+'</b></td></tr>';
+                html += '<tr><td> Prefer Day </td><td> <b>'+preferDay+'</b></td></tr>';
+                html += '<tr><td> I want to </td><td> <b>'+reasonForQuery+'</b></td></tr>';
+                html += '<tr><td> Prefer Fee (<i>*Not Finial, May be Negotiable</i>) </td><td> <b>'+preferFee+'/'+hourlyMonthly+'</b></td></tr>';
+                html += '<tr><td> Student Performance </td><td> <b>'+studentPerformance+'</b></td></tr>';
+                html += '<tr><td> Any thing else </td><td> <b>'+anythingElse+'</b></td></tr>';
+                html += '</table>';
+                html += '<br>'
+                html += '<div>';
+                html += '<button type="button"  style="width:30%" class="btn btn-previous" data-dismiss="modal">Back</button>';
+                html += '<button type="button"  style="width:30%;float: right;" id="submitData" class="btn">Confirm</button>'
                 html += '</div>';
                 $("#myProfileModal").find(".modal-body").html(html);
 
