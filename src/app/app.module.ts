@@ -26,7 +26,9 @@ import { UpdateEducationQualificationComponent } from './update-tutor-profile/up
 import { UpdateWorkLocationComponent } from './update-tutor-profile/update-work-location/update-work-location.component';
 import { UpdateWorkExperienceComponent } from './update-tutor-profile/update-work-experience/update-work-experience.component';
 import { UpdateTutorAddressComponent } from './update-tutor-profile/update-tutor-address/update-tutor-address.component';
-import { StudentMenuComponent } from './student-menu/student-menu.component'
+import { StudentMenuComponent } from './student-menu/student-menu.component';
+import { StudentUpdateStatusComponent } from './student-update-status/student-update-status.component';
+import { ReviewByStudentComponent } from './review-by-student/review-by-student.component'
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { StudentMenuComponent } from './student-menu/student-menu.component'
     UpdateWorkLocationComponent,
     UpdateWorkExperienceComponent,
     UpdateTutorAddressComponent,
-    StudentMenuComponent
+    StudentMenuComponent,
+    StudentUpdateStatusComponent,
+    ReviewByStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -142,6 +146,14 @@ import { StudentMenuComponent } from './student-menu/student-menu.component'
       {
         path : 'tutor/address/:id',
         component : UpdateTutorAddressComponent
+      },
+      {
+        path : 'student/updateStatus/:id',
+        component : StudentUpdateStatusComponent
+      },
+      {
+        path : 'student/review/:id',
+        component : ReviewByStudentComponent
       },
       {
         path: '**',

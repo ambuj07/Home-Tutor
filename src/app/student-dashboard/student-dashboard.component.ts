@@ -48,7 +48,8 @@ export class StudentDashboardComponent implements OnInit {
                 html += '<td>'+response.contents[i].subject+'</td>';
                 html += '<td>'+response.contents[i].location+'</td>';
                 html += '<td>'+response.contents[i].gender+'</td>';
-                html += '<td><span id="status_'+response.contents[i].id+'">'+response.contents[i].status+'</span> <button data-id="'+response.contents[i].id+'" data-toggle="modal" data-target="#changeStatusModal" class="btn btn-xs changeStatusBtn"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
+                html += '<td><span id="status_'+response.contents[i].id+'">'+response.contents[i].status+'</span></td>'; 
+                //<button data-id="'+response.contents[i].id+'" data-toggle="modal" data-target="#changeStatusModal" class="btn btn-xs changeStatusBtn"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                 if(response.contents[i].applications.length > 0){
                   var data = JSON.stringify(response.contents[i].applications)
                   html += "<td>"+response.contents[i].applications.length+" tutor applied <button data='"+data+"' data-toggle='modal' data-target='#viewJobApplicationModal' class='btn btn-xs viewJobDetailBtn'><i class='fa fa-eye' aria-hidden='true'></i></button></td>";

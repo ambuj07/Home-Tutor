@@ -173,17 +173,37 @@ textarea.form-control::-webkit-input-placeholder {
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
     background-color: #058472 !important;
 }
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #058472 !important;
+}
 .custom-checkbox .custom-control-label::before {
     border-radius: 2px !important;
 }
 .custom-control-label::before {
     top: 2px !important;
-    left: -25px !important;
+    left: -26px !important;
     display: block !important;
     width: 20px !important;
     height: 20px !important;
     background-color: #fff !important;
     border: 1px solid #ccc !important;
+}
+.custom-radio .custom-control-label::before {
+    top: 7px !important;
+    left: -26px !important;
+    display: block !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+}
+.custom-radio .custom-control-label::after {
+    top: 9px !important;
+}
+.custom-radio label.custom-control-label {
+    color: #3a3a3a;
+    font-size : 22px;
+    font-weight: normal;
 }
 label.custom-control-label {
     color: #3a3a3a;

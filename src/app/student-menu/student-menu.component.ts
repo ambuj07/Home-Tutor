@@ -63,6 +63,14 @@ export class StudentMenuComponent implements OnInit {
     $(document).on('click',".findMoreTutors",function(){
       window.location.href = '/postNewRequirement/'+id
     });
+    //updateStatus
+    $(document).on('click',".updateStatus",function(){
+      window.location.href = 'student/updateStatus/'+id
+    });
+    //student/review/
+    $(document).on('click',".review",function(){
+      window.location.href = 'student/review/'+id
+    });
   }
 
 }

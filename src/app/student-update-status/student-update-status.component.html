@@ -1,0 +1,68 @@
+<app-student-menu></app-student-menu>
+<div class="section-two" style="padding: 25px;">
+    <div class="heading1">Requirements Posted By You</div>
+    <div class="row" id="postedRequirements">
+      
+    </div>
+</div>
+<!-- change status Modal -->
+<div class="modal fade" id="changeStatusModal">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Choose one Status</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="changeStatusForm" onsubmit="return false;">
+            <div class="form-group">
+                <div class="custom-control custom-radio custom-control">
+                    <input type="radio" value="I have hired" class="custom-control-input" id="status1" name="status">
+                    <label class="custom-control-label" for="status1">I have hired</label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-radio custom-control">
+                    <input type="radio" value="I have fixed Demo class" class="custom-control-input" id="status2" name="status">
+                    <label class="custom-control-label" for="status2">I have fixed Demo class</label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-radio custom-control">
+                      <input type="radio" value="I have postponed" class="custom-control-input" id="status3" name="status">
+                      <label class="custom-control-label" for="status3">I have postponed</label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-radio custom-control">
+                      <input type="radio" value="I did not received calls from your tutor" class="custom-control-input" id="status4" name="status">
+                      <label class="custom-control-label" for="status4">I did not received calls from your tutor</label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-radio custom-control">
+                      <input type="radio" value="I am not happy with the quotes I received" class="custom-control-input" id="status5" name="status">
+                      <label class="custom-control-label" for="status5">I am not happy with the quotes I received</label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-radio custom-control">
+                      <input type="radio" value="I Don't need any more (Cancle)" class="custom-control-input" id="status6" name="status">
+                      <label class="custom-control-label" for="status6">I Don't need any more (Cancle)</label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-radio custom-control">
+                      <input type="radio" value="I have hire from out side HANSA TUTOR" class="custom-control-input" id="status7" name="status">
+                      <label class="custom-control-label" for="status7">I have hire from out side HANSA TUTOR</label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-radio custom-control">
+                      <input type="radio" value="Other" class="custom-control-input" id="status8" name="status">
+                      <label class="custom-control-label" for="status8">Other</label>
+                  </div>
+                  <hr>
+                <input type="hidden" id="jobId" name="jobId">
+            </div>
+            <div style="text-align:center">
+                <button type="button" class="btn saveStatus">Submit Status</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
