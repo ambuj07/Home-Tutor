@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://13.232.96.211:8080'
+  baseUrl: 'http://18.217.108.201:8080'
 };
