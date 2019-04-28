@@ -95,13 +95,21 @@ export class StudentRegistrationComponent implements OnInit {
       success: function(resultData) { 
           console.log(resultData);
           resultData.forEach(function (a){
-            categoryHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+a.name+'</option>';
+            var name = a.name;
+            var nameArr = a.name.split("(");
+            if(nameArr.length > 1){
+              categoryHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+nameArr[0]+'</option>';
+              categoryHtml += '<option style="font-size:12px;margin-top:-10px" data-id="'+a.id+'" value="'+a.name+'">('+nameArr[1]+'</option>';
+            }else{
+              categoryHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+a.name+'</option>';
+            }
           })
         }
     });
     $("#classGroup").html(categoryHtml).selectpicker();
       //show on change
       $("#classGroup").on('change',function(){
+        $("#classGroup").val($(this).val()).selectpicker("refresh")
         $("#chooseClass").html('');
         var classGroup = $('option:selected', this).attr('data-id');
         var classHtml = "";

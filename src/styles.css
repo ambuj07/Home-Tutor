@@ -614,6 +614,7 @@ button.btn.dropdown-toggle {
     padding: 0 !important;
     z-index: 99999;
     min-width: 100% !important;
+    max-width: 300px !important;
 }
 .bs-searchbox input[type="text"]{
     height: 35px !important;
