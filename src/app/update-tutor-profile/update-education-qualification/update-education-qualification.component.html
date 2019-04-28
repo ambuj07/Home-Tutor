@@ -4,7 +4,7 @@
   <div class="accordion_container">
     <div class="accordion_head">Educational Qualification</div>
     <div class="accordion_body">
-         <div class="table-responsive">
+         <!-- <div class="table-responsive">
          <table class="table table-bordered education-table" style="min-width:700px">
             <tr>
                 <th>PASSING</th>
@@ -168,7 +168,95 @@
          <div style="text-align:right;padding: 25px 40px 0px;text-align: center;">
            <button type="button" id="saveQualification" class="btn btn-primary" style="width: 300px;">Save Education</button>
          </div>
+         <br><br> -->
+                <br><br>
+                <div class="row">
+                  <div class="col-12 col-md-3 eduTab" data-id="intermidiate">
+                      <div class="education-card">INTERMIDIATE<br><small>(Class XII / 10+2)</small></div>
+                  </div>
+                  <div class="col-12 col-md-3 eduTab" data-id="graduation">
+                      <div class="education-card">GRADUATION<br><small>(Bsc/ Bcom/ Ba/ Bba/ Btech)</small></div>
+                  </div>
+                  <div class="col-12 col-md-3 eduTab" data-id="master">
+                      <div class="education-card">MASTER<br><small>(Msc/ Mcom/ Ma/ Mba/ Mtech)</small></div>
+                  </div>
+                  <div class="col-12 col-md-3 eduTab" data-id="other">
+                      <div class="education-card">OTHER <br><small>(Diploma/ Certificate Courses)</small></div>
+                  </div> 
+                </div>
     </div>
   </div>
   
 </div><!-- container -->
+<!-- change status Modal -->
+<div class="modal fade" id="educationModal">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="passing-deg"></h4>
+              <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+              <form id="educationForm" data-id="" onsubmit="return false;">
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="examStream" name="examStream">
+                            <option value="" selected disabled>EXAM/STREAM</option>
+                            <option value="SCIENCE">SCIENCE</option>
+                            <option value="COMMERCE">COMMERCE</option>
+                            <option value="HUMINITY/ART">HUMINITY/ART</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="boardGroup">
+                        <div id="boardForInterDiv">
+                            <select class="form-control selectpicker" id="boardForInter" name="board">
+                                    <option value="" selected disabled>	NAME PASSING BOARD/UNIVERSITY</option>
+                                    <option value="CBSE">CBSE</option>
+                                    <option value="IB">IB</option>
+                                    <option value="ISC">ISC</option>
+                                    <option value="STATE BOARD">STATE BOARD</option>
+                                    <option value="OPEN SCHOOL">OPEN SCHOOL</option>
+                                    <option value="OTHER">OTHER</option>
+                            </select>
+                        </div>
+                        <div class="input-group" id="boardForOtherDiv">
+                            <input type="text" placeholder="NAME PASSING BOARD/UNIVERSITY" id="boardForOther" class="form-control" name="boardForOther">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker states" data-size="3" name="states" data-live-search="true" required>
+                            
+                        </select>
+                    </div>  
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="tel" placeholder="Passing Year" id="passingYear" class="form-control" name="passingYear" maxlength="4" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="modeOfStudy" name="modeOfStudy">
+                            <option value="" selected disabled>MODE OF STUDY</option>
+                            <option value="REGULAR">REGULAR</option>
+                            <option value="CORRESPODENCE">CORRESPODENCE</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="tel" placeholder="MARKS OBTENED (%)" id="markObtained" class="form-control" name="markObtained" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control selectpicker" id="schoolType" name="schoolType">
+                            <option value="" selected disabled>TYPE OF SCHOOL/COLLAGE</option>
+                            <option value="GOVT">GOVT</option>
+                            <option value="PRIVATE">PRIVATE</option>
+                        </select>
+                    </div>
+                    <input type="hidden" id="eduId" name="eduId">
+                    <div style="text-align:center">
+                        <button type="button" id="saveQualification" class="btn">Save Qualification</button>
+                    </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
