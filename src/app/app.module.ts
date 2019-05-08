@@ -155,10 +155,14 @@ import { ReviewByStudentComponent } from './review-by-student/review-by-student.
         path : 'student/review/:id',
         component : ReviewByStudentComponent
       },
-      {
-        path: '**',
-        redirectTo : ''
-     },
+    //   {
+    //     path: 'admin',
+    //     redirectTo : 'http://www.hansatutor.com/admin/#/'
+    //   },
+    //   {
+    //     path: '**',
+    //     redirectTo : ''
+    //  },
    ])
   ],
   providers: [],

@@ -2,7 +2,7 @@
 .text-centered {
     text-align: center;
 }
-.navbar{
+/* .navbar{
     padding: 0px 20px !important;
 }
 ul.navbar-nav {
@@ -16,7 +16,7 @@ a.navbar-brand {
 a.nav-link,a.nav-link:hover,a.nav-link:focus {
     color: white;
     font-weight: bold;
-}
+} */
 .navbar-expand .navbar-nav .dropdown-menu{
     left: auto;
     right: -5px;

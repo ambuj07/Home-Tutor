@@ -20,7 +20,7 @@
     width: 0;
     position: fixed;
     z-index: 9;
-    top: 50px;
+    top: 90px;
     left: 0;
     background-color: #ccc;
     overflow-x: hidden;
@@ -45,7 +45,7 @@
 #openSideNav{
     font-size: 30px;
     cursor: pointer;
-    margin-top: 50px;
+    margin-top: 90px;
     background: #313131;
     color: white;
     padding: 0px 20px;
