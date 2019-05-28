@@ -2,7 +2,7 @@
 <app-tutor-menu></app-tutor-menu>
 <div class="col-lg-12">
     <div class="card hovercard">
-      <div class="total-credit">Available Credit : <span id="total-credit"></span></div>
+      <div class="total-credit"> </div>
       <div class="slidable">
         <div class="useravatarProfile">
             <img class="profilePic" alt="" src="">
@@ -58,32 +58,65 @@
         </div>
       </div>
     </div> -->
-
-    <table class="table table-bordered">
-        <tr>
-          <td style="width:50%"><b>Mobile :</b> <span id="mobile"></span></td>
-          <td><b>Email :</b> <span id="email"></span></td>
-        </tr>
-        <tr>
-          <td><b>WhatsApp Number :</b> <span id="whatsappNumber"></span></td>
-          <td><b>Gender :</b> <span id="gender"></span></td>
-        </tr>
-        <tr>
-          <td><b>Age :</b> <span id="age"></span></td>
-          <td><b>Teaching Experience :</b> <span id="experience"></span> Years</td>
-        </tr>
-        <tr>
-            <td><b>Highest Qualification :</b> <span id="qualification"></span></td>
-            <td><b>Mode Of Teaching :</b> <span id="tutorType"></span></td>
-        </tr>
-        <tr>
-            <td><b>Job Type :</b> <span id="jobType"></span></td>
-            <td><b>Fluency In English :</b> <span id="fluencyInEnglish"></span></td>
-        </tr>
-        <tr>
-            <td colspan="2"><b>Location :</b> <span id="location"></span></td>
-        </tr>
-    </table>
+    <br>
+    <div class="heading1">Personal Details</div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12" style="padding:0">
+          <table class="table table-bordered" style="margin-bottom:0">
+            <tr>
+              <td style="width:50%">Mobile :</td>
+              <td><b> <span id="mobile"></span></b></td>
+            </tr>
+            <tr>
+              <td>WhatsApp Number :</td>
+              <td><b> <span id="whatsappNumber"></span></b></td>
+            </tr>
+            <tr>
+              <td>Email :</td>
+              <td><b> <span id="email"></span></b></td>
+            </tr>
+            <tr>
+              <td>Gender :</td>
+              <td><b> <span id="gender"></span></b></td>
+            </tr>
+            <tr>
+              <td>Age :</td>
+              <td><b> <span id="age"></span></b></td>
+            </tr>
+            <tr>
+                <td>Location :</td>
+                <td><b> <span id="location"></span></b></td>
+            </tr>
+        </table>
+        </div>
+        <div class="col-md-6 col-xs-12" style="padding:0">
+          <table class="table table-bordered">
+            <tr>
+                <td style="width:50%">Highest Qualification :</td>
+                <td><b> <span id="qualification"></span></b></td>
+            </tr>
+            <tr>
+                <td>Job Type :</td>
+                <td><b> <span id="jobType"></span></b></td>
+            </tr>
+            <tr>
+              <td>Teaching Experience :</td>
+              <td><b> <span id="experience"></span> Years</b></td>
+            </tr>
+            <tr>
+                <td>Mode Of Teaching :</td>
+                <td><b> <span id="tutorType"></span></b></td>
+            </tr>
+            <tr>
+                <td>Fluency In English :</td>
+                <td><b> <span id="fluencyInEnglish"></span></b></td>
+            </tr>
+            <tr>
+                <td colspan="2"> &nbsp; </td>
+            </tr>
+        </table>
+        </div>
+    </div>
     <br>
     <div class="heading1">Classes And Subjects</div>
     <table id="classesAndSubjectTable" class="table table-bordered">
@@ -94,7 +127,7 @@
     </table>
     <br>
     <div class="heading1">Educational Details</div>
-    <div class="taable-responsive">
+    <!-- <div class="taable-responsive">
       <table id="educationalTable" class="table table-bordered">
         <tr>
           <th>Passing</th>
@@ -107,9 +140,10 @@
           <th>Type Of School/<br>Collage</th>
         </tr>
       </table>
-    </div>
+    </div> -->
+    <div class="row" id="educationalTable"></div>
     <br>
-    <div class="heading1">Woking Area Pin Codes</div>
+    <div class="heading1">Working Area Pin Codes</div>
     <div class="table-responsive">
       <table id="zipCodeTable" class="table table-bordered">
   

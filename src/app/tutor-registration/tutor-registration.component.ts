@@ -148,24 +148,64 @@ export class TutorRegistrationComponent implements OnInit {
     //Subjects and classes
     var classHtml = '<option value="" disabled selected>Select Class</option>';
     var subjectHtml = '';
+    // $.ajax({
+    //   type: 'GET',
+    //   url: baseUrl+"/config",
+    //   async:false,
+    //   //dataType: "json",
+    //   contentType: "application/json;charset=utf-8",
+    //   success: function(resultData) { 
+    //       console.log(resultData);
+    //       for(var i=0; i<resultData.classes.length; i++){
+    //         classHtml += '<option value="'+resultData.classes[i].id+'">'+resultData.classes[i].name+'</option>';
+    //       }
+    //       for(var i=0; i<resultData.subjects.length; i++){
+    //         subjectHtml += '<option value="'+resultData.subjects[i].id+'">'+resultData.subjects[i].name+'</option>';
+    //       }
+    //     }
+    //   });
+    //   $("#chooseClass").html(classHtml).selectpicker('refresh');
+    //   $("#chooseSubject").html(subjectHtml).selectpicker('refresh');
     $.ajax({
       type: 'GET',
-      url: baseUrl+"/config",
+      url: baseUrl+"/config/category",
       async:false,
-      //dataType: "json",
       contentType: "application/json;charset=utf-8",
       success: function(resultData) { 
           console.log(resultData);
-          for(var i=0; i<resultData.classes.length; i++){
-            classHtml += '<option value="'+resultData.classes[i].id+'">'+resultData.classes[i].name+'</option>';
-          }
-          for(var i=0; i<resultData.subjects.length; i++){
-            subjectHtml += '<option value="'+resultData.subjects[i].id+'">'+resultData.subjects[i].name+'</option>';
-          }
+          resultData.forEach(function (a){
+            var name = a.name;
+            var nameArr = a.name.split("(");
+            if(nameArr.length > 1){
+              classHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+nameArr[0]+'</option>';
+              classHtml += '<option style="font-size:12px;margin-top:-10px" data-id="'+a.id+'" value="'+a.name+'">('+nameArr[1]+'</option>';
+            }else{
+              classHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+a.name+'</option>';
+            }
+          })
         }
       });
       $("#chooseClass").html(classHtml).selectpicker('refresh');
-      $("#chooseSubject").html(subjectHtml).selectpicker('refresh');
+
+      $("#chooseClass").on('change',function(){
+        $("#chooseClass").val($(this).val()).selectpicker("refresh")
+        var classGroup = $("#chooseClass").val();
+        console.log("dcs == "+classGroup)
+        var chooseClass = $('option:selected', this).attr('data-id');
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+"/config/subject?groupId="+chooseClass,
+            async:false,
+            contentType: "application/json;charset=utf-8",
+            success: function(resultData) { 
+                console.log(resultData);
+                resultData.forEach(function (a){
+                    subjectHtml += '<option data-id="'+classGroup+'" value="'+a.name+'">'+a.name+'</option>';
+                })
+                }
+            });
+        $("#chooseSubject").html(subjectHtml).selectpicker('refresh');
+      });
 
     //pin code function
     //   function geolocate(pin) {
@@ -212,7 +252,7 @@ export class TutorRegistrationComponent implements OnInit {
             var location = $("#location").val(); 
             var mobile = $("#mobileNumber").val(); 
             var email = $("#email").val();   
-            var classes = $("#chooseClass").val(); 
+            var classes = $("#chooseClass").find("option:selected").attr("data-id"); 
             var subjects = $("#chooseSubject").val();
             var mapping = [];
             for(var i=0; i<subjects.length;i++){

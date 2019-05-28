@@ -53,7 +53,7 @@ export class TutorProfileComponent implements OnInit {
             }else{
               $(".profilePic").attr("src","/assets/userIcon.png");
             }
-            $(".total-credit").text("Available Credit "+data.credit);
+            $(".total-credit").text("Credit : "+data.credit);
             if(data.mapping.length > 0){
               var grouped = {};
               data.mapping.forEach(function (a) {
@@ -72,44 +72,62 @@ export class TutorProfileComponent implements OnInit {
             if(data.education.length > 0){
               var eduTable = '';
               data.education.forEach(function(a){
+                eduTable += '<div class="col-md-6 col-xs-12" style="padding:0">';
+                eduTable += '<table class="table table-bordered">';
                 eduTable += '<tr>';
-                eduTable += '<td>'+a.degree+'</td>'
+                eduTable += '<td style="background: #c3c3c3;text-transform: uppercase;font-weight: bold;">'+a.degree+'</td>'
+                eduTable += '</tr>';
+                eduTable += '<tr>';
                 if(a.stream != undefined && a.stream != null){
-                  eduTable += '<td>'+a.stream +'</td>'
+                  eduTable += '<td>Exam/Stream : <b>'+a.stream +'</b></td>'
                 }else{
-                  eduTable += '<td></td>'
-                }
-                if(a.board != undefined && a.board != null){
-                  eduTable += '<td>'+a.board +'</td>'
-                }else{
-                  eduTable += '<td></td>'
-                }
-                if(a.state != undefined && a.state != null){
-                  eduTable += '<td>'+a.state +'</td>'
-                }else{
-                  eduTable += '<td></td>'
-                }
-                if(a.year != undefined && a.year != null){
-                  eduTable += '<td>'+a.year +'</td>'
-                }else{
-                  eduTable += '<td></td>'
-                }
-                if(a.mode != undefined && a.mode != null){
-                  eduTable += '<td>'+a.mode +'</td>'
-                }else{
-                  eduTable += '<td></td>'
-                }
-                if(a.marksObtained != undefined && a.marksObtained != null){
-                  eduTable += '<td>'+a.marksObtained +'</td>'
-                }else{
-                  eduTable += '<td></td>'
-                }
-                if(a.type != undefined && a.type != null){
-                  eduTable += '<td>'+a.type +'</td>'
-                }else{
-                  eduTable += '<td></td>'
+                  eduTable += '<td>Exam/Stream : </td>'
                 }
                 eduTable += '</tr>';
+                eduTable += '<tr>';
+                if(a.board != undefined && a.board != null){
+                  eduTable += '<td>Name Passing Board/ University : <b> '+a.board +'</b></td>'
+                }else{
+                  eduTable += '<td>Name Passing Board/ University : </td>'
+                }
+                eduTable += '</tr>';
+                eduTable += '<tr>';
+                if(a.state != undefined && a.state != null){
+                  eduTable += '<td>Passing State : <b>'+a.state +'</b></td>'
+                }else{
+                  eduTable += '<td>Passing State : </td>'
+                }
+                eduTable += '</tr>';
+                eduTable += '<tr>';
+                if(a.year != undefined && a.year != null){
+                  eduTable += '<td>Passing Year : <b>'+a.year +'</b></td>'
+                }else{
+                  eduTable += '<td>Passing Year : </td>'
+                }
+                eduTable += '</tr>';
+                eduTable += '<tr>';
+                if(a.mode != undefined && a.mode != null){
+                  eduTable += '<td>Mode Of Study : <b>'+a.mode +'</b></td>'
+                }else{
+                  eduTable += '<td>Mode Of Study : </td>'
+                }
+                eduTable += '</tr>';
+                eduTable += '<tr>';
+                if(a.marksObtained != undefined && a.marksObtained != null){
+                  eduTable += '<td>Marks Obtained (%) : <b>'+a.marksObtained +'</b></td>'
+                }else{
+                  eduTable += '<td>Marks Obtained (%) :</td>'
+                }
+                eduTable += '</tr>';
+                eduTable += '<tr>';
+                if(a.type != undefined && a.type != null){
+                  eduTable += '<td>Type Of School/ Collage : <b>'+a.type +'</b></td>'
+                }else{
+                  eduTable += '<td>Type Of School/ Collage</td>'
+                }
+                eduTable += '</tr>';
+                eduTable += '</table>';
+                eduTable += '</div>';
               }); 
               $("#educationalTable").append(eduTable);
             }
