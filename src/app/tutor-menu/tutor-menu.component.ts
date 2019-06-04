@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
 declare var $:any;
 
 @Component({
@@ -17,6 +18,28 @@ export class TutorMenuComponent implements OnInit {
     this.route.params.subscribe(params => {
         id = params["id"];
     });
+
+    const baseUrl = environment.baseUrl;
+      var id;
+      this.route.params.subscribe(params => {
+        id = params["id"];
+      });
+      $("#viewTabName").text("Profile");
+      $(".sidenav a").removeClass("active");
+      $("#profile").addClass("active");
+       
+      $.ajax({
+          type: 'GET',
+          url: baseUrl+"/tutor/"+id,
+          // beforeSend: function(xhr) {
+          //   xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+          // },
+          success : function(data){
+            if(!data.otpValidated){
+              window.location.href = '/otp';
+            }
+          }
+      });
 
     var profilePicUrl = localStorage.getItem("profilePicUrl");
     if(profilePicUrl != undefined && profilePicUrl != null && profilePicUrl != ""){

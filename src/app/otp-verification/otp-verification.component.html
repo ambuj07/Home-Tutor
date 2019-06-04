@@ -1,0 +1,22 @@
+<div id="wrapper" style="margin-top:150px">
+  <div id="dialog">
+    <h4>Please enter the 4-digit verification code we sent via SMS:</h4>
+    <span>(we want to make sure it's you)</span>
+    <div id="form">
+      <input type="tel" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+      <input type="tel" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+      <input type="tel" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+      <input type="tel" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+      <div>
+        <div id="resultMsg"></div>
+        <br>
+        <button class="btn btn-register" id="submitOtp">Submit</button>
+      </div>
+    </div>
+    <br>
+    <div>
+      Didn't receive the code?<br />
+      <a href="javascript:void(0)" id="resendOtp">Send code again</a><br />
+    </div>
+  </div>
+</div>

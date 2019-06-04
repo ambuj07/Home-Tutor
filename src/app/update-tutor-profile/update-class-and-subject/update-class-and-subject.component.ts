@@ -40,24 +40,64 @@ export class UpdateClassAndSubjectComponent implements OnInit {
       });
       var classHtml = '<option value="" disabled selected>Select Class</option>';
       var subjectHtml = '';
-      $.ajax({
-        type: 'GET',
-        url: baseUrl+"/config",
-        async:false,
-        //dataType: "json",
-        contentType: "application/json;charset=utf-8",
-        success: function(resultData) { 
-            console.log(resultData);
-            for(var i=0; i<resultData.classes.length; i++){
-              classHtml += '<option value="'+resultData.classes[i].id+'">'+resultData.classes[i].name+'</option>';
+      //$.ajax({
+        // type: 'GET',
+        // url: baseUrl+"/config",
+        // async:false,
+        // //dataType: "json",
+        // contentType: "application/json;charset=utf-8",
+        // success: function(resultData) { 
+        //     console.log(resultData);
+        //     for(var i=0; i<resultData.classes.length; i++){
+        //       classHtml += '<option value="'+resultData.classes[i].id+'">'+resultData.classes[i].name+'</option>';
+        //     }
+        //     for(var i=0; i<resultData.subjects.length; i++){
+        //       subjectHtml += '<option value="'+resultData.subjects[i].id+'">'+resultData.subjects[i].name+'</option>';
+        //     }
+        //   }
+        // });
+        // $(".chooseClass").html(classHtml).selectpicker('refresh');
+        // $(".chooseSubject").html(subjectHtml).selectpicker('refresh');
+        $.ajax({
+          type: 'GET',
+          url: baseUrl+"/config/category",
+          async:false,
+          contentType: "application/json;charset=utf-8",
+          success: function(resultData) { 
+              console.log(resultData);
+              resultData.forEach(function (a){
+                // var name = a.name;
+                // var nameArr = a.name.split("(");
+                // if(nameArr.length > 1){
+                //   classHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+nameArr[0]+'</option>';
+                //   classHtml += '<option style="font-size:12px;margin-top:-10px" data-id="'+a.id+'" value="'+a.name+'">('+nameArr[1]+'</option>';
+                // }else{
+                //   classHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+a.name+'</option>';
+                // }
+                classHtml += '<option value="'+a.id+'">'+a.name+'</option>';
+              })
             }
-            for(var i=0; i<resultData.subjects.length; i++){
-              subjectHtml += '<option value="'+resultData.subjects[i].id+'">'+resultData.subjects[i].name+'</option>';
-            }
-          }
-        });
-        $(".chooseClass").html(classHtml).selectpicker('refresh');
-        $(".chooseSubject").html(subjectHtml).selectpicker('refresh');
+          });
+          $(".chooseClass").html(classHtml).selectpicker('refresh');
+    
+          //$("#chooseClass").on('change',function(){
+            // $("#chooseClass").val($(this).val()).selectpicker("refresh")
+            // var chooseClass = $('option:selected', this).attr('data-id');
+            var chooseClass = $(".chooseClass").val();
+            $.ajax({
+                type: 'GET',
+                url: baseUrl+"/config/subject?groupId="+chooseClass,
+                async:false,
+                contentType: "application/json;charset=utf-8",
+                success: function(resultData) { 
+                    console.log(resultData);
+                    resultData.forEach(function (a){
+                        subjectHtml += '<option value="'+a.id+'">'+a.name+'</option>';
+                    })
+                    }
+                });
+            $(".chooseSubject").html(subjectHtml).selectpicker('refresh');
+          //});
 
         function addMoreClass(){
             var addMore1 = '<div class="row formDiv_1" style="margin-bottom: 10px !important;">';
@@ -142,6 +182,7 @@ export class UpdateClassAndSubjectComponent implements OnInit {
               });
               var i = 0;
               for (var key in grouped) {
+                console.log(key+" jd")
                 i++;
                 var addMore1 = '<div class="row formDiv_1" style="margin-bottom: 10px !important;">';
                     addMore1 += '<div class="col-md-5">';

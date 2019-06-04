@@ -28,7 +28,8 @@ import { UpdateWorkExperienceComponent } from './update-tutor-profile/update-wor
 import { UpdateTutorAddressComponent } from './update-tutor-profile/update-tutor-address/update-tutor-address.component';
 import { StudentMenuComponent } from './student-menu/student-menu.component';
 import { StudentUpdateStatusComponent } from './student-update-status/student-update-status.component';
-import { ReviewByStudentComponent } from './review-by-student/review-by-student.component'
+import { ReviewByStudentComponent } from './review-by-student/review-by-student.component';
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component'
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ReviewByStudentComponent } from './review-by-student/review-by-student.
     UpdateTutorAddressComponent,
     StudentMenuComponent,
     StudentUpdateStatusComponent,
-    ReviewByStudentComponent
+    ReviewByStudentComponent,
+    OtpVerificationComponent
   ],
   imports: [
     BrowserModule,
@@ -154,6 +156,10 @@ import { ReviewByStudentComponent } from './review-by-student/review-by-student.
       {
         path : 'student/review/:id',
         component : ReviewByStudentComponent
+      },
+      {
+        path : 'otp',
+        component : OtpVerificationComponent
       },
     //   {
     //     path: 'admin',

@@ -189,8 +189,6 @@ export class TutorRegistrationComponent implements OnInit {
 
       $("#chooseClass").on('change',function(){
         $("#chooseClass").val($(this).val()).selectpicker("refresh")
-        var classGroup = $("#chooseClass").val();
-        console.log("dcs == "+classGroup)
         var chooseClass = $('option:selected', this).attr('data-id');
         $.ajax({
             type: 'GET',
@@ -200,7 +198,7 @@ export class TutorRegistrationComponent implements OnInit {
             success: function(resultData) { 
                 console.log(resultData);
                 resultData.forEach(function (a){
-                    subjectHtml += '<option data-id="'+classGroup+'" value="'+a.name+'">'+a.name+'</option>';
+                    subjectHtml += '<option value="'+a.id+'">'+a.name+'</option>';
                 })
                 }
             });
