@@ -8,8 +8,9 @@
     background: rgba(93, 151, 158, 0.5);
 }
 .btn-register{
-    padding: 0px 40px;
     border-radius: 50px;
+    min-width: 200px;
+    margin: 20px 0 !important;
 }
 .modal-header {
     background: #058472;

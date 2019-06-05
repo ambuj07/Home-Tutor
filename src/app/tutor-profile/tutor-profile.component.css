@@ -33,6 +33,14 @@ form.registration-form .fieldset {
     right: 20px;
     font-style: italic;
 }
+.sequence {
+    position: absolute;
+    text-decoration: underline;
+    color: #236e81;
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
+}
 .sidenav {
     height: 100%;
     width: 0;

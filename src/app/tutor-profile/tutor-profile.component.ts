@@ -54,6 +54,8 @@ export class TutorProfileComponent implements OnInit {
               $(".profilePic").attr("src","/assets/userIcon.png");
             }
             $(".total-credit").text("Credit : "+data.credit);
+            $(".sequence").text(data.sequenceId);
+            
             if(data.mapping.length > 0){
               var grouped = {};
               data.mapping.forEach(function (a) {

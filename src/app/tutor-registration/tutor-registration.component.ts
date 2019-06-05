@@ -24,6 +24,9 @@ export class TutorRegistrationComponent implements OnInit {
       $('.registration-form .btn-next').on('click', function () {
           var parent_fieldset = $(this).parents('.fieldset');
           var next_step = true;
+          if($(this).attr("next-step") != undefined && $(this).attr("next-step") == "false"){
+            next_step = false;
+          }
           var mobileRegex = /^[1-9]\d{9}$/;
           var mobile = $("#mobileNumber").val();
           var whatsapp = $("#whatsappNumber").val();
@@ -302,7 +305,12 @@ export class TutorRegistrationComponent implements OnInit {
                     window.location.href = '/dashboard/tutor/'+resultData.refId;
                  },
                  error: function(resultData){
-                   showToast("Something went wrong at server side, Please try after sometime.")
+                   if(resultData.responseJSON.message == "Mobile number already exists."){
+                    $('#myErrorModal').modal('show');
+                    $("#alreadyExistNumber").text('"'+mobile+'"');
+                   }else{
+                     showToast("Something went wrong at server side, Please try after sometime.")
+                   }
                  }
             });  
           }
