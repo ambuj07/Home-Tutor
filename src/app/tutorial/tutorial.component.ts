@@ -13,8 +13,18 @@ export class TutorialComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
     const baseUrl = environment.baseUrl;
+    var userName = localStorage.getItem("userName");
+    var userId = localStorage.getItem("userId");
+    var type = localStorage.getItem("type");
+    if(userName != null && userId != null && type != null){
+      if(type == "TUTOR"){
+        window.location.href = '/dashboard/tutor/'+userId;
+      }
+      if(type == "STUDENT"){
+        window.location.href = '/dashboard/student/'+userId;
+      }
+    }
     $(document).ready(function(){
       //Subjects and classes
       var classHtml = '<option value="" disabled selected>Select Class</option>';

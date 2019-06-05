@@ -20,6 +20,10 @@ export class DashboardComponent implements OnInit {
     this.route.params.subscribe(params => {
         id = params["id"];
     });
+
+    $("#viewTabName").text("Tutor Dashboard");
+    $(".sidenav a").removeClass("active");
+    $("#dashboard").addClass("active");
     
     $(document).ready(function(){
       $('#dashboardView').css('display','block');

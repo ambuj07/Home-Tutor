@@ -24,9 +24,6 @@ export class TutorMenuComponent implements OnInit {
       this.route.params.subscribe(params => {
         id = params["id"];
       });
-      $("#viewTabName").text("Profile");
-      $(".sidenav a").removeClass("active");
-      $("#profile").addClass("active");
        
       $.ajax({
           type: 'GET',
@@ -80,9 +77,9 @@ export class TutorMenuComponent implements OnInit {
     $("#profile").click(function(){
       window.location.href = '/profile/tutor/'+id
     });
-    $("#editProfile").click(function(){
-      window.location.href = '/editProfile/tutor/'+id
-    });
+    // $("#editProfile").click(function(){
+    //   window.location.href = '/editProfile/tutor/'+id
+    // });
     $("#dashboard").click(function(){
       window.location.href = '/dashboard/tutor/'+id
     });
@@ -103,6 +100,9 @@ export class TutorMenuComponent implements OnInit {
     });
     $(document).on('click',".saveAddress",function(){
       window.location.href = '/tutor/address/'+id
+    });
+    $(document).on('click',".saveGuarantor",function(){
+      window.location.href = '/tutor/guarantor/'+id
     });
   }
 

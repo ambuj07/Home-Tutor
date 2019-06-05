@@ -2,6 +2,9 @@
 .text-centered {
     text-align: center;
 }
+.font-red{
+    color: red;
+}
 /* .navbar{
     padding: 0px 20px !important;
 }

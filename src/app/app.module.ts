@@ -29,7 +29,8 @@ import { UpdateTutorAddressComponent } from './update-tutor-profile/update-tutor
 import { StudentMenuComponent } from './student-menu/student-menu.component';
 import { StudentUpdateStatusComponent } from './student-update-status/student-update-status.component';
 import { ReviewByStudentComponent } from './review-by-student/review-by-student.component';
-import { OtpVerificationComponent } from './otp-verification/otp-verification.component'
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
+import { UpdateTutorReferenceComponent } from './update-tutor-profile/update-tutor-reference/update-tutor-reference.component'
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { OtpVerificationComponent } from './otp-verification/otp-verification.co
     StudentMenuComponent,
     StudentUpdateStatusComponent,
     ReviewByStudentComponent,
-    OtpVerificationComponent
+    OtpVerificationComponent,
+    UpdateTutorReferenceComponent
   ],
   imports: [
     BrowserModule,
@@ -148,6 +150,10 @@ import { OtpVerificationComponent } from './otp-verification/otp-verification.co
       {
         path : 'tutor/address/:id',
         component : UpdateTutorAddressComponent
+      },
+      {
+        path : 'tutor/guarantor/:id',
+        component : UpdateTutorReferenceComponent
       },
       {
         path : 'student/updateStatus/:id',
