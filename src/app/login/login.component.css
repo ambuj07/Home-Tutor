@@ -5,7 +5,7 @@
 }
 .overlay{
     min-height: 100vh;
-    background: rgba(93, 151, 158, 0.5);
+    background: rgb(203, 222, 224);
 }
 .btn-register{
     border-radius: 50px;

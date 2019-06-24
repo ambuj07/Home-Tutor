@@ -85,7 +85,7 @@ export class StudentRegistrationComponent implements OnInit {
     });
 
     //class category
-    var categoryHtml = '<option value="" selected disabled>Select A Category</option>';
+    var categoryHtml = '<option value="" selected disabled>Select Class Category</option>';
     
     $.ajax({
       type: 'GET',
@@ -160,6 +160,15 @@ export class StudentRegistrationComponent implements OnInit {
          $("#boardDiv").prop('hidden',false); 
       });
 
+      //other board
+      $("#board").on('change',function(){
+        if($(this).val() == 'Other'){
+          $(".otherBoard").prop('hidden',false); 
+        }else{
+          $(".otherBoard").prop('hidden',true);
+        }
+      });
+
       //city and state
       var statesHtml = '<option value="" selected disabled>Select Your State</option>';
     
@@ -171,17 +180,18 @@ export class StudentRegistrationComponent implements OnInit {
         success: function(resultData) { 
             console.log(resultData);
             resultData.forEach(function (a){
-              statesHtml += '<option value="'+a.id+'">'+a.name+'</option>';
+              statesHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+a.name+'</option>';
             })
           }
       });
       $("#states").html(statesHtml).selectpicker();
       
       $('#states').change(function(){
+        var stateId = $('option:selected', this).attr('data-id');
         var cityHtml = '<option value="" selected disabled>Select Your City</option>';
         $.ajax({
           type: 'GET',
-          url: baseUrl+"/config/"+$(this).val()+"/city",
+          url: baseUrl+"/config/"+stateId+"/city",
           async:false,
           contentType: "application/json;charset=utf-8",
           success: function(resultData) { 
@@ -292,10 +302,13 @@ export class StudentRegistrationComponent implements OnInit {
             var particularClass = $("#chooseClass").val(); 
             var subjects = $("#chooseSubject").val();
             var board = $("#board").val();
+            if(board == 'Other'){
+              board = $("#otherBoard").val();
+            }
             var addrLine1 = $("#addrLine1").val();
             var location = $("#location").val()
             var zipCode = $("#pinCode").val() 
-            var states = $("#states").val() 
+            var states = $("#states").val();
             var city = $("#city").val() 
             var name = $("#name").val()  
             var email = $("#email").val();  
@@ -311,7 +324,7 @@ export class StudentRegistrationComponent implements OnInit {
             var studentPerformance = $("#studentPerformance").val();
             var reasonForQuery = $("#reasonForQuery").val();
             var anythingElse = $("#anythingElse").val();
-            data = '{"id":null,"category":"","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'","name":"'+name+'","addrLine1":"'+addrLine1+'","location":"'+location+'","zipCode":"'+zipCode+'","states":"'+states+'","city":"'+city+'","email":"'+email+'","mobile":"'+mobile+'","whatsappNumber":"'+whatsappNumber+'","gender":"'+chooseGender+'","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'/'+hourlyMonthly+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
+            data = '{"id":null,"category":"","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'",board:"'+board+'","name":"'+name+'","addrLine1":"'+addrLine1+'","location":"'+location+'","zipCode":"'+zipCode+'","states":"'+states+'","city":"'+city+'","email":"'+email+'","mobile":"'+mobile+'","whatsappNumber":"'+whatsappNumber+'","gender":"","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'/'+hourlyMonthly+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
             $("#myProfileModal").modal('show');
             var html = '<table class="table table-bordered">';
                 html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Contact Details</th></tr>'

@@ -77,7 +77,7 @@ export class FindMoreTutorsComponent implements OnInit {
       });
     });
         //class category
-    var categoryHtml = '<option value="" selected disabled>Select A Category</option>';
+    var categoryHtml = '<option value="" selected disabled>Select Class Category</option>';
     
     $.ajax({
       type: 'GET',
@@ -144,6 +144,15 @@ export class FindMoreTutorsComponent implements OnInit {
          $("#boardDiv").prop('hidden',false); 
       });
       
+      //other board
+      $("#board").on('change',function(){
+        if($(this).val() == 'Other'){
+          $(".otherBoard").prop('hidden',false); 
+        }else{
+          $(".otherBoard").prop('hidden',true);
+        }
+      });
+
       $("#submit").click(function(){
         var error = false;  
           $(this).parents('.fieldset').find('select,input').each(function () {
@@ -162,6 +171,9 @@ export class FindMoreTutorsComponent implements OnInit {
             var particularClass = $("#chooseClass").val(); 
             var subjects = $("#chooseSubject").val();
             var board = $("#board").val();
+            if(board == 'Other'){
+                board = $("#otherBoard").val();
+            }
             var chooseGender = $("#chooseGender").val();
             var turorType = $("#tutorType").val();
             var preferGender = $("#preferGender").val();

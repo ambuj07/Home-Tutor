@@ -1,12 +1,11 @@
-<div class="container-fluid requirement-section">
+<div class="container-fluid">
     <div class="row overlay">
-        <div class="col-md-6 offset-md-3" style="margin-top: 100px;">
+        <div class="col-md-4 offset-md-4" style="margin-top: 100px;">
             <form role="form" class="registration-form" action="javascript:void(0);">
                 <div class="fieldset">
                     <div class="form-top">
                         <div class="form-top-left">
-                            <div><i class="fa fa-hand-o-right" aria-hidden="true"></i> Login with your registerd mobile number. Don't have account 
-                             <a href="#" data-toggle="modal" data-target="#myModal" style="color: #f90;text-decoration: underline !important;">click here</a> to register now.</div>
+                            <div class="reg-heading">Sign In </div>
                         </div>
                     </div>
                     <div class="form-bottom">
@@ -14,7 +13,12 @@
                             <input type="text" placeholder="Enter Your Registerd Mobile Number(only 10 digt)"  name="mobileNumber" class="form-control" id="mobileNumber">
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Enter Your password"  name="password" class="form-control" id="password">
+                                <div class="input-group" id="show_hide_password">
+                                    <input type="password" placeholder="Enter Your password"  name="password" class="form-control" id="password">
+                                    <div class="input-group-addon">
+                                        <a href="" style="color:#058472"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
                         </div>
                         <div style="text-align:right">
                             <button type="button" id="login" class="btn btn-login">Login</button>
@@ -22,6 +26,9 @@
                     </div>
                 </div>
             </form>
+            <div style="text-align:center;font-size: 18px;font-weight: bold;color: #4a4a4a;margin-top: 10px;">
+                <span> Are you new ?</span> <a href="#" data-toggle="modal" data-target="#myModal" style="color: #e85c0a;text-decoration: underline !important;">Click Here</a>
+            </div>
         </div>
     </div>
     </div>

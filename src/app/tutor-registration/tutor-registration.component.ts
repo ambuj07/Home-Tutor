@@ -123,17 +123,18 @@ export class TutorRegistrationComponent implements OnInit {
       success: function(resultData) { 
           console.log(resultData);
           resultData.forEach(function (a){
-            statesHtml += '<option value="'+a.id+'">'+a.name+'</option>';
+            statesHtml += '<option data-id="'+a.id+'"value="'+a.name+'">'+a.name+'</option>';
           })
         }
     });
     $("#states").html(statesHtml).selectpicker();
     
     $('#states').change(function(){
+      var stateId = $('option:selected', this).attr('data-id');
       var cityHtml = '<option value="" selected disabled>Select Your City</option>';
       $.ajax({
         type: 'GET',
-        url: baseUrl+"/config/"+$(this).val()+"/city",
+        url: baseUrl+"/config/"+stateId+"/city",
         async:false,
         contentType: "application/json;charset=utf-8",
         success: function(resultData) { 

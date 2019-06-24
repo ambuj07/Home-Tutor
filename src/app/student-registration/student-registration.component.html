@@ -27,13 +27,18 @@
                     <div class="form-group" id="boardDiv" hidden>
                         <select class="form-control selectpicker" id="board" name="board" required>
                                 <option value="" selected disabled>Select Board</option>
-                                <option value="CBSE">CBSE</option>
-                                <option value="IB">IB</option>
-                                <option value="ISC">ISC</option>
-                                <option value="STATE BOARD">STATE BOARD</option>
-                                <option value="OPEN SCHOOL">OPEN SCHOOL</option>
-                                <option value="OTHER">OTHER</option>
+                                <option value="CBSE Board">CBSE Board</option>
+                                <option value="IB Board">IB Board</option>
+                                <option value="ISC Board">ISC Board</option>
+                                <option value="State Board">State Board</option>
+                                <option value="Open School">Open School</option>
+                                <option value="Other">Other</option>
                         </select>
+                    </div>
+                    <div class="form-group otherBoard" hidden>
+                        <div class="input-group">
+                            <input type="text" placeholder="Please Mention Board/University" id="otherBoard" class="form-control" name="otherBoard" required>
+                        </div>
                     </div>
                     <div style="text-align:right">
                         <button type="button" class="btn btn-next">Next</button>
@@ -101,13 +106,13 @@
                     <div class="form-group">
                         <input type="tel" placeholder="WhatsApp Number(only 10 digits)"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <select class="form-control selectpicker" id="chooseGender" name="chooseGender">
                             <option value="" disabled>Gender</option>
                             <option value="MALE">Male</option>
                             <option value="FEMALE">Female</option>
                         </select>
-                    </div>
+                    </div> -->
                     <button type="button" class="btn btn-previous">Previous</button>
                     <button type="button" class="btn btn-next" style="float: right;">Next</button>
                 </div>
@@ -129,7 +134,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Prefer Tutor</label>
+                        <label>Prefer Tutor Gender</label>
                         <select class="form-control selectpicker" id="preferGender" name="preferGender" required>
                             <option value="Any The Best" selected>Any The Best</option>
                             <option value="Male Only">Male Only</option>
@@ -163,13 +168,14 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Prefer Fee (<i>*Not Finial, May be Negotiable</i>)</label>
-                        <input type="tel" placeholder="RS Hourly/Monthly"  name="preferFee" class="form-control" id="preferFee" style="width: 54%;display: inline;">
+                        <label style="width: 100%;line-height: 20px;">Prefer Fee <br><small>(*Not Finial, May be Negotiable)</small></label>
+                        <input type="tel" placeholder="Rs."  name="preferFee" class="form-control" id="preferFee" style="width: 54%;display: inline;">
                         <div style="width: 44%;float: right;">
                             <select class="form-control selectpicker" id="hourlyMonthly" name="hourlyMonthly">
-                                <option value="" disabled>Select Hourly/Monthly</option>
+                                <option value="" disabled>Select Mode</option>
                                 <option value="hour">Hourly</option>
                                 <option value="month">Monthly</option>
+                                <option value="year">Yearly</option>
                             </select>
                         </div>
                     </div>

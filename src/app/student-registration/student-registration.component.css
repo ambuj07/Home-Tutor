@@ -9,7 +9,7 @@
 }
 .overlay{
     min-height: 100vh;
-    background: rgba(93, 151, 158, 0.5);
+    background: rgba(93,151,158,.5);
 }
 form.registration-form .fieldset {
     display: none;
