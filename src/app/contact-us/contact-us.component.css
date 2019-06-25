@@ -1,0 +1,9 @@
+.requirement-section{
+    background-image: url('/assets/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.overlay{
+    min-height: 100vh;
+    background: rgb(203, 222, 224);
+}

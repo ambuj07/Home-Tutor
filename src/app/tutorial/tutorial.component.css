@@ -63,7 +63,7 @@
   .blob-text {
     text-align: center;
     color: #fff;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
   }
   
@@ -100,8 +100,8 @@
   .usp-box {
     width: 150px;
     height: 150px;
-    background-image: -webkit-gradient(linear, left bottom, right top, from(#60fe69), to(#57ddf8));
-    background-image: linear-gradient(to top right, #60fe69, #57ddf8);
+    background-image: -webkit-gradient(linear, left bottom, right top, from(#0d2151), to(#57ddf8));
+    background-image: linear-gradient(to top right, #0d2151, #57ddf8);
     border-radius: 8px;
   }
   
@@ -110,7 +110,7 @@
     text-align: center;
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .course-list {

@@ -30,7 +30,8 @@ import { StudentMenuComponent } from './student-menu/student-menu.component';
 import { StudentUpdateStatusComponent } from './student-update-status/student-update-status.component';
 import { ReviewByStudentComponent } from './review-by-student/review-by-student.component';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
-import { UpdateTutorReferenceComponent } from './update-tutor-profile/update-tutor-reference/update-tutor-reference.component'
+import { UpdateTutorReferenceComponent } from './update-tutor-profile/update-tutor-reference/update-tutor-reference.component';
+import { ContactUsComponent } from './contact-us/contact-us.component'
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { UpdateTutorReferenceComponent } from './update-tutor-profile/update-tut
     StudentUpdateStatusComponent,
     ReviewByStudentComponent,
     OtpVerificationComponent,
-    UpdateTutorReferenceComponent
+    UpdateTutorReferenceComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -162,6 +164,10 @@ import { UpdateTutorReferenceComponent } from './update-tutor-profile/update-tut
       {
         path : 'student/review/:id',
         component : ReviewByStudentComponent
+      },
+      {
+        path : 'contactus',
+        component : ContactUsComponent
       },
       {
         path : 'otp',
