@@ -187,7 +187,7 @@ select:-webkit-autofill:focus{
     transition: background-color 5000s ease-in-out 0s;
 }
 .custom-control-inline{
-    display: inline !important;;
+    display: inline-block !important;;
     margin-right: 10px !important;
 }
 .custom-control.custom-checkbox {
