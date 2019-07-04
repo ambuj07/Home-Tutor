@@ -174,7 +174,7 @@ export class FindMoreTutorsComponent implements OnInit {
             if(board == 'Other'){
                 board = $("#otherBoard").val();
             }
-            var chooseGender = $("#chooseGender").val();
+            //var chooseGender = $("#chooseGender").val();
             var turorType = $("#tutorType").val();
             var preferGender = $("#preferGender").val();
             var preferTiming = $("#preferTiming").val();
@@ -184,7 +184,7 @@ export class FindMoreTutorsComponent implements OnInit {
             var studentPerformance = $("#studentPerformance").val();
             var reasonForQuery = $("#reasonForQuery").val();
             var anythingElse = $("#anythingElse").val(); 
-            var data = '{"student":{"id":'+id+'},"gender":"'+chooseGender+'","className":"'+particularClass+'","subject":"'+subjects+'","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'/'+hourlyMonthly+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
+            var data = '{"student":{"id":'+id+'},"className":"'+particularClass+'","subject":"'+subjects+'","board":"'+board+'","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'/'+hourlyMonthly+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
             $.ajax({
                 type: 'POST',
                 url: baseUrl+"/job",

@@ -10,7 +10,7 @@
                     </div>
                     <div class="form-bottom">
                         <div class="form-group">
-                            <input type="text" placeholder="Name"  name="name" class="form-control" id="name">
+                            <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name">
                         </div>
                         <div class="form-group">
                             <input type="tel" placeholder="Mobile Number(only 10 digit)"  name="mobileNumber" class="form-control" id="mobileNumber">
@@ -19,24 +19,27 @@
                             <input type="email" placeholder="Email"  name="email" class="form-control" id="email">
                         </div>
                         <div class="form-group">
-                            <div class="custom-control-inline custom-radio custom-control">
-                                <input type="radio" value="Student/Guardian" class="custom-control-input" id="status1" name="status">
-                                <label class="custom-control-label" for="status1">Student/Guardian</label>
-                              </div>
-                              <div class="custom-control-inline custom-radio custom-control">
-                                <input type="radio" value="Teacher" class="custom-control-input" id="status2" name="status">
-                                <label class="custom-control-label" for="status2">Teacher</label>
-                              </div>
-                              <div class="custom-control-inline custom-radio custom-control">
-                                  <input type="radio" value="Other" class="custom-control-input" id="status3" name="status">
-                                  <label class="custom-control-label" for="status3">Other</label>
-                              </div>    
+                            <select class="form-control selectpicker" id="queryType" name="queryType" required>
+                                    <option value="" selected disabled>I am a</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Parents / Guardian">Parents / Guardian</option>
+                                    <option value="Teacher / Trainer ">Teacher / Trainer </option>
+                                    <option value="Service Provider">Service Provider</option>
+                                    <option value="Other">Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Subject"  name="subject" class="form-control" id="subject">
+                            <select class="form-control selectpicker" id="querySubject" name="querySubject" required>
+                                    <option value="" selected disabled>Subject</option>
+                                    <option value="Request For Call back">Request For Call back</option>
+                                    <option value="Query">Query</option>
+                                    <option value="Suggestion">Suggestion</option>
+                                    <option value="Complain">Complain</option>
+                                    <option value="Other">Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Write your query..."  name="query" class="form-control" id="query"></textarea>
+                            <textarea placeholder="Write your query..."  name="queryComment" class="form-control" id="queryComment"></textarea>
                         </div>
                         <div style="text-align:center">
                             <button type="button" id="login" class="btn btn-register">Submit</button>
