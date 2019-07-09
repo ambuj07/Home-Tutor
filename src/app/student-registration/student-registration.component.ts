@@ -324,19 +324,19 @@ export class StudentRegistrationComponent implements OnInit {
             var studentPerformance = $("#studentPerformance").val();
             var reasonForQuery = $("#reasonForQuery").val();
             var anythingElse = $("#anythingElse").val();
-            data = '{"id":null,"category":"","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'",board:"'+board+'","name":"'+name+'","addrLine1":"'+addrLine1+'","location":"'+location+'","zipCode":"'+zipCode+'","states":"'+states+'","city":"'+city+'","email":"'+email+'","mobile":"'+mobile+'","whatsappNumber":"'+whatsappNumber+'","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'/'+hourlyMonthly+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
+            data = '{"id":null,"category":"","classcategory":"'+classcategory+'","particularClass":"'+particularClass+'","subjects":"'+subjects+'","board":"'+board+'","name":"'+name+'","addrLine1":"'+addrLine1+'","location":"'+location+'","zipCode":"'+zipCode+'","states":"'+states+'","city":"'+city+'","email":"'+email+'","mobile":"'+mobile+'","whatsappNumber":"'+whatsappNumber+'","turorType":"'+turorType+'","preferGender":"'+preferGender+'","preferTiming":"'+preferTiming+'","preferDay":"'+preferDay+'","preferFee":"'+preferFee+'/'+hourlyMonthly+'","performance":"'+studentPerformance+'","reasonForQuery":"'+reasonForQuery+'","anythingElse":"'+anythingElse+'"}';
             $("#myProfileModal").modal('show');
-            var html = '<table class="table table-bordered">';
+            var html = '<table class="table table-bordered table-preview">';
                 html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Contact Details</th></tr>'
-                html += '<tr><td style="width:50%"> Name  </td><td> <b>'+name+'</b></td></tr>';
-                html += '<tr><td> Mobile No.  </td><td> <b>'+mobile+'</b></td></tr>';
-                html += '<tr><td> WhatsApp No./Alternate No.  </td><td> <b>'+whatsappNumber+'</b></td></tr>';
-                html += '<tr><td> Email ID  </td><td> <b>'+email+'</b></td></tr>';
+                html += '<tr><td style="width:50%"> <i class="fa fa-user-o" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i> <b>'+name+'</b></td></tr>';
+                html += '<tr><td> <i class="fa fa-phone" aria-hidden="true" style="color: #e86507;font-size: 24px;margin-right: 5px;"></i> <b>'+mobile+'</b></td></tr>';
+                html += '<tr><td> <i class="fa fa-whatsapp" aria-hidden="true" style="color: #e86507;font-size: 24px;margin-right: 5px;"></i> <b>'+whatsappNumber+'</b></td></tr>';
+                html += '<tr><td> <i class="fa fa-envelope-o" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i> <b>'+email+'</b></td></tr>';
                 html += '</table>';
                 html += '<br>'
-                html += '<table class="table table-bordered" style="text-align: center;">';
-                html += '<tr style="background: #d6d6d6;"><th>Learning Need</th></tr>'
-                html += '<tr><td> <b>'+particularClass+', '+subjects+', '+board+'</b></td></tr>';
+                html += '<table class="table table-bordered table-preview">';
+                html += '<tr style="background: #d6d6d6;text-align: center;"><th>Learning Need</th></tr>'
+                html += '<tr><td> <b><i class="fa fa-graduation-cap" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i>'+particularClass+', '+subjects+', '+board+'</b></td></tr>';
                 html += '<tr><td> <b> <i class="fa fa-map-marker" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i>'+addrLine1+', '+location+', '+city+', '+states+', '+zipCode+'</b></td></tr>';
                 html += '</table>';
                 html += '<br>'
@@ -347,7 +347,7 @@ export class StudentRegistrationComponent implements OnInit {
                 html += '<tr><td> Prefer Timing </td><td> <b>'+preferTiming+'</b></td></tr>';
                 html += '<tr><td> Prefer Day </td><td> <b>'+preferDay+'</b></td></tr>';
                 html += '<tr><td> I want to </td><td> <b>'+reasonForQuery+'</b></td></tr>';
-                html += '<tr><td> Prefer Fee (<i>*Not Finial, May be Negotiable</i>) </td><td> <b>'+preferFee+'/'+hourlyMonthly+'</b></td></tr>';
+                html += '<tr><td> Prefer Fee <br><small>(<i>*Not Finial, May be Negotiable</i>)<small> </td><td> <b>'+preferFee+'/'+hourlyMonthly+'</b></td></tr>';
                 html += '<tr><td> Student Performance </td><td> <b>'+studentPerformance+'</b></td></tr>';
                 html += '<tr><td> Any thing else </td><td> <b>'+anythingElse+'</b></td></tr>';
                 html += '</table>';

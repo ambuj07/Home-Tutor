@@ -652,3 +652,6 @@ button.btn.dropdown-toggle {
     text-decoration: underline;
     text-decoration-color: #378472;
 }
+.table-preview td{
+    padding: 15px 20px !important;
+}
