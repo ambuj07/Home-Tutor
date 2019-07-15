@@ -49,7 +49,7 @@ export class StudentUpdateStatusComponent implements OnInit {
                     html += '<div class="tutorgrid">';
                     html += '<div>';
                     html += '<div style="float: right;">Posted On : <b>'+response.contents[i].createdOn.split("T")[0]+'</b></div>';
-                    html += '<div>Enquiry Id : <b>'+response.contents[i].id+'</b></div>';
+                    html += '<div>Enquiry Id : <b>'+response.contents[i].sequenceId+'</b></div>';
                     html += '<hr>';
                     html += '<div>Learning Need : <b>'+response.contents[i].className+', '+response.contents[i].subject+'</b></div>';
                     html += '<div>Location : <b>'+response.contents[i].location+'</b></div>';
@@ -82,9 +82,12 @@ export class StudentUpdateStatusComponent implements OnInit {
           $(".saveStatus").click(function(){
             var jobID = $("#changeStatusForm").find("#jobId").val();
             var status = $("#changeStatusForm").find("input[name=status]:checked").val();
+            var statusRemark = $("#statusRemark").val();
             if (status == null || status == "") {
-              showToast("Please select one status.")
-            } else {
+              showToast("Please select one status.");
+            } else if(statusRemark == null || statusRemark == ""){
+              showToast("Status Remark is Mandatory.");
+            }else {
               $.ajax({
                 type: 'PUT',
                 url: baseUrl+"/job/"+jobID+"/status?status="+status,

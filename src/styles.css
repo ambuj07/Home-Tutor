@@ -458,6 +458,7 @@ form .form-bottom .input-error {
 .tutorgrid {
     margin: 10px;
     padding: 15px;
+    font-size: 15px;
     border: 1px solid #dbe3d9;
     background: #fcfff5;
     box-shadow: 0px 0px 6px 0px #ccc;
@@ -598,7 +599,7 @@ form .form-bottom .input-error {
     border-radius: 2px;
     padding: 15px;
     position: fixed;
-    z-index: 9;
+    z-index: 999999;
     bottom: 0;
     font-size: 18px;
     left: 50%;

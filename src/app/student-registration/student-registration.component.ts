@@ -342,7 +342,7 @@ export class StudentRegistrationComponent implements OnInit {
                 html += '<br>'
                 html += '<table class="table table-bordered">';
                 html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Preference</th></tr>'
-                html += '<tr><td style="width:50%"> I am looking for  </td><td> <b>'+turorType+'</b></td></tr>';
+                html += '<tr><td style="width:50%"> I am looking for  </td><td> <b>'+getTutorType(turorType)+'</b></td></tr>';
                 html += '<tr><td> Prefer Tutor </td><td> <b>'+preferGender+'</b></td></tr>';
                 html += '<tr><td> Prefer Timing </td><td> <b>'+preferTiming+'</b></td></tr>';
                 html += '<tr><td> Prefer Day </td><td> <b>'+preferDay+'</b></td></tr>';
@@ -402,6 +402,19 @@ export class StudentRegistrationComponent implements OnInit {
       $(document).on('change','.selectpicker',function() {
         $(this).next().blur();
       });
+      function getTutorType(type){
+        var retStr = "";
+        if(type != undefined && type != null){
+          if(type == "TUTOR"){
+            retStr = "Home Tutor / Trainer <br><small>(At Student's place)</small>";
+          } else if(type == "COACHING"){
+            retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
+          }else if(type == "ONLINE"){
+            retStr = "Online Tutor / Trainer";
+          }
+        }
+        return retStr;
+      }
   }
 
 }

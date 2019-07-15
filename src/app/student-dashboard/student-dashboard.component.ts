@@ -39,15 +39,14 @@ export class StudentDashboardComponent implements OnInit {
         $.get(baseUrl+"/job/student/"+id+"?page="+page,function(response){
           var html = "";
           if(response.contents.length > 0){
-            html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Class</th><th>Subject</th><th>Location</th><th>Preferred Tutor</><th>Job Status</th><th>Applied By Tutor</th></tr>';
+            html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Class</th><th>Subject</th><th>Preferred Tutor</><th>Job Status</th><th>Applied By Tutor</th></tr>';
             for(var i = 0; i < response.contents.length; i++){
                 html += '<tr>';
                 html += '<td>'+response.contents[i].id+'</td>';
                 html += '<td>'+response.contents[i].createdOn.split("T")[0]+'</td>';
                 html += '<td>'+response.contents[i].className+'</td>';
                 html += '<td>'+response.contents[i].subject+'</td>';
-                html += '<td>'+response.contents[i].location+'</td>';
-                html += '<td>'+response.contents[i].gender+'</td>';
+                html += '<td>'+response.contents[i].preferGender+'</td>';
                 html += '<td><span id="status_'+response.contents[i].id+'">'+response.contents[i].status+'</span></td>'; 
                 //<button data-id="'+response.contents[i].id+'" data-toggle="modal" data-target="#changeStatusModal" class="btn btn-xs changeStatusBtn"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>';
                 if(response.contents[i].applications.length > 0){
@@ -139,6 +138,19 @@ export class StudentDashboardComponent implements OnInit {
         x.className = "show";
         x.innerText = data;
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      }
+      function getTutorType(type){
+        var retStr = "";
+        if(type != undefined && type != null){
+          if(type == "TUTOR"){
+            retStr = "Home Tutor / Trainer <br><small>(At Student's place)</small>";
+          } else if(type == "COACHING"){
+            retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
+          }else if(type == "ONLINE"){
+            retStr = "Online Tutor / Trainer";
+          }
+        }
+        return retStr;
       }
     });
   

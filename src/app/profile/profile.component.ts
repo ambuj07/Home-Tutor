@@ -22,11 +22,6 @@ export class ProfileComponent implements OnInit {
       $(".sidenav a").removeClass("active");
       $("#profile").addClass("active");
         $.get(baseUrl+"/student/"+id,function(data){
-          console.log(data);
-          $("#name").text(data.name);
-          $("#mobile").text(data.mobile);
-          $("#email").text(data.email);
-          $("#gender").text(data.gender);
           var whatsappNumber = "";
           var turorType = "";
           var studentPerformance = "";
@@ -59,18 +54,7 @@ export class ProfileComponent implements OnInit {
           if(data.zipCode != undefined){
             locationStr += data.zipCode;
           }
-          // $("#location").text(locationStr);
-          // $("#preferGender").text(data.preferGender);
-          // $("#preferTiming").text(data.preferTiming);
-          // $("#preferDay").text(data.preferDay);
-          // $("#preferFee").text(data.preferFee);
-          // $("#performance").text(data.performance);
-          // $("#reasonForQuery").text(data.reasonForQuery);
-          // $("#anythingElse").text(data.anythingElse);
-          // $(".category").text(data.classcategory);
-          // $(".class").text(data.particularClass);
-          // $(".subject").text(data.subjects);
-          var html = '<br><table class="table table-bordered table-preview">';
+          var html = '<table class="table table-bordered table-preview">';
                 html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Contact Details</th></tr>'
                 html += '<tr><td style="width:50%"> <i class="fa fa-user-o" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i> <b>'+data.name+'</b></td></tr>';
                 html += '<tr><td> <i class="fa fa-phone" aria-hidden="true" style="color: #e86507;font-size: 24px;margin-right: 5px;"></i> <b>'+data.mobile+'</b></td></tr>';
@@ -86,20 +70,30 @@ export class ProfileComponent implements OnInit {
                 html += '<br>'
                 html += '<table class="table table-bordered">';
                 html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Preference</th></tr>'
-                html += '<tr><td style="width:50%"> I am looking for  </td><td> <b>'+turorType+'</b></td></tr>';
+                html += '<tr><td style="width:50%"> I am looking for  </td><td> <b>'+getTutorType(turorType)+'</b></td></tr>';
                 html += '<tr><td> Prefer Tutor </td><td> <b>'+data.preferGender+'</b></td></tr>';
                 html += '<tr><td> Prefer Timing </td><td> <b>'+data.preferTiming+'</b></td></tr>';
                 html += '<tr><td> Prefer Day </td><td> <b>'+data.preferDay+'</b></td></tr>';
                 html += '<tr><td> I want to </td><td> <b>'+data.reasonForQuery+'</b></td></tr>';
                 html += '<tr><td> Prefer Fee <br><small>(<i>*Not Finial, May be Negotiable</i>)<small> </td><td> <b>'+data.preferFee+'</b></td></tr>';
                 html += '<tr><td> Student Performance </td><td> <b>'+studentPerformance+'</b></td></tr>';
-                html += '<tr><td> Any thing else </td><td> <b>'+data.anythingElse+'</b></td></tr>';
+                html += '<tr><td> Any thing else </td><td> <b>'+anythingElse+'</b></td></tr>';
                 html += '</table>';
                 html += '<br>'
                 html += '<div>';
                 html += '</div>';
           $("#profileData").html(html);
-        })
+        });
+        $.get(baseUrl+"/job/student/"+id,function(data){
+          if(data.contents[0] != null && data.contents[0] != undefined){
+            var html = '<br><table class="table table-bordered table-preview">';
+            html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Your Enquiy</th></tr>'
+            html += '<tr><td style="width:50%"> Enquiry Id :  <b>'+data.contents[0].sequenceId+'</b></td></tr>';
+            html += '<tr><td> Enquiry Status : <b>'+data.contents[0].status+'</b></td></tr>';
+            html += '</table>';
+            $("#jobData").html(html);
+          }
+        });
         $(".profileNav .nav-link").click(function(){
           var navclick = $(this).attr("data-value");
           if(navclick == "Basic"){
@@ -108,6 +102,19 @@ export class ProfileComponent implements OnInit {
             $(".slidable").slideUp();
           }
         });
+        function getTutorType(type){
+          var retStr = "";
+          if(type != undefined && type != null){
+            if(type == "TUTOR"){
+              retStr = "Home Tutor / Trainer <br><small>(At Student's place)</small>";
+            } else if(type == "COACHING"){
+              retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
+            }else if(type == "ONLINE"){
+              retStr = "Online Tutor / Trainer";
+            }
+          }
+          return retStr;
+        }
 }
 
 }
