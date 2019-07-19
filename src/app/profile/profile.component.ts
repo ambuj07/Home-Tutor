@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit {
                 html += '<tr><td> Prefer Timing </td><td> <b>'+data.preferTiming+'</b></td></tr>';
                 html += '<tr><td> Prefer Day </td><td> <b>'+data.preferDay+'</b></td></tr>';
                 html += '<tr><td> I want to </td><td> <b>'+data.reasonForQuery+'</b></td></tr>';
-                html += '<tr><td> Prefer Fee <br><small>(<i>*Not Finial, May be Negotiable</i>)<small> </td><td> <b>'+data.preferFee+'</b></td></tr>';
+                html += '<tr><td> Prefer Fee <br><small>(<i>*Negotiable</i>)<small> </td><td> <b>'+data.preferFee+'</b></td></tr>';
                 html += '<tr><td> Student Performance </td><td> <b>'+studentPerformance+'</b></td></tr>';
                 html += '<tr><td> Any thing else </td><td> <b>'+anythingElse+'</b></td></tr>';
                 html += '</table>';
@@ -88,8 +88,9 @@ export class ProfileComponent implements OnInit {
           if(data.contents[0] != null && data.contents[0] != undefined){
             var html = '<br><table class="table table-bordered table-preview">';
             html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Your Enquiy</th></tr>'
-            html += '<tr><td style="width:50%"> Enquiry Id :  <b>'+data.contents[0].sequenceId+'</b></td></tr>';
             html += '<tr><td> Enquiry Status : <b>'+data.contents[0].status+'</b></td></tr>';
+            html += '<tr><td style="width:50%"> Enquiry Id :  <b>'+data.contents[0].sequenceId+'</b></td></tr>';
+            html += '<tr><td style="width:50%"> Enquiry Date :  <b>'+data.contents[0].createdOn.split("T")[0]+'</b></td></tr>';
             html += '</table>';
             $("#jobData").html(html);
           }
@@ -111,6 +112,8 @@ export class ProfileComponent implements OnInit {
               retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
             }else if(type == "ONLINE"){
               retStr = "Online Tutor / Trainer";
+            }else if("TutorForTution"){
+              retStr = "Tutor For Our Tution Centre";
             }
           }
           return retStr;

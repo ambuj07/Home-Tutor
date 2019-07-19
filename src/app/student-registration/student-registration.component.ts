@@ -347,7 +347,7 @@ export class StudentRegistrationComponent implements OnInit {
                 html += '<tr><td> Prefer Timing </td><td> <b>'+preferTiming+'</b></td></tr>';
                 html += '<tr><td> Prefer Day </td><td> <b>'+preferDay+'</b></td></tr>';
                 html += '<tr><td> I want to </td><td> <b>'+reasonForQuery+'</b></td></tr>';
-                html += '<tr><td> Prefer Fee <br><small>(<i>*Not Finial, May be Negotiable</i>)<small> </td><td> <b>'+preferFee+'/'+hourlyMonthly+'</b></td></tr>';
+                html += '<tr><td> Prefer Fee <br><small>(<i>*Negotiable</i>)<small> </td><td> <b>'+preferFee+'/'+hourlyMonthly+'</b></td></tr>';
                 html += '<tr><td> Student Performance </td><td> <b>'+studentPerformance+'</b></td></tr>';
                 html += '<tr><td> Any thing else </td><td> <b>'+anythingElse+'</b></td></tr>';
                 html += '</table>';
@@ -411,6 +411,8 @@ export class StudentRegistrationComponent implements OnInit {
             retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
           }else if(type == "ONLINE"){
             retStr = "Online Tutor / Trainer";
+          }else if("TutorForTution"){
+            retStr = "Tutor For Our Tution Centre";
           }
         }
         return retStr;
