@@ -1,0 +1,73 @@
+.sidenav-right {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    background-color: #ccc;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav-right .closeFilterNav {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+    color: #000;
+}
+input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+input.table-input {
+    width: 100%;
+    border: 0;
+    height: 40px !important;
+}
+.table-anchor-blue{
+    background: #0d2151;
+    color: white;
+    font-weight: bold;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+.table-anchor-blue > div{
+    align-items: center;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+.table-anchor-blue .fa {
+    position: relative;
+    top: -1px;
+}
+.autocomplete-result {
+    position: absolute;
+    background: #f8f8f8;
+    width: 260px;
+    z-index: 1111;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    margin-top: 1px;
+}
+.autocomplete-result ul{
+    margin: 0;
+    padding: 0;
+}
+.autocomplete-result li{
+    list-style-type: none;
+    border-bottom: 1px solid #ccc;
+    padding: 6px 10px;
+    color: #404040;
+    font-size: 15px;
+    cursor: pointer;
+}
+.autocomplete-result li:hover{
+    font-weight: bold;
+}

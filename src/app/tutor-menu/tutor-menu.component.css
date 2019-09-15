@@ -20,7 +20,7 @@
     width: 0;
     position: fixed;
     z-index: 9;
-    top: 90px;
+    top:0;
     left: 0;
     background-color: #ccc;
     overflow-x: hidden;
@@ -43,13 +43,13 @@
     cursor: pointer;
 }
 
-#openSideNav{
-    font-size: 30px;
-    cursor: pointer;
-    margin-top: 90px;
-    background: #313131;
-    color: white;
-    padding: 0px 20px;
+.openSideNav{
+    font-size: 26px;
+    margin-top: 78px;
+    line-height: 35px;
+    color: #0d2151;
+    padding: 0px 15px;
+    border-bottom: 3px solid #0d2151;
 }
 
 
@@ -101,10 +101,10 @@
     padding: 0px 60px 30px;
 }
 #viewTabName {
-    margin-left: 30px;
     font-size: 22px;
     position: relative;
     top: -2px;
+    text-transform: capitalize;
 }
 
 @media screen and (max-height: 450px) {

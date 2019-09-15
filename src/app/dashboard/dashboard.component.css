@@ -50,14 +50,6 @@
     cursor: pointer;
 }
 
-#openSideNav{
-    font-size: 30px;
-    cursor: pointer;
-    margin-top: 50px;
-    background: #313131;
-    color: white;
-    padding: 0px 20px;
-}
 
 .useravatar img {
     width: 100px;

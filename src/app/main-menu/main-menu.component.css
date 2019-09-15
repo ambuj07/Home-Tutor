@@ -22,10 +22,11 @@
     z-index: 9;
     top: 0;
     left: 0;
-    background-color: #ccc;
+    background-color: white;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    border-right: 1px solid  #226e81; 
 }
 
 .sidenav a:hover,.sidenav a:active,.sidenav a:focus, .sidenav a.active,.dropdown-btn:hover{
@@ -56,10 +57,11 @@
 .sidenav a, .dropdown-btn {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 20px;
-    color: #3c3d3e;
-    display: block;
+    font-size: 16px;
     border: none;
+    border-bottom: 1px solid #1c2960;
+    color: #1c2960;
+    display: block;
     background: none;
     width:100%;
     text-align: left;
@@ -71,11 +73,11 @@
   /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
   .dropdown-container {
     display: none;
-    background-color: #b6ccd2;
+    background-color: #eaeaea;
   }
 
   .dropdown-container a{
-    font-size: 17px;
+    font-size: 15px;
     padding-left: 30px;
   }
   /* Optional: Style the caret down icon */
@@ -102,5 +104,4 @@
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
 }

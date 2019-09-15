@@ -14,16 +14,12 @@ export class TutorMenuComponent implements OnInit {
 
   ngOnInit() {
 
-    var id;
-    this.route.params.subscribe(params => {
-        id = params["id"];
-    });
+    const id = localStorage.getItem('userId');
+    if(id == null || id == "" || id == undefined){
+      window.location.href = '/login'
+    }
 
     const baseUrl = environment.baseUrl;
-      var id;
-      this.route.params.subscribe(params => {
-        id = params["id"];
-      });
        
       $.ajax({
           type: 'GET',
@@ -84,7 +80,7 @@ export class TutorMenuComponent implements OnInit {
       window.location.href = '/dashboard/tutor/'+id
     });
     $(document).on('click',".findJobs",function(){
-      window.location.href = '/findJobs/tutor/'+id
+      window.location.href = '/teaching-job';
     });
     $(document).on('click',".classAndSubject",function(){
       window.location.href = '/tutor/classAndSubject/'+id

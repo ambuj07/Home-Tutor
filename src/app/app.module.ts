@@ -1,13 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title} from '@angular/platform-browser';
+import { HttpClientModule }    from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { FormWizardModule } from 'angular2-wizard';
+import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
+import {MatAutocompleteModule,MatInputModule,MatFormFieldModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OwlDateTimeModule, OwlNativeDateTimeModule,OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
+
+
 
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
-import { FormsModule }   from '@angular/forms';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 import { NearbyTutorsComponent } from './nearby-tutors/nearby-tutors.component';
 import { TutorRegistrationComponent } from './tutor-registration/tutor-registration.component';
@@ -31,8 +37,10 @@ import { StudentUpdateStatusComponent } from './student-update-status/student-up
 import { ReviewByStudentComponent } from './review-by-student/review-by-student.component';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { UpdateTutorReferenceComponent } from './update-tutor-profile/update-tutor-reference/update-tutor-reference.component';
-import { ContactUsComponent } from './contact-us/contact-us.component'
-
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { StudentEnquiryComponent } from './student-enquiry/student-enquiry.component';
+import { JobDetailsComponent } from './job-details/job-details.component';
+import { MainMenuComponent } from './main-menu/main-menu.component'
 
 @NgModule({
   declarations: [
@@ -62,12 +70,23 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
     ReviewByStudentComponent,
     OtpVerificationComponent,
     UpdateTutorReferenceComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    StudentEnquiryComponent,
+    JobDetailsComponent,
+    MainMenuComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     FormWizardModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
     RouterModule.forRoot([
       {
          path: '',
@@ -94,8 +113,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
         component : ProfileComponent
       },
       {
-        path : 'profile/student/:id',
-        component : ProfileComponent
+        path : 'enquiry/:id',
+        component : StudentEnquiryComponent
       },
       {
         path : 'postNewRequirement/:id',
@@ -126,8 +145,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
         component : TutorProfileComponent
       },
       {
-        path : 'findJobs/tutor/:id',
-        component : FindJobsComponent
+        path : 'enq/:id',
+        component : JobDetailsComponent
       },
       {
         path : 'editProfile/tutor/:id',
@@ -173,6 +192,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
         path : 'otp',
         component : OtpVerificationComponent
       },
+      {
+        path : ':tutorType',
+        component : FindJobsComponent
+      },
     //   {
     //     path: 'admin',
     //     redirectTo : 'http://www.hansatutor.com/admin/#/'
@@ -183,7 +206,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component'
     //  },
    ])
   ],
-  providers: [],
+  providers: [
+    Title,
+    {provide: OWL_DATE_TIME_LOCALE, useValue: 'en-SG'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

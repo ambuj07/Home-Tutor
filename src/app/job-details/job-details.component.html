@@ -1,0 +1,139 @@
+<app-tutor-menu></app-tutor-menu>
+<br>
+<div *ngFor ="let job of jobs" style="width: 600px;margin: 0 auto;max-width: 100%;">
+  <table class="table table-bordered">
+    <tr style="background: #3e9072;color: white;"><th colspan="2" style="text-align: center;">{{job.student.name}} is looking {{job.student.turorType}} for <br>{{job.student.particularClass}}, {{job.student.subjects}} at {{job.student.location}}, {{job.student.city}}</th></tr>
+    <tr><td colspan="2"> <b>Enq Number : {{job.sequenceId}}</b></td></tr>
+    <tr style="background: #cacaca;"><th colspan="2" style="text-align: center;">Learning Need</th></tr>
+    <tr style="text-align:center"><td colspan="2"> <i class="fa fa-graduation-cap" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i> <b>{{job.student.particularClass}}, {{job.student.subjects}}, {{job.student.board}}</b></td></tr>
+    <tr style="text-align:center"><td colspan="2"> <i class="fa fa-map-marker" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i> <b>{{job.student.location}}, {{job.student.city}}, {{job.student.zipCode}}, {{job.student.states}}</b></td></tr>
+    <tr style="background: #cacaca;"><th colspan="2" style="text-align: center;">Preference</th></tr>
+    <tr><td style="width:50%">I am Looking For</td><td> <b>{{job.student.turorType}}</b></td></tr>
+    <tr><td>Prefer Tutor</td><td> <b>{{job.student.preferGender}}</b></td></tr>
+    <tr><td>Prefer Timing</td><td> <b>{{job.student.preferTiming}}</b></td></tr>
+    <tr><td>Prefer Day</td><td> <b>{{job.student.preferDay}}</b></td></tr>
+    <tr><td>I want to</td><td> <b>{{job.student.reasonForQuery}}</b></td></tr>
+    <tr><td>Prefer Fee <small>(*Negotiable)</small></td><td> <b>{{job.student.preferFee}}</b></td></tr>
+    <tr><td>Student Performance</td><td> <b>{{job.student.performance}}</b></td></tr>
+    <tr><td>Anything Else</td><td> <b>{{job.student.anythingElse}}</b></td></tr>
+    <tr *ngIf="!hasApplied" style="text-align:center" data-toggle="modal" data-target="#applyJobModal"><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold">Apply</td></tr>
+    <tfoot *ngIf="hasApplied" >
+      <tr style="background: #cacaca;"><th colspan="2" style="text-align: center;">Contact Details</th></tr>
+      <tr><td style="width:50%">Name</td><td> <b>{{job.student.name}}</b></td></tr>
+      <tr><td>Mobile</td><td> <b>{{job.student.mobile}}</b></td></tr>
+      <tr><td>WhatsApp</td><td> <b>{{job.student.whatsappNumber}}</b></td></tr>
+      <tr style="text-align:center" data-toggle="modal" data-target="#updateStatusModal"><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold">Update Status</td></tr>
+    </tfoot>
+  </table>
+  <br><br>
+  <div class="modal fade" id="applyJobModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="text-align: center;display: block;background: #ff3f3f;padding: 8px;">
+          <h4 style="text-align:center">Caution</h4>
+        </div>
+        <div class="modal-body">
+          <p>Apply only if you have enough time to call him/her rigth now and update us.</p>
+          <p>100 points(*refundable) will be debited from your account on each apply.</p>
+        </div>
+        <div class="modal-footer" style="padding:0;margin:0;">
+          <table class="table table-bordered" style="margin:0">
+              <tr style="text-align:center">
+                <td data-dismiss="modal" class="action-td" style="background: #0d2151;color: white;font-weight: bold;text-decoration:none">Apply Later</td>
+                <td data-dismiss="modal" (click)="applyJob(job.id)" data-toggle="modal" data-target="#contactModal" class="action-td" style="background: #0d2151;color: white;font-weight: bold;text-decoration:none">Apply Now</td>
+              </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="contactModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" style="text-align: center;display: block;background: #0d2151;padding: 8px;color:white">
+            <h4 style="text-align:center">Contact Details</h4>
+          </div>
+          <div class="modal-body">
+            <p>Name : <b>{{job.student.name}}</b></p>
+            <p>Mobile : <b>{{job.student.mobile}}</b></p>
+            <p>WhatsApp : <b>{{job.student.whatsappNumber}}</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="updateStatusModal" style="z-index:11111">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" style="text-align: center;display: block;background: #0d2151;padding: 8px;color:white">
+              <h4 style="text-align:center">Update Status</h4>
+            </div>
+            <div class="modal-body">
+              <br>
+                <div class="form-group">
+                    <label>Select one status</label>
+                    <select class="form-control selectpicker" id="status" name="status" required>
+                            <option value="Confirmed" selected>Confirmed</option>
+                            <option value="Demo Scheduled">Demo Scheduled</option>
+                            <option value="Demo Taken">Demo Taken</option>
+                            <option value="Wrong Number">Wrong Number</option>
+                            <option value="Phone Swiched Off">Phone Swiched Off</option>
+                            <option value="Call Not Picked">Call Not Picked</option>
+                            <option value="Call Disconnected">Call Disconnected</option>
+                            <option value="No Requiement">No Requiement</option>
+                            <option value="Hired Someone Else">Hired Someone Else</option>
+                    </select>
+                </div>
+                <div class="confirmDiv">
+                    <div class="form-group">
+                        <label>From When You Will Start</label>
+                        <input class="form-control" [owlDateTimeTrigger]="confirmDate" [owlDateTime]="confirmDate" placeholder="dd/mm/yyyy">
+                        <owl-date-time pickerType="calendar" #confirmDate></owl-date-time>
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 100%;line-height: 20px;">How Much You Charge</label>
+                        <input type="tel" placeholder="Rs."  name="preferFee" class="form-control" id="preferFee" style="width: 54%;display: inline;">
+                        <div style="width: 44%;float: right;">
+                            <select class="form-control selectpicker" id="hourlyMonthly" name="hourlyMonthly">
+                                <option value="hour" selected>Hourly</option>
+                                <option value="month">Monthly</option>
+                                <option value="year">Yearly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>How Many Days In Week</label>
+                        <select class="form-control selectpicker" id="status" name="status" required>
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="demoDiv" hidden>
+                  <div class="form-group" style="display: inline-block;width:49%">
+                      <label>Date</label>
+                      <input class="form-control" [owlDateTimeTrigger]="demoScDate" [owlDateTime]="demoScDate" placeholder="dd/mm/yyyy">
+                      <owl-date-time pickerType="calendar" #demoScDate></owl-date-time>
+                  </div>
+                  <div class="form-group" style="display: inline-block;width:49%">
+                      <label>Time</label>
+                      <input class="form-control" [value]="defaultTime" [owlDateTimeTrigger]="demoScTime" [owlDateTime]="demoScTime" placeholder="Demo Scheduled Time">
+                      <owl-date-time pickerType="timer" hour12Timer="true" stepMinute="60" #demoScTime></owl-date-time>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer" style="padding:0;margin:0;">
+                <table class="table table-bordered" style="margin:0">
+                    <tr style="text-align:center">
+                      <td class="action-td" style="background: #0d2151;color: white;font-weight: bold;text-decoration:none">Update Now</td>
+                    </tr>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+</div>

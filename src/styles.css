@@ -82,7 +82,7 @@ select.form-control,.form-control {
     border: 2px solid #ddd;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: normal;
     line-height: 50px;
     color: #232323;
     -moz-border-radius: 4px;
@@ -107,7 +107,7 @@ input[type="file"] {
     border: 2px solid #ddd;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: normal;
     line-height: 30px;
     color: #232323;
     -moz-border-radius: 4px;
@@ -308,7 +308,7 @@ button.btn.active:focus {
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: normal;
     color: #888;
     line-height: 30px;
     text-align: center;
@@ -341,7 +341,7 @@ h2 {
 
 h3 {
     font-size: 22px;
-    font-weight: 300;
+    font-weight: normal;
     color: #555;
     line-height: 30px;
 }
@@ -365,7 +365,7 @@ h3 {
     padding: 16px 20px 0 20px;
     background: #058472;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: normal;
     line-height: 16px;
     color: #fff;
     -moz-border-radius: 4px;
@@ -655,4 +655,49 @@ button.btn.dropdown-toggle {
 }
 .table-preview td{
     padding: 15px 20px !important;
+}
+.table-card{
+    background: #fdfffe !important;
+}
+.table-card td, .table-card th {
+    padding: 8px !important;
+    font-size: 15px;
+}
+td.action-td {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.btn.btn-main-full {
+    background: #0d2151;
+    font-weight: bold;
+    width: 100%;
+}
+.btn.btn-main-full:hover,.btn.btn-main-full:active,.btn.btn-main-full:focus{
+    background: white;
+    color: #0d2151;
+    opacity: 1;
+}
+.table-bordered-thick {
+    border: 2px solid #cccccc !important;
+}
+.cdk-overlay-container {
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    z-index: 9999999 !important;
+}
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    z-index: 9999999 !important;
 }

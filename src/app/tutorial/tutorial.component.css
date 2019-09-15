@@ -88,7 +88,7 @@
   .usp-section {
     position: relative;
     top: -380px;
-    z-index: 999;
+    z-index: 6;
     background-image: url('/assets/usp-back.svg');
     background-repeat: no-repeat;
     background-size: 100%;
@@ -123,7 +123,7 @@
     text-align: center;
     font-size: 20px;
     line-height: 24px;
-    font-weight: 300;
+    font-weight: normal;
   }
   
   .course-list2 {
@@ -136,7 +136,7 @@
     text-align: center;
     font-size: 20px;
     line-height: 24px;
-    font-weight: 500;
+    font-weight: normal;
   }
   
   .show-me {
@@ -145,7 +145,7 @@
   
   @media screen and (max-width: 480px) {
     .slider {
-      top: -20px;
+      top: -30px;
     }
     .usp-section {
       background: none;

@@ -20,19 +20,12 @@
   </ul>
 
 </nav> -->
-<nav class="navbar navbar-expand-md bg-blue navbar-dark fixed-top" style="padding: 20px 50px; z-index: 99999;">
-  <a class="navbar-brand" href="#">
+<nav class="navbar bg-blue navbar-dark fixed-top" style="padding: 15px; z-index: 8;">
+    <a id="openSideNav" class="nav-link nav-btn" href="javascript:void(0)">&#9776;</a>
+    <a class="navbar-brand" href="#">
       <img src="assets/logo.png">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon text-white"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-between pl-5" id="collapsibleNavbar">
-      <ul class="navbar-nav" style="display: inline-block;">
-          <li class="nav-item">
-              <a class="nav-link nav-btn" href="#">Change Your City</a>
-          </li>
-      </ul>
+    </a>
+  <div>
       <ul class="navbar-nav before-login-menu" style="display: inline-block;">
           <li class="nav-item" style="display: inline-block;">
               <a class="nav-link nav-btn" href="/login">Sign In</a>
@@ -44,9 +37,6 @@
       <ul class="navbar-nav after-login-menu" style="display: inline-block;">
         <li class="nav-item" style="display: inline-block;">
             <a id="logout" class="nav-link nav-btn" href="">Sign Out</a>
-        </li>
-        <li class="nav-item" style="display: inline-block;">
-            <a id="viewProfile" class="nav-link nav-btn" href="#"><i class="fa fa-user" aria-hidden="true"></i> Dashboard</a>
         </li>
     </ul>
 </div>  

@@ -13,11 +13,7 @@ export class StudentMenuComponent implements OnInit {
 
   ngOnInit() {
 
-    var id;
-    this.route.params.subscribe(params => {
-        id = params["id"];
-    });
-
+    var id = localStorage.getItem('userId');
     var profilePicUrl = localStorage.getItem("profilePicUrl");
     if(profilePicUrl != undefined && profilePicUrl != null && profilePicUrl != ""){
       $(".profilePic").attr("src",profilePicUrl);

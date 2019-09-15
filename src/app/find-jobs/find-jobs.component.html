@@ -1,6 +1,62 @@
 
 <app-tutor-menu></app-tutor-menu>
+<table class="table" style="border: 1px solid #0d2151;">
+  <tr>
+    <td style="width: 80px;" class="table-anchor-blue">
+      <div>City</div>
+    </td>
+    <td style="padding: 0;">
+      <input class="table-input" (input)="getCitiesBySearch($event)" id="cityFilter" type="text" placeholder="Type 3 digits of city..">
+      <div class="autocomplete-result">
+        <ul>
+          <li (click)="filterByCity($event)" *ngFor="let city of cities" [value]="city.name">{{city.name}}</li>
+        </ul>
+      </div>
+    </td>
+    <td id="filterBtn" style="width: 80px;" class="table-anchor-blue">
+      <div><i class="fa fa-filter"></i>&nbsp;Filter</div>
+    </td>
+  </tr>
+</table>
 <div class="col-lg-12">
+  <div id="filterNav" class="sidenav sidenav-right">
+      <a href="javascript:void(0)" class="closeFilterNav">&times;</a>
+      <div class="filters row">
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Find Tutor</label>
+                <select class="form-control selectpicker" id="tutorTypeFilter" name="tutorTypeFilter">
+                        <option value="teaching-job">All Tutor</option>
+                        <option value="home-tutor-job">Home Tutor</option>
+                        <option value="tution-teacher-job">Tution Centre</option>
+                        <option value="online-tutor-job">Online Tutor</option>
+                        <option value="faculty-job">Tutor For Tution Centre</option>
+                </select>
+            </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Find By Class Category</label>
+                <select class="form-control selectpicker" data-size="5" id="chooseClass" name="chooseClass">
+                                
+                </select>
+            </div> 
+          </div>
+          <div class="col-md-12">
+              <div class="form-group">
+                  <label style="margin-bottom: 15px;">Find By Subject</label>
+                  <select class="form-control selectpicker" id="chooseSubject" title="Select subjects according to class" name="chooseSubject">
+                    <option value="" selected>All Subjects</option> 
+                  </select>
+              </div> 
+          </div>
+          <div class="col-md-12">
+            <br>
+            <button type="button" class="btn btn-main-full" id="applyFilters">Apply Filters</button>
+          </div>
+        </div>
+  </div>
+  <hr>
   <div id="tutorGrid" class="row"></div>
 </div>
 <div id="pagination1">

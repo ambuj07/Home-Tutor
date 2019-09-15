@@ -42,22 +42,16 @@ export class StudentUpdateStatusComponent implements OnInit {
           var html = "";
           console.log(response)
           if(response.contents.length > 0){
-            html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Class</th><th>Subject</th><th>Location</th><th>Preferred Tutor</><th>Job Status</th><th>Applied By Tutor</th></tr>';
             for(var i = 0; i < response.contents.length; i++){
-                var html = '';
-                    html += '<div class="col-md-4 col-xs-1">';
-                    html += '<div class="tutorgrid">';
-                    html += '<div>';
-                    html += '<div style="float: right;">Posted On : <b>'+response.contents[i].createdOn.split("T")[0]+'</b></div>';
-                    html += '<div>Enquiry Id : <b>'+response.contents[i].sequenceId+'</b></div>';
-                    html += '<hr>';
-                    html += '<div>Learning Need : <b>'+response.contents[i].className+', '+response.contents[i].subject+'</b></div>';
-                    html += '<div>Location : <b>'+response.contents[i].location+'</b></div>';
-                    html += '<div>Status : <b>'+response.contents[i].status+'</b></div>';
-                    html += '<a data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="btn btn-primary btn-details updateStatusBtn">Update Status</a>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
+              html += '<div class="col-md-6 col-xs-12" style="padding-left: 0;">';
+              html += '<table class="table table-card table-bordered">';
+              html += '<tr><td style="width:50%">Status : <b>'+response.contents[i].status+'</b></td><td rowspan="2">Remark : </td></tr>';
+              html += '<tr><td>Enq No. : <b>'+response.contents[i].sequenceId+'</b></td></tr>';
+              html += '<tr><td colspan="2">Enq Date Time : <b>'+getDateTimeFormat(response.contents[i].createdOn)+'</b></td></tr>';
+              html += '<tr><td colspan="2"><b>'+response.contents[i].className+', '+response.contents[i].subject+', '+response.contents[i].board+'</b></td></tr>';
+              html += '<tr style="text-align:center"><td class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/enquiry/'+response.contents[i].id+'">Veiw Details</a></td><td class="action-td" style="background: #f26832;color: white;font-weight: bold"><a style="color:white" data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="updateStatusBtn">Update Status</a></td></tr>';
+              html += '</table>';
+              html += '</div>';
             }
             //pagination 
             if(response.page > 1){
@@ -114,6 +108,20 @@ export class StudentUpdateStatusComponent implements OnInit {
           x.className = "show";
           x.innerText = data;
           setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+        function getDateTimeFormat(date){
+          var d = new Date(date);
+          var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          date = d.getDate()+" "+months[d.getMonth()]+" "+d.getFullYear()+" ; "+tConv24(d.toLocaleTimeString());
+          function tConv24(time24) {
+            var ts = time24;
+            var H = +ts.substr(0, 2);
+            var h = (H % 12) || 12;
+            var ampm = H < 12 ? " AM" : " PM";
+            ts = h + ts.substr(2, 3) + ampm;
+            return ts;
+          };
+          return date;
         }
       });
       }
