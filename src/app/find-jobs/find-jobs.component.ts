@@ -13,6 +13,14 @@ declare var $:any;
 export class FindJobsComponent implements OnInit {
   baseUrl :  String = environment.baseUrl;
   cities: any;
+  get isLoggedIn(): boolean {
+    let loggedIn = true;
+    let userId = localStorage.getItem('userId');
+    if(userId == undefined || userId == null){
+      loggedIn = false
+    }
+    return loggedIn;
+  }
   constructor(private title: Title, private meta: Meta,private http: HttpClient) {}
   getCitiesBySearch(event: any){
     console.log();
@@ -31,11 +39,16 @@ export class FindJobsComponent implements OnInit {
   }
   
   ngOnInit() {
+    var isLoggedIn = true;
+    let userId = localStorage.getItem('userId');
+    if(userId == undefined || userId == null){
+      isLoggedIn = false
+    }
     const baseUrl = this.baseUrl;
     const path = window.location.pathname;
     const pathString = path.split("/")[1];
     this.title.setTitle(pathString);
-    $("#viewTabName").text(pathString);
+    document.addEventListener('DOMContentLoaded', function(){ $("#viewTabName").text(pathString); });
     $(".sidenav a").removeClass("active");
     $(".findJobs").addClass("active");
 
@@ -195,7 +208,11 @@ export class FindJobsComponent implements OnInit {
                 html += '<tr style="background: #ccc;"><td colspan="2">Learning Need</td></tr>';
                 html += '<tr><td colspan="2"><b>'+learning+'</b></td></tr>';
                 html += '<tr><td colspan="2"><b>'+location+'</b></td></tr>';
-                html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/enq/'+resultData.contents[i].sequenceId.split("/").join("%2F")+'">Veiw Details</a></td></tr>'
+                if(isLoggedIn){
+                  html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/enq/'+resultData.contents[i].sequenceId.split("/").join("%2F")+'">Veiw Details</a></td></tr>'
+                }else{
+                  html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/login">Veiw Details</a></td></tr>'
+                }
                 html += '</table>';
                 html += '</div>';
                 html += '</div>';
@@ -241,24 +258,28 @@ export class FindJobsComponent implements OnInit {
 
       $(document).on('click','.applyForJobBtn',function(){
         var jobID = $(this).attr("job-id");
-        var tutorId = localStorage.getItem('userId');
-            $.ajax({
-                type: 'PUT',
-                url: baseUrl+"/job/"+jobID+"/apply?tutorId="+tutorId,
-                success: function(resultData) { 
-                  $("#myProfileModal").modal('hide');
-                  console.log(resultData)
-                  showToast("You have successfully applied for the job.")
-                  setTimeout(function(){ 
-                    window.location.href = "/dashboard/tutor/"+tutorId;
-                   }, 3000);
-                 },
-                 error: function(resultData){
-                   $("#myProfileModal").modal('hide');
-                   console.log(resultData.responseJSON.message)
-                   showToast(resultData.responseJSON.message)
-                 }
-            });
+        if(this.isLoggedIn){
+          var tutorId = localStorage.getItem('userId');
+          $.ajax({
+              type: 'PUT',
+              url: baseUrl+"/job/"+jobID+"/apply?tutorId="+tutorId,
+              success: function(resultData) { 
+                $("#myProfileModal").modal('hide');
+                console.log(resultData)
+                showToast("You have successfully applied for the job.")
+                setTimeout(function(){ 
+                  window.location.href = "/dashboard/tutor/"+tutorId;
+                 }, 3000);
+               },
+               error: function(resultData){
+                 $("#myProfileModal").modal('hide');
+                 console.log(resultData.responseJSON.message)
+                 showToast(resultData.responseJSON.message)
+               }
+          });
+        }else{
+          window.location.href = '/login'
+        }
       });
       function showToast(data) {
         var x = document.getElementById("snackbar");

@@ -1,5 +1,6 @@
 
-<app-tutor-menu></app-tutor-menu>
+<app-tutor-menu *ngIf="isLoggedIn"></app-tutor-menu>
+<app-main-menu *ngIf="!isLoggedIn"></app-main-menu>
 <table class="table" style="border: 1px solid #0d2151;">
   <tr>
     <td style="width: 80px;" class="table-anchor-blue">

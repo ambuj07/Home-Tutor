@@ -1,0 +1,15 @@
+<app-main-menu></app-main-menu>
+<div style="padding: 20px 0px;">
+  <div id="accordion" class="accordion">
+    <div class="card mb-0" *ngFor="let faq of faqs">
+        <a class="card-header collapsed" data-toggle="collapse" href="#collapse{{faq.id}}">
+            <a class="card-title">
+              {{faq.question}}
+            </a>
+          </a>
+        <div id="collapse{{faq.id}}" class="card-body collapse" data-parent="#accordion" >
+            {{faq.answer}}
+        </div>
+    </div>
+ </div>
+</div>

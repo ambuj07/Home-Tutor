@@ -31,7 +31,7 @@
 
 .sidenav a:hover,.sidenav a:active,.sidenav a:focus, .sidenav a.active,.dropdown-btn:hover{
     color: #ffffff;
-    background: #226e81;
+    background: #020151;
 }
 
 .sidenav .closebtn {
@@ -45,10 +45,10 @@
 
 .openSideNav{
     font-size: 26px;
-    margin-top: 78px;
+    margin-top: 70px;
     line-height: 35px;
     color: #0d2151;
-    padding: 0px 15px;
+    padding: 6px 15px 0px;
     border-bottom: 3px solid #0d2151;
 }
 

@@ -26,6 +26,7 @@ export class TutorialComponent implements OnInit {
       }
     }
     $(document).ready(function(){
+      $(".leftArrow").trigger("click");
       //Subjects and classes
       var classHtml = '<option value="" disabled selected>Select Class</option>';
       var subjectHtml = '';
@@ -58,6 +59,46 @@ export class TutorialComponent implements OnInit {
         window.location.href = '/nearbyTutors?zip='+zip+'&class='+classSel;
       }
     });
+    // element to detect scroll direction of
+    $(".scrollable").on('scroll', function() {
+      $(this).closest(".container").find(".rightArrow").css("display","block");
+      $(this).closest(".container").find(".leftArrow").css("display","block");
+    });
+    //left right button
+    $(".rightArrow").click(function () {
+        var container = $(this).closest(".container").find(".scrollable").get(0);
+        sideScroll(container,'right',10,250,10);
+    });
+
+    $(".leftArrow").click(function () {
+        var container = $(this).closest(".container").find(".scrollable").get(0);
+        sideScroll(container,'left',10,250,10);
+    });
+
+    function sideScroll(element,direction,speed,distance,step){
+        var scrollAmount = 0;
+        var slideTimer = setInterval(function(){
+            if(direction == 'left'){
+                element.scrollLeft -= step;
+            } else {
+                element.scrollLeft += step;
+            }
+            scrollAmount += step;
+            if(scrollAmount >= distance){
+                window.clearInterval(slideTimer);
+            }
+            if(element.scrollLeft+element.offsetWidth  == element.scrollWidth){
+              $(element).closest(".container").find(".rightArrow").css("display","none");
+            }else{
+              $(element).closest(".container").find(".rightArrow").css("display","block");
+            }
+            if(element.scrollLeft > 0){
+              $(element).closest(".container").find(".leftArrow").css("display","block");
+            }else{
+              $(element).closest(".container").find(".leftArrow").css("display","none");
+            }
+        }, speed);
+    }
     //general functions
     function showToast(data) {
       var x = document.getElementById("snackbar");

@@ -40,7 +40,13 @@ import { UpdateTutorReferenceComponent } from './update-tutor-profile/update-tut
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { StudentEnquiryComponent } from './student-enquiry/student-enquiry.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
-import { MainMenuComponent } from './main-menu/main-menu.component'
+import { MainMenuComponent } from './main-menu/main-menu.component';
+import { FaqsComponent } from './faqs/faqs.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { WhyUsComponent } from './why-us/why-us.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TncComponent } from './tnc/tnc.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component'
 
 @NgModule({
   declarations: [
@@ -73,7 +79,13 @@ import { MainMenuComponent } from './main-menu/main-menu.component'
     ContactUsComponent,
     StudentEnquiryComponent,
     JobDetailsComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    FaqsComponent,
+    AboutUsComponent,
+    WhyUsComponent,
+    PrivacyPolicyComponent,
+    TncComponent,
+    HowItWorksComponent
   ],
   imports: [
     BrowserModule,
@@ -191,6 +203,30 @@ import { MainMenuComponent } from './main-menu/main-menu.component'
       {
         path : 'otp',
         component : OtpVerificationComponent
+      },
+      {
+        path : 'faq/:type',
+        component : FaqsComponent
+      },
+      {
+        path : 'tnc/:type',
+        component : TncComponent
+      },
+      {
+        path : 'how-it-works/:type',
+        component : HowItWorksComponent
+      },
+      {
+        path : 'why-us',
+        component : WhyUsComponent
+      },
+      {
+        path : 'about-us',
+        component : AboutUsComponent
+      },
+      {
+        path : 'privacy-policy',
+        component : PrivacyPolicyComponent
       },
       {
         path : ':tutorType',
