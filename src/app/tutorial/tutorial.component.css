@@ -14,11 +14,6 @@ h2{
 .border-right-large{
   border-right: 1px solid #0d2151;
 }
-.requirement-section{
-    background-image: url('/assets/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .overlay{
     min-height: 30vh;
     position: relative;
@@ -29,7 +24,6 @@ h2{
 .button-header {
     font-size: 26px;
     font-weight: bold;
-    font-style: italic;
     color: #0d2151;
 }
 .btn-main {
@@ -111,10 +105,11 @@ h2{
   .scrollable { overflow: -moz-scrollbars-none; }
   .scrollable { -ms-overflow-style: none; }
   .right-left {
-    background: #5596da;
-    padding: 30px 10px;
-    color: white;
-    font-size: 26px;
+    background-image: radial-gradient(#002e38, #94acf1, #042042);
+    padding: 8px 15px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 22px;
     font-weight: bold;
     cursor: pointer;
     transform: translate(-50%, -50%);

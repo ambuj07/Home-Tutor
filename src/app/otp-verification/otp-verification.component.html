@@ -1,6 +1,7 @@
 <div id="wrapper" style="margin-top:150px">
   <div id="dialog">
-    <h4>Please enter the 4-digit verification code we sent via SMS:</h4>
+    <div style="font-weight: bold;
+    font-size: 18px;">Please Enter the OTP received on Your <br> Mobile Number : <span id="mobile"></span></div>
     <span>(we want to make sure it's you)</span>
     <div id="form">
       <input type="tel" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
@@ -15,8 +16,16 @@
     </div>
     <br>
     <div>
-      Didn't receive the code?<br />
-      <a href="javascript:void(0)" id="resendOtp">Send code again</a><br />
+      <p>Didn't receive the OTP?</p>
+      <p id="waitingPara"><b>Wait till 1 minute !!</b></p>
+      <div id="countdown">
+        <div id="countdown-number">60</div>
+        <svg>
+          <circle r="20" cx="25" cy="25"></circle>
+        </svg>
+      </div>
+      <div id="resend" hidden><a href="javascript:void(0)" style="font-weight: bold;color: #e66506;border-bottom: 2px solid;" id="resendOtp">Send Again</a><br /></div>
+      <div style="color: #047b04;" id="sentAgain" hidden>OPT sent successfully !!</div>
     </div>
   </div>
 </div>

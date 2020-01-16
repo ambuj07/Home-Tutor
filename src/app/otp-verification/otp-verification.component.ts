@@ -18,13 +18,12 @@ export class OtpVerificationComponent implements OnInit {
     const baseUrl = environment.baseUrl;
     $(function() {
 
-      var body = $('body');
+      var body = $('#form');
     
       function goToNextInput(e) {
         var key = e.which,
           t = $(e.target),
           sib = t.next('input');
-    
         if (!sib || !sib.length) {
           sib = body.find('input').eq(0);
         }
@@ -39,10 +38,44 @@ export class OtpVerificationComponent implements OnInit {
       body.on('click', 'input', onFocus);
     
     })
+    var seconds=59;
+    var timer;
+    function myFunction() {
+      if(seconds < 60) { // I want it to say 1:00, not 60
+        $("#countdown-number").text(seconds);
+      }
+      if (seconds >= 0 ) { // so it doesn't go to -1
+        seconds--;
+      } else {
+        clearInterval(timer);
+        $("#countdown,#waitingPara").prop("hidden",true);
+        $("#resend").prop("hidden",false);
+      }
+    }
+    if(!timer) {
+      timer = window.setInterval(function() { 
+        myFunction();
+      }, 1000); // every second
+    }
+    $.ajax({
+      type: 'GET',
+      url: baseUrl+"/tutor/"+id,
+      contentType: "application/json;charset=utf-8",
+      success : function(data){
+        $("#mobile").text(data.mobile);
+      }
+    });
     $("#submitOtp").click(function(){
       var otp="";
       $("input[type='tel']").each(function(){
-        otp += $(this).val();
+        if($(this).val() == "" || $(this).val() == null || $(this).val() == undefined){
+          $("#resultMsg").html('<span style="color:red;font-size:12px;">Otp mismatch</span>')
+          setTimeout(function(){
+            $("#resultMsg").html("");
+          },2000);
+        }else{
+          otp += $(this).val();
+        }
       });
       console.log(otp);
       var otpData = '{"otp":"'+otp+'"}';
@@ -58,15 +91,19 @@ export class OtpVerificationComponent implements OnInit {
         error : function(data){
           console.log(data);
           $("#resultMsg").html('<span style="color:red;font-size:12px;">'+data.responseJSON.message+'</span>')
+          setTimeout(function(){
+            $("#resultMsg").html("");
+          },2000);
         }
       });
     });
     $("#resendOtp").click(function(){
+      $("#resend").prop("hidden",false);
       $.ajax({
         type: 'POST',
         url: baseUrl+"/tutor/"+id+'/resendOtp',
         success : function(data){
-          console.log(data);
+          $("#sentAgain").prop("hidden",false);
         }
     });
     });

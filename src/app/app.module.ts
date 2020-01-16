@@ -133,7 +133,7 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component'
         component : FindMoreTutorsComponent
       },
       {
-        path : 'tutorRegistration',
+        path : 'edureg',
         component : TutorRegistrationComponent
       },
       {

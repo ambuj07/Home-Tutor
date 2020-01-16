@@ -18,23 +18,54 @@ export class UpdateTutorAddressComponent implements OnInit {
       this.route.params.subscribe(params => {
         id = params["id"];
       });
-      $("#viewTabName").text("Update Profile");
+      $("#viewTabName").text("Update Your Address");
       $(".sidenav a").removeClass("active");
       $("#editProfile").addClass("active");
       $(document).ready(function() {
         $('.selectpicker').selectpicker();
       });
         //Address update
-
+        var statesHtml = '<option value="" selected disabled>Select Your State</option>';
+    
+        $.ajax({
+          type: 'GET',
+          url: baseUrl+"/config/state",
+          async:false,
+          contentType: "application/json;charset=utf-8",
+          success: function(resultData) { 
+              console.log(resultData);
+              resultData.forEach(function (a){
+                statesHtml += '<option data-id="'+a.id+'"value="'+a.name+'">'+a.name+'</option>';
+              })
+            }
+        });
+        $(".states").html(statesHtml).selectpicker();
+        
+        // $('.states').change(function(){
+        //   var stateId = $('option:selected', this).attr('data-id');
+        //   var cityHtml = '<option value="" selected disabled>Select Your City</option>';
+        //   $.ajax({
+        //     type: 'GET',
+        //     url: baseUrl+"/config/"+stateId+"/city",
+        //     async:false,
+        //     contentType: "application/json;charset=utf-8",
+        //     success: function(resultData) { 
+        //       resultData.forEach(function (a){
+        //           cityHtml += '<option value="'+a.name+'">'+a.name+'</option>';
+        //         });
+        //       }
+        //     });
+        //     $("#city").html(cityHtml).selectpicker();
+        //     $("#city").selectpicker('refresh');
+        //     $("#cityDiv").prop('hidden',false);
+        //   });
 
         $("input[name='isOwnHouse']").change(function(){
           var radioValue = $("input[name='isOwnHouse']:checked").val();
           if(radioValue == "No"){
             $("#permanentAddress").prop('hidden',false);
-            $("#addressProofDiv").prop('hidden',true);
           }else{
             $("#permanentAddress").prop('hidden',true);
-            $("#addressProofDiv").prop('hidden',false);
           }
         });
 
@@ -44,14 +75,14 @@ export class UpdateTutorAddressComponent implements OnInit {
           var currAddress1 = $("#currentAddress").find("#currAddress1").val();
           var currAddress2 = $("#currentAddress").find("#currAddress2").val();
           var currPostalCode = $("#currentAddress").find("#currPostalCode").val();
-          var currCity = $("#currentAddress").find("select.city").val();
+          var currCity = $("#currentAddress").find("#currentCity").val();
           var currState = $("#currentAddress").find("select.states").val();
           var currAddressId = $("#currAddessId").val();
           var radioValue = $("input[name='isOwnHouse']:checked").val();
           var perAddress1 = $("#permanentAddress").find("#perAddress1").val();
           var perAddress2 = $("#permanentAddress").find("#perAddress2").val();
           var perPostalCode = $("#permanentAddress").find("#perPostalCode").val();
-          var perCity = $("#permanentAddress").find("select.city").val();
+          var perCity = $("#permanentAddress").find("perCity").val();
           var perState = $("#permanentAddress").find("select.states").val();
           var perAddressId = $("#perAddessId").val();
           if(currAddress1 != "" && currAddress2 != "" && currPostalCode && currCity != "" && currState != ""){

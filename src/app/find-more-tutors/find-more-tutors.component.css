@@ -1,12 +1,7 @@
-.requirement-section{
-    background-image: url('/assets/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 form.registration-form .fieldset {
     display: none;
 }
 .overlay{
     min-height: 100vh;
-    background: rgba(93,151,158,.5);
+    background-image: radial-gradient(#bdcbe6, #e9e9f5);
 }

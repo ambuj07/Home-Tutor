@@ -18,7 +18,7 @@ export class UpdateClassAndSubjectComponent implements OnInit {
       this.route.params.subscribe(params => {
         id = params["id"];
       });
-      $("#viewTabName").text("Update Profile");
+      $("#viewTabName").text("Update Classes And Subjects");
       $(".sidenav a").removeClass("active");
       $("#editProfile").addClass("active");
       $(document).ready(function() {
@@ -177,8 +177,8 @@ export class UpdateClassAndSubjectComponent implements OnInit {
               console.log(resultData);
               var grouped = {};
               resultData.forEach(function (a) {
-                  grouped[a.classGroup.id] = grouped[a.classGroup.id] || [];
-                  grouped[a.classGroup.id].push(a.subjectMaster.id);
+                  grouped[a.group.id] = grouped[a.group.id] || [];
+                  grouped[a.group.id].push(a.classSubjectMapping.subjectMaster.id);
               });
               var i = 0;
               for (var key in grouped) {

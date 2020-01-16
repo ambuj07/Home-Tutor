@@ -2,8 +2,6 @@
 <app-tutor-menu></app-tutor-menu>
 <div style="margin-top: 10px;padding:10px">
   <div class="accordion_container">
-
-    <div class="accordion_head">Address</div>
     <div class="accordion_body">
         <div>
             <div class="formDiv_5" style="margin-bottom: 10px !important;">
@@ -15,9 +13,7 @@
                         <tr><td><input id="currPostalCode" type="number" placeholder="Postal Code" name="currPostalCode" class="form-control" autocomplete="off" required></td></tr>
                         <tr>
                             <td>
-                                <select class="form-control city" data-size="3" data-live-search="true">
-
-                                </select>
+                                <input type="text" id="currentCity" placeholder="City" name="city" class="form-control" autocomplete="off" required>
                             </td>
                         </tr>
                         <tr>
@@ -42,14 +38,6 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-xs-12" id="addressProofDiv" hidden>
-                    <div class="input-group" style="width: 300px;margin: 20px auto;">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="addressProof"/>
-                            <label class="custom-file-label" for="addressProof">Upload Proof</label>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-xs-12" id="permanentAddress" hidden>
                     <br>
                     <label>Permanent Address</label>
@@ -59,25 +47,31 @@
                         <tr><td><input id="perPostalCode" type="number" placeholder="Postal Code" name="perPostalCode" class="form-control" autocomplete="off" required></td></tr>
                         <tr>
                             <td>
-                                <select class="form-control city" data-size="3" data-live-search="true">
-
-                                </select>
+                                <input type="text" id="perCity"  placeholder="City" name="city" class="form-control" autocomplete="off" required>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <select class="form-control states" data-size="3" data-live-search="true">
-
+                                <select class="form-control selectpicker states" data-size="3" name="states" data-live-search="true" required>
+                                    
                                 </select>
                             </td>
                         </tr>
                     </table>
                     <input type="hidden" id="perAddessId" value="">
                 </div>
-                <hr>
+                <br>
+                <div class="col-xs-12" id="addressProofDiv">
+                    <div class="input-group" style="width: 300px;margin: 20px auto;">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="addressProof"/>
+                            <label class="custom-file-label" for="addressProof">Upload Proof</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div style="text-align:right;padding: 25px 40px 0px;text-align: center;">
+        <div style="text-align: center;">
             <button type="button" id="saveAddress" class="btn btn-primary" style="width: 300px;">Save Address</button>
         </div>
     </div>

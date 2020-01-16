@@ -2,12 +2,12 @@
 <app-tutor-menu></app-tutor-menu>
 <div style="margin-top: 10px;padding:10px">
   <div class="accordion_container">
-    <div class="accordion_head">Update Your Guarantor</div>
     <div class="accordion_body">
       <p>We need two <b>Guarantor,</b> so that in case of emergency we can reach you, if you lost your current number.</p>
        <div class="row">
           <div class="formDiv_4 col-md-6" style="margin-bottom: 10px !important;">
             <p><u><b>Guarantor#1 <span class="font-red">*</span></b></u></p>
+            <input type="hidden" id="gua1" name="gua1">
             <div class="form-group">
                 <input type="text" placeholder="Enter Guarantor Name"  name="name1" class="form-control" id="name1" required>
             </div>
@@ -20,6 +20,7 @@
           </div>
           <div class="formDiv_4 col-md-6" style="margin-bottom: 10px !important;">
               <p><u><b>Guarantor#2</b></u></p>
+              <input type="hidden" id="gua2" name="gua2">
               <div class="form-group">
                   <input type="text" placeholder="Enter Guarantor Name"  name="name2" class="form-control" id="name2" required>
               </div>
@@ -31,7 +32,7 @@
               </div>
           </div>
        </div>
-       <div style="text-align:right;padding: 25px 40px 0px;text-align: center;">
+       <div style="text-align: center;">
          <button type="button" id="saveGuarantor" class="btn btn-primary" style="width: 300px;">Save Guarantor</button>
        </div>
     </div>

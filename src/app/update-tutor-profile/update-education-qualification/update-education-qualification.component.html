@@ -2,7 +2,6 @@
 <app-tutor-menu></app-tutor-menu>
 <div style="margin-top: 10px;padding:10px">
   <div class="accordion_container">
-    <div class="accordion_head">Educational Qualification</div>
     <div class="accordion_body">
          <!-- <div class="table-responsive">
          <table class="table table-bordered education-table" style="min-width:700px">
@@ -169,7 +168,8 @@
            <button type="button" id="saveQualification" class="btn btn-primary" style="width: 300px;">Save Education</button>
          </div>
          <br><br> -->
-                <br><br>
+                <div style="padding: 15px;">Highest Qualification : <b><span id="qualification"></span></b></div>
+                <br>
                 <div class="row">
                   <div class="col-12 col-md-3 eduTab" data-id="intermidiate">
                       <div class="education-card">INTERMIDIATE<br><small>(Class XII / 10+2)</small></div>
@@ -199,27 +199,32 @@
             <div class="modal-body">
               <form id="educationForm" data-id="" onsubmit="return false;">
                     <div class="form-group">
-                        <select class="form-control selectpicker" id="examStream" name="examStream">
-                            <option value="" selected disabled>EXAM/STREAM</option>
-                            <option value="SCIENCE">SCIENCE</option>
-                            <option value="COMMERCE">COMMERCE</option>
-                            <option value="HUMINITY/ART">HUMINITY/ART</option>
-                        </select>
+                        <div class="streamForInter">
+                            <select class="form-control selectpicker" id="examStreamInter" name="examStreamInter">
+                                <option value="" selected disabled>Stream</option>
+                                <option value="Science">Science</option>
+                                <option value="Commerce">Commerce</option>
+                                <option value="Huminity/Art">Huminity/Art</option>
+                            </select>
+                        </div>
+                        <div class="streamForOther">
+                            <input type="text" placeholder="Course/Stream" class="form-control" id="examStreamOther" name="examStreamOther">
+                        </div>
                     </div>
                     <div class="form-group" id="boardGroup">
                         <div id="boardForInterDiv">
                             <select class="form-control selectpicker" id="boardForInter" name="board">
-                                    <option value="" selected disabled>	NAME PASSING BOARD/UNIVERSITY</option>
+                                    <option value="" selected disabled>	Board</option>
                                     <option value="CBSE">CBSE</option>
                                     <option value="IB">IB</option>
                                     <option value="ISC">ISC</option>
-                                    <option value="STATE BOARD">STATE BOARD</option>
-                                    <option value="OPEN SCHOOL">OPEN SCHOOL</option>
-                                    <option value="OTHER">OTHER</option>
+                                    <option value="State Board">State Board</option>
+                                    <option value="Open School">Open School</option>
+                                    <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="input-group" id="boardForOtherDiv">
-                            <input type="text" placeholder="NAME PASSING BOARD/UNIVERSITY" id="boardForOther" class="form-control" name="boardForOther">
+                            <input type="text" placeholder="University" id="boardForOther" class="form-control" name="boardForOther">
                         </div>
                     </div>
                     <div class="form-group">
@@ -234,21 +239,21 @@
                     </div>
                     <div class="form-group">
                         <select class="form-control selectpicker" id="modeOfStudy" name="modeOfStudy">
-                            <option value="" selected disabled>MODE OF STUDY</option>
-                            <option value="REGULAR">REGULAR</option>
-                            <option value="CORRESPODENCE">CORRESPODENCE</option>
+                            <option value="" selected disabled>Mode of Study</option>
+                            <option value="Regular">Regular</option>
+                            <option value="Correspondence">Correspondence</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="tel" placeholder="MARKS OBTENED (%)" id="markObtained" class="form-control" name="markObtained" required>
+                            <input type="tel" placeholder="Obtained Marks (%)" id="markObtained" class="form-control" name="markObtained" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <select class="form-control selectpicker" id="schoolType" name="schoolType">
-                            <option value="" selected disabled>TYPE OF SCHOOL/COLLAGE</option>
+                            <option value="" selected disabled>Type of School</option>
                             <option value="GOVT">GOVT</option>
-                            <option value="PRIVATE">PRIVATE</option>
+                            <option value="Private">Private</option>
                         </select>
                     </div>
                     <input type="hidden" id="eduId" name="eduId">

@@ -6,7 +6,7 @@
   #wrapper #dialog {
     border: solid 1px #ccc;
     margin: 10px auto;
-    padding: 20px 30px;
+    padding: 20px;
     display: inline-block;
     box-shadow: 0 0 4px #ccc;
     background-color: #faf8f8;
@@ -37,4 +37,46 @@
     border-radius: 3px;
   }
 
+  #countdown {
+    position: relative;
+    margin: auto;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+  }
   
+  #countdown-number {
+    color: #061f50;
+    display: inline-block;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+  }
+  
+  svg circle {
+    stroke-dasharray: 122px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 4px;
+    stroke: #061f50;
+    fill: none;
+    animation: countdown 61s linear infinite forwards;
+  }
+  
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 122px;
+    }
+  }

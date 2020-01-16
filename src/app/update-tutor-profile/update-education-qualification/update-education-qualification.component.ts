@@ -18,25 +18,33 @@ export class UpdateEducationQualificationComponent implements OnInit {
       this.route.params.subscribe(params => {
         id = params["id"];
       });
-      $("#viewTabName").text("Update Profile");
+      $("#viewTabName").text("Update Educational Qualification");
       $(".sidenav a").removeClass("active");
       $("#editProfile").addClass("active");
       $(document).ready(function() {
         $('.selectpicker').selectpicker();
       });
       //new 
+      $.ajax({
+        type: 'GET',
+        url: baseUrl+"/tutor/"+id,
+        success : function(data){
+          $("#qualification").text(data.qualification);
+        }
+      });
       $(".eduTab").click(function(){
         $("#educationModal").modal('show');
         var dataId = $(this).attr("data-id");
         $("#educationForm").attr("data-id",dataId);
         $("#educationModal").find(".passing-deg").text(dataId.toUpperCase());
         if(dataId == "intermidiate"){
-            $("#boardForOtherDiv").prop("hidden",true);
-            $("#boardForInterDiv").prop("hidden",false);
+            $("#boardForOtherDiv,.streamForOther").prop("hidden",true);
+            $("#boardForInterDiv,.streamForInter").prop("hidden",false);
         }else{
-            $("#boardForInterDiv").prop("hidden",true);
-            $("#boardForOtherDiv").prop("hidden",false);
+            $("#boardForInterDiv,.streamForInter").prop("hidden",true);
+            $("#boardForOtherDiv,.streamForOther").prop("hidden",false);
         }
+        
         $.ajax({
           type: 'GET',
           url: baseUrl+"/tutor/"+id+"/education",
@@ -48,13 +56,17 @@ export class UpdateEducationQualificationComponent implements OnInit {
               if(keepGoing){
                 if(a.degree == dataId){
                   $("#eduId").val(a.id);
-                  $("#examStream").val(a.stream).selectpicker('refresh');
                   if(dataId == "intermidiate"){
+                    $("#examStreamInter").val(a.stream).selectpicker('refresh');
                     $("#boardForInter").val(a.board).selectpicker('refresh');
                   }else{
+                    $("#examStreamOther").val(a.stream);
                     $("#boardForOther").val(a.board)
                   }
-                  $(".states").val(a.state).selectpicker('refresh');
+                  var stateSel = $(".states option").filter(function() { 
+                    return this.text == a.state; 
+                  }).val();
+                  $(".states").val(stateSel).selectpicker('refresh');
                   $("#passingYear").val(a.year);
                   $("#modeOfStudy ").val(a.mode).selectpicker('refresh');
                   $("#markObtained").val(a.marksObtained);
@@ -62,10 +74,11 @@ export class UpdateEducationQualificationComponent implements OnInit {
                   keepGoing = false;
                 }else{
                   $("#eduId").val(null);
-                  $("#examStream").val("").selectpicker('refresh');
                   if(dataId == "intermidiate"){
+                    $("#examStreamInter").val("").selectpicker('refresh');
                     $("#boardForInter").val("").selectpicker('refresh');
                   }else{
+                    $("#examStreamOther").val("");
                     $("#boardForOther").val("")
                   }
                   $(".states").val("").selectpicker('refresh');
@@ -81,7 +94,7 @@ export class UpdateEducationQualificationComponent implements OnInit {
       });
       //new
       // Function for update qualification
-      var statesHtml = '<option value="" selected disabled>PASSING STATE</option>';
+      var statesHtml = '<option value="" selected disabled>Passing State</option>';
     
       $.ajax({
         type: 'GET',
@@ -103,20 +116,26 @@ export class UpdateEducationQualificationComponent implements OnInit {
           interEduId = null;
         }
         var degree = $("#educationForm").attr("data-id");
-        var interExam = $("#examStream").val();
+        var interExam = "";
+        if(degree == "intermidiate"){
+          interExam = $("#examStreamInter").val();
+        }else{
+          interExam = $("#examStreamOther").val();
+        }
         var interBoard = "";
         if(degree == "intermidiate"){
           interBoard = $("#boardForInter").val();
         }else{
           interBoard = $("#boardForOther").val();
         }
-        var interState = $("select.states").val();
+        var interStateText = $("select.states option:selected").text();
+        console.log(interStateText);
         var interYear = $("#passingYear").val();
         var interMode = $("#modeOfStudy ").val();
         var interMarks = $("#markObtained").val();
         var interType = $("#schoolType").val();
-        if(checkNullOrUndefined(interBoard) !="" || checkNullOrUndefined(interExam) != "" || checkNullOrUndefined(interMarks) != "" || checkNullOrUndefined(interState) != "" || checkNullOrUndefined(interType) != "" || checkNullOrUndefined(interYear) != "" || checkNullOrUndefined(interMode) != ""){
-          var inter = {"id":interEduId,"degree":degree,"stream":interExam,"board" : interBoard,"state":interState,"year":interYear,"mode":interMode,"marksObtained":interMarks,"type":interType};
+        if(checkNullOrUndefined(interBoard) !="" || checkNullOrUndefined(interExam) != "" || checkNullOrUndefined(interMarks) != "" || checkNullOrUndefined(interStateText) != "" || checkNullOrUndefined(interType) != "" || checkNullOrUndefined(interYear) != "" || checkNullOrUndefined(interMode) != ""){
+          var inter = {"id":interEduId,"degree":degree,"stream":interExam,"board" : interBoard,"state":interStateText,"year":interYear,"mode":interMode,"marksObtained":interMarks,"type":interType};
           jsonObj.push(inter);
           console.log(jsonObj);
         }

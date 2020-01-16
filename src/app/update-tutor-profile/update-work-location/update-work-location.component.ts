@@ -18,7 +18,7 @@ export class UpdateWorkLocationComponent implements OnInit {
       this.route.params.subscribe(params => {
         id = params["id"];
       });
-      $("#viewTabName").text("Update Profile");
+      $("#viewTabName").text("Update Work Locations");
       $(".sidenav a").removeClass("active");
       $("#editProfile").addClass("active");
       $(document).ready(function() {

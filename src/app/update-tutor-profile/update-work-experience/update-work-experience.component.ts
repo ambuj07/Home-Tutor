@@ -18,7 +18,7 @@ export class UpdateWorkExperienceComponent implements OnInit {
       this.route.params.subscribe(params => {
         id = params["id"];
       });
-      $("#viewTabName").text("Update Profile");
+      $("#viewTabName").text("Update Work Experience");
       $(".sidenav a").removeClass("active");
       $("#editProfile").addClass("active");
       $(document).ready(function() {
@@ -147,6 +147,13 @@ export class UpdateWorkExperienceComponent implements OnInit {
       }
     });
          //general functions
+         $('.dropdownYear').each(function() {
+            var year = (new Date()).getFullYear();
+            var current = year;
+            for (var i = 0; i > -50; i--) {
+                $(this).append('<option value="' + (year + i) + '">' + (year + i) + '</option>');
+            }
+         });
          function showToast(data) {
           var x = document.getElementById("snackbar");
           x.className = "show";

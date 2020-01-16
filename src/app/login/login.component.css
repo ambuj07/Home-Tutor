@@ -1,11 +1,6 @@
-.requirement-section{
-    background-image: url('/assets/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .overlay{
     min-height: 100vh;
-    background: rgb(203, 222, 224);
+    background-image: radial-gradient(#bdcbe6, #e9e9f5);
 }
 .btn-register{
     border-radius: 50px;

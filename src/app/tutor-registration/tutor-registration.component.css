@@ -1,11 +1,6 @@
-.requirement-section{
-    background-image: url('/assets/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .overlay{
     min-height: 100vh;
-    background: rgba(93, 151, 158, 0.5);
+    background-image: radial-gradient(#bdcbe6, #e9e9f5);
 }
 form.registration-form .fieldset {
     display: none;
@@ -27,4 +22,15 @@ form.registration-form .fieldset {
 #dob:focus::before,
 #dob:valid::before {
 	content: "" !important;
+}
+.privacyPolicyPara{
+    font-size: 14px;
+}
+p.privacyPolicyPara br {
+    display: none;
+}
+@media screen and (max-width: 450px) {
+    p.privacyPolicyPara br {
+        display: block;
+    }
 }

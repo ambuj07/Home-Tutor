@@ -54,8 +54,7 @@
     padding: 0px 60px 30px;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+@media screen and (max-width: 450px) {
   .sidenav a {font-size: 18px;}
 }
 .allNavElements{

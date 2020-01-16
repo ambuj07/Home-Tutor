@@ -11,34 +11,38 @@
                     </div>
                     <div class="form-bottom">
                         <div class="form-group">
-                            <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name" required>
+                            <input type="text" placeholder="Enter Your Name" name="name" class="form-control" id="name" autocomplete required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email" required>
+                            <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email" autocomplete required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Mobile Number(only 10 digits)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
+                            <input type="tel" placeholder="Mobile Number (only 10 digits)"  name="mobileNumber" class="form-control" autocomplete id="mobileNumber" maxlength="10" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="WhatsApp Number(only 10 digits)"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
+                            <input type="tel" placeholder="WhatsApp Number (only 10 digits)"  name="whatsappNumber" class="form-control" autocomplete id="whatsappNumber" maxlength="10" required>
                         </div>
                         <div style="text-align:center">
-                            <button type="button" class="btn btn-next btn-register">START</button>
+                            <button type="button" style="width: 180px;" class="btn btn-next btn-register">START</button>
                         </div>
+                        <p class="privacyPolicyPara" style="text-align: center;padding: 25px 0px 0px;"> By joining you agree with our <br><a href="/privacy-policy" target="_blank" style="font-weight: bold;">Privacy Policies</a> and <a href="/tnc/tutor" target="_blank" style="font-weight: bold;">Tearms and Conditions</a></p>
                     </div>
                 </div>
                 <div class="fieldset">
                     <div class="form-top">
                         <div class="form-top-left">
-                            <div class="reg-heading">SERVICE DETAILS</div>
+                            <div class="reg-heading">Mode of Teaching</div>
                         </div>
                     </div>
                     <div class="form-bottom">
                         <div class="form-group">
-                            <label style="margin-bottom: 15px;">Mode of Teaching<font color="red">*</font></label>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" value="TUTOR" class="custom-control-input tutorType" id="tutorType1" name="tutorType1">
                                 <label class="custom-control-label" for="tutorType1">Home Tutor (Travel at Student Place)</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" value="ONLINE" class="custom-control-input tutorType" id="tutorType4" name="tutorType4">
+                                <label class="custom-control-label" for="tutorType4">Online Tutor / Trainer</label>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" value="FACULTY" class="custom-control-input tutorType" id="tutorType2" name="tutorType2">
@@ -49,25 +53,28 @@
                                 <label class="custom-control-label" for="tutorType3">Run a Coaching Center (Teaching at my Place)</label>
                             </div>
                         </div>
-                        <p class="note-para">Note : Select multiple applicable</p>
-                        <div style="text-align:center">
-                            <button type="button" class="btn btn-next btn-register">NEXT</button>
+                        <div style="display: inline-block;">
+                            <button type="button" class="btn btn-arrow btn-previous"><span class="arrow arrow-left"></span></button>
+                        </div>
+                        <div style="float: right;">
+                            <button type="button" class="btn btn-arrow btn-next"><span class="arrow arrow-right"></span></button>
                         </div>
                     </div>
                 </div>
                 <div class="fieldset">
                     <div class="form-top">
                         <div class="form-top-left">
-                            <div class="reg-heading">CLASSES And SUBJECTS</div>
+                            <div class="reg-heading">Teaching Class And Subjects</div>
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <label style="margin-bottom: 15px;">Select your Prime CLASSES And SUBJECTS <font color="red">*</font></label>
+                        <label style="margin-bottom: 15px;">Select your Prime Class <font color="red">*</font></label>
                         <div class="form-group" style="margin-bottom: 20px !important;">
                             <select class="form-control selectpicker" data-size="5" id="chooseClass" name="chooseClass">
                                 
                             </select>
                         </div>
+                        <label style="margin-bottom: 15px;">Select your Prime Subjects <font color="red">*</font></label>
                         <div class="form-group">
                             <select class="form-control selectpicker" data-size="5" id="chooseSubject" title="Select subjects according to class" name="chooseSubject" multiple>
                                 
@@ -75,15 +82,18 @@
                         </div>
                         <br>
                         <p class="note-para">Note : You can add more later from your dashboard.</p>
-                        <div style="text-align:center">
-                            <button type="button" class="btn btn-next btn-register">NEXT</button>
+                        <div style="display: inline-block;">
+                            <button type="button" class="btn btn-arrow btn-previous"><span class="arrow arrow-left"></span></button>
+                        </div>
+                        <div style="float: right;">
+                            <button type="button" class="btn btn-arrow btn-next"><span class="arrow arrow-right"></span></button>
                         </div>
                     </div>
                 </div>
                 <div class="fieldset">
                     <div class="form-top">
                         <div class="form-top-left">
-                            <div class="reg-heading">SERVICE LOCATIONS</div>
+                            <div class="reg-heading">Prime Working Location</div>
                         </div>
                     </div>
                     <div class="form-bottom">
@@ -103,7 +113,7 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" placeholder="Enter Your Locality(Ex. Mayur Vihar Phase-3)" id="location" class="form-control" name="location" required>
+                                <input type="text" placeholder="Enter Your Locality (Ex. Mayur Vihar Phase-3)" id="location" class="form-control" name="location" required>
                             </div>
                         </div>   
                         <div class="form-group">
@@ -111,6 +121,21 @@
                                 <input type="tel" placeholder="Enter Your Pin Code (6 digits)" id="pinCode" class="form-control" name="pinCode" maxlength="6" required>
                             </div>
                         </div>
+                        <div style="display: inline-block;">
+                            <button type="button" class="btn btn-arrow btn-previous"><span class="arrow arrow-left"></span></button>
+                        </div>
+                        <div style="float: right;">
+                            <button type="button" class="btn btn-arrow btn-next"><span class="arrow arrow-right"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="fieldset">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <div class="reg-heading">General Information</div>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
                         <div class="form-group">
                             <select class="form-control selectpicker" name="qualification" id="qualification">
                                 <option value="" disabled selected>Highest Qualification</option>
@@ -133,7 +158,13 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input placeholder="Date Of Birth" type="date" id="dob" class="form-control" name="dob" required>
+                                <input class="form-control" id="dob" type="text" [owlDateTimeTrigger]="confirmDate" [owlDateTime]="confirmDate" placeholder="Date Of Birth">
+                                <owl-date-time pickerType="calendar" #confirmDate></owl-date-time>
+                                <i class="fa fa-calendar" style="position: absolute;
+                                right: 18px;
+                                top: 15px;
+                                font-size: 18px;
+                                color: #797979;"></i>
                             </div>
                         </div>
                         <div class="form-group">
@@ -175,9 +206,13 @@
                                 <option value="Excellent">Excellent</option>
                             </select>
                         </div>
-                        <div style="text-align:center">
-                            <button type="button" id="submit" next-step="false" class="btn btn-next btn-register">JOIN NOW</button>
+                        <div style="display: inline-block;">
+                            <button type="button" class="btn btn-arrow btn-previous"><span class="arrow arrow-left"></span></button>
                         </div>
+                        <div style="float: right;">
+                            <button type="button" id="submit" next-step="false" class="btn btn-next btn-register">JOIN</button>
+                        </div>
+                        <p class="privacyPolicyPara" style="text-align: center;padding: 25px 0px 0px;"> By joining you agree with our <br><a href="/privacy-policy" target="_blank" style="font-weight: bold;">Privacy Policies</a> and <a href="/tnc/tutor" target="_blank" style="font-weight: bold;">Tearms and Conditions</a></p>
                     </div>
                 </div>
             </form>

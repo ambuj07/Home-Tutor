@@ -18,7 +18,7 @@ export class UpdateTutorReferenceComponent implements OnInit {
     this.route.params.subscribe(params => {
       id = params["id"];
     });
-    $("#viewTabName").text("Update Profile");
+    $("#viewTabName").text("Update Your Guarantor");
     $(".sidenav a").removeClass("active");
     $("#editProfile").addClass("active");
     $(document).ready(function() {
@@ -36,9 +36,11 @@ export class UpdateTutorReferenceComponent implements OnInit {
   $("#saveGuarantor").click(function(){
     var error = false;
      var jsonObj = [];
+     var id1 = $("#gua1").val();
      var name1 = $("#name1").val();
      var mobileNumber1 = $("#mobileNumber1").val();
      var relationship1 = $("#relationship1").val();
+     var id2 = $("#gua2").val();
      var name2 = $("#name2").val();
      var mobileNumber2 = $("#mobileNumber2").val();
      var relationship2 = $("#relationship2").val();
@@ -47,7 +49,15 @@ export class UpdateTutorReferenceComponent implements OnInit {
        showToast("Guarantor#1 is mandatory");
      }else{
       error = false;
-      jsonObj.push({guarantor1:{name:name1,mobileNumber:mobileNumber1,relation:relationship1},guarantor2:{name:name2,mobileNumber:mobileNumber2,relation:relationship2}});
+      var gua1 = {"id":id1,"name":name1,"mobileNumber":mobileNumber1,"relation" : relationship1};
+      jsonObj.push(gua1);
+      if(name2 != ""){
+        var gua2 = {"id":id2,"name":name2,"mobileNumber":mobileNumber2,"relation" : relationship2};
+        jsonObj.push(gua2);
+      }else{
+        gua2 = {"id":id2,"name":"","mobileNumber":"","relation" : ""};
+        jsonObj.push(gua2);
+      }
      }
      if(jsonObj.length > 0 && !error){
       console.log(JSON.stringify(jsonObj));
@@ -74,7 +84,18 @@ export class UpdateTutorReferenceComponent implements OnInit {
     type: 'GET',
     url: baseUrl+"/tutor/"+id+"/guarantor",
     success: function(resultData) { 
-      console.log(resultData);            
+      if(resultData.length > 0){
+        $("#gua1").val(resultData[0].id);
+        $("#name1").val(resultData[0].name);
+        $("#mobileNumber1").val(resultData[0].mobileNumber);
+        $("#relationship1").val(resultData[0].relation);
+      }  
+      if(resultData.length > 1){
+        $("#gua2").val(resultData[1].id);
+        $("#name2").val(resultData[1].name);
+        $("#mobileNumber2").val(resultData[1].mobileNumber);
+        $("#relationship2").val(resultData[1].relation);
+      }         
     }
   });
        //general functions

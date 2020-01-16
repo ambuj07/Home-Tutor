@@ -14,9 +14,8 @@
     display: block;
     margin-bottom: 0px;
     font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: underline;
-    color: #226e81;
+    text-transform: capitalize;
+    color: #061f50;
 }
 .card.hovercard .card-info {
     font-size: 12px;
@@ -25,18 +24,26 @@
 form.registration-form .fieldset {
     display: none;
 }
+.edit-profile-button{
+    float: right;
+    color: #f26832;
+    font-size: 24px;
+    cursor: pointer;
+}
 .total-credit {
     position: absolute;
     font-size: 20px;
-    text-decoration: underline;
-    color: #226e81;
-    right: 20px;
-    font-style: italic;
+    color: #ffffff;
+    right: 10px;
+    font-weight: bold;
+    top: 10px;
+    background: #061f50;
+    border-radius: 20px;
+    padding: 0px 7px;
 }
 .sequence {
-    position: absolute;
     text-decoration: underline;
-    color: #236e81;
+    color: #061f50;
     font-weight: bold;
     font-size: 20px;
     font-style: italic;
@@ -92,10 +99,16 @@ form.registration-form .fieldset {
     width: 130px;
     height: 130px;
     background: #ececec;
-    border-radius: 50%;
+    border-radius: 10px;
+}
+ul.inlineList {
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+@media screen and (max-width: 450px) {
   .sidenav a {font-size: 18px;}
 }
