@@ -13,19 +13,32 @@ export class TutorialComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.onreadystatechange = function () {
+      var state = document.readyState
+      if (state == 'complete') {
+          setTimeout(function(){
+             document.getElementById('load').style.visibility="hidden";
+             document.getElementById('contents').style.visibility="visible";
+          },1000);
+      }
+    }
     const baseUrl = environment.baseUrl;
     var userName = localStorage.getItem("userName");
     var userId = localStorage.getItem("userId");
     var type = localStorage.getItem("type");
-    if(userName != null && userId != null && type != null){
-      if(type == "TUTOR"){
-        window.location.href = '/dashboard/tutor/'+userId;
+    $(function() {
+      if(userName != null && userId != null && type != null){
+        if(type == "TUTOR"){
+          window.location.href = '/profile/tutor';
+        }
+        if(type == "STUDENT"){
+          window.location.href = '/profile/student';
+        }
       }
-      if(type == "STUDENT"){
-        window.location.href = '/dashboard/student/'+userId;
-      }
-    }
+    });
     $(document).ready(function(){
+      $(".sidenav a").removeClass("active");
+      $(".homeA").addClass("active");
       $(".leftArrow").trigger("click");
       //Subjects and classes
       var classHtml = '<option value="" disabled selected>Select Class</option>';

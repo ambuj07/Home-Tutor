@@ -24,7 +24,11 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    $("#viewTabName").html("ABOUT US");
+    $(document).ready(function(){
+      $("#viewTabName").text("About Us"); 
+      $(".sidenav a").removeClass("active");
+      $(".aboutUsA").addClass("active");
+    });
   }
 
 }

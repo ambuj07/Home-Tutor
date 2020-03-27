@@ -25,7 +25,11 @@ export class WhyUsComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    $("#viewTabName").html("WHY US");
+    $(document).ready(function() {
+      $("#viewTabName").html("WHY US");
+      $(".sidenav a").removeClass("active");
+      $(".whyUsA").addClass("active");
+    });
   }
 
 }

@@ -14,14 +14,15 @@ export class UpdateTutorReferenceComponent implements OnInit {
 
   ngOnInit() {
     const baseUrl = environment.baseUrl;
-    var id;
-    this.route.params.subscribe(params => {
-      id = params["id"];
-    });
-    $("#viewTabName").text("Update Your Guarantor");
-    $(".sidenav a").removeClass("active");
-    $("#editProfile").addClass("active");
+    const id = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    if(id == null || id == "" || id == undefined){
+      window.location.href = '/login'
+    }
     $(document).ready(function() {
+      $("#viewTabName").text("Update Your Guarantor");
+      $(".sidenav a").removeClass("active");
+      $("#editProfile").addClass("active");
       $('.selectpicker').selectpicker();
     });
     //experiance update function
@@ -69,8 +70,8 @@ export class UpdateTutorReferenceComponent implements OnInit {
          success: function(resultData) { 
            showToast("Guarantor saved successfully.")
            setTimeout(function(){ 
-             window.location.href = "tutor/guarantor/"+id;
-            }, 3000);
+             window.location.href = "profile/tutor";
+            }, 2000);
           },
           error :function(resultData){
             showToast("Something went wrong at server side");

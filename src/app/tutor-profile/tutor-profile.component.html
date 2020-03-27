@@ -1,6 +1,6 @@
 
-<app-tutor-menu></app-tutor-menu>
-<div class="col-lg-12">
+<app-menu></app-menu>
+<div class="col-lg-12" style="max-width: 1060px;margin: 0 auto;border: 1px solid #061f50;border-top-color: white;">
     <div class="card hovercard">
       <div class="total-credit"> </div>
       <div class="slidable">
@@ -10,7 +10,7 @@
                 <label for="uploadProfilePic" id="uploadProfilePicBtn" data-role="button" class="btn btn-danger btn-xs" class="white-color" data-corners="true" style="cursor:pointer;">
                   <i style="font-size: 18px;background: #f26832;padding: 8px;border-radius: 50%;" class="fa fa-camera" aria-hidden="true"></i>
                 </label>
-                <input id="uploadProfilePic" type="file" name="uploadFile"  data-role="button" data-corners="true" style="opacity: 0;width:0px; height:0px;display:none;"/>
+                <input id="uploadProfilePic" type="file" name="uploadFile"  data-role="button" data-corners="true" style="opacity: 0;width:0px; height:0px;display:none;" accept="image/x-png,image/gif,image/jpeg"/>
             </div>
         </div>
         <div class="card-info"> 
@@ -62,7 +62,7 @@
       </div>
     </div> -->
     <br>
-    <div class="heading1">Personal Details <a id="personalEdit" href="javascript:void(0)" class="edit-profile-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
+    <div class="heading1">Personal Details </div>
     <div class="row">
         <div class="col-md-6 col-xs-12" style="padding:0">
           <table class="table table-bordered" style="margin-bottom:0">
@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td>Job Type </td>
-                <td><b> <span id="jobType"></span></b></td>
+                <td><b> <span id="jobType" style="text-transform: capitalize;"></span></b></td>
             </tr>
             <tr>
               <td>Teaching Experience </td>
@@ -112,7 +112,7 @@
             </tr>
             <tr>
                 <td>Fluency In English </td>
-                <td><b> <span id="fluencyInEnglish"></span></b></td>
+                <td><b> <span id="fluencyInEnglish" style="text-transform: capitalize;"></span></b></td>
             </tr>
             <tr>
                 <td colspan="2"> &nbsp; </td>
@@ -133,7 +133,7 @@
     <div style="padding: 10px 0px;">Highest Qualification : <b><span class="qualification"></span></b></div>
     <div class="row" id="educationalTable" class="table-responsive"></div>
     <br>
-    <div class="heading1">Working Area Pin Codes <a href="#" id="worklocationEdit" class="edit-profile-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
+    <div class="heading1">Preferred Locations <a href="#" id="worklocationEdit" class="edit-profile-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
     <div class="table-responsive">
       <table id="zipCodeTable" class="table table-bordered">
   
@@ -141,9 +141,8 @@
     </div>
     <br>
     <div class="heading1">Work Experience <a href="#" id="experienceEdit" class="edit-profile-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
-    <div style="padding: 10px 0px;">Total Experience : <b><span class="totalExperience"></span></b></div>
     <div class="table-responsive">
-      <table id="experienceTable" class="table table-bordered">
+      <table id="experienceTable" class="table table-padding-10 table-bordered">
   
       </table>
     </div>

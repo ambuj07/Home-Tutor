@@ -1,4 +1,4 @@
-<app-main-menu></app-main-menu>
+<app-menu></app-menu>
 <div class="container-fluid requirement-section">
     <div class="row overlay">
         <div class="col-md-6 offset-md-3" style="margin-top: 30px;">
@@ -158,7 +158,7 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" id="dob" type="text" [owlDateTimeTrigger]="confirmDate" [owlDateTime]="confirmDate" placeholder="Date Of Birth">
+                                <input class="form-control" id="dob" type="text" [owlDateTimeTrigger]="confirmDate" [owlDateTime]="confirmDate" placeholder="Date Of Birth" readonly>
                                 <owl-date-time pickerType="calendar" #confirmDate></owl-date-time>
                                 <i class="fa fa-calendar" style="position: absolute;
                                 right: 18px;

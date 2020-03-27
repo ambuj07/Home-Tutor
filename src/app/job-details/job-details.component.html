@@ -1,4 +1,4 @@
-<app-tutor-menu></app-tutor-menu>
+<app-menu></app-menu>
 <br>
 <div *ngFor ="let job of jobs" style="width: 600px;margin: 0 auto;max-width: 100%;">
   <table class="table table-bordered">
@@ -16,8 +16,9 @@
     <tr><td>Prefer Fee <small>(*Negotiable)</small></td><td> <b>{{job.student.preferFee}}</b></td></tr>
     <tr><td>Student Performance</td><td> <b>{{job.student.performance}}</b></td></tr>
     <tr><td>Anything Else</td><td> <b>{{job.student.anythingElse}}</b></td></tr>
-    <tr *ngIf="!hasApplied" style="text-align:center" data-toggle="modal" data-target="#applyJobModal"><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold">Apply</td></tr>
-    <tfoot *ngIf="hasApplied" >
+    <tr *ngIf="!isLoggedIn" (click)="goToLogin()" style="text-align:center"><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold">Login to Apply</td></tr>
+    <tr *ngIf="!hasApplied && isLoggedIn" style="text-align:center" data-toggle="modal" data-target="#applyJobModal"><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold">Apply</td></tr>
+    <tfoot *ngIf="hasApplied && isLoggedIn" >
       <tr style="background: #cacaca;"><th colspan="2" style="text-align: center;">Contact Details</th></tr>
       <tr><td style="width:50%">Name</td><td> <b>{{job.student.name}}</b></td></tr>
       <tr><td>Mobile</td><td> <b>{{job.student.mobile}}</b></td></tr>

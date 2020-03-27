@@ -14,20 +14,23 @@ export class TutorProfileComponent implements OnInit {
 
   ngOnInit() {
       const baseUrl = environment.baseUrl;
-      var id;
-      this.route.params.subscribe(params => {
-        id = params["id"];
+      const id = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      if(id == null || id == "" || id == undefined){
+        window.location.href = '/login'
+      }
+      $(document).ready(function(){
+        $("#viewTabName").text("Profile");
+        $(".sidenav a").removeClass("active");
+        $("#profile").addClass("active");
       });
-      $("#viewTabName").text("Profile");
-      $(".sidenav a").removeClass("active");
-      $("#profile").addClass("active");
       //for edit buttons
-      $("#classesEdit").attr("href", "/tutor/classAndSubject/"+id);
-      $("#educationEdit").attr("href", "/tutor/education/"+id);
-      $("#worklocationEdit").attr("href", "/tutor/workLocation/"+id);
-      $("#experienceEdit").attr("href", "/tutor/experience/"+id);
-      $("#addressEdit").attr("href", "/tutor/address/"+id);
-      $("#guarantorEdit").attr("href", "/tutor/guarantor/"+id);
+      $("#classesEdit").attr("href", "/tutor/edit/classAndSubject");
+      $("#educationEdit").attr("href", "/tutor/edit/education");
+      $("#worklocationEdit").attr("href", "/tutor/edit/workLocation");
+      $("#experienceEdit").attr("href", "/tutor/edit/experience");
+      $("#addressEdit").attr("href", "/tutor/edit/address");
+      $("#guarantorEdit").attr("href", "/tutor/edit/guarantor");
       $.ajax({
           type: 'GET',
           url: baseUrl+"/tutor/"+id,
@@ -44,16 +47,29 @@ export class TutorProfileComponent implements OnInit {
               $("#gender").text(data.gender.toLowerCase());
             }
             $("#age").text(data.age);
-            $("#location").text(data.location+", "+data.state+", "+data.city);
+            $("#location").text(data.location+", "+data.city+", "+data.state+", "+(data.defaultZip != null ? data.defaultZip : ''));
             $("#experience").text(data.experience);
             $(".qualification").text(data.qualification);
             if(data.types.length > 0){
-              data.types.forEach(function(a){
-                $("#tutorType").append(a.teacherType+", ");
+              data.types.forEach(function(a,i){
+                if(a.teacherType != null){
+                  if(i == 0){
+                    $("#tutorType").append(getTutorType(a.teacherType));
+                  }else{
+                    $("#tutorType").append(", "+getTutorType(a.teacherType));
+                  }
+                }
               })
             }
-            $("#jobType").text(data.jobType);
-            $("#fluencyInEnglish").text(data.fluencyInEnglish);
+            if(data.jobType != null){
+              $("#jobType").text(data.jobType.toLowerCase());
+              if(data.partTimeReason != null){
+                $("#jobType").text(data.jobType.toLowerCase()+", "+data.partTimeReason);
+              }
+            }
+            if(data.fluencyInEnglish != null){
+              $("#fluencyInEnglish").text(data.fluencyInEnglish.toLowerCase());
+            }
             $("#category").text(data.category);
             if(data.imageUrl != null){
               $(".profilePic").attr("src",data.imageUrl+"?v="+Math.random());
@@ -147,41 +163,76 @@ export class TutorProfileComponent implements OnInit {
             //for zip code
             if(data.zipCode.length > 0){
               var zipTable = '';
-              zipTable += '<tr>';
-              var i = 0;
+                zipTable += '<tr>';
+                zipTable += '<td><b>Pin Code</b></td>'
+                zipTable += '<td><b>Location</b></td>'
+                zipTable += '</tr>';
               data.zipCode.forEach(function(a){
-                i++;
-                zipTable += '<th style="background: #061f50;color: white;">Zip Code '+i+'</th>'
+                if(a.zip != ""){
+                  zipTable += '<tr>';
+                  zipTable += '<td>'+a.zip+'</td>'
+                  zipTable += '<td>'+a.location+'</td>'
+                  zipTable += '</tr>';
+                }
               }); 
-              zipTable += '</tr>';
-              zipTable += '<tr>';
-              data.zipCode.forEach(function(a){
-                zipTable += '<td>'+a.zip+'</td>'
-              }); 
-              zipTable += '</tr>';
               $("#zipCodeTable").append(zipTable);
             }
             //for experience
-            $(".totalExperience").text(data.experience+" years");
             if(data.experiences.length > 0){
               var expTable = '';
-              expTable += '<tr style="background: #061f50;color: white;">';
-              expTable += '<th>Type</th>';
-              expTable += '<th>From</th>';
-              expTable += '<th>To</th>';
-              expTable += '<th>Institute</th>';
-              expTable += '<th>Address</th>';
-              expTable += '<th>Position</th>';
+              expTable += '<tr>';
+              expTable += '<td>Total Experiance</td>';
+              expTable += '<td>'+data.experience+' years</td>';
               expTable += '</tr>';
               data.experiences.forEach(function(a){
-                expTable += '<tr>';
-                expTable += '<td>'+a.tutorType.split("_").join(" ")+'</td>';
-                expTable += '<td>'+a.fromDate+'</td>';
-                expTable += '<td>'+a.toDate+'</td>';
-                expTable += '<td>'+(a.institute != null ? a.institute : 'NA')+'</td>';
-                expTable += '<td>'+(a.address != null ? a.address : 'NA')+'</td>';
-                expTable += '<td>'+(a.position != null ? a.position : 'NA')+'</td>';
-                expTable += '<tr>';
+                if(a.tutorType == 'HOME_TUTOR'){
+                  expTable += '<tr>';
+                  expTable += '<td><b>Home Tutor</b></td>';
+                  expTable += '<td>From '+a.fromDate+' To '+a.toDate+'</td>';
+                  expTable += '<tr>';
+                }else if(a.tutorType == 'ONLINE_TUTOR'){
+                  expTable += '<tr>';
+                  expTable += '<td><b>Online Tutor</b></td>';
+                  expTable += '<td>From '+a.fromDate+' To '+a.toDate+'</td>';
+                  expTable += '<tr>';
+                }else if(a.tutorType == 'TEACHING_AT_MY_PLACE'){
+                  expTable += '<tr>';
+                  expTable += '<td><b>At My Place</b></td>';
+                  expTable += '<td>From '+a.fromDate+' To '+a.toDate+'</td>';
+                  expTable += '<tr>';
+                }else if(a.tutorType == 'FACUTLTY_AT_INSTITUTE'){
+                  expTable += '<tr>';
+                  expTable += '<td colspan="2" style="text-align: center;font-size: 18px;"><b>At Institute</b></td>';
+                  expTable += '</tr>';
+                  expTable += '<tr>';
+                  expTable += '<td>'+(a.institute != null ? a.institute : 'NA')+'</td>';
+                  expTable += '<td>From '+a.fromDate+' To '+a.toDate+'</td>';
+                  expTable += '<tr>';
+                  expTable += '<tr>';
+                  expTable += '<td>Address</td>';
+                  expTable += '<td>'+(a.address != null ? a.address : 'NA')+'</td>';
+                  expTable += '<tr>';
+                  expTable += '<tr>';
+                  expTable += '<td>Position</td>';
+                  expTable += '<td>'+(a.position != null ? a.position : 'NA')+'</td>';
+                  expTable += '<tr>';
+                }else  if(a.tutorType == 'FACULTY_AT_SCHOOL'){
+                  expTable += '<tr>';
+                  expTable += '<td colspan="2" style="text-align: center;font-size: 18px;"><b>At School</b></td>';
+                  expTable += '</tr>';
+                  expTable += '<tr>';
+                  expTable += '<td>'+(a.institute != null ? a.institute : 'NA')+'</td>';
+                  expTable += '<td>From '+a.fromDate+' To '+a.toDate+'</td>';
+                  expTable += '<tr>';
+                  expTable += '<tr>';
+                  expTable += '<td>Address</td>';
+                  expTable += '<td>'+(a.address != null ? a.address : 'NA')+'</td>';
+                  expTable += '<tr>';
+                  expTable += '<tr>';
+                  expTable += '<td>Position</td>';
+                  expTable += '<td>'+(a.position != null ? a.position : 'NA')+'</td>';
+                  expTable += '<tr>';
+                }
               });
               $("#experienceTable").append(expTable);
             }
@@ -212,34 +263,78 @@ export class TutorProfileComponent implements OnInit {
             
           }
         });
-        //for guarentor
-      $.ajax({
-        type: 'GET',
-        url: baseUrl+"/tutor/"+id+"/guarantor",
-        // beforeSend: function(xhr) {
-        //   xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-        // },
-        success : function(data){
-        if(data.length > 0){
-          var gueTable = '';
-          gueTable += '<tr style="background: #061f50;color: white;">';
-          gueTable += '<th>Name</th>';
-          gueTable += '<th>Mobile</th>';
-          gueTable += '<th>Relation</th>';
-          gueTable += '</tr>';
-          data.forEach(function(a){
-            if(a.name != null){
-              gueTable += '<tr>';
-              gueTable += '<td>'+a.name+'</td>';
-              gueTable += '<td>'+a.mobileNumber+'</td>';
-              gueTable += '<td>'+a.relation+'</td>';
-              gueTable += '<tr>';
+        //get  address
+        $.ajax({
+          type: 'GET',
+          url: baseUrl+"/tutor/"+id+"/address",
+          success: function(resultData) { 
+            //addreesTable
+            var addrHtml = "<tr><th>Current Address</th><th>Permanent Address</th></tr>";
+            addrHtml += '<tr><td style="width:50%">';
+            if(resultData.address.currentAddress != undefined && resultData.address.currentAddress != null){
+                addrHtml +=   resultData.address.currentAddress.line1;
+                addrHtml += ', '+resultData.address.currentAddress.line2;
+                addrHtml += ', '+resultData.address.currentAddress.city;
+                addrHtml += ', '+resultData.address.currentAddress.state;
+                addrHtml += ', '+resultData.address.currentAddress.zipcode;
+              }  
+            addrHtml += '</td>';
+            addrHtml += '<td>';
+            if(resultData.address.permanentAddress != undefined && resultData.address.permanentAddress != null){
+              addrHtml +=   resultData.address.permanentAddress.line1;
+              addrHtml += ', '+resultData.address.permanentAddress.line2;
+              addrHtml += ', '+resultData.address.permanentAddress.city;
+              addrHtml += ', '+resultData.address.permanentAddress.state;
+              addrHtml += ', '+resultData.address.permanentAddress.zipcode;
+            }  
+            addrHtml += '</td></tr>'; 
+            addrHtml += '<tr>'; 
+            if(resultData.address.currentAddress != undefined && resultData.address.currentAddress != null){
+              if(resultData.address.currentAddress.url != null && resultData.address.currentAddress.url != ""){
+                addrHtml += '<td><img style="width: 250px;height:200px" src="'+resultData.address.currentAddress.url+'?v='+Math.random()+'"></td>';
+              }else{
+                addrHtml += '<td><a style="color: #f26832;font-weight: bold;" href="/tutor/address/'+id+'#addressProof">Upload Proof >></a></td>';
+              }
+            }else{
+              addrHtml += '<td></td>';
             }
-          });
-          $("#guarantorTable").append(gueTable);
-        }
-      }
-      });
+            if(resultData.address.permanentAddress != undefined && resultData.address.permanentAddress != null && resultData.address.permanentAddress.url != null && resultData.address.permanentAddress.url != ""){
+              addrHtml += '<td><img style="width: 250px;height:200px" src="'+resultData.address.permanentAddress.url+'?v='+Math.random()+'"></td>';
+            } else{
+              addrHtml += '<td></td>';
+            } 
+            addrHtml += '<tr>';
+            $("#addreesTable").html(addrHtml);  
+          }
+        });
+        //for guarentor
+        $.ajax({
+          type: 'GET',
+          url: baseUrl+"/tutor/"+id+"/guarantor",
+          // beforeSend: function(xhr) {
+          //   xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+          // },
+          success : function(data){
+            if(data.length > 0){
+              var gueTable = '';
+              gueTable += '<tr style="background: #061f50;color: white;">';
+              gueTable += '<th>Name</th>';
+              gueTable += '<th>Mobile</th>';
+              gueTable += '<th>Relation</th>';
+              gueTable += '</tr>';
+              data.forEach(function(a){
+                if(a.name != null){
+                  gueTable += '<tr>';
+                  gueTable += '<td>'+a.name+'</td>';
+                  gueTable += '<td>'+a.mobileNumber+'</td>';
+                  gueTable += '<td>'+a.relation+'</td>';
+                  gueTable += '<tr>';
+                }
+              });
+              $("#guarantorTable").append(gueTable);
+            }
+          }
+        });
     $(".profileNav .nav-link").click(function(){
       var navclick = $(this).attr("data-value");
       if(navclick == "Basic"){
@@ -267,7 +362,24 @@ export class TutorProfileComponent implements OnInit {
                 location.reload(false); 
              }
       });
-    })
+    });
+
+    //get tutor type
+    function getTutorType(type){
+      var retStr = "";
+      if(type != undefined && type != null){
+        if(type == "TUTOR"){
+          retStr = "Home Tutor <small>(Travel at Student Place)</small>";
+        } else if(type == "COACHING"){
+          retStr = "Run a Coaching Center <small>(Teaching at my Place)</small>";
+        }else if(type == "ONLINE"){
+          retStr = "Online Tutor / Trainer";
+        }else if("FACULTY"){
+          retStr = "Faculty <small>(Looking a Coaching Center where i can teach)</small>";
+        }
+      }
+      return retStr;
+    }
   }
 
 }

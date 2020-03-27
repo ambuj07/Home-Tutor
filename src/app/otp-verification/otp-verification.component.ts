@@ -86,7 +86,7 @@ export class OtpVerificationComponent implements OnInit {
         data: otpData,
         success : function(data){
           $("#resultMsg").html('<span style="color:green;font-size:12px;">Otp verified</span>')
-          window.location.href = '/dashboard/tutor/'+id;
+          window.location.href = '/profile/tutor';
         },
         error : function(data){
           console.log(data);

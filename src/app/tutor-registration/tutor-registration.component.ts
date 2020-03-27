@@ -10,10 +10,14 @@ declare var $:any;
 })
 export class TutorRegistrationComponent implements OnInit {
 
-  constructor(private title: Title, private meta: Meta) {}
+  constructor(private title: Title, private meta: Meta) {
+    this.title.setTitle("Join As Teacher/Trainer/Institution");
+    this.meta.addTag({ property: 'og:title', content: 'Join As Teacher/Trainer/Institution' });
+    this.meta.addTag({ property: 'og:url', content: 'http://hansatutor.com/edureg' });
+  }
+  
 
   ngOnInit() {
-    this.title.setTitle("Join As Teacher/Trainer/Institution");
     const baseUrl = environment.baseUrl;
     $(document).ready(function(){
       $('.registration-form .fieldset:first-child').fadeIn('slow');
@@ -21,7 +25,10 @@ export class TutorRegistrationComponent implements OnInit {
       $('.registration-form input[type="text"]').on('focus', function () {
           $(this).removeClass('input-error');
       });
-  
+      $(document).ready(function(){
+        $(".sidenav a").removeClass("active");
+        $(".joinTutorA").addClass("active");
+      });
       // next step
       $('.registration-form .btn-next').on('click', function () {
           var parent_fieldset = $(this).parents('.fieldset');
@@ -274,7 +281,7 @@ export class TutorRegistrationComponent implements OnInit {
             }
             var zipCodeVal = $("#pinCode").val();
             var zipCodeArr = [];
-            zipCodeArr.push({"zip":zipCodeVal});           
+            zipCodeArr.push({"zip":""});           
             var zipCode = JSON.stringify(zipCodeArr);
             var whatsappNumber = $("#whatsappNumber").val();
             var tutorType = [];
@@ -295,7 +302,7 @@ export class TutorRegistrationComponent implements OnInit {
             var teachingExperience = $("#teachingExperience").val();
             var fluencyInEnglish = $("#fluencyInEnglish").val();
             var data = '{"id":null,"name":"'+name+'","location":"'+location+'","mobile":"'+mobile+'",';
-            data += '"email":"'+email+'","zipCode":'+zipCode+',"city":"'+city+'","state":"'+state+'",';
+            data += '"email":"'+email+'","zipCode":'+zipCode+',"defaultZip":"'+zipCodeVal+'","city":"'+city+'","state":"'+state+'",';
             data += '"types":'+tutorTypeStr+',"mapping":'+mappingStr+',"gender":"'+chooseGender+'",';
             data += '"qualification":"'+qualification+'","whatsappNumber":"'+whatsappNumber+'","dob":"'+dob+'",';
             data += '"jobType":"'+jobType+'","partTimeReason":"'+partTimeReason+'",';
@@ -312,7 +319,7 @@ export class TutorRegistrationComponent implements OnInit {
                     localStorage.setItem("type",resultData.type);
                     localStorage.setItem("userId",resultData.refId);
                     localStorage.setItem("from_reg","Yes");
-                    window.location.href = '/dashboard/tutor/'+resultData.refId;
+                    window.location.href = '/profile/tutor';
                  },
                  error: function(resultData){
                    if(resultData.responseJSON.message == "Mobile number already exists."){

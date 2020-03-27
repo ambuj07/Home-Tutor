@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
 declare var $:any;
 
@@ -10,18 +9,19 @@ declare var $:any;
 })
 export class UpdateEducationQualificationComponent implements OnInit {
 
-  constructor( private route: ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit() {
       const baseUrl = environment.baseUrl;
-      var id;
-      this.route.params.subscribe(params => {
-        id = params["id"];
-      });
-      $("#viewTabName").text("Update Educational Qualification");
-      $(".sidenav a").removeClass("active");
-      $("#editProfile").addClass("active");
+      const id = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      if(id == null || id == "" || id == undefined){
+        window.location.href = '/login'
+      }
       $(document).ready(function() {
+        $("#viewTabName").text("Update Educational Qualification");
+        $(".sidenav a").removeClass("active");
+        $("#editProfile").addClass("active");
         $('.selectpicker').selectpicker();
       });
       //new 

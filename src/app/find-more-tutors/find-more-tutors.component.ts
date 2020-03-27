@@ -14,14 +14,15 @@ export class FindMoreTutorsComponent implements OnInit {
 
   ngOnInit() {
     const baseUrl = environment.baseUrl;
-    var id;
-   this.route.params.subscribe(params => {
-        id = params["id"];
-      });
-    $("#viewTabName").text("Post New Requirement");
-    $(".sidenav a").removeClass("active");
-    $(".findMoreTutors").addClass("active");
-    $(document).ready(function () {
+    const id = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    if(id == null || id == "" || id == undefined){
+      window.location.href = '/login'
+    }
+      $(document).ready(function () {
+        $("#viewTabName").text("Post New Requirement");
+        $(".sidenav a").removeClass("active");
+        $(".findMoreTutors").addClass("active");
       $('.registration-form .fieldset:first-child').fadeIn('slow');
   
       $('.registration-form input[type="text"]').on('focus', function () {
@@ -191,7 +192,7 @@ export class FindMoreTutorsComponent implements OnInit {
                 contentType: "application/json;charset=utf-8",
                 data: data,
                 success: function(resultData) { 
-                    window.location.href = '/dashboard/student/'+id;
+                    window.location.href = '/dashboard/student';
                  }
             });  
           }

@@ -1,0 +1,114 @@
+/* USER PROFILE PAGE */
+.card {
+    padding: 20px;
+    background-color: rgba(214, 224, 226, 0.2);
+}
+.card.hovercard {
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 5px 5px 0px 0px;
+}
+.card.hovercard .card-info .card-title {
+    margin-top: 10px;
+    font-size: 24px;
+    display: block;
+    margin-bottom: 0px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #061f50;
+}
+.card.hovercard .card-info {
+    font-size: 12px;
+    color: #737373;
+}
+form.registration-form .fieldset {
+    display: none;
+}
+.edit-profile-button{
+    float: right;
+    color: #f26832;
+    font-size: 24px;
+    cursor: pointer;
+}
+.total-credit {
+    position: absolute;
+    font-size: 20px;
+    color: #ffffff;
+    right: 10px;
+    font-weight: bold;
+    top: 10px;
+    background: #061f50;
+    border-radius: 20px;
+    padding: 0px 7px;
+}
+.sequence {
+    text-decoration: underline;
+    color: #061f50;
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 50px;
+    left: 0;
+    background-color: #ccc;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #3c3d3e;
+    display: block;
+}
+
+.sidenav a:hover,.sidenav a:active,.sidenav a:focus {
+    color: #ffffff;
+    background: #226e81;
+}
+
+.sidenav .closebtn:hover,.sidenav .closebtn:active,.sidenav .closebtn:focus {
+    color: #3c3d3e;
+    background: none;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#openSideNav{
+    font-size: 30px;
+    cursor: pointer;
+    margin-top: 50px;
+    background: #313131;
+    color: white;
+    padding: 0px 20px;
+}
+.useravatarProfile img {
+    width: 130px;
+    height: 130px;
+    background: #ececec;
+    border-radius: 10px;
+}
+ul.inlineList {
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+@media screen and (max-width: 450px) {
+  .sidenav a {font-size: 18px;}
+}

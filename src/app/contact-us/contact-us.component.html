@@ -1,4 +1,4 @@
-<app-main-menu></app-main-menu>
+<app-menu></app-menu>
 <div class="container-fluid">
     <div class="row overlay">
         <div class="col-md-6 offset-md-3" style="margin-top: 30px;">
@@ -11,39 +11,39 @@
                     </div>
                     <div class="form-bottom">
                         <div class="form-group">
-                            <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name">
+                            <textarea placeholder="Write Here... *"  name="comment" class="form-control" id="comment" required></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Mobile Number(only 10 digit)"  name="mobileNumber" class="form-control" id="mobileNumber">
+                            <select class="form-control selectpicker" id="subject" name="subject" required>
+                                    <option value="" selected disabled>Subject *</option>
+                                    <option value="Request For Call back">Request For Call back</option>
+                                    <option value="Ask Your Question">Ask Your Question</option>
+                                    <option value="Feedback">Suggestion / Feedback</option>
+                                    <option value="Complaint">Complaint</option>
+                                    <option value="Other">Other</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email"  name="email" class="form-control" id="email">
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control selectpicker" id="queryType" name="queryType" required>
-                                    <option value="" selected disabled>I am a</option>
-                                    <option value="Student">Student</option>
+                            <select class="form-control selectpicker" id="from" name="from" required>
+                                    <option value="" selected disabled>I am a *</option>
+                                    <option value="STUDENT">Student</option>
+                                    <option value="TUTOR">Teacher / Trainer </option>
                                     <option value="Parents / Guardian">Parents / Guardian</option>
-                                    <option value="Teacher / Trainer ">Teacher / Trainer </option>
                                     <option value="Service Provider">Service Provider</option>
                                     <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control selectpicker" id="querySubject" name="querySubject" required>
-                                    <option value="" selected disabled>Subject</option>
-                                    <option value="Request For Call back">Request For Call back</option>
-                                    <option value="Query">Query</option>
-                                    <option value="Suggestion">Suggestion</option>
-                                    <option value="Complain">Complain</option>
-                                    <option value="Other">Other</option>
-                            </select>
+                            <input type="text" placeholder="Enter Your Name *"  name="name" class="form-control" id="name" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Write your query..."  name="queryComment" class="form-control" id="queryComment"></textarea>
+                            <input type="tel" placeholder="Mobile Number(only 10 digit) *"  name="mobileNumber" class="form-control" id="mobileNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email (optional)"  name="email" class="form-control" id="email">
                         </div>
                         <div style="text-align:center">
-                            <button type="button" id="login" class="btn btn-register">Submit</button>
+                            <button type="button" id="submitBtn" class="btn btn-register">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -51,4 +51,17 @@
         </div>
     </div>
     </div>
+    <!-- The Modal -->
+ <div class="modal fade" id="feedbackModal">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body" style="font-size: 20px;
+        padding: 30px;
+        text-align: center;
+        color: #417508;">
+            <div>Thanks for your query, <br>We will get back to you soon !!</div>
+        </div>
+      </div>
+    </div>
+  </div>
      

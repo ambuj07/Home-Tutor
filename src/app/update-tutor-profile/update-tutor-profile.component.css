@@ -15,6 +15,10 @@
     top: -1px;
     padding: 20px 10px;
   }
+  .accordion_container{
+    max-width: 1060px;
+    margin: 0 auto;
+  }
   
   .plusminus {
     float: right;
@@ -29,8 +33,6 @@
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-}
-.addBtn{
     color: green;
 }
 .col-md-2.col-xs-4 {
@@ -59,7 +61,7 @@
 	    color: #333;
 	    background-color: #e2e2e2;
 	    border-color: #e2e2e2;
-      padding: 3px 5px;
+      padding: 7px;
       border-radius: 0px;
       margin-left: 10px !important;
   }
@@ -77,4 +79,11 @@
     cursor: pointer;
     height: 100px;
     margin-bottom: 20px;
+}
+.btn-uploadfile{
+    cursor: pointer;
+    width: 100%;
+    background: #061f50;
+    color: white;
+    padding: 12px;
 }

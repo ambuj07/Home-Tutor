@@ -35,7 +35,7 @@ export class FindJobsComponent implements OnInit {
   }
 
   filterByCity(event : any){
-    window.location.href = (<HTMLInputElement>document.getElementById("tutorTypeFilter")).value+"-in-"+event.target.textContent;
+    window.location.href = "stu/search/"+(<HTMLInputElement>document.getElementById("tutorTypeFilter")).value+"-in-"+event.target.textContent;
   }
   
   ngOnInit() {
@@ -46,11 +46,13 @@ export class FindJobsComponent implements OnInit {
     }
     const baseUrl = this.baseUrl;
     const path = window.location.pathname;
-    const pathString = path.split("/")[1];
+    const pathString = path.split("/")[3];
     this.title.setTitle(pathString);
-    document.addEventListener('DOMContentLoaded', function(){ $("#viewTabName").text(pathString); });
-    $(".sidenav a").removeClass("active");
-    $(".findJobs").addClass("active");
+    document.addEventListener('DOMContentLoaded', function(){ 
+      $("#viewTabName").text(pathString);
+      $(".sidenav a").removeClass("active");
+      $(".searchJobA").addClass("active");
+   });
 
     //filterNav
     $("#filterBtn").click(function(){
@@ -66,8 +68,8 @@ export class FindJobsComponent implements OnInit {
     function closeNav() {
       document.getElementById("filterNav").style.width = "0";
     }
-    if(path.split("-in-").length > 1){
-      $("#cityFilter").val(path.split("-in-")[1]);
+    if(pathString.split("-in-").length > 1){
+      $("#cityFilter").val(pathString.split("-in-")[1]);
     }else{
       $("#cityFilter").val("");
     }
@@ -132,7 +134,7 @@ export class FindJobsComponent implements OnInit {
         sessionStorage.setItem("class_val",classCat);
         sessionStorage.setItem("subject_val",subject);
         sessionStorage.setItem("subject_text",subjectTxt);
-        var path = "/";
+        var path = "stu/search";
         if(subject != "" && subjectTxt != "" && subjectTxt != null && subjectTxt != undefined){
           path += subjectTxt+"-";
         }
@@ -208,11 +210,11 @@ export class FindJobsComponent implements OnInit {
                 html += '<tr style="background: #ccc;"><td colspan="2">Learning Need</td></tr>';
                 html += '<tr><td colspan="2"><b>'+learning+'</b></td></tr>';
                 html += '<tr><td colspan="2"><b>'+location+'</b></td></tr>';
-                if(isLoggedIn){
-                  html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/enq/'+resultData.contents[i].sequenceId.split("/").join("%2F")+'">Veiw Details</a></td></tr>'
-                }else{
-                  html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/login">Veiw Details</a></td></tr>'
-                }
+                //if(isLoggedIn){
+                html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/enq/'+resultData.contents[i].sequenceId.split("/").join("%2F")+'">Veiw Details</a></td></tr>'
+                // }else{
+                //   html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/login">Veiw Details</a></td></tr>'
+                // }
                 html += '</table>';
                 html += '</div>';
                 html += '</div>';
@@ -268,7 +270,7 @@ export class FindJobsComponent implements OnInit {
                 console.log(resultData)
                 showToast("You have successfully applied for the job.")
                 setTimeout(function(){ 
-                  window.location.href = "/dashboard/tutor/"+tutorId;
+                  window.location.href = "/dashboard/tutor";
                  }, 3000);
                },
                error: function(resultData){

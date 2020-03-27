@@ -15,6 +15,8 @@ export class StudentRegistrationComponent implements OnInit {
   ngOnInit() {
       const baseUrl = environment.baseUrl;
     $(document).ready(function () {
+      $(".sidenav a").removeClass("active");
+      $(".joinLernerA").addClass("active");
       $('.registration-form .fieldset:first-child').fadeIn('slow');
   
       $('.registration-form input[type="text"]').on('focus', function () {
@@ -32,22 +34,22 @@ export class StudentRegistrationComponent implements OnInit {
         var allFilled = true;
 
         $(this).parents('.fieldset').find('select,input').each(function () {
-          if ($(this).is(":visible") && ($(this).val() == null || $(this).val() == "")) {
+          if ($(this).is(":visible") && $(this).is(":required") && ($(this).val() == null || $(this).val() == "")) {
               $(this).addClass('input-error');
               $(this).closest(".bootstrap-select").find(".dropdown-toggle").css("border-color","#d03e3e");
               next_step = false;
               allFilled = false;
-              showToast("All fields are Mandatory");
+              showToast("All fields with (*) are Mandatory");
           } else {
               $(this).removeClass('input-error');
               $(this).closest(".bootstrap-select").find(".dropdown-toggle").css("border-color","#ccc"); 
           }
         });
         if(allFilled){
-          if($("#email").is(":visible") && !emailRegex.test($("#email").val())){
+          if($("#email").is(":visible") && $("#email").val() != "" && $("#email").val() != null && !emailRegex.test($("#email").val())){
             next_step = false;
             $("#email").addClass('input-error');
-            showToast("Please enter a valid email");
+            showToast("Please enter a valid email or keep it blank.");
             return false;
           }else{
             $("#email").removeClass('input-error');
@@ -85,7 +87,7 @@ export class StudentRegistrationComponent implements OnInit {
     });
 
     //class category
-    var categoryHtml = '<option value="" selected disabled>Select Class Category</option>';
+    var categoryHtml = '<option value="" selected disabled>Select Class Category *</option>';
     
     $.ajax({
       type: 'GET',
@@ -113,7 +115,7 @@ export class StudentRegistrationComponent implements OnInit {
         $("#chooseClass").html('');
         var classGroup = $('option:selected', this).attr('data-id');
         var classHtml = "";
-        classHtml += '<option value="" disabled selected>Choose Your Class</option>';
+        classHtml += '<option value="" disabled selected>Choose Your Class *</option>';
         //class category
         $.ajax({
         type: 'GET',
@@ -139,7 +141,7 @@ export class StudentRegistrationComponent implements OnInit {
         console.log("dcs == "+classGroup)
         var chooseClass = $('option:selected', this).attr('data-id');
         var subjectHtml = "";
-        subjectHtml += '<option value="" disabled selected>Choose Your Subject</option>';
+        subjectHtml += '<option value="" disabled selected>Choose Your Subject *</option>';
         $.ajax({
             type: 'GET',
             url: baseUrl+"/config/subject?groupId="+chooseClass,
@@ -170,7 +172,7 @@ export class StudentRegistrationComponent implements OnInit {
       });
 
       //city and state
-      var statesHtml = '<option value="" selected disabled>Select Your State</option>';
+      var statesHtml = '<option value="" selected disabled>Select Your State *</option>';
     
       $.ajax({
         type: 'GET',
@@ -188,7 +190,7 @@ export class StudentRegistrationComponent implements OnInit {
       
       $('#states').change(function(){
         var stateId = $('option:selected', this).attr('data-id');
-        var cityHtml = '<option value="" selected disabled>Select Your City</option>';
+        var cityHtml = '<option value="" selected disabled>Select Your City *</option>';
         $.ajax({
           type: 'GET',
           url: baseUrl+"/config/"+stateId+"/city",
@@ -287,11 +289,11 @@ export class StudentRegistrationComponent implements OnInit {
     $("#submit").click(function(){
         var error = false;  
           $(this).parents('.fieldset').find('select,input').each(function () {
-            if ($(this).is(":visible") && ($(this).val() == null || $(this).val() == "")) {
+            if ($(this).is(":visible") &&  $(this).is(":required") && ($(this).val() == null || $(this).val() == "")) {
                 $(this).addClass('input-error');
                 $(this).closest(".bootstrap-select").find(".dropdown-toggle").css("border-color","#d03e3e");
                 error = true;
-                showToast("All fields are Mandatory");
+                showToast("All fields with (*) are Mandatory");
             } else {
                 $(this).removeClass('input-error');
                 $(this).closest(".bootstrap-select").find(".dropdown-toggle").css("border-color","#ccc");
@@ -387,7 +389,7 @@ export class StudentRegistrationComponent implements OnInit {
                 localStorage.setItem("type",resultData.type);
                 localStorage.setItem("userId",resultData.refId);
                 localStorage.setItem("from_reg","Yes");
-                window.location.href = '/profile/student/'+resultData.refId;
+                window.location.href = '/dashboard/student';
             }
         }); 
     });
@@ -411,7 +413,7 @@ export class StudentRegistrationComponent implements OnInit {
             retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
           }else if(type == "ONLINE"){
             retStr = "Online Tutor / Trainer";
-          }else if("TutorForTution"){
+          }else if("TutorForTution" || "FACULTY"){
             retStr = "Tutor For Our Tution Centre";
           }
         }

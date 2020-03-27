@@ -28,8 +28,12 @@ export class FaqsComponent implements OnInit {
 
   ngOnInit() {
     this.getFaqType();
-    console.log(this.faqType+" joijo");
-    $("#viewTabName").html(this.faqType.toUpperCase()+" FAQs ?");
+    const faqt = this.faqType.toUpperCase();
+    $(document).ready(function(){
+      $("#viewTabName").html(faqt+" FAQs ?");
+      $(".sidenav a").removeClass("active");
+      $(".faqA").addClass("active");
+    })
   }
 
 }

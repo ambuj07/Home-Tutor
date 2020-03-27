@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit {
                       localStorage.setItem("userId",resultData.refId);
                       localStorage.setItem("token",resultData.token);
                       if(resultData.type == "STUDENT"){
-                        window.location.href = '/dashboard/student/'+resultData.refId
+                        window.location.href = '/dashboard/student';
                       }else if(resultData.type == "TUTOR"){
-                        window.location.href = '/dashboard/tutor/'+resultData.refId
+                        window.location.href = '/profile/tutor'
                       }
                    },
                    error: function(resultData){

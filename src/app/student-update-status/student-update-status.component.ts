@@ -16,10 +16,11 @@ export class StudentUpdateStatusComponent implements OnInit {
 
     var baseUrl = environment.baseUrl;
 
-    var id;
-    this.route.params.subscribe(params => {
-        id = params["id"];
-    });
+    const id = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    if(id == null || id == "" || id == undefined){
+      window.location.href = '/login'
+    }
     $(document).ready(function(){
       $("#viewTabName").text("Update Status");
       $(".sidenav a").removeClass("active");
@@ -110,7 +111,7 @@ export class StudentUpdateStatusComponent implements OnInit {
           setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
         function getDateTimeFormat(date){
-          var d = new Date(date);
+          var d = new Date(date+ 'Z');
           var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
           date = d.getDate()+" "+months[d.getMonth()]+" "+d.getFullYear()+" ; "+tConv24(d.toLocaleTimeString());
           function tConv24(time24) {

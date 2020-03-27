@@ -1,0 +1,136 @@
+
+<app-menu></app-menu>
+<table class="table" style="border: 1px solid #0d2151;">
+  <tr>
+    <td style="width: 80px;" class="table-anchor-blue">
+      <div>City</div>
+    </td>
+    <td style="padding: 0;">
+      <form action="" autocomplete="off">
+        <input class="table-input" (input)="getCitiesBySearch($event)" id="cityFilter" type="text" placeholder="Type 3 digits of city..">
+        <div class="autocomplete-result">
+          <ul>
+            <li (click)="filterByCity($event)" *ngFor="let city of cities" [value]="city.name">{{city.name}}</li>
+          </ul>
+        </div>
+      </form>
+    </td>
+    <td id="filterBtn" style="width: 80px;" class="table-anchor-blue">
+      <div><i class="fa fa-filter"></i>&nbsp;Filter</div>
+    </td>
+  </tr>
+</table>
+<div class="col-lg-12" style="padding: 0;">
+  <div id="filterNav" class="sidenav sidenav-right">
+      <a href="javascript:void(0)" class="closeFilterNav">&times;</a>
+      <div class="filters row">
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Mode of Teaching</label>
+                <select class="form-control selectpicker" id="tutorTypeFilter" name="tutorTypeFilter">
+                        <option value="all-tutor">All Tutor</option>
+                        <option value="home-tutor">Home Tutor</option>
+                        <option value="tution-teacher">Tution Centre</option>
+                        <option value="online-tutor">Online Tutor</option>
+                        <option value="faculty">Tutor For Tution Centre</option>
+                </select>
+            </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Find By Class</label>
+                <select class="form-control selectpicker" data-size="5" id="chooseClass" name="chooseClass">
+                                
+                </select>
+            </div> 
+          </div>
+          <div class="col-md-12">
+              <div class="form-group">
+                  <label style="margin-bottom: 15px;">Find By Subject</label>
+                  <select class="form-control selectpicker" id="chooseSubject" title="Select subjects according to class" name="chooseSubject">
+                    <option value="" selected>All Subjects</option> 
+                  </select>
+              </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Pin Code</label>
+                <input type="tel" placeholder="Enter Your Pin Code (6 digits)" id="pinCodeFilter" class="form-control" name="pinCode" maxlength="6">
+            </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Gender</label>
+                <select class="form-control selectpicker" id="genderFilter" name="chooseSubject">
+                  <option value="" selected>Any</option> 
+                  <option value="MALE">Male</option>
+                  <option value="FEMALE">Female</option>
+                </select>
+            </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Job Type</label>
+                <select class="form-control selectpicker" id="jobTypeFilter" name="chooseSubject">
+                  <option value="" selected>Any</option> 
+                  <option value="PARTTIME">Part Time</option>
+                  <option value="FULLTIME">Full Time</option>
+                </select>
+            </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Experiance</label>
+                <select class="form-control selectpicker" id="experianceFilter" name="chooseSubject">
+                  <option value="" selected>Any</option> 
+                  <option value="0-2">0 to 2 years</option>
+                  <option value="3-5">3 to 5 years</option>
+                  <option value="6-10">6 to 10 years</option>
+                  <option value="11-15">11 to 15 years</option>
+                  <option value="16-20">16 to 20 years</option>
+                  <option value="21-30">21 to 30 years</option>
+                  <option value="31-40">31 to 40 years</option>
+                  <option value="40+">More than 40 years</option>
+                </select>
+            </div> 
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+                <label style="margin-bottom: 15px;">Fluency in English</label>
+                <select class="form-control selectpicker" id="englishFilter" name="chooseSubject">
+                  <option value="" selected>Any</option> 
+                  <option value="Good">Good</option>
+                  <option value="Excellent">Excellent</option>
+                </select>
+            </div> 
+          </div>
+
+          <div class="col-md-12">
+            <br>
+            <button type="button" class="btn btn-main-full" id="applyFilters">Apply Filters</button>
+          </div>
+        </div>
+  </div>
+  <hr>
+  <div id="tutorGrid" class="row"></div>
+</div>
+<div id="pagination1" style="text-align: center;margin: 20px;">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        
+      </ul>
+    </nav>
+  </div>
+ <!-- The Modal -->
+ <div class="modal fade" id="myProfileModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,5 +1,5 @@
 
-<app-tutor-menu></app-tutor-menu>
+<app-menu></app-menu>
 <div style="margin-top: 10px;padding:10px">
   <div class="accordion_container">
     <div class="accordion_body">
@@ -25,16 +25,17 @@
                         </tr>
                     </table>
                     <input type="hidden" id="currAddessId" value="">
+                    <input type="hidden" id="currAddessUrl" value="">
                 </div>
                 <br>
                 <div style="text-align: center;">
                     <label>IS IT YOUR OWN HOUSE ?</label>
                     <div class="btn-group ownHouseRadio" data-toggle="buttons">
                         <label class="btn btn-default-radio width100px">
-                            <input type="radio" name="isOwnHouse" value="Yes" autocomplete="off"> YES
+                            <input type="radio" name="isOwnHouse" value="Yes" autocomplete="off" style="display: none;"> YES
                         </label>
                         <label class="btn btn-default-radio width100px">
-                            <input type="radio" name="isOwnHouse" value="No" autocomplete="off"> NO
+                            <input type="radio" name="isOwnHouse" value="No" autocomplete="off" style="display: none;"> NO
                         </label>
                     </div>
                 </div>
@@ -59,20 +60,45 @@
                         </tr>
                     </table>
                     <input type="hidden" id="perAddessId" value="">
+                    <input type="hidden" id="perAddessUrl" value="">
                 </div>
                 <br>
-                <div class="col-xs-12" id="addressProofDiv">
-                    <div class="input-group" style="width: 300px;margin: 20px auto;">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="addressProof"/>
-                            <label class="custom-file-label" for="addressProof">Upload Proof</label>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div style="text-align: center;">
             <button type="button" id="saveAddress" class="btn btn-primary" style="width: 300px;">Save Address</button>
+        </div>
+        <hr>
+        <div class="col-xs-12 table-responsive" id="addressProof" style="max-width: 552px;margin: 0 auto;">
+            <p style="text-align: center;font-size: 20px;font-weight: bold;color: #ef7309;text-decoration: underline;">Upload Address Proof For Verification</p>
+            <table class="table table-bordered" style="text-align: center;">
+                <tr>
+                    <th>Front Side</th>
+                    <th>Back Side</th>
+                </tr>
+                <tr>
+                    <td><img style="width: 250px;height: 200px;" id="frontImg" src="/assets/docx-placeholder.png"></td>
+                    <td><img style="width: 250px;height: 200px;" id="backImg" src="/assets/docx-placeholder.png"></td>
+                </tr>
+                <tr>
+                    <td style="padding: 0;">
+                        <div class="form-group" style="margin: 0 !important;">
+                            <label for="uploadFrontSide" id="uploadProfilePicBtn" data-role="button" class="btn btn-uploadfile" data-corners="true">
+                              Upload
+                            </label>
+                            <input id="uploadFrontSide" type="file" name="uploadFile" style="opacity: 0;width:0px; height:0px;display:none;" accept="image/x-png,image/gif,image/jpeg"/>
+                        </div>
+                    </td>
+                    <td style="padding: 0;">
+                        <div class="form-group" style="margin: 0 !important;">
+                            <label for="uploadBackSide" id="uploadProfilePicBtn" data-role="button" class="btn btn-uploadfile" data-corners="true">
+                              Upload
+                            </label>
+                            <input id="uploadBackSide" type="file" name="uploadFile"  data-role="button" data-corners="true" style="opacity: 0;width:0px; height:0px;display:none;" accept="image/x-png,image/gif,image/jpeg"/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 

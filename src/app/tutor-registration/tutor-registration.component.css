@@ -13,7 +13,7 @@ form.registration-form .fieldset {
 	content: attr(placeholder);
 }
 #dob {
-	color: #f8f8f8;
+	color: #424242;
 }
 #dob:focus,
 #dob:valid {

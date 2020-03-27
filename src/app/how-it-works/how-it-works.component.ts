@@ -32,7 +32,11 @@ export class HowItWorksComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    $("#viewTabName").html("How It Works");
+    $(document).ready(function(){
+      $("#viewTabName").html("How It Works");
+      $(".sidenav a").removeClass("active");
+      $(".howItWorkA").addClass("active");
+    });
   }
 
 }

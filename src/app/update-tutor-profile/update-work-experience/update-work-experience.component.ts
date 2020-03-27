@@ -14,14 +14,15 @@ export class UpdateWorkExperienceComponent implements OnInit {
 
   ngOnInit() {
       const baseUrl = environment.baseUrl;
-      var id;
-      this.route.params.subscribe(params => {
-        id = params["id"];
-      });
-      $("#viewTabName").text("Update Work Experience");
-      $(".sidenav a").removeClass("active");
-      $("#editProfile").addClass("active");
+      const id = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      if(id == null || id == "" || id == undefined){
+        window.location.href = '/login'
+      }
       $(document).ready(function() {
+        $("#viewTabName").text("Update Work Experience");
+        $(".sidenav a").removeClass("active");
+        $("#editProfile").addClass("active");
         $('.selectpicker').selectpicker();
       });
       //experiance update function
@@ -81,8 +82,8 @@ export class UpdateWorkExperienceComponent implements OnInit {
            success: function(resultData) { 
              showToast("Working experience saved successfully.")
              setTimeout(function(){ 
-               window.location.href = "tutor/experience/"+id;
-              }, 3000);
+               window.location.href = "profile/tutor";
+              }, 2000);
             },
             error :function(resultData){
               console.log(resultData);

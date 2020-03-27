@@ -24,7 +24,11 @@ export class PrivacyPolicyComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    $("#viewTabName").html("PRIVACY POLICY");
+    $(document).ready(function(){
+      $("#viewTabName").html("PRIVACY POLICY");
+      $(".sidenav a").removeClass("active");
+      $(".policyA").addClass("active");
+    });
   }
 
 }

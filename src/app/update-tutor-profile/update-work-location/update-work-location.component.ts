@@ -14,14 +14,15 @@ export class UpdateWorkLocationComponent implements OnInit {
 
   ngOnInit() {
       const baseUrl = environment.baseUrl;
-      var id;
-      this.route.params.subscribe(params => {
-        id = params["id"];
-      });
-      $("#viewTabName").text("Update Work Locations");
-      $(".sidenav a").removeClass("active");
-      $("#editProfile").addClass("active");
+      const id = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      if(id == null || id == "" || id == undefined){
+        window.location.href = '/login'
+      }
       $(document).ready(function() {
+        $("#viewTabName").text("Update Work Locations");
+        $(".sidenav a").removeClass("active");
+        $("#editProfile").addClass("active");
         $('.selectpicker').selectpicker();
       });
         //zip code function 
@@ -30,14 +31,15 @@ export class UpdateWorkLocationComponent implements OnInit {
             var error = false;
               $(".pinCode").each(function(){
                 var pinCode = $(this).val();
+                var location = $(this).closest(".formDiv").find(".location").val();
                 var pinId = $(this).attr("data-id");
                 console.log(pinCode);
                 if(pinCode != "" && (pinCode.length != 6 || isNaN(pinCode))){
                   error = true;
                   $(this).css("border-color","red");
-                }else if(pinCode != "" || pinId != ""){
-                $(this).css("border-color","#ccc");
-                jsonObj.push({"id":pinId,"zip":pinCode});
+                }else if(pinCode != ""){
+                  $(this).css("border-color","#ccc");
+                  jsonObj.push({"id":pinId,"location":location,"tutorId":id,"zip":pinCode});
                 }
               });
               if(!error && jsonObj.length > 0){
@@ -50,8 +52,8 @@ export class UpdateWorkLocationComponent implements OnInit {
                   success: function(resultData) { 
                     showToast("Working locations saved successfully.")
                     setTimeout(function(){ 
-                      window.location.href = "tutor/workLocation/"+id;
-                    }, 3000);
+                      window.location.href = "profile/tutor";
+                    }, 2000);
                   },
                   error :function(resultData){
                     console.log(resultData);
@@ -68,15 +70,10 @@ export class UpdateWorkLocationComponent implements OnInit {
             success: function(resultData) { 
               console.log(resultData);
               var grouped = {};
-              resultData.forEach(function (a) {
-                var keepGoing = true;
-                $(".pinCode").each(function(){
-                  if(keepGoing && $(this).val() == ""){
-                    $(this).val(a.zip);
-                    $(this).attr("data-id",a.id);
-                    keepGoing = false;
-                  }
-                });
+              resultData.forEach(function (a,i) {
+                $(".pinCode:eq("+i+")").val(a.zip);
+                $(".pinCode:eq("+i+")").attr("data-id",a.id);
+                $(".location:eq("+i+")").val(a.location);
               });            
             }
           });

@@ -29,7 +29,7 @@
     border-right: 1px solid  #226e81; 
 }
 
-.sidenav a:hover,.sidenav a:active,.sidenav a:focus, .sidenav a.active,.dropdown-btn:hover{
+.sidenav a:hover,.sidenav a:active,.sidenav a:focus, .sidenav a.active, .sidenav button.active,.dropdown-btn:hover{
     color: #ffffff;
     background: #020151;
 }

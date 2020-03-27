@@ -16,16 +16,17 @@ export class DashboardComponent implements OnInit {
 
     var baseUrl = environment.baseUrl;
 
-    var id;
-    this.route.params.subscribe(params => {
-        id = params["id"];
-    });
+    const id = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    if(id == null || id == "" || id == undefined){
+      window.location.href = '/login'
+    }
 
-    $("#viewTabName").text("Tutor Dashboard");
-    $(".sidenav a").removeClass("active");
-    $("#dashboard").addClass("active");
     
     $(document).ready(function(){
+      $("#viewTabName").text("Tutor Dashboard");
+      $(".sidenav a").removeClass("active");
+      $("#dashboard").addClass("active");
       $('#dashboardView').css('display','block');
       var reg = localStorage.getItem('from_reg');
       if(reg == 'Yes'){

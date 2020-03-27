@@ -16,10 +16,11 @@ export class ReviewByStudentComponent implements OnInit {
 
     var baseUrl = environment.baseUrl;
 
-    var id;
-    this.route.params.subscribe(params => {
-        id = params["id"];
-    });
+    const id = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    if(id == null || id == "" || id == undefined){
+      window.location.href = '/login'
+    }
     $(document).ready(function(){
       $("#viewTabName").text("Review A Teacher");
       $(".sidenav a").removeClass("active");

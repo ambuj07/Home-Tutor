@@ -14,12 +14,14 @@ export class StudentMenuComponent implements OnInit {
   ngOnInit() {
 
     var id = localStorage.getItem('userId');
-    var profilePicUrl = localStorage.getItem("profilePicUrl");
-    if(profilePicUrl != undefined && profilePicUrl != null && profilePicUrl != ""){
-      $(".profilePic").attr("src",profilePicUrl);
-    }else{
-      $(".profilePic").attr("src","/assets/userIcon.png");
+    const token = localStorage.getItem('token');
+    if(id == null || id == "" || id == undefined){
+      window.location.href = '/login'
     }
+
+    $.ajaxSetup({
+      headers: { 'Authorization': token}
+    });
 
     function openNav() {
       document.getElementById("mySidenav").style.width = "250px";
@@ -51,21 +53,21 @@ export class StudentMenuComponent implements OnInit {
       closeNav();
     })
     $("#profile").click(function(){
-      window.location.href = '/profile/student/'+id
+      window.location.href = '/profile/student'
     });
     $("#dashboard").click(function(){
-      window.location.href = '/dashboard/student/'+id
+      window.location.href = '/dashboard/student';
     });
     $(document).on('click',".findMoreTutors",function(){
-      window.location.href = '/postNewRequirement/'+id
+      window.location.href = '/postNewRequirement'
     });
     //updateStatus
     $(document).on('click',".updateStatus",function(){
-      window.location.href = 'student/updateStatus/'+id
+      window.location.href = 'student/updateStatus';
     });
     //student/review/
     $(document).on('click',".review",function(){
-      window.location.href = 'student/review/'+id
+      window.location.href = 'student/review';
     });
   }
 

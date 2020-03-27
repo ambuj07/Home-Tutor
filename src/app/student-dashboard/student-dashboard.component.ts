@@ -16,10 +16,11 @@ export class StudentDashboardComponent implements OnInit {
 
     var baseUrl = environment.baseUrl;
 
-    var id;
-    this.route.params.subscribe(params => {
-        id = params["id"];
-    });
+    const id = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    if(id == null || id == "" || id == undefined){
+      window.location.href = '/login'
+    }
     $(document).ready(function(){
       $('#dashboardView').css('display','block');
       // var reg = localStorage.getItem('from_reg');
@@ -65,7 +66,14 @@ export class StudentDashboardComponent implements OnInit {
               html += '<tr><td style="width:50%">Status : <b>'+response.contents[i].status+'</b></td><td rowspan="2">Remark : </td></tr>';
               html += '<tr><td>Enq No. : <b>'+response.contents[i].sequenceId+'</b></td></tr>';
               html += '<tr><td colspan="2">Enq Date Time : <b>'+getDateTimeFormat(response.contents[i].createdOn)+'</b></td></tr>';
-              html += '<tr><td colspan="2"><b>'+response.contents[i].className+', '+response.contents[i].subject+', '+response.contents[i].board+'</b></td></tr>';
+              var learningNeed =  response.contents[i].className;
+              if(response.contents[i].subject != null){
+                learningNeed += ", "+response.contents[i].subject;
+              }
+              if(response.contents[i].board != null && response.contents[i].board != "null" && response.contents[i].board != ""){
+                learningNeed += ", "+response.contents[i].board;
+              }
+              html += '<tr><td colspan="2"><b>'+learningNeed+'</b></td></tr>';
               html += '<tr style="text-align:center"><td class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/enquiry/'+response.contents[i].id+'">Veiw Details</a></td><td class="action-td" style="background: #f26832;color: white;font-weight: bold"><a style="color:white" data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="updateStatusBtn">Cancle</a></td></tr>';
               if(response.contents[i].applications.length > 0){
               var data = JSON.stringify(response.contents[i].applications)
@@ -184,7 +192,7 @@ export class StudentDashboardComponent implements OnInit {
         return retStr;
       }
       function getDateTimeFormat(date){
-        var d = new Date(date);
+        var d = new Date(date+ 'Z');
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         date = d.getDate()+" "+months[d.getMonth()]+" "+d.getFullYear()+" ; "+tConv24(d.toLocaleTimeString());
         function tConv24(time24) {
@@ -198,7 +206,7 @@ export class StudentDashboardComponent implements OnInit {
         return date;
       }
       function getDateFormat(date){
-        var d = new Date(date);
+        var d = new Date(date+ 'Z');
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         date = d.getDate()+" "+months[d.getMonth()]+" "+d.getFullYear();
         return date;

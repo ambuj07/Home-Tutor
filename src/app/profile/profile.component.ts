@@ -14,13 +14,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
       const baseUrl = environment.baseUrl;
-      var id;
-      this.route.params.subscribe(params => {
-        id = params["id"];
+      const id = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      if(id == null || id == "" || id == undefined){
+        window.location.href = '/login'
+      }
+      $(document).ready(function(){
+        $("#viewTabName").text("Profile");
+        $(".sidenav a").removeClass("active");
+        $("#profile").addClass("active");
       });
-      $("#viewTabName").text("Profile");
-      $(".sidenav a").removeClass("active");
-      $("#profile").addClass("active");
         $.get(baseUrl+"/student/"+id,function(data){
           var whatsappNumber = "";
           var turorType = "";
@@ -112,14 +115,14 @@ export class ProfileComponent implements OnInit {
               retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
             }else if(type == "ONLINE"){
               retStr = "Online Tutor / Trainer";
-            }else if("TutorForTution"){
+            }else if("TutorForTution" || "FACULTY"){
               retStr = "Tutor For Our Tution Centre";
             }
           }
           return retStr;
         }
         function getDateTimeFormat(date){
-          var d = new Date(date);
+          var d = new Date(date+ 'Z');
           var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
           date = d.getDate()+" "+months[d.getMonth()]+" "+d.getFullYear()+" ; "+tConv24(d.toLocaleTimeString());
           function tConv24(time24) {

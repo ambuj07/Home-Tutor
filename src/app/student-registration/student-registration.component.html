@@ -1,4 +1,4 @@
-<app-main-menu></app-main-menu>
+<app-menu></app-menu>
 <div class="container-fluid requirement-section">
 <div class="row overlay">
     <div class="col-md-6 offset-md-3" style="margin-top: 30px;">
@@ -16,17 +16,17 @@
                         </select>
                     </div>
                     <div class="form-group" id="chooseClassDiv" hidden>
-                            <select class="form-control selectpicker" id="chooseClass" name="chooseClass">
+                            <select class="form-control selectpicker" id="chooseClass" name="chooseClass" required>
                                             
                             </select>
                     </div>    
                     <div class="form-group" id="chooseSubjectDiv" hidden>
-                        <select class="form-control selectpicker" id="chooseSubject" name="chooseSubject">
+                        <select class="form-control selectpicker" id="chooseSubject" name="chooseSubject" required>
                             
                         </select>
                     </div>
                     <div class="form-group" id="boardDiv" hidden>
-                        <select class="form-control selectpicker" id="board" name="board" required>
+                        <select class="form-control selectpicker" id="board" name="board">
                                 <option value="" selected disabled>Select Board</option>
                                 <option value="CBSE Board">CBSE Board</option>
                                 <option value="IB Board">IB Board</option>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group otherBoard" hidden>
                         <div class="input-group">
-                            <input type="text" placeholder="Please Mention Board/University" id="otherBoard" class="form-control" name="otherBoard" required>
+                            <input type="text" placeholder="Please Mention Board/University" id="otherBoard" class="form-control" name="otherBoard">
                         </div>
                     </div>
                     <div style="text-align:right">
@@ -58,17 +58,17 @@
                 <div class="form-bottom">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" placeholder="Flat NO ; Street NO ; Apartment" id="addrLine1" class="form-control" name="addrLine1" required>
+                            <input type="text" placeholder="Flat NO ; Street NO ; Apartment *" id="addrLine1" class="form-control" name="addrLine1" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" placeholder="Enter Your Locality(Ex. Mayur Vihar Phase-3)" id="location" class="form-control" name="location" required>
+                            <input type="text" placeholder="Enter Your Locality(Ex. Mayur Vihar Phase-3) *" id="location" class="form-control" name="location" required>
                         </div>
                     </div>   
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="tel" placeholder="Enter Your Pin Code (6 digits)" id="pinCode" class="form-control" name="pinCode" maxlength="6" required>
+                            <input type="tel" placeholder="Enter Your Pin Code (6 digits) *" id="pinCode" class="form-control" name="pinCode" maxlength="6" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -98,16 +98,16 @@
                 </div>
                 <div class="form-bottom">
                     <div class="form-group">
-                        <input type="text" placeholder="Enter Your Name"  name="name" class="form-control" id="name" required>
+                        <input type="text" placeholder="Enter Your Name *"  name="name" class="form-control" id="name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email" required>
+                        <input type="email" placeholder="Enter Your Email"  name="email" class="form-control" id="email">
                     </div>
                     <div class="form-group">
-                        <input type="tel" placeholder="Mobile Number(only 10 digits)"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
+                        <input type="tel" placeholder="Mobile Number(only 10 digits) *"  name="mobileNumber" class="form-control" id="mobileNumber" maxlength="10" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" placeholder="WhatsApp Number(only 10 digits)"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
+                        <input type="tel" placeholder="WhatsApp Number(only 10 digits) *"  name="whatsappNumber" class="form-control" id="whatsappNumber" maxlength="10" required>
                     </div>
                     <!-- <div class="form-group">
                         <select class="form-control selectpicker" id="chooseGender" name="chooseGender">
@@ -133,7 +133,7 @@
                         <select class="form-control selectpicker" id="tutorType" name="tutorType" required>
                             <option value="TUTOR" selected>Home Tutor / Trainer (At Student's Place)</option>
                             <option value="COACHING">Tuition Centre (At Tutor's Place)</option>
-                            <option value="TutorForTution">Tutor For Our Tution Centre</option>
+                            <option value="FACULTY">Tutor For Our Tution Centre</option>
                             <option value="ONLINE">Online Tutor / Trainer</option>
                         </select>
                     </div>
@@ -173,9 +173,9 @@
                     </div>
                     <div class="form-group">
                         <label style="width: 100%;line-height: 20px;">Prefer Fee <br><small>(*Negotiable)</small></label>
-                        <input type="tel" placeholder="Rs."  name="preferFee" class="form-control" id="preferFee" style="width: 54%;display: inline;">
+                        <input type="tel" placeholder="Rs. *"  name="preferFee" class="form-control" id="preferFee" style="width: 54%;display: inline;" required>
                         <div style="width: 44%;float: right;">
-                            <select class="form-control selectpicker" id="hourlyMonthly" name="hourlyMonthly">
+                            <select class="form-control selectpicker" id="hourlyMonthly" name="hourlyMonthly" required>
                                 <option value="hour" selected>Hourly</option>
                                 <option value="month">Monthly</option>
                                 <option value="year">Yearly</option>
@@ -198,7 +198,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" placeholder="Anything else please write here.." rows="2" id="anythingElse" name="anythingElse"></textarea>
+                        <textarea class="form-control" placeholder="Anything else please write here.. " rows="2" id="anythingElse" name="anythingElse" required></textarea>
                     </div>
                     <button type="button" class="btn btn-previous">Previous</button>
                     <button type="button" id="submit" class="btn" style="float: right;">Submit</button>
@@ -209,7 +209,7 @@
 </div>
 </div>
 <!-- data confirm modal-->
-<div class="modal fade" id="myProfileModal" style="margin-top: 80px;">
+<div class="modal fade" id="myProfileModal">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">

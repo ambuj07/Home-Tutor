@@ -46,7 +46,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { WhyUsComponent } from './why-us/why-us.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TncComponent } from './tnc/tnc.component';
-import { HowItWorksComponent } from './how-it-works/how-it-works.component'
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
+import { FindTutorComponent } from './find-tutor/find-tutor.component'
+import { TutorPublicComponent } from './tutor-public/tutor-public.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +88,10 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component'
     WhyUsComponent,
     PrivacyPolicyComponent,
     TncComponent,
-    HowItWorksComponent
+    HowItWorksComponent,
+    FindTutorComponent,
+    TutorPublicComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -117,11 +123,7 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component'
         component: StudentRegistrationComponent
       },
       {
-        path : 'nearbyTutors',
-        component : NearbyTutorsComponent
-      },
-      {
-        path : 'profile/student/:id',
+        path : 'profile/student',
         component : ProfileComponent
       },
       {
@@ -129,7 +131,7 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component'
         component : StudentEnquiryComponent
       },
       {
-        path : 'postNewRequirement/:id',
+        path : 'postNewRequirement',
         component : FindMoreTutorsComponent
       },
       {
@@ -141,63 +143,71 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component'
         component : NearbyStudendsComponent
       },
       {
-        path : 'profile/tutor/:id',
+        path : 'profile/tutor',
         component : TutorProfileComponent
       },
       {
-        path : 'dashboard/tutor/:id',
+        path : 'tutor/:id',
+        component : TutorPublicComponent
+      },
+      {
+        path : 'dashboard/tutor',
         component : DashboardComponent
       },
       {
-        path : 'dashboard/student/:id',
+        path : 'dashboard/student',
         component : StudentDashboardComponent
-      },
-      {
-        path : 'profile/tutor/:id',
-        component : TutorProfileComponent
       },
       {
         path : 'enq/:id',
         component : JobDetailsComponent
       },
       {
-        path : 'editProfile/tutor/:id',
+        path : 'editProfile/tutor',
         component : UpdateTutorProfileComponent
       },
       {
-        path : 'tutor/classAndSubject/:id',
+        path : 'tutor/edit/classAndSubject',
         component : UpdateClassAndSubjectComponent
       },
       {
-        path : 'tutor/education/:id',
+        path : 'tutor/edit/education',
         component : UpdateEducationQualificationComponent
       },
       {
-        path : 'tutor/workLocation/:id',
+        path : 'tutor/edit/workLocation',
         component : UpdateWorkLocationComponent
       },
       {
-        path : 'tutor/experience/:id',
+        path : 'tutor/edit/experience',
         component : UpdateWorkExperienceComponent
       },
       {
-        path : 'tutor/address/:id',
+        path : 'tutor/edit/address',
         component : UpdateTutorAddressComponent
       },
       {
-        path : 'tutor/guarantor/:id',
+        path : 'tutor/edit/guarantor',
         component : UpdateTutorReferenceComponent
       },
       {
-        path : 'student/updateStatus/:id',
+        path : 'student/updateStatus',
         component : StudentUpdateStatusComponent
       },
       {
-        path : 'student/review/:id',
+        path : 'student/review',
         component : ReviewByStudentComponent
       },
       {
         path : 'contactus',
+        component : ContactUsComponent
+      },
+      {
+        path : 'askQuestion',
+        component : ContactUsComponent
+      },
+      {
+        path : 'feedback',
         component : ContactUsComponent
       },
       {
@@ -229,7 +239,11 @@ import { HowItWorksComponent } from './how-it-works/how-it-works.component'
         component : PrivacyPolicyComponent
       },
       {
-        path : ':tutorType',
+        path : 'edu/search/:tutorType',
+        component : FindTutorComponent
+      },
+      {
+        path : 'stu/search/:tutorType',
         component : FindJobsComponent
       },
     //   {

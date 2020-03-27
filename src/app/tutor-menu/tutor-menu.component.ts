@@ -15,11 +15,15 @@ export class TutorMenuComponent implements OnInit {
   ngOnInit() {
 
     const id = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     if(id == null || id == "" || id == undefined){
       window.location.href = '/login'
     }
 
     const baseUrl = environment.baseUrl;
+    $.ajaxSetup({
+      headers: { 'Authorization': token}
+    });
        
       $.ajax({
           type: 'GET',
@@ -71,34 +75,34 @@ export class TutorMenuComponent implements OnInit {
       closeNav();
     })
     $("#profile").click(function(){
-      window.location.href = '/profile/tutor/'+id
+      window.location.href = '/profile/tutor'
     });
     // $("#editProfile").click(function(){
     //   window.location.href = '/editProfile/tutor/'+id
     // });
     $("#dashboard").click(function(){
-      window.location.href = '/dashboard/tutor/'+id
+      window.location.href = '/dashboard/tutor';
     });
-    $(document).on('click',".findJobs",function(){
-      window.location.href = '/teaching-job';
+    $(document).on('click',".searchJobA",function(){
+      window.location.href = 'stu/search/teaching-job';
     });
     $(document).on('click',".classAndSubject",function(){
-      window.location.href = '/tutor/classAndSubject/'+id
+      window.location.href = '/tutor/edit/classAndSubject'
     });
     $(document).on('click',".educationQualification",function(){
-      window.location.href = '/tutor/education/'+id
+      window.location.href = '/tutor/edit/education';
     });
     $(document).on('click',".workLocation",function(){
-      window.location.href = '/tutor/workLocation/'+id
+      window.location.href = '/tutor/edit/workLocation';
     });
     $(document).on('click',".workExperience",function(){
-      window.location.href = '/tutor/experience/'+id
+      window.location.href = '/tutor/edit/experience';
     });
     $(document).on('click',".saveAddress",function(){
-      window.location.href = '/tutor/address/'+id
+      window.location.href = '/tutor/edit/address';
     });
     $(document).on('click',".saveGuarantor",function(){
-      window.location.href = '/tutor/guarantor/'+id
+      window.location.href = '/tutor/edit/guarantor';
     });
   }
 

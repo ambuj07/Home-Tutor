@@ -34,7 +34,11 @@ export class TncComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    $("#viewTabName").html("Terms and Conditions");
+    $(document).ready(function(){
+      $("#viewTabName").html("Terms and Conditions");
+      $(".sidenav a").removeClass("active");
+      $(".tncA").addClass("active");
+    });
   }
 
 }

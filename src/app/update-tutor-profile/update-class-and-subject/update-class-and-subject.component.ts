@@ -14,50 +14,21 @@ export class UpdateClassAndSubjectComponent implements OnInit {
 
   ngOnInit() {
       const baseUrl = environment.baseUrl;
-      var id;
-      this.route.params.subscribe(params => {
-        id = params["id"];
+      const id = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      if(id == null || id == "" || id == undefined){
+        window.location.href = '/login'
+      }
+      $.ajaxSetup({
+        headers: { 'Authorization': token}
       });
-      $("#viewTabName").text("Update Classes And Subjects");
-      $(".sidenav a").removeClass("active");
-      $("#editProfile").addClass("active");
       $(document).ready(function() {
-        //toggle the component with class accordion_body
-        // $(".accordion_head").click(function() {
-        //   if ($('.accordion_body').is(':visible')) {
-        //     $(".accordion_body").slideUp(300);
-        //     $(".plusminus").text('+');
-        //   }
-        //   if ($(this).next(".accordion_body").is(':visible')) {
-        //     $(this).next(".accordion_body").slideUp(300);
-        //     $(this).children(".plusminus").text('+');
-        //   } else {
-        //     $(this).next(".accordion_body").slideDown(300);
-        //     $(this).children(".plusminus").text('-');
-        //   }
-        // });
+        $("#viewTabName").text("Update Classes And Subjects");
+        $(".sidenav a").removeClass("active");
+        $("#editProfile").addClass("active");
         $('.selectpicker').selectpicker();
       });
       var classHtml = '<option value="" disabled selected>Select Class</option>';
-      var subjectHtml = '';
-      //$.ajax({
-        // type: 'GET',
-        // url: baseUrl+"/config",
-        // async:false,
-        // //dataType: "json",
-        // contentType: "application/json;charset=utf-8",
-        // success: function(resultData) { 
-        //     console.log(resultData);
-        //     for(var i=0; i<resultData.classes.length; i++){
-        //       classHtml += '<option value="'+resultData.classes[i].id+'">'+resultData.classes[i].name+'</option>';
-        //     }
-        //     for(var i=0; i<resultData.subjects.length; i++){
-        //       subjectHtml += '<option value="'+resultData.subjects[i].id+'">'+resultData.subjects[i].name+'</option>';
-        //     }
-        //   }
-        // });
-        // $(".chooseClass").html(classHtml).selectpicker('refresh');
-        // $(".chooseSubject").html(subjectHtml).selectpicker('refresh');
         $.ajax({
           type: 'GET',
           url: baseUrl+"/config/category",
@@ -66,38 +37,34 @@ export class UpdateClassAndSubjectComponent implements OnInit {
           success: function(resultData) { 
               console.log(resultData);
               resultData.forEach(function (a){
-                // var name = a.name;
-                // var nameArr = a.name.split("(");
-                // if(nameArr.length > 1){
-                //   classHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+nameArr[0]+'</option>';
-                //   classHtml += '<option style="font-size:12px;margin-top:-10px" data-id="'+a.id+'" value="'+a.name+'">('+nameArr[1]+'</option>';
-                // }else{
-                //   classHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+a.name+'</option>';
-                // }
                 classHtml += '<option value="'+a.id+'">'+a.name+'</option>';
               })
             }
           });
           $(".chooseClass").html(classHtml).selectpicker('refresh');
     
-          //$("#chooseClass").on('change',function(){
-            // $("#chooseClass").val($(this).val()).selectpicker("refresh")
-            // var chooseClass = $('option:selected', this).attr('data-id');
-            var chooseClass = $(".chooseClass").val();
+          $(document).on('change',"select.chooseClass",function(){
+            var classVal = $(this).val();
+            var subjectHtml = getSubjectForClass(classVal);
+            $(this).closest(".formDiv_1").find("select.chooseSubject").html(subjectHtml).selectpicker('refresh');
+          });
+          function getSubjectForClass(chooseClass){
+            var subjectHtml = '';
             $.ajax({
-                type: 'GET',
-                url: baseUrl+"/config/subject?groupId="+chooseClass,
-                async:false,
-                contentType: "application/json;charset=utf-8",
-                success: function(resultData) { 
-                    console.log(resultData);
-                    resultData.forEach(function (a){
-                        subjectHtml += '<option value="'+a.id+'">'+a.name+'</option>';
-                    })
-                    }
-                });
-            $(".chooseSubject").html(subjectHtml).selectpicker('refresh');
-          //});
+              type: 'GET',
+              url: baseUrl+"/config/subject?groupId="+chooseClass,
+              async:false,
+              contentType: "application/json;charset=utf-8",
+              success: function(resultData) { 
+                  console.log(resultData);
+                  resultData.forEach(function (a){
+                      subjectHtml += '<option value="'+a.id+'">'+a.name+'</option>';
+                  })
+                  }
+              });
+              console.log(subjectHtml)
+              return subjectHtml;
+          }
 
         function addMoreClass(){
             var addMore1 = '<div class="row formDiv_1" style="margin-bottom: 10px !important;">';
@@ -108,10 +75,10 @@ export class UpdateClassAndSubjectComponent implements OnInit {
             addMore1 += '</div>';
             addMore1 += '<div class="col-md-6">';
             addMore1 += '<select class="selectpicker form-control chooseSubject" title="Select subjects" multiple>';             
-            addMore1 += subjectHtml;  
+            //addMore1 += subjectHtml;  
             addMore1 += '</select>';
             addMore1 += '</div>';
-            addMore1 += '<div class="col-md-1"><span class="removeClass removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
+            addMore1 += '<div class="col-md-1"><span class="removeClass removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 9px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
             addMore1 += '</div>';
             $(".addMore_1").append(addMore1);
             $(".selectpicker").selectpicker('refresh');
@@ -160,8 +127,8 @@ export class UpdateClassAndSubjectComponent implements OnInit {
                 success: function(resultData) { 
                   showToast("Classes and subjects saved successfully.")
                   setTimeout(function(){ 
-                    window.location.reload();
-                   }, 3000);
+                    window.location.href = "profile/tutor";
+                   }, 2000);
                  },
                  error :function(resultData){
                    console.log(resultData);
@@ -174,35 +141,55 @@ export class UpdateClassAndSubjectComponent implements OnInit {
             type: 'GET',
             url: baseUrl+"/tutor/"+id+"/map",
             success: function(resultData) { 
-              console.log(resultData);
-              var grouped = {};
-              resultData.forEach(function (a) {
-                  grouped[a.group.id] = grouped[a.group.id] || [];
-                  grouped[a.group.id].push(a.classSubjectMapping.subjectMaster.id);
-              });
-              var i = 0;
-              for (var key in grouped) {
-                console.log(key+" jd")
-                i++;
+              console.log(resultData.length+" ==========");
+              if(resultData.length > 0){
+                var grouped = {};
+                resultData.forEach(function (a) {
+                    grouped[a.group.id] = grouped[a.group.id] || [];
+                    grouped[a.group.id].push(a.classSubjectMapping.subjectMaster.id);
+                });
+                var i = 0;
+                for (var key in grouped) {
+                  console.log(key+" jd"+grouped[key])
+                  i++;
+                  var addMore1 = '<div class="row formDiv_1" style="margin-bottom: 10px !important;">';
+                      addMore1 += '<div class="col-md-5">';
+                      addMore1 += '<select id="preClass'+i+'" class="selectpicker form-control chooseClass">'; 
+                      addMore1 += classHtml;         
+                      addMore1 += '</select>';
+                      addMore1 += '</div>';
+                      addMore1 += '<div class="col-md-6">';
+                      addMore1 += '<select id="preSubject'+i+'" class="selectpicker form-control chooseSubject" title="Select subjects" multiple>';             
+                      addMore1 += getSubjectForClass(key);  
+                      addMore1 += '</select>';
+                      addMore1 += '</div>';
+                      if(i == 1){
+                        addMore1 += '<div class="col-md-1"><span class="addMoreClass addBtn" style="background: #d4d4d0;padding: 5px 10px;position: relative;top: 9px;font-size: 20px;font-weight: bold;cursor: pointer;color: green;">+</span></div>';
+                      }else{
+                        addMore1 += '<div class="col-md-1"><span class="removeClass removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 9px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
+                      }
+                      addMore1 += '</div>';
+                      $(".addMore_1").append(addMore1);
+                      $("select#preClass"+i).val(key);
+                      $("select#preSubject"+i).selectpicker('val', grouped[key]);
+                      $(".selectpicker").selectpicker('refresh');
+               }
+              }else{
                 var addMore1 = '<div class="row formDiv_1" style="margin-bottom: 10px !important;">';
-                    addMore1 += '<div class="col-md-5">';
-                    addMore1 += '<select id="preClass'+i+'" class="selectpicker form-control chooseClass">'; 
-                    addMore1 += classHtml;         
-                    addMore1 += '</select>';
-                    addMore1 += '</div>';
-                    addMore1 += '<div class="col-md-6">';
-                    addMore1 += '<select id="preSubject'+i+'" class="selectpicker form-control chooseSubject" title="Select subjects" multiple>';             
-                    addMore1 += subjectHtml;  
-                    addMore1 += '</select>';
-                    addMore1 += '</div>';
-                    addMore1 += '<div class="col-md-1"><span class="removeClass removeBtn" style="background: #d4d4d0;padding: 5px 12px;position: relative;top: 4px;font-size: 20px;font-weight: bold;color:red;cursor: pointer;">-</span></div>'
-                    addMore1 += '</div>';
-                    $(".addMore_1").prepend(addMore1);
-                    $("select#preClass"+i).val(key);
-                    $("select#preSubject"+i).selectpicker('val', grouped[key]);
-                    $(".selectpicker").selectpicker('refresh');
-             }
-              
+                      addMore1 += '<div class="col-md-5">';
+                      addMore1 += '<select id="preClass1" class="selectpicker form-control chooseClass">'; 
+                      addMore1 += classHtml;         
+                      addMore1 += '</select>';
+                      addMore1 += '</div>';
+                      addMore1 += '<div class="col-md-6">';
+                      addMore1 += '<select id="preSubject1" class="selectpicker form-control chooseSubject" title="Select subjects" multiple>';               
+                      addMore1 += '</select>';
+                      addMore1 += '</div>';
+                      addMore1 += '<div class="col-md-1"><span class="addMoreClass addBtn" style="background: #d4d4d0;padding: 5px 10px;position: relative;top: 9px;font-size: 20px;font-weight: bold;cursor: pointer;color: green;">+</span></div>';
+                      addMore1 += '</div>';
+                      $(".addMore_1").append(addMore1);
+                      $(".selectpicker").selectpicker('refresh');
+              }
             }
           });
          

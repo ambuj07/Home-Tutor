@@ -17,6 +17,17 @@ export class JobDetailsComponent implements OnInit {
   seqId : String = decodeURI(window.location.pathname.split("/")[2]);
   hasApplied : boolean = false;
   tutorId = localStorage.getItem('userId');
+  get isLoggedIn(): boolean {
+    let loggedIn = true;
+    let userId = localStorage.getItem('userId');
+    if(userId == undefined || userId == null){
+      loggedIn = false
+    }
+    return loggedIn;
+  }
+  goToLogin(){
+    window.location.href = '/login';
+  }
   getJobData(){
       this.http.get(this.baseUrl+'/job/sequence/'+this.seqId)
       .subscribe(data => {
@@ -75,9 +86,6 @@ export class JobDetailsComponent implements OnInit {
   //           });
 
   ngOnInit() {
-    $("#viewTabName").text("");
-    $(".sidenav a").removeClass("active");
-    $(".findJobs").addClass("active");
     this.getJobData();
     $(document).on('hide.bs.modal','#contactModal', function () {
       window.location.reload();
@@ -86,6 +94,9 @@ export class JobDetailsComponent implements OnInit {
       $('.selectpicker').selectpicker();
     });
     $(document).ready(function(){
+      $("#viewTabName").text("");
+      $(".sidenav a").removeClass("active");
+      $(".searchJobA").addClass("active");
         $(document).on('change',"#status",function(){
           var status = $(this).val();
           if(status == "Confirmed"){

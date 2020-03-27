@@ -18,7 +18,6 @@ export class StudentEnquiryComponent implements OnInit {
       this.route.params.subscribe(params => {
         id = params["id"];
       });
-      $("#viewTabName").text("Enquiry");
         $.get(baseUrl+"/job/"+id,function(data){
           var whatsappNumber = "";
           var turorType = "";
@@ -61,15 +60,22 @@ export class StudentEnquiryComponent implements OnInit {
                 html += '</table>';
                 html += '<br>'
                 html += '<table class="table table-bordered table-preview">';
-                html += '<tr style="background: #d6d6d6;text-align: center;"><th>Learning Need</th></tr>'
-                html += '<tr><td> <b><i class="fa fa-graduation-cap" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i>'+data.className+', '+data.subject+', '+data.board+'</b></td></tr>';
+                html += '<tr style="background: #d6d6d6;text-align: center;"><th>Learning Need</th></tr>';
+                var learningNeed =  data.className;
+                if(data.subject != null){
+                  learningNeed += ", "+data.subject;
+                }
+                if(data.board != null && data.board != "null" && data.board != ""){
+                  learningNeed += ", "+data.board;
+                }
+                html += '<tr><td> <b><i class="fa fa-graduation-cap" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i>'+learningNeed+'</b></td></tr>';
                 html += '<tr><td> <b> <i class="fa fa-map-marker" aria-hidden="true" style="color: #e86507;font-size: 20px;margin-right: 5px;"></i>'+locationStr+'</b></td></tr>';
                 html += '</table>';
                 html += '<br>'
                 html += '<table class="table table-bordered">';
                 html += '<tr style="background: #d6d6d6;"><th colspan="2" style="text-align: center;">Preference</th></tr>'
                 html += '<tr><td style="width:50%"> I am looking for  </td><td> <b>'+getTutorType(turorType)+'</b></td></tr>';
-                html += '<tr><td> Prefer Tutor </td><td> <b>'+data.preferGender+'</b></td></tr>';
+                html += '<tr><td> Prefer Tutor </td><td> <b>'+(data.preferGender != null ? data.preferGender : 'NA')+'</b></td></tr>';
                 html += '<tr><td> Prefer Timing </td><td> <b>'+data.preferTiming+'</b></td></tr>';
                 html += '<tr><td> Prefer Day </td><td> <b>'+data.preferDay+'</b></td></tr>';
                 html += '<tr><td> I want to </td><td> <b>'+data.reasonForQuery+'</b></td></tr>';
@@ -107,7 +113,7 @@ export class StudentEnquiryComponent implements OnInit {
               retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
             }else if(type == "ONLINE"){
               retStr = "Online Tutor / Trainer";
-            }else if("TutorForTution"){
+            }else if("TutorForTution" || "FACULTY"){
               retStr = "Tutor For Our Tution Centre";
             }
           }
@@ -115,7 +121,7 @@ export class StudentEnquiryComponent implements OnInit {
         }
 
         function getDateTimeFormat(date){
-          var d = new Date(date);
+          var d = new Date(date+ 'Z');
           var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
           date = d.getDate()+" "+months[d.getMonth()]+" "+d.getFullYear()+" ; "+tConv24(d.toLocaleTimeString());
           function tConv24(time24) {

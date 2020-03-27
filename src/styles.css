@@ -610,17 +610,22 @@ form .form-bottom .input-error {
   }
   .pagination {
     justify-content: center;
+    display: inline !important;
+  }
+  li.page-item {
+    display: inline-block;
   }
   .nav-justified .nav-link {
-    color: #096e7a !important;
-    border: 1px solid #ccc;
+    color: #061f50 !important;
+    border-left: 1px solid #061f50;
     border-radius: 0px !important;
     background: #ccc;
   }
   .nav-justified .nav-link.active {
-    background: #096e81 !important;
+    background: #061f50  !important;
     color: white !important;
-    border-color: #096e81 !important;
+    border-color: #061f50 !important;
+    font-weight: bold;
   }
   .tab-content .tab-pane{
       max-width: 100%;
@@ -699,11 +704,18 @@ button.btn.dropdown-toggle {
 .table-preview td{
     padding: 15px 20px !important;
 }
-.table-card{
+.table-padding-10 td, .table-padding-10 th {
+    padding: 10px !important;
+}
+.table-card,.table-card-small{
     background: #fdfffe !important;
 }
 .table-card td, .table-card th {
     padding: 8px !important;
+    font-size: 15px;
+}
+.table-card-small td, .table-card-small th{
+    padding: 4px !important;
     font-size: 15px;
 }
 td.action-td {
