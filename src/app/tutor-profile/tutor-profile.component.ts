@@ -171,7 +171,7 @@ export class TutorProfileComponent implements OnInit {
                 if(a.zip != ""){
                   zipTable += '<tr>';
                   zipTable += '<td>'+a.zip+'</td>'
-                  zipTable += '<td>'+a.location+'</td>'
+                  zipTable += '<td>'+(a.location != null ? a.location : "NA")+'</td>'
                   zipTable += '</tr>';
                 }
               }); 
@@ -293,7 +293,7 @@ export class TutorProfileComponent implements OnInit {
               if(resultData.address.currentAddress.url != null && resultData.address.currentAddress.url != ""){
                 addrHtml += '<td><img style="width: 250px;height:200px" src="'+resultData.address.currentAddress.url+'?v='+Math.random()+'"></td>';
               }else{
-                addrHtml += '<td><a style="color: #f26832;font-weight: bold;" href="/tutor/address/'+id+'#addressProof">Upload Proof >></a></td>';
+                addrHtml += '<td><a style="color: #f26832;font-weight: bold;" href="/tutor/edit/address/#addressProof">Upload Proof >></a></td>';
               }
             }else{
               addrHtml += '<td></td>';

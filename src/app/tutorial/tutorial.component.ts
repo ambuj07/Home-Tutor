@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { environment } from '../../environments/environment';
 declare var $:any;
 
@@ -10,9 +11,13 @@ declare var $:any;
 })
 export class TutorialComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private title: Title, private meta: Meta) {
+    
+  }
   ngOnInit() {
+   // this.title.setTitle("Home Tuition Tutor");
+    this.meta.updateTag({ property: 'og:image', content: 'http://www.hansatutor.com/assets/shareIcon.jpeg' });
+    this.meta.updateTag({ property: 'og:title', content: 'Home Tuition Tutor Online Teacher/Trainer, Group Classes, Coaching Centre, Institutes' });
     document.onreadystatechange = function () {
       var state = document.readyState
       if (state == 'complete') {

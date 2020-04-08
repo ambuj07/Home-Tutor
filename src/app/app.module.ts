@@ -7,6 +7,7 @@ import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
 import {MatAutocompleteModule,MatInputModule,MatFormFieldModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OwlDateTimeModule, OwlNativeDateTimeModule,OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
+import { SeoService } from '../app/seo.service'
 
 
 
@@ -108,7 +109,12 @@ import { MenuComponent } from './menu/menu.component';
     RouterModule.forRoot([
       {
          path: '',
-         component: TutorialComponent
+         component: TutorialComponent,
+         data: {
+          title: 'About',
+          description:'Description Meta Tag Content',
+          ogUrl: 'your og url'
+        }
       },
       {
         path : 'login',
@@ -257,7 +263,7 @@ import { MenuComponent } from './menu/menu.component';
    ])
   ],
   providers: [
-    Title,
+    Title,SeoService,
     {provide: OWL_DATE_TIME_LOCALE, useValue: 'en-SG'}
   ],
   bootstrap: [AppComponent]
