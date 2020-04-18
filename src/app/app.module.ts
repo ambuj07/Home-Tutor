@@ -95,7 +95,7 @@ import { MenuComponent } from './menu/menu.component';
     MenuComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     ReactiveFormsModule,
     FormWizardModule,
@@ -111,9 +111,10 @@ import { MenuComponent } from './menu/menu.component';
          path: '',
          component: TutorialComponent,
          data: {
-          title: 'About',
-          description:'Description Meta Tag Content',
-          ogUrl: 'your og url'
+          title: 'Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes',
+          description:'Hansa Tutor is an online automated Platform to connect Educators (Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes) and Learners throughout the Country For – All Classes ; Courses ; Subjects ; NEET;  IIT JEE ; Science ; Arts ; Commerce ; Foreign Language ; Regional Language ; Competitive Exam ; Entrance Exams ; Dance ; Music ; YOGA',
+          ogUrl: 'http://www.hansatutor.com/',
+          ogImage : 'http://www.hansatutor.com/assets/fabicon.jpg'
         }
       },
       {
@@ -234,11 +235,23 @@ import { MenuComponent } from './menu/menu.component';
       },
       {
         path : 'why-us',
-        component : WhyUsComponent
+        component : WhyUsComponent,
+        data: {
+          title: 'Why Us',
+          description:'Hansa Tutor is an online automated Platform to connect Educators (Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes) and Learners throughout the Country For – All Classes ; Courses ; Subjects ; NEET;  IIT JEE ; Science ; Arts ; Commerce ; Foreign Language ; Regional Language ; Competitive Exam ; Entrance Exams ; Dance ; Music ; YOGA',
+          ogUrl: 'http://www.hansatutor.com/why-us',
+          ogImage : 'http://www.hansatutor.com/assets/fabicon.jpg'
+        }
       },
       {
         path : 'about-us',
-        component : AboutUsComponent
+        component : AboutUsComponent,
+        data: {
+          title: 'About Us',
+          description:'Hansa Tutor is an online automated Platform to connect Educators (Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes) and Learners throughout the Country For – All Classes ; Courses ; Subjects ; NEET;  IIT JEE ; Science ; Arts ; Commerce ; Foreign Language ; Regional Language ; Competitive Exam ; Entrance Exams ; Dance ; Music ; YOGA',
+          ogUrl: 'http://www.hansatutor.com/about-us',
+          ogImage : 'http://www.hansatutor.com/assets/fabicon.jpg'
+        }
       },
       {
         path : 'privacy-policy',

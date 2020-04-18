@@ -24,9 +24,12 @@ export class AppComponent {
       .mergeMap((route) => route.data)
       .subscribe((event) => {
         _seoService.updateTitle(event['title']);
+        _seoService.updateDescription(event['description']);
         _seoService.updateOgUrl(event['ogUrl']);
+        _seoService.updateOgImage(event['ogImage']);
+        _seoService.updateOgTitle(event['title']);
+        _seoService.updateOgTitle(event['description']);
         //Updating Description tag dynamically with title
-        _seoService.updateDescription(event['title'] + event['description'])
       }); 
   }
 }

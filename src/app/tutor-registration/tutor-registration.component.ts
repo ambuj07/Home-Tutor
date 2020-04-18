@@ -10,11 +10,11 @@ declare var $:any;
 })
 export class TutorRegistrationComponent implements OnInit {
 
-  constructor(private title: Title, private meta: Meta) {
-    this.title.setTitle("Join As Teacher/Trainer/Institution");
-    this.meta.addTag({ property: 'og:title', content: 'Join As Teacher/Trainer/Institution' });
-    this.meta.addTag({ property: 'og:url', content: 'http://hansatutor.com/edureg' });
-  }
+  // constructor(private title: Title, private meta: Meta) {
+  //   this.title.setTitle("Join As Teacher/Trainer/Institution");
+  //   this.meta.addTag({ property: 'og:title', content: 'Join As Teacher/Trainer/Institution' });
+  //   this.meta.addTag({ property: 'og:url', content: 'http://hansatutor.com/edureg' });
+  // }
   
 
   ngOnInit() {

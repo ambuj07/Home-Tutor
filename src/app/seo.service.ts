@@ -18,5 +18,17 @@ export class SeoService {
   updateDescription(desc: string) {
     this.meta.updateTag({ name: 'description', content: desc })
   }
+  
+  updateOgImage(ogimage: string) {
+    this.meta.updateTag({ property: 'og:image', content: ogimage })
+  }
+
+  updateOgTitle(ogtitle: string) {
+    this.meta.updateTag({ property: 'og:title', content: ogtitle })
+  }
+
+  updateOgDesc(ogdesc: string) {
+    this.meta.updateTag({ property: 'og:title', content: ogdesc })
+  }
 
 }
