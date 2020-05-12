@@ -23,13 +23,15 @@ export class AppComponent {
       .filter((route) => route.outlet === 'primary')
       .mergeMap((route) => route.data)
       .subscribe((event) => {
-        _seoService.updateTitle(event['title']);
-        _seoService.updateDescription(event['description']);
-        _seoService.updateOgUrl(event['ogUrl']);
-        _seoService.updateOgImage(event['ogImage']);
-        _seoService.updateOgTitle(event['title']);
-        _seoService.updateOgTitle(event['description']);
-        //Updating Description tag dynamically with title
+        if(event['title'] != undefined){
+          _seoService.updateTitle(event['title']);
+          _seoService.updateKeywords(event['keywords']);
+          _seoService.updateDescription(event['description']);
+          _seoService.updateOgUrl(event['ogUrl']);
+          _seoService.updateOgImage(event['ogImage']);
+          _seoService.updateOgTitle(event['title']);
+          _seoService.updateOgDesc(event['description']);
+        }
       }); 
   }
 }

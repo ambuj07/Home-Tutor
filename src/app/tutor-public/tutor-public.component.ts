@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { environment } from '../../environments/environment';
+import {SeoService} from '../../app/seo.service';
+import { HttpClient } from '@angular/common/http';
 declare var $:any;
 
 @Component({
@@ -9,24 +11,57 @@ declare var $:any;
   styleUrls: ['./tutor-public.component.css']
 })
 export class TutorPublicComponent implements OnInit {
-
-  constructor( private route: ActivatedRoute) {}
-
-  ngOnInit() {
-      const baseUrl = environment.baseUrl;
-      var id;
-      this.route.params.subscribe(params => {
-        id = params["id"];
-      });
-      $("#viewTabName").text("");
-      $.ajax({
-          type: 'GET',
-          url: baseUrl+"/tutor/"+id,
-          // beforeSend: function(xhr) {
-          //   xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-          // },
-          success : function(data){
-                var html="";
+  baseUrl :String = environment.baseUrl;
+  id : any;
+  tutor : any;
+  constructor( private route: ActivatedRoute,_seoService:SeoService,http:HttpClient) {
+    this.route.params.subscribe(params => {
+      this.id = params["id"];
+    });
+    //get tutor type short
+    function getTutorTypeShort(type){
+      var retStr = "";
+      if(type != undefined && type != null){
+        if(type == "TUTOR"){
+          retStr = "Home Tutor";
+        } else if(type == "COACHING"){
+          retStr = "Run a Coaching Center";
+        }else if(type == "ONLINE"){
+          retStr = "Online Tutor / Trainer";
+        }else if("FACULTY"){
+          retStr = "Faculty";
+        }
+      }
+      return retStr;
+    }
+    http.get(this.baseUrl+'/tutor/'+this.id)
+      .subscribe(tutor => {
+        this.tutor = tutor;
+        var data = this.tutor;
+        if(data != undefined){
+                var modeofteach = "";
+                if(data.types.length > 0){
+                  data.types.forEach(function(a,i){
+                    if(a.teacherType != null){
+                      if(i == 0){
+                        modeofteach += getTutorTypeShort(a.teacherType);
+                      }else{
+                        modeofteach += ", "+getTutorTypeShort(a.teacherType);
+                      }
+                    }
+                  })
+                }
+                var grouped = {};
+                data.mapping.forEach(function (a) {
+                    grouped[a.classGroup.name] = grouped[a.classGroup.name] || [];
+                    grouped[a.classGroup.name].push(a.subjectMaster.name);
+                });
+                var classCat = '';
+                var subjects = '';
+                for (var key in grouped) {
+                  classCat = key+", ";
+                  subjects = grouped[key]+', ';
+                }
                 var address = "";
                 if(data.location != null){
                   address+= data.location+", ";
@@ -40,6 +75,14 @@ export class TutorPublicComponent implements OnInit {
                 if(data.defaultZip != null){
                   address+= data.defaultZip;
                 }
+                var imageUrl = data.imageUrl != null ? data.imageUrl.replace('https://','http://') : 'http://hansatutor.com/assets/userIcon.png';
+                _seoService.updateTitle(data.name+" "+modeofteach+" for "+classCat+" - "+subjects+" in "+address);
+                _seoService.updateDescription(data.name+" "+modeofteach+" for "+classCat+" - "+subjects+" in "+address);
+                _seoService.updateOgUrl("http://hansatutor.com/tutor/"+this.id);
+                _seoService.updateOgImage(imageUrl);
+                _seoService.updateOgTitle(data.name+" "+modeofteach+" for "+classCat+" - "+subjects+" in "+address);
+                _seoService.updateOgDesc(data.name+" "+modeofteach+" for "+classCat+" - "+subjects+" in "+address);
+                var html="";
                 html += '<div style="margin-bottom:20px">';
                 html += '<div class="text-centered">';
                 html += '<table class="table table-card-small table-bordered-thick table-bordered" style="table-layout: fixed;background: #f8fffd !important;">';
@@ -76,18 +119,6 @@ export class TutorPublicComponent implements OnInit {
                 html += '<td colspan="2"><b>'+data.experience+' Years</b></td>';
                 html += '</tr>';
                 html += '<tr>';
-                var modeofteach = "";
-                if(data.types.length > 0){
-                  data.types.forEach(function(a,i){
-                    if(a.teacherType != null){
-                      if(i == 0){
-                        modeofteach += getTutorTypeShort(a.teacherType);
-                      }else{
-                        modeofteach += ", "+getTutorTypeShort(a.teacherType);
-                      }
-                    }
-                  })
-                }
                 html += '<td colspan="2">Mode of Teaching</td>';
                 html += '<td colspan="2"><b>'+modeofteach+'</b></td>';
                 html += '</tr>';
@@ -266,7 +297,13 @@ export class TutorPublicComponent implements OnInit {
               $("#experienceTable").append(expTable);
             }
           }
-        });
+    });
+  }
+
+  ngOnInit() {
+      $("#viewTabName").text("");
+      var id = this.id;
+      var baseUrl = this.baseUrl;
         //for classes and subject
         $.ajax({
           type: 'GET',
@@ -352,22 +389,6 @@ export class TutorPublicComponent implements OnInit {
           retStr = "Online Tutor / Trainer";
         }else if("FACULTY"){
           retStr = "Faculty <small>(Looking a Coaching Center where i can teach)</small>";
-        }
-      }
-      return retStr;
-    }
-    //get tutor type short
-    function getTutorTypeShort(type){
-      var retStr = "";
-      if(type != undefined && type != null){
-        if(type == "TUTOR"){
-          retStr = "Home Tutor";
-        } else if(type == "COACHING"){
-          retStr = "Run a Coaching Center";
-        }else if(type == "ONLINE"){
-          retStr = "Online Tutor / Trainer";
-        }else if("FACULTY"){
-          retStr = "Faculty";
         }
       }
       return retStr;

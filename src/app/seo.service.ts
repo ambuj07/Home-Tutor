@@ -11,14 +11,18 @@ export class SeoService {
     this.title.setTitle(title);
   }
 
-  updateOgUrl(url: string) {
-    this.meta.updateTag({ name: 'og:url', content: url })
-  }
-
   updateDescription(desc: string) {
     this.meta.updateTag({ name: 'description', content: desc })
   }
+
+  updateKeywords(keywords: string) {
+    this.meta.updateTag({ name: 'keywords', content: keywords })
+  }
   
+  updateOgUrl(url: string) {
+    this.meta.updateTag({ property: 'og:url', content: url })
+  }
+
   updateOgImage(ogimage: string) {
     this.meta.updateTag({ property: 'og:image', content: ogimage })
   }
@@ -28,7 +32,7 @@ export class SeoService {
   }
 
   updateOgDesc(ogdesc: string) {
-    this.meta.updateTag({ property: 'og:title', content: ogdesc })
+    this.meta.updateTag({ property: 'og:description', content: ogdesc })
   }
 
 }

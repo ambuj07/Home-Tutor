@@ -286,6 +286,7 @@ export class StudentRegistrationComponent implements OnInit {
     // //   })
     // });
     var data = '';
+    var mobile = "";
     $("#submit").click(function(){
         var error = false;  
           $(this).parents('.fieldset').find('select,input').each(function () {
@@ -314,7 +315,7 @@ export class StudentRegistrationComponent implements OnInit {
             var city = $("#city").val() 
             var name = $("#name").val()  
             var email = $("#email").val();  
-            var mobile = $("#mobileNumber").val(); 
+            mobile = $("#mobileNumber").val(); 
             var whatsappNumber = $("#whatsappNumber").val();
             var chooseGender = $("#chooseGender").val();
             var turorType = $("#tutorType").val();
@@ -358,22 +359,7 @@ export class StudentRegistrationComponent implements OnInit {
                 html += '<button type="button"  style="width:30%" class="btn btn-previous" data-dismiss="modal">Back</button>';
                 html += '<button type="button"  style="width:30%;float: right;" id="submitData" class="btn">Confirm</button>'
                 html += '</div>';
-                $("#myProfileModal").find(".modal-body").html(html);
-
-            // $.ajax({
-            //     type: 'POST',
-            //     url: baseUrl+"/student",
-            //     contentType: "application/json;charset=utf-8",
-            //     data: data,
-            //     success: function(resultData) { 
-            //         console.log(resultData);
-            //         localStorage.setItem("userName",resultData.detail.name);
-            //         localStorage.setItem("type",resultData.type);
-            //         localStorage.setItem("userId",resultData.refId);
-            //         localStorage.setItem("from_reg","Yes");
-            //         window.location.href = '/dashboard/student/'+resultData.refId;
-            //      }
-            // });  
+                $("#myProfileModal").find(".modal-body").html(html);  
           }
     });
 
@@ -390,6 +376,15 @@ export class StudentRegistrationComponent implements OnInit {
                 localStorage.setItem("userId",resultData.refId);
                 localStorage.setItem("from_reg","Yes");
                 window.location.href = '/dashboard/student';
+            },
+            error: function(resultData){
+              if(resultData.responseJSON.message == "Mobile number already exists."){
+                $("#myProfileModal").modal('hide');
+               $('#myErrorModal').modal('show');
+               $("#alreadyExistNumber").text('"'+mobile+'"');
+              }else{
+                showToast("Something went wrong at server side, Please try after sometime.")
+              }
             }
         }); 
     });

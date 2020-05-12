@@ -1,8 +1,8 @@
-import { Meta, Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router'
 import { environment } from '../../environments/environment';
+import {SeoService} from '../../app/seo.service';
 declare var $:any;
 
 @Component({
@@ -11,12 +11,48 @@ declare var $:any;
   styleUrls: ['./job-details.component.css']
 })
 export class JobDetailsComponent implements OnInit {
-  constructor(private title: Title, private meta: Meta,private http: HttpClient) {}
   baseUrl :  String = environment.baseUrl;
   jobs: any = [];
-  seqId : String = decodeURI(window.location.pathname.split("/")[2]);
+  seqId : any;
   hasApplied : boolean = false;
   tutorId = localStorage.getItem('userId');
+  constructor(private route: ActivatedRoute,_seoService:SeoService,private http:HttpClient) {
+    this.route.params.subscribe(params => {
+      this.seqId = params["id"];
+    });
+    http.get(this.baseUrl+'/job/sequence/'+this.seqId)
+    .subscribe(data => {
+      this.jobs = [data];
+      console.log(this.jobs)
+      let location = "";
+      if(this.jobs[0].student.location != null && this.jobs[0].student.location != undefined){
+        location += this.jobs[0].student.location;
+      }
+      if(this.jobs[0].student.city != null && this.jobs[0].student.city != undefined){
+        location += ", "+this.jobs[0].student.city;
+      }
+      if(this.jobs[0].student.states != null && this.jobs[0].student.states != undefined){
+        location += ", "+this.jobs[0].student.states;
+      }
+      //Subject + Tuition Tutor Trainer Teacher Part Time Full-Time Teaching Jobs Near + Location + in + City
+    _seoService.updateTitle(this.jobs[0].student.name+" is looking "+ this.jobs[0].student.turorType+" for "+this.jobs[0].student.particularClass+", "+this.jobs[0].student.subjects+" at "+location);
+    _seoService.updateDescription(this.jobs[0].student.subjects+" Tuition Tutor Trainer Teacher Part Time Full-Time Teaching Jobs Near "+this.jobs[0].student.location+" in "+this.jobs[0].student.city);
+    _seoService.updateOgUrl("http://hansatutor.com/enq/"+this.seqId);
+    _seoService.updateOgImage("http://www.hansatutor.com/assets/fabicon.jpg");
+    _seoService.updateOgTitle(this.jobs[0].student.name+" is looking "+ this.jobs[0].student.turorType+" for "+this.jobs[0].student.particularClass+", "+this.jobs[0].student.subjects+" at "+location);
+    _seoService.updateOgDesc(this.jobs[0].student.subjects+" Tuition Tutor Trainer Teacher Part Time Full-Time Teaching Jobs Near "+this.jobs[0].student.location+" in "+this.jobs[0].student.city);
+    _seoService.updateKeywords("Jobs in "+this.jobs[0].student.city+" Near me, Jobs in "+this.jobs[0].student.location+" "+this.jobs[0].student.city+" Near me, "+this.jobs[0].student.turorType+" Jobs "+this.jobs[0].student.location+" "+this.jobs[0].student.city+" Near me, "+this.jobs[0].student.classcategory+" Teaching Jobs in "+this.jobs[0].student.location+" "+this.jobs[0].student.city+" Near me, "+this.jobs[0].student.subjects+" Faculty Jobs in "+this.jobs[0].student.location+" "+this.jobs[0].student.city+" Near me, Part Time Jobs, Full-Time Jobs, Online Teaching Jobs, Free Listing, Tutorial Jobs, Mentor Jobs, Coach - Instructor Jobs, Lecturer Jobs ,SchoolTeacher Jobs")
+    this.jobs.forEach(element => {
+        if(element.applications.length > 0){
+          element.applications.forEach(element => {
+            if(element.tutor.id == this.tutorId){
+              this.hasApplied = true;
+            }
+          });
+        }
+      })
+    });
+  }
   get isLoggedIn(): boolean {
     let loggedIn = true;
     let userId = localStorage.getItem('userId');
@@ -27,22 +63,6 @@ export class JobDetailsComponent implements OnInit {
   }
   goToLogin(){
     window.location.href = '/login';
-  }
-  getJobData(){
-      this.http.get(this.baseUrl+'/job/sequence/'+this.seqId)
-      .subscribe(data => {
-        this.jobs = [data];
-        console.log(this.jobs)
-        this.jobs.forEach(element => {
-          if(element.applications.length > 0){
-            element.applications.forEach(element => {
-              if(element.tutor.id == this.tutorId){
-                this.hasApplied = true;
-              }
-            });
-          }
-        })
-      });
   }
   showToast(data) {
     var x = document.getElementById("snackbar");
@@ -65,28 +85,8 @@ export class JobDetailsComponent implements OnInit {
   }
   public defaultTime = new Date(2018, 1, 12, 10, 0);
   public defaultDate = new Date();
-  // var jobID = $(this).attr("job-id");
-  //       var tutorId = localStorage.getItem('userId');
-  //           $.ajax({
-  //               type: 'PUT',
-  //               url: baseUrl+"/job/"+jobID+"/apply?tutorId="+tutorId,
-  //               success: function(resultData) { 
-  //                 $("#myProfileModal").modal('hide');
-  //                 console.log(resultData)
-  //                 showToast("You have successfully applied for the job.")
-  //                 setTimeout(function(){ 
-  //                   window.location.href = "/dashboard/tutor/"+tutorId;
-  //                  }, 3000);
-  //                },
-  //                error: function(resultData){
-  //                  $("#myProfileModal").modal('hide');
-  //                  console.log(resultData.responseJSON.message)
-  //                  showToast(resultData.responseJSON.message)
-  //                }
-  //           });
 
   ngOnInit() {
-    this.getJobData();
     $(document).on('hide.bs.modal','#contactModal', function () {
       window.location.reload();
     });

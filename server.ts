@@ -17,7 +17,7 @@ enableProdMode();
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-const DIST_FOLDER = join(process.cwd(), 'dist/browser');
+const DIST_FOLDER = join(process.cwd(), 'browser');
 const MockBrowser = require('mock-browser').mocks.MockBrowser;
 const mock = new MockBrowser();
 
