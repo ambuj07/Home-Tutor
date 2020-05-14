@@ -50,7 +50,7 @@ export class StudentUpdateStatusComponent implements OnInit {
               html += '<tr><td>Enq No. : <b>'+response.contents[i].sequenceId+'</b></td></tr>';
               html += '<tr><td colspan="2">Enq Date Time : <b>'+getDateTimeFormat(response.contents[i].createdOn)+'</b></td></tr>';
               html += '<tr><td colspan="2"><b>'+response.contents[i].className+', '+response.contents[i].subject+', '+response.contents[i].board+'</b></td></tr>';
-              html += '<tr style="text-align:center"><td class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a style="color:white" href="/enquiry/'+response.contents[i].id+'">Veiw Details</a></td><td class="action-td" style="background: #f26832;color: white;font-weight: bold"><a style="color:white" data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="updateStatusBtn">Update Status</a></td></tr>';
+              html += '<tr style="text-align:center"><td class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a title="hansa tutor" style="color:white" href="/enquiry/'+response.contents[i].id+'">Veiw Details</a></td><td class="action-td" style="background: #f26832;color: white;font-weight: bold"><a style="color:white" data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="updateStatusBtn">Update Status</a></td></tr>';
               html += '</table>';
               html += '</div>';
             }
@@ -59,14 +59,14 @@ export class StudentUpdateStatusComponent implements OnInit {
               var htmlPage = '';
               htmlPage +='<ul class="pagination">'
               for(var i=1; i <= response.page; i++){
-                htmlPage += '<li class="page-item"><a class="page-link job-page-btn" href="javascript:void(0)">'+i+'</a></li>';
+                htmlPage += '<li class="page-item"><a title="hansa tutor" class="page-link job-page-btn" href="javascript:void(0)">'+i+'</a></li>';
               }
               htmlPage +='</ul>'
               $("#pagination1").html(htmlPage);
             }  
             //pagination end
           }else{
-            html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not posted any requirement yet, <a href="javascript:void(0)" class="findMoreTutors">Click here</a> to post your requirement.</div>'
+            html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not posted any requirement yet, <a title="hansa tutor" href="javascript:void(0)" class="findMoreTutors">Click here</a> to post your requirement.</div>'
           }
           $("#postedRequirements").html(html);
           $(".updateStatusBtn").click(function(){

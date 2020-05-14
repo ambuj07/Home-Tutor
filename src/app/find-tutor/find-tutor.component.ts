@@ -258,9 +258,9 @@ export class FindTutorComponent implements OnInit {
                 html += '<table class="table table-card-small table-bordered-thick table-bordered" style="table-layout: fixed;background: #f8fffd !important;">';
                 html += '<tr>';
                 if(resultData.contents[i].imageUrl != null){
-                  html += '<td rowspan="4" style="width: 30%;vertical-align: middle;"><img src="'+resultData.contents[i].imageUrl+'" width="80px" height="80px"></b></td>';
+                  html += '<td rowspan="4" style="width: 30%;vertical-align: middle;"><img src="'+resultData.contents[i].imageUrl+'" alt="hansa userIcon" width="80px" height="80px"></b></td>';
                 }else{
-                  html += '<td rowspan="4" style="width: 30%;vertical-align: middle;"><img src="/assets/userIcon.png" width="80px" height="80px"></b></td>';
+                  html += '<td rowspan="4" style="width: 30%;vertical-align: middle;"><img src="/assets/userIcon.png" alt="hansa userIcon" width="80px" height="80px"></b></td>';
                 }
                 html += '<td colspan="3">Reg No : <b>'+resultData.contents[i].sequenceId+'</b></td>';
                 html += '<td rowspan="2" style="vertical-align: middle;font-size: 30px;color: #061f50;"><b><i class="fa fa-share-alt-square" aria-hidden="true"></i></b></td>';
@@ -293,15 +293,15 @@ export class FindTutorComponent implements OnInit {
                 html += '</tr>';
                 if(isLoggedIn){
                   html += '<tr><td colspan="5" class="action-td" style="background: #0d2151;color: white;font-weight: bold">';
-                  html += '<a style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" href="/tutor/'+resultData.contents[i].id+'" >Veiw Details</a>';
-                  html += '<a style="color:white;display: inline-block;width: 28%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Hire Me</a>';
-                  html += '<a style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
+                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" href="/tutor/'+resultData.contents[i].id+'" >Veiw Details</a>';
+                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 28%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Hire Me</a>';
+                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
                   html += '</td></tr>';
                 }else{
                   html += '<tr><td colspan="5" class="action-td" style="background: #0d2151;color: white;font-weight: bold">';
-                  html += '<a style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" href="/tutor/'+resultData.contents[i].id+'">Veiw Details</a>';
-                  html += '<a style="color:white;display: inline-block;width: 28%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Hire Me</a>';
-                  html += '<a style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
+                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" href="/tutor/'+resultData.contents[i].id+'">Veiw Details</a>';
+                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 28%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Hire Me</a>';
+                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
                   html += '</td></tr>';                
                 }
                 html += '</table>';
@@ -316,7 +316,7 @@ export class FindTutorComponent implements OnInit {
               var htmlPage = '';
               htmlPage +='<ul class="pagination">'
               for(var i=1; i <= pageSize; i++){
-                htmlPage += '<li class="page-item"><a id="pageId'+i+'" class="page-link btn-job-page" href="#">'+i+'</a></li>';
+                htmlPage += '<li class="page-item"><a title="hansa tutor" id="pageId'+i+'" class="page-link btn-job-page" href="#">'+i+'</a></li>';
               }
               htmlPage +='</ul>'
               $("#pagination1").html(htmlPage);
@@ -332,7 +332,7 @@ export class FindTutorComponent implements OnInit {
         $.get(baseUrl+"/job/"+jobID,function(data){
                 html += '<div class="tutorgrid">';
                 html += '<div class="text-centered">';
-                html += '<img src="/assets/userIcon.png" width="36px">';
+                html += '<img src="/assets/userIcon.png" alt="hansa userIcon" width="36px">';
                 html += '<div class="profile-name">'+data.student.name+'</div>'
                 html += '<div class="job-detail-sort">';
                 html += '<div><i class="fa fa-mobile" aria-hidden="true"></i>'+data.student.mobile+'</div>'

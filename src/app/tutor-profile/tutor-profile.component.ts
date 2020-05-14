@@ -291,15 +291,15 @@ export class TutorProfileComponent implements OnInit {
             addrHtml += '<tr>'; 
             if(resultData.address.currentAddress != undefined && resultData.address.currentAddress != null){
               if(resultData.address.currentAddress.url != null && resultData.address.currentAddress.url != ""){
-                addrHtml += '<td><img style="width: 250px;height:200px" src="'+resultData.address.currentAddress.url+'?v='+Math.random()+'"></td>';
+                addrHtml += '<td><img alt="hansa userIcon" style="width: 250px;height:200px" src="'+resultData.address.currentAddress.url+'?v='+Math.random()+'"></td>';
               }else{
-                addrHtml += '<td><a style="color: #f26832;font-weight: bold;" href="/tutor/edit/address/#addressProof">Upload Proof >></a></td>';
+                addrHtml += '<td><a title="hansa tutor" style="color: #f26832;font-weight: bold;" href="/tutor/edit/address/#addressProof">Upload Proof >></a></td>';
               }
             }else{
               addrHtml += '<td></td>';
             }
             if(resultData.address.permanentAddress != undefined && resultData.address.permanentAddress != null && resultData.address.permanentAddress.url != null && resultData.address.permanentAddress.url != ""){
-              addrHtml += '<td><img style="width: 250px;height:200px" src="'+resultData.address.permanentAddress.url+'?v='+Math.random()+'"></td>';
+              addrHtml += '<td><img alt="hansa userIcon" style="width: 250px;height:200px" src="'+resultData.address.permanentAddress.url+'?v='+Math.random()+'"></td>';
             } else{
               addrHtml += '<td></td>';
             } 

@@ -12,6 +12,7 @@ import 'rxjs/add/operator/mergeMap';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  pageTitle = 'Home Tutor, Online Trainer, Institutes, and Faculties. Our online tutoring platform makes connecting with students simple, convenient, and flexible. Find online tutoring opportunities. Apply now and earn extra money working part-time from home.';
   constructor(titleService: Title, router: Router,activatedRoute: ActivatedRoute,_seoService:SeoService) {
     router.events
       .filter((event) => event instanceof NavigationEnd)
@@ -24,6 +25,7 @@ export class AppComponent {
       .mergeMap((route) => route.data)
       .subscribe((event) => {
         if(event['title'] != undefined){
+          this.pageTitle = this.pageTitle + ' ' + event['title'] + ' ' + event['description'];
           _seoService.updateTitle(event['title']);
           _seoService.updateKeywords(event['keywords']);
           _seoService.updateDescription(event['description']);

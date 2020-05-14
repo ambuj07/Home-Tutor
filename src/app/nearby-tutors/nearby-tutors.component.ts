@@ -65,11 +65,11 @@ export class NearbyTutorsComponent implements OnInit {
                   html += '<div class="col-md-3 col-xs-1">';
                   html += '<div class="tutorgrid">';
                   html += '<div class="text-centered">';
-                  html += '<img src="/assets/userIcon.png" width="36px">';
+                  html += '<img src="/assets/userIcon.png" alt="hansa userIcon" width="36px">';
                   html += '<div class="profile-name">'+resultData[i].name+'</div>'
                   html += ' <div class="profile-heading">Math Teacher</div>'
                   html += '<div class="experiance">('+resultData[i].qualification+')</div>';
-                  html += '<a href="javascript:void(0)" class="btn btn-primary btn-details">Show Details</a>';
+                  html += '<a title="hansa tutor" href="javascript:void(0)" class="btn btn-primary btn-details">Show Details</a>';
                   html += '</div>';
                   html += '</div>';
                   html += '</div>';
@@ -80,14 +80,14 @@ export class NearbyTutorsComponent implements OnInit {
               //   var htmlPage = '';
               //   htmlPage +='<ul class="pagination">'
               //   htmlPage += '<li class="page-item">';
-              //   htmlPage += '<a class="page-link btn-prev-page" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span>';
+              //   htmlPage += '<a title="hansa tutor" class="page-link btn-prev-page" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span>';
               //   htmlPage += '<span class="sr-only">Previous</span></a>';
               //   htmlPage += '</li>';
               //   for(var i=1; i <= pageSize; i++){
-              //     htmlPage += '<li class="page-item"><a class="page-link btn-page" id="page_'+i+'" href="#">'+i+'</a></li>';
+              //     htmlPage += '<li class="page-item"><a title="hansa tutor" class="page-link btn-page" id="page_'+i+'" href="#">'+i+'</a></li>';
               //   }
               //   htmlPage += '<li class="page-item">';
-              //   htmlPage += '<a class="page-link btn-next-page" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span>';
+              //   htmlPage += '<a title="hansa tutor" class="page-link btn-next-page" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span>';
               //   htmlPage += '<span class="sr-only">Next</span></a>';
               //   htmlPage += '</li>';
               //   htmlPage +='</ul>'

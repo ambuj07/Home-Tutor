@@ -26,11 +26,11 @@ export class NearbyStudendsComponent implements OnInit {
               html += '<div class="col-md-3 col-xs-1">';
               html += '<div class="tutorgrid">';
               html += '<div class="text-centered">';
-              html += '<img src="/assets/userIcon.png" width="36px">';
+              html += '<img src="/assets/userIcon.png" alt="hansa userIcon" width="36px">';
               html += '<div class="profile-name">'+resultData[i].name+'</div>'
               html += ' <div class="profile-heading">Class '+resultData[i].particularClass+'</div>'
               html += '<div class="experiance">(CBSE)</div>';
-              html += '<a href="javascript:void(0)" class="btn btn-primary btn-details">Show Details</a>';
+              html += '<a title="hansa tutor" href="javascript:void(0)" class="btn btn-primary btn-details">Show Details</a>';
               html += '</div>';
               html += '</div>';
               html += '</div>';
