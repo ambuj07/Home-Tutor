@@ -78,14 +78,14 @@ export class DashboardComponent implements OnInit {
                 var htmlPage = '';
                 htmlPage +='<ul class="pagination">'
                 for(var i=1; i <= response.page; i++){
-                  htmlPage += '<li class="page-item"><a title="hansa tutor" class="page-link applied-page-btn" href="javascript:void(0)">'+i+'</a></li>';
+                  htmlPage += '<li class="page-item"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" class="page-link applied-page-btn" href="javascript:void(0)">'+i+'</a></li>';
                 }
                 htmlPage +='</ul>'
                 $("#pagination2").html(htmlPage);
               }  
               //pagination end
             }else{
-              html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not applied for any job yet, <a title="hansa tutor" href="javascript:void(0)" class="findJobs">Click here</a> to find a job.</div>'
+              html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not applied for any job yet, <a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" href="javascript:void(0)" class="findJobs">Click here</a> to find a job.</div>'
             }
             $("#appliedJobs").html(html);
           }

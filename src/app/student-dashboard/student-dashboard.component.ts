@@ -74,7 +74,7 @@ export class StudentDashboardComponent implements OnInit {
                 learningNeed += ", "+response.contents[i].board;
               }
               html += '<tr><td colspan="2"><b>'+learningNeed+'</b></td></tr>';
-              html += '<tr style="text-align:center"><td class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a title="hansa tutor" style="color:white" href="/enquiry/'+response.contents[i].id+'">Veiw Details</a></td><td class="action-td" style="background: #f26832;color: white;font-weight: bold"><a title="hansa tutor" style="color:white" data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="updateStatusBtn">Cancle</a></td></tr>';
+              html += '<tr style="text-align:center"><td class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white" href="/enquiry/'+response.contents[i].id+'">Veiw Details</a></td><td class="action-td" style="background: #f26832;color: white;font-weight: bold"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white" data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="updateStatusBtn">Cancle</a></td></tr>';
               if(response.contents[i].applications.length > 0){
               var data = JSON.stringify(response.contents[i].applications)
               html += "<tr style='text-align:center'><td class='action-td viewJobDetailBtn' colspan='2' style='background: #006153;color: white;font-weight: bold' data='"+data+"' data-toggle='modal' data-target='#viewJobApplicationModal'>Response By Tutors<div style='float:right;background: #f9e608;border-radius: 50%;padding: 2px 10px;color: black;'>"+response.contents[i].applications.length+"</div></td></tr>";
@@ -90,14 +90,14 @@ export class StudentDashboardComponent implements OnInit {
               var htmlPage = '';
               htmlPage +='<ul class="pagination">'
               for(var i=1; i <= response.page; i++){
-                htmlPage += '<li class="page-item"><a title="hansa tutor" class="page-link job-page-btn" href="javascript:void(0)">'+i+'</a></li>';
+                htmlPage += '<li class="page-item"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" class="page-link job-page-btn" href="javascript:void(0)">'+i+'</a></li>';
               }
               htmlPage +='</ul>'
               $("#pagination1").html(htmlPage);
             }  
             //pagination end
           }else{
-            html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not posted any requirement yet, <a title="hansa tutor" href="javascript:void(0)" class="findMoreTutors">Click here</a> to post your requirement.</div>'
+            html += '<div style="padding: 10px;text-align: center;font-size: 18px;background: #f3f3f3;">You have not posted any requirement yet, <a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" href="javascript:void(0)" class="findMoreTutors">Click here</a> to post your requirement.</div>'
           }
           $("#postedRequirements").html(html);
           $(".updateStatusBtn").click(function(){

@@ -131,8 +131,8 @@ export class TutorPublicComponent implements OnInit {
                 html += '<td colspan="2"><b>'+data.fluencyInEnglish+'</b></td>';
                 html += '</tr>';
                 html += '<tr><td colspan="4" class="action-td" style="background: #0d2151;color: white;font-weight: bold">';
-                html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 48%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Request A Callback</a>';
-                html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 48%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
+                html += '<a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white;display: inline-block;width: 48%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Request A Callback</a>';
+                html += '<a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white;display: inline-block;width: 48%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
                 html += '</td></tr>';
                 html += '</table>';
                 html += '</div>';

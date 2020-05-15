@@ -293,15 +293,15 @@ export class FindTutorComponent implements OnInit {
                 html += '</tr>';
                 if(isLoggedIn){
                   html += '<tr><td colspan="5" class="action-td" style="background: #0d2151;color: white;font-weight: bold">';
-                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" href="/tutor/'+resultData.contents[i].id+'" >Veiw Details</a>';
-                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 28%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Hire Me</a>';
-                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
+                  html += '<a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" href="/tutor/'+resultData.contents[i].id+'" >Veiw Details</a>';
+                  html += '<a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white;display: inline-block;width: 28%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Hire Me</a>';
+                  html += '<a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
                   html += '</td></tr>';
                 }else{
                   html += '<tr><td colspan="5" class="action-td" style="background: #0d2151;color: white;font-weight: bold">';
-                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" href="/tutor/'+resultData.contents[i].id+'">Veiw Details</a>';
-                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 28%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Hire Me</a>';
-                  html += '<a title="hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
+                  html += '<a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" href="/tutor/'+resultData.contents[i].id+'">Veiw Details</a>';
+                  html += '<a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white;display: inline-block;width: 28%;margin:0 1%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Hire Me</a>';
+                  html += '<a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white;display: inline-block;width: 35%;background: #49bbe8eb;padding: 8px 2px;white-space: nowrap;" >Rate/Review</a>';
                   html += '</td></tr>';                
                 }
                 html += '</table>';
@@ -316,7 +316,7 @@ export class FindTutorComponent implements OnInit {
               var htmlPage = '';
               htmlPage +='<ul class="pagination">'
               for(var i=1; i <= pageSize; i++){
-                htmlPage += '<li class="page-item"><a title="hansa tutor" id="pageId'+i+'" class="page-link btn-job-page" href="#">'+i+'</a></li>';
+                htmlPage += '<li class="page-item"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" id="pageId'+i+'" class="page-link btn-job-page" href="#">'+i+'</a></li>';
               }
               htmlPage +='</ul>'
               $("#pagination1").html(htmlPage);

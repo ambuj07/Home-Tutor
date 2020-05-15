@@ -211,9 +211,9 @@ export class FindJobsComponent implements OnInit {
                 html += '<tr><td colspan="2"><b>'+learning+'</b></td></tr>';
                 html += '<tr><td colspan="2"><b>'+location+'</b></td></tr>';
                 //if(isLoggedIn){
-                html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a title="hansa tutor" style="color:white" href="/enq/'+resultData.contents[i].sequenceId.split("/").join("%2F")+'">Veiw Details</a></td></tr>'
+                html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white" href="/enq/'+resultData.contents[i].sequenceId.split("/").join("%2F")+'">Veiw Details</a></td></tr>'
                 // }else{
-                //   html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a title="hansa tutor" style="color:white" href="/login">Veiw Details</a></td></tr>'
+                //   html += '<tr><td colspan="2" class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white" href="/login">Veiw Details</a></td></tr>'
                 // }
                 html += '</table>';
                 html += '</div>';
@@ -225,7 +225,7 @@ export class FindJobsComponent implements OnInit {
               var htmlPage = '';
               htmlPage +='<ul class="pagination">'
               for(var i=1; i <= pageSize; i++){
-                htmlPage += '<li class="page-item"><a title="hansa tutor" class="page-link btn-job-page" href="#">'+i+'</a></li>';
+                htmlPage += '<li class="page-item"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" class="page-link btn-job-page" href="#">'+i+'</a></li>';
               }
               htmlPage +='</ul>'
               $("#pagination1").html(htmlPage);
