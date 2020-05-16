@@ -291,7 +291,7 @@ export class TutorProfileComponent implements OnInit {
             addrHtml += '<tr>'; 
             if(resultData.address.currentAddress != undefined && resultData.address.currentAddress != null){
               if(resultData.address.currentAddress.url != null && resultData.address.currentAddress.url != ""){
-                addrHtml += '<td><img alt="hansa userIcon" style="width: 250px;height:200px" src="'+resultData.address.currentAddress.url+'?v='+Math.random()+'"></td>';
+                addrHtml += '<td><img alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="width: 250px;height:200px" src="'+resultData.address.currentAddress.url+'?v='+Math.random()+'"></td>';
               }else{
                 addrHtml += '<td><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color: #f26832;font-weight: bold;" href="/tutor/edit/address/#addressProof">Upload Proof >></a></td>';
               }
@@ -299,7 +299,7 @@ export class TutorProfileComponent implements OnInit {
               addrHtml += '<td></td>';
             }
             if(resultData.address.permanentAddress != undefined && resultData.address.permanentAddress != null && resultData.address.permanentAddress.url != null && resultData.address.permanentAddress.url != ""){
-              addrHtml += '<td><img alt="hansa userIcon" style="width: 250px;height:200px" src="'+resultData.address.permanentAddress.url+'?v='+Math.random()+'"></td>';
+              addrHtml += '<td><img alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="width: 250px;height:200px" src="'+resultData.address.permanentAddress.url+'?v='+Math.random()+'"></td>';
             } else{
               addrHtml += '<td></td>';
             } 

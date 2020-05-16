@@ -240,7 +240,7 @@ export class FindJobsComponent implements OnInit {
         $.get(baseUrl+"/job/"+jobID,function(data){
                 html += '<div class="tutorgrid">';
                 html += '<div class="text-centered">';
-                html += '<img src="/assets/userIcon.png" alt="hansa userIcon" width="36px">';
+                html += '<img src="/assets/userIcon.png" alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor src="/assets/userIcon.png" alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" width="36px">';
                 html += '<div class="profile-name">'+data.student.name+'</div>'
                 html += '<div class="job-detail-sort">';
                 html += '<div><i class="fa fa-mobile" aria-hidden="true"></i>'+data.student.mobile+'</div>'

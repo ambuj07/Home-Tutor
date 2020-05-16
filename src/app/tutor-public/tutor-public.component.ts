@@ -88,9 +88,9 @@ export class TutorPublicComponent implements OnInit {
                 html += '<table class="table table-card-small table-bordered-thick table-bordered" style="table-layout: fixed;background: #f8fffd !important;">';
                 html += '<tr>';
                 if(data.imageUrl != null){
-                  html += '<td colspan="4" style="vertical-align: middle;padding: 20px !important;"><img alt="hansa userIcon" src="'+data.imageUrl+'" width="280px" height="280px"></b></td>';
+                  html += '<td colspan="4" style="vertical-align: middle;padding: 20px !important;"><img alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" src="'+data.imageUrl+'" width="280px" height="280px"></b></td>';
                 }else{
-                  html += '<td colspan="4" style="vertical-align: middle;padding: 20px !important;"><img alt="hansa userIcon" src="/assets/userIcon.png" width="280px" height="280px"></b></td>';
+                  html += '<td colspan="4" style="vertical-align: middle;padding: 20px !important;"><img alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" src="/assets/userIcon.png" width="280px" height="280px"></b></td>';
                 }
                 html += '</tr>';
                 html += '<tr>';

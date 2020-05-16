@@ -258,9 +258,9 @@ export class FindTutorComponent implements OnInit {
                 html += '<table class="table table-card-small table-bordered-thick table-bordered" style="table-layout: fixed;background: #f8fffd !important;">';
                 html += '<tr>';
                 if(resultData.contents[i].imageUrl != null){
-                  html += '<td rowspan="4" style="width: 30%;vertical-align: middle;"><img src="'+resultData.contents[i].imageUrl+'" alt="hansa userIcon" width="80px" height="80px"></b></td>';
+                  html += '<td rowspan="4" style="width: 30%;vertical-align: middle;"><img src="'+resultData.contents[i].imageUrl+'" alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" width="80px" height="80px"></b></td>';
                 }else{
-                  html += '<td rowspan="4" style="width: 30%;vertical-align: middle;"><img src="/assets/userIcon.png" alt="hansa userIcon" width="80px" height="80px"></b></td>';
+                  html += '<td rowspan="4" style="width: 30%;vertical-align: middle;"><img src="/assets/userIcon.png" alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" width="80px" height="80px"></b></td>';
                 }
                 html += '<td colspan="3">Reg No : <b>'+resultData.contents[i].sequenceId+'</b></td>';
                 html += '<td rowspan="2" style="vertical-align: middle;font-size: 30px;color: #061f50;"><b><i class="fa fa-share-alt-square" aria-hidden="true"></i></b></td>';
@@ -332,7 +332,7 @@ export class FindTutorComponent implements OnInit {
         $.get(baseUrl+"/job/"+jobID,function(data){
                 html += '<div class="tutorgrid">';
                 html += '<div class="text-centered">';
-                html += '<img src="/assets/userIcon.png" alt="hansa userIcon" width="36px">';
+                html += '<img src="/assets/userIcon.png" alt="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" width="36px">';
                 html += '<div class="profile-name">'+data.student.name+'</div>'
                 html += '<div class="job-detail-sort">';
                 html += '<div><i class="fa fa-mobile" aria-hidden="true"></i>'+data.student.mobile+'</div>'

@@ -54,6 +54,7 @@ import { MenuComponent } from './menu/menu.component';
 import { RedirectComponent } from './redirect/redirect.component';
 import { HttpRequestInterceptor } from './services/HttpRequestInterceptor';
 import { AppRoutingModule } from './app-routing.module';
+import { CanonicalService } from './services/canonical.service';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,7 @@ import { AppRoutingModule } from './app-routing.module';
     OwlNativeDateTimeModule,
   ],
   providers: [
-    Title, SeoService,
+    Title, SeoService, CanonicalService,
     { provide: OWL_DATE_TIME_LOCALE, useValue: 'en-SG' },
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
   ],

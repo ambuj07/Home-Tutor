@@ -5,6 +5,7 @@ import { SeoService } from '../app/seo.service';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+import { CanonicalService } from './services/canonical.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private _seoService: SeoService) { }
+    private _seoService: SeoService,
+    private canonicalService: CanonicalService) { }
 
   ngOnInit() {
     this.router.events
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit {
       .mergeMap((route: any) => route.data)
       .subscribe((event: any) => {
         if (event['title'] != undefined) {
+          this.canonicalService.createCanonicalURL();
           this.pageTitle = this.pageTitle + ' ' + event['title'] + ' ' + event['description'];
           this._seoService.updateTitle(event['title']);
           this._seoService.updateKeywords(event['keywords']);
