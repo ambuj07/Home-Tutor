@@ -20,14 +20,15 @@
   <meta property="og:description"
     content="Hansa Tutor is an online automated Platform to connect Educators (Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes) and Learners throughout the Country For – All Classes ; Courses ; Subjects" />
   <meta property="og:url" content="http://www.hansatutor.com/" />
-  <link rel="canonical" href="http://hansatutor.com/" />
-  <link rel="canonical" href="https://hansatutor.com/" />
-  <link rel="canonical" href="https://www.hansatutor.com/" />
+  <link rel="canonical" href="http://hansatutor.com/sitemap.xml" />
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164397664-1"></script>
 </head>
 
 <body>
+  <h1 id="page-heading" class="main-heading">
+    Hansa Tutor is an online automated Platform to connect Educators (Personal Home Tuition Tutor Online Teacher Trainer
+  </h1>
   <div class="overlay">
     <app-root></app-root>
   </div>
@@ -39,6 +40,21 @@
     gtag('js', new Date());
 
     gtag('config', 'UA-164397664-1');
+  </script>
+  <style>
+    .main-heading {
+      font-size: 1px;
+      z-index: -9999999;
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var title = document.getElementsByTagName("title")[0].innerHTML;
+      document.getElementById('page-heading').innerHTML = title;
+    }
   </script>
 </body>
 
