@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       .subscribe((event: any) => {
         if (event['title'] != undefined) {
           this.canonicalService.createCanonicalURL();
-          this.pageTitle = this.pageTitle + ' ' + event['title'] + ' ' + event['description'];
+          this.pageTitle = event['title'] + ' ' + event['description'];
           this._seoService.updateTitle(event['title']);
           this._seoService.updateKeywords(event['keywords']);
           this._seoService.updateDescription(event['description']);
