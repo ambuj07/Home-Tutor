@@ -76,15 +76,30 @@ export class TutorPublicComponent implements OnInit {
                   address+= data.defaultZip;
                 }
                 var imageUrl = data.imageUrl != null ? data.imageUrl.replace('https://','http://') : 'http://hansatutor.com/assets/userIcon.png';
-                _seoService.updateTitle(data.name+" "+modeofteach+" for "+classCat+" - "+subjects+" in "+address);
-                _seoService.updateDescription(data.name+" "+modeofteach+" for "+classCat+" - "+subjects+" in "+address);
+                _seoService.updateTitle(data.name+" "+modeofteach+" in "+data.city);
+                _seoService.updateDescription("Teaching "+classCat+" "+subjects+" near "+data.location+" in "+data.city);
                 _seoService.updateOgUrl("http://hansatutor.com/tutor/"+this.id);
                 _seoService.updateOgImage(imageUrl);
-                _seoService.updateOgTitle(data.name+" "+modeofteach+" for "+classCat+" - "+subjects+" in "+address);
-                _seoService.updateOgDesc(data.name+" "+modeofteach+" for "+classCat+" - "+subjects+" in "+address);
+                _seoService.updateOgTitle(data.name+" "+modeofteach+" in "+data.city);
+                _seoService.updateOgDesc("Teaching "+classCat+" "+subjects+" near "+data.location+" in "+data.city);
+                let keyWords = "";
+                keyWords+= "ICSE "+modeofteach+", ";
+                keyWords+= "IB "+modeofteach+" Near me, ";
+                keyWords+= "IGCSE "+modeofteach+" in "+data.location+" "+data.city+", ";
+                keyWords+= subjects +" "+modeofteach+", ";
+                keyWords+= subjects +" "+modeofteach+" Near me, ";
+                keyWords+= subjects +" "+modeofteach+" in "+data.location+" "+data.city+", ";
+                keyWords+= classCat+" "+subjects +" "+modeofteach+" Near me, ";
+                keyWords+= classCat+" "+subjects +" "+modeofteach+" in "+data.location+" "+data.city+", ";
+                keyWords+= "Search Find and Hire Trusted Tested and Verified best Personal Private Professional Male Female Home Tuition Tutors Online Trainers School Teachers Group Classes Coaching Centers Institutes Faculty Lecturer Tutorial Mentor Coach – Instructor CBSE IB ICSE IGCSE ISC NIOS";
+                _seoService.updateKeywords(keyWords);
                 var html="";
                 html += '<div style="margin-bottom:20px">';
                 html += '<div class="text-centered">';
+                html += '<div style="background: #061f50;padding: 10px;color:white;">';
+                html += '<h1>'+data.name+' '+modeofteach+'</h1>';
+                html += '<h2>Teaching '+classCat+' '+subjects+' Near '+data.location+' in '+data.city+'</h2>';
+                html += '</div>';
                 html += '<table class="table table-card-small table-bordered-thick table-bordered" style="table-layout: fixed;background: #f8fffd !important;">';
                 html += '<tr>';
                 if(data.imageUrl != null){
