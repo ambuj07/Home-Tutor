@@ -369,13 +369,13 @@ export class TutorProfileComponent implements OnInit {
       var retStr = "";
       if(type != undefined && type != null){
         if(type == "TUTOR"){
-          retStr = "Home Tutor <small>(Travel at Student Place)</small>";
+          retStr = "Home Tutor <br><small>(At Student's place)</small>";
         } else if(type == "COACHING"){
-          retStr = "Run a Coaching Center <small>(Teaching at my Place)</small>";
+          retStr = "Coaching Institute <br><small>(At Tutor's place)</small>";
         }else if(type == "ONLINE"){
-          retStr = "Online Tutor / Trainer";
-        }else if("FACULTY"){
-          retStr = "Faculty <small>(Looking a Coaching Center where i can teach)</small>";
+          retStr = "Online Teacher";
+        }else if("TutorForTution" || "FACULTY"){
+          retStr = "Faculty";
         }
       }
       return retStr;

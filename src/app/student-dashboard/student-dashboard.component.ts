@@ -182,11 +182,13 @@ export class StudentDashboardComponent implements OnInit {
         var retStr = "";
         if(type != undefined && type != null){
           if(type == "TUTOR"){
-            retStr = "Home Tutor / Trainer <br><small>(At Student's place)</small>";
+            retStr = "Home Tutor <br><small>(At Student's place)</small>";
           } else if(type == "COACHING"){
-            retStr = "Tuition Centre <br><small>(At Tutor's place)</small>";
+            retStr = "Coaching Institute <br><small>(At Tutor's place)</small>";
           }else if(type == "ONLINE"){
-            retStr = "Online Tutor / Trainer";
+            retStr = "Online Teacher";
+          }else if("TutorForTution" || "FACULTY"){
+            retStr = "Faculty";
           }
         }
         return retStr;

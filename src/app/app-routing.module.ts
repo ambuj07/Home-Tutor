@@ -209,8 +209,14 @@ const routes: Routes = [
     component: PrivacyPolicyComponent
   },
   {
-    path: 'edu/search/:tutorType',
-    component: FindTutorComponent
+    path: 'search',
+    children: [
+      { path: '', component: FindTutorComponent},
+      { path: ':city', component: FindTutorComponent},
+      { path: ':city/:tutorType', component: FindTutorComponent},
+      { path: ':city/:tutorType/:class', component: FindTutorComponent},
+      { path: ':city/:tutorType/:class/:subject', component: FindTutorComponent},
+    ]
   },
   {
     path: 'stu/search/:tutorType',

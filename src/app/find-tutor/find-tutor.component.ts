@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from "@angular/common/http";
 import { environment } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 declare var $:any;
 
 @Component({
@@ -21,9 +22,8 @@ export class FindTutorComponent implements OnInit {
     }
     return loggedIn;
   }
-  constructor(private title: Title, private meta: Meta,private http: HttpClient) {}
+  constructor(private title: Title, private meta: Meta,private http: HttpClient,private route: ActivatedRoute) {}
   getCitiesBySearch(event: any){
-    console.log();
     if(event.target.value.length >= 3){
       this.http.get(this.baseUrl+'/config/city?name='+event.target.value)
       .subscribe(cities => {
@@ -35,8 +35,8 @@ export class FindTutorComponent implements OnInit {
   }
 
   filterByCity(event : any){
-    window.location.href = "edu/search/"+(<HTMLInputElement>document.getElementById("tutorTypeFilter")).value+"-in-"+event.target.textContent;
-    sessionStorage.setItem("city_text",event.target.textContent);
+    sessionStorage.clear;
+    window.location.href = "search/"+event.target.textContent;    
   }
   
   ngOnInit() {
@@ -46,8 +46,29 @@ export class FindTutorComponent implements OnInit {
       isLoggedIn = false
     }
     const baseUrl = this.baseUrl;
-    const path = window.location.pathname;
-    const pathString = path.split("/")[3];
+    var pathString = "All Tutors";
+    var cityFilter = "all";
+    var tutorTypeFilter = "all"
+    var classFilter = "all"
+    var subjectFilter = "all"
+    this.route.params.subscribe(data => {
+      if(data.city){
+        cityFilter = data.city;
+        pathString += " in "+cityFilter;
+      }
+      if(data.tutorType){
+        tutorTypeFilter = data.tutorType;
+        pathString.replace("All Tutors",tutorTypeFilter)
+      }
+      if(data.class){
+        classFilter = data.class;
+        pathString += " for "+classFilter;
+      }
+      if(data.subject){
+        subjectFilter = data.subject;
+        pathString += ", "+subjectFilter;
+      }
+    });
     this.title.setTitle(pathString);
     document.addEventListener('DOMContentLoaded', function(){ 
       $("#viewTabName").text(pathString); 
@@ -69,9 +90,9 @@ export class FindTutorComponent implements OnInit {
     function closeNav() {
       document.getElementById("filterNav").style.width = "0";
     }
-    $("#tutorTypeFilter").val(pathString.split("-in-")[0]);
-    if(pathString.split("-in-").length > 1){
-      $("#cityFilter").val(pathString.split("-in-")[1]);
+    $("#tutorTypeFilter").val(tutorTypeFilter);
+    if(cityFilter != "all"){
+      $("#cityFilter").val(cityFilter);
     }else{
       $("#cityFilter").val("");
     }
@@ -89,10 +110,10 @@ export class FindTutorComponent implements OnInit {
             var name = a.name;
             var nameArr = a.name.split("(");
             if(nameArr.length > 1){
-              classHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+nameArr[0]+'</option>';
-              classHtml += '<option style="font-size:12px;margin-top:-10px" data-id="'+a.id+'" value="'+a.name+'">('+nameArr[1]+'</option>';
+              classHtml += '<option data-id="'+a.id+'" value="'+a.id+'">'+nameArr[0]+'</option>';
+              classHtml += '<option style="font-size:12px;margin-top:-10px" data-id="'+a.id+'" value="'+a.id+'">('+nameArr[1]+'</option>';
             }else{
-              classHtml += '<option data-id="'+a.id+'" value="'+a.name+'">'+a.name+'</option>';
+              classHtml += '<option data-id="'+a.id+'" value="'+a.id+'">'+a.name+'</option>';
             }
           })
         }
@@ -137,9 +158,6 @@ export class FindTutorComponent implements OnInit {
         var experianceFilter = $("#experianceFilter").val();
         var englishFilter = $("#englishFilter").val();
 
-        sessionStorage.setItem("city_text",city);
-        sessionStorage.setItem("tutor_val",tutorType);
-        sessionStorage.setItem("class_val",classCat);
         sessionStorage.setItem("subject_val",subject);
         sessionStorage.setItem("subject_text",subjectTxt);
         sessionStorage.setItem("pin_val",pinCodeFilter);
@@ -147,21 +165,24 @@ export class FindTutorComponent implements OnInit {
         sessionStorage.setItem("jobtype_val",jobTypeFilter);
         sessionStorage.setItem("exp_val",experianceFilter);
         sessionStorage.setItem("eng_val",englishFilter);
-        var path = "edu/search/";
-        if(subject != "" && subjectTxt != "" && subjectTxt != null && subjectTxt != undefined){
-          path += subjectTxt+"-";
-        }
-        path += tutorType;
+
+        var path = 'search';
         if(city != ""){
-            path += "-in-"+city;
+          path = 'search/'+city
+        }
+        if(tutorType != "all"){
+          path = 'search/'+cityFilter+'/'+tutorType
+        }
+        if(classCat != undefined && classCat != null && classCat != ""){
+          path = 'search/'+cityFilter+'/'+tutorType+'/'+classCat
+        }
+        if(subjectTxt != null && subjectTxt != "" && subjectTxt != undefined && subjectTxt != "All_Subjects"){
+          path = 'search/'+cityFilter+'/'+tutorType+'/'+classCat+'/'+subjectTxt
         }
         window.location.href = path;
       }
       function getFilterData(){
         var filterText = "";
-        var city = sessionStorage.getItem("city_text");
-        var tutorType = sessionStorage.getItem("tutor_val");
-        var classCat = sessionStorage.getItem("class_val");
         var subject = sessionStorage.getItem("subject_val");
         var subjectTxt = sessionStorage.getItem("subject_text");
         var pinCodeFilter = sessionStorage.getItem("pin_val");
@@ -170,10 +191,8 @@ export class FindTutorComponent implements OnInit {
         var experianceFilter = sessionStorage.getItem("exp_val");
         var englishFilter = sessionStorage.getItem("eng_val");
 
-        if(tutorType != null || tutorType != undefined){
-          $("#tutorTypeFilter").val(tutorType);
-        }
-        $("#chooseClass").val(classCat).change();
+        $("#tutorTypeFilter").val(tutorTypeFilter);
+        $("#chooseClass").val(classFilter).change();
         $("#chooseSubject").val(subject);
         $("#pinCodeFilter").val(pinCodeFilter);
         $("#genderFilter").val(genderFilter);
@@ -185,16 +204,13 @@ export class FindTutorComponent implements OnInit {
         //locality=Delhi&qualification=M.Sc&=PARTTIME&teacherType=FACULTY&state=Delhi&page=1
 
 
-        if(city != null && city != "" && city != undefined){
-          filterText += "&city="+city;
+        if(cityFilter != "all"){
+          filterText += "&city="+cityFilter;
         }
-        console.log(tutorType+" ===================")
-        if(tutorType != null && tutorType != "" && tutorType != undefined){
-          if(getTutorType(tutorType) != ""){
-            filterText += "&teacherType="+getTutorType(tutorType);
-          }
+        if(tutorTypeFilter != "all"){
+          filterText += "&teacherType="+getTutorType(tutorTypeFilter);
         }
-        if(subjectTxt != null && subjectTxt != "" && subjectTxt != undefined){
+        if(subjectTxt != null && subjectTxt != "" && subjectTxt != undefined && subjectTxt != "All_Subjects"){
           filterText += "&subject="+subjectTxt;
         }
         if(pinCodeFilter != null && pinCodeFilter != "" && pinCodeFilter != undefined){
@@ -216,7 +232,7 @@ export class FindTutorComponent implements OnInit {
       }
       $(document).ready(function(){
         var filterText = getFilterData();
-        console.log(filterText);
+        console.log(filterText+" =================");
         getJobDataByPage(0,filterText);
       });
     $(document).on('click','.btn-job-page',function(e){
@@ -384,13 +400,13 @@ export class FindTutorComponent implements OnInit {
       function getTutorType(type){
         var retStr = "";
         if(type != undefined && type != null){
-          if(type == "home-tutor"){
+          if(type == "ht"){
             retStr = "TUTOR";
-          } else if(type == "tution-teacher"){
+          } else if(type == "ci"){
             retStr = "COACHING";
-          }else if(type == "online-tutor"){
+          }else if(type == "ot"){
             retStr = "ONLINE";
-          }else if(type == "faculty"){
+          }else if(type == "ft"){
             retStr = "FACULTY";
           }
         }

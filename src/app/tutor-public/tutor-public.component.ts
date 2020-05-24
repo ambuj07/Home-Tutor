@@ -18,6 +18,22 @@ export class TutorPublicComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params["id"];
     });
+    //get tutor type
+    function getTutorType(type){
+      var retStr = "";
+      if(type != undefined && type != null){
+        if(type == "TUTOR"){
+          retStr = "Home Tutor <br><small>(At Student's place)</small>";
+        } else if(type == "COACHING"){
+          retStr = "Coaching Institute <br><small>(At Tutor's place)</small>";
+        }else if(type == "ONLINE"){
+          retStr = "Online Teacher";
+        }else if("TutorForTution" || "FACULTY"){
+          retStr = "Faculty";
+        }
+      }
+      return retStr;
+    }
     //get tutor type short
     function getTutorTypeShort(type){
       var retStr = "";
@@ -25,10 +41,10 @@ export class TutorPublicComponent implements OnInit {
         if(type == "TUTOR"){
           retStr = "Home Tutor";
         } else if(type == "COACHING"){
-          retStr = "Run a Coaching Center";
+          retStr = "Coaching Institute";
         }else if(type == "ONLINE"){
-          retStr = "Online Tutor / Trainer";
-        }else if("FACULTY"){
+          retStr = "Online Teacher";
+        }else if("TutorForTution" || "FACULTY"){
           retStr = "Faculty";
         }
       }
@@ -392,22 +408,6 @@ export class TutorPublicComponent implements OnInit {
           alert('share not supported');
         }
     });
-    //get tutor type
-    function getTutorType(type){
-      var retStr = "";
-      if(type != undefined && type != null){
-        if(type == "TUTOR"){
-          retStr = "Home Tutor <small>(Travel at Student Place)</small>";
-        } else if(type == "COACHING"){
-          retStr = "Run a Coaching Center <small>(Teaching at my Place)</small>";
-        }else if(type == "ONLINE"){
-          retStr = "Online Tutor / Trainer";
-        }else if("FACULTY"){
-          retStr = "Faculty <small>(Looking a Coaching Center where i can teach)</small>";
-        }
-      }
-      return retStr;
-    }
   }
 
 }
