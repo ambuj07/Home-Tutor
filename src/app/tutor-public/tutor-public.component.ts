@@ -112,10 +112,6 @@ export class TutorPublicComponent implements OnInit {
                 var html="";
                 html += '<div style="margin-bottom:20px">';
                 html += '<div class="text-centered">';
-                html += '<div style="background: #061f50;padding: 10px;color:white;">';
-                html += '<h1>'+data.name+' '+modeofteach+'</h1>';
-                html += '<h2>Teaching '+classCat+' '+subjects+' Near '+data.location+' in '+data.city+'</h2>';
-                html += '</div>';
                 html += '<table class="table table-card-small table-bordered-thick table-bordered" style="table-layout: fixed;background: #f8fffd !important;">';
                 html += '<tr>';
                 if(data.imageUrl != null){

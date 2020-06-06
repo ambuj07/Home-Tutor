@@ -24,19 +24,19 @@ export class TutorMenuComponent implements OnInit {
     $.ajaxSetup({
       headers: { 'Authorization': token}
     });
-       
-      $.ajax({
-          type: 'GET',
-          url: baseUrl+"/tutor/"+id,
-          // beforeSend: function(xhr) {
-          //   xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-          // },
-          success : function(data){
-            if(!data.otpValidated){
-              window.location.href = '/otp';
-            }
-          }
-      });
+       //remove otp
+      // $.ajax({
+      //     type: 'GET',
+      //     url: baseUrl+"/tutor/"+id,
+      //     // beforeSend: function(xhr) {
+      //     //   xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
+      //     // },
+      //     success : function(data){
+      //       if(!data.otpValidated){
+      //         window.location.href = '/otp';
+      //       }
+      //     }
+      // });
 
     // var profilePicUrl = localStorage.getItem("profilePicUrl");
     // if(profilePicUrl != undefined && profilePicUrl != null && profilePicUrl != ""){

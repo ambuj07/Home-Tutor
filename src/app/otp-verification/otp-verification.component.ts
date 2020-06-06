@@ -38,13 +38,14 @@ export class OtpVerificationComponent implements OnInit {
       body.on('click', 'input', onFocus);
     
     })
-    var seconds=59;
+    var seconds=4;
     var timer;
     function myFunction() {
-      if(seconds < 60) { // I want it to say 1:00, not 60
+      console.log(seconds)
+      if(seconds < 5) { // I want it to say 1:00, not 60
         $("#countdown-number").text(seconds);
       }
-      if (seconds >= 0 ) { // so it doesn't go to -1
+      if (seconds >= 1 ) { // so it doesn't go to -1
         seconds--;
       } else {
         clearInterval(timer);
@@ -55,7 +56,7 @@ export class OtpVerificationComponent implements OnInit {
     if(!timer) {
       timer = window.setInterval(function() { 
         myFunction();
-      }, 1000); // every second
+      }, 60000); // every minut
     }
     $.ajax({
       type: 'GET',
@@ -98,7 +99,7 @@ export class OtpVerificationComponent implements OnInit {
       });
     });
     $("#resendOtp").click(function(){
-      $("#resend").prop("hidden",false);
+      $("#resend").prop("hidden",true);
       $.ajax({
         type: 'POST',
         url: baseUrl+"/tutor/"+id+'/resendOtp',
@@ -106,6 +107,16 @@ export class OtpVerificationComponent implements OnInit {
           $("#sentAgain").prop("hidden",false);
         }
     });
+      seconds = 5;
+      $("#countdown-number").text(5);
+      $("#countdown,#waitingPara").prop("hidden",false);
+      myFunction();
+      timer = false;
+      if(!timer) {
+        timer = window.setInterval(function() { 
+          myFunction();
+        }, 60000); // every minut
+      }
     });
   }
 

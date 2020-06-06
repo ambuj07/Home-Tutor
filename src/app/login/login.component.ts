@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     });
       $("#login").click(function(){
         var error = false;  
-        $(".registration-form").find('input[type="text"],input[type="password"]').each(function () {
+        $(".registration-form").find('input[type="tel"],input[type="password"]').each(function () {
             if ($(this).val() == "") {
                 $(this).addClass('input-error');
                 error = true;

@@ -23,6 +23,7 @@ export class JobDetailsComponent implements OnInit {
     http.get(this.baseUrl+'/job/sequence/'+this.seqId)
     .subscribe(data => {
       this.jobs = [data];
+      this.jobs[0].student.turorType = this.getTutorType(this.jobs[0].student.turorType);
       console.log(this.jobs)
       let location = "";
       if(this.jobs[0].student.location != null && this.jobs[0].student.location != undefined){
@@ -53,10 +54,26 @@ export class JobDetailsComponent implements OnInit {
       })
     });
   }
+  getTutorType(type){
+    var retStr = "";
+    if(type != undefined && type != null){
+      if(type == "TUTOR"){
+        retStr = "Home Tutor";
+      } else if(type == "COACHING"){
+        retStr = "Coaching Institute";
+      }else if(type == "ONLINE"){
+        retStr = "Online Teacher";
+      }else if("TutorForTution" || "FACULTY"){
+        retStr = "Faculty";
+      }
+    }
+    return retStr;
+  }
   get isLoggedIn(): boolean {
     let loggedIn = true;
     let userId = localStorage.getItem('userId');
-    if(userId == undefined || userId == null){
+    let type = localStorage.getItem('type');
+    if(userId == undefined || userId == null || type != 'TUTOR'){
       loggedIn = false
     }
     return loggedIn;
@@ -81,7 +98,39 @@ export class JobDetailsComponent implements OnInit {
     .subscribe(response => {
       console.log(response);
       this.showToast("You have successfully applied for the job.");
+      $(".showAfterApply").prop('hidden',false);
+      $(".applyJobTd").prop('hidden',true);
     })
+  }
+  login(){
+    var error = false;  
+        $(".registration-form").find('input[type="tel"],input[type="password"]').each(function () {
+            if ($(this).val() == "") {
+                $(this).addClass('input-error');
+                error = true;
+            } else {
+                $(this).removeClass('input-error');
+            }
+        });
+        if(!error){
+          var phone = $("#mobileNumber").val();
+          var password = $("#password").val();
+          var data = '{"userId":"'+phone+'","password":"'+password+'"}';
+              $.ajax({
+                  type: 'POST',
+                  url: this.baseUrl+"/login",
+                  contentType: "application/json;charset=utf-8",
+                  data: data,
+                  success: function(resultData) {
+                      console.log(resultData) 
+                      localStorage.setItem("userName",resultData.detail.name);
+                      localStorage.setItem("type",resultData.type);
+                      localStorage.setItem("userId",resultData.refId);
+                      localStorage.setItem("token",resultData.token);
+                      window.location.reload();
+                   }
+              });
+        }
   }
   public defaultTime = new Date(2018, 1, 12, 10, 0);
   public defaultDate = new Date();
@@ -110,6 +159,18 @@ export class JobDetailsComponent implements OnInit {
             $(".confirmDiv").prop('hidden',true);
           }
         });
+        $(document).on('click','#show_hide_password a', function(event) {
+          event.preventDefault();
+          if($('#show_hide_password input').attr("type") == "text"){
+              $('#show_hide_password input').attr('type', 'password');
+              $('#show_hide_password i').addClass( "fa-eye-slash" );
+              $('#show_hide_password i').removeClass( "fa-eye" );
+          }else if($('#show_hide_password input').attr("type") == "password"){
+              $('#show_hide_password input').attr('type', 'text');
+              $('#show_hide_password i').removeClass( "fa-eye-slash" );
+              $('#show_hide_password i').addClass( "fa-eye" );
+          }
+      });
     });
   }
 

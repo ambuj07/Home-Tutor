@@ -59,17 +59,21 @@ export class DashboardComponent implements OnInit {
             console.log(response);
             var html = "";
             if(response.contents.length > 0){
-              html += '<table class="table table-bordered"><tr class="thead-light"><th>Job Id</th><th>Posted On</th><th>Student</th><th>Class</th><th>Subject</th><th>Location</th><th>Job Status</th><th>Application Status</th></tr>';
+              html += '<table class="table table-bordered">';
+              html += '<tr class="thead-light"><th>Enq. No.</th>';
+              html += '<th>Student</th>';
+              html += '<th>Phone No.</th>';
+              html += '<th>Update Status</th>';
+              html += '<th>Status</th>';
+              html += '<th>Remark</th></tr>';
               for(var i = 0; i < response.contents.length; i++){
                   html += '<tr>';
-                  html += '<td>'+response.contents[i].id+'</td>';
-                  html += '<td>'+response.contents[i].job.createdOn.split("T")[0]+'</td>';
-                  html += '<td>'+response.contents[i].job.student.name+'</td>';
-                  html += '<td>'+response.contents[i].job.className+'</td>';
-                  html += '<td>'+response.contents[i].job.subject+'</td>';
-                  html += '<td>'+response.contents[i].job.location+'</td>';
-                  html += '<td>'+response.contents[i].job.status+'</td>';
-                  html += '<td>'+response.contents[i].status+'</td>';
+                  html += '<td style="vertical-align: middle;"><a href="/enq/'+response.contents[i].job.sequenceId+'">'+response.contents[i].job.sequenceId+'</a></td>';
+                  html += '<td style="vertical-align: middle;">'+response.contents[i].job.student.name+'</td>';
+                  html += '<td style="vertical-align: middle;">'+response.contents[i].job.student.mobile+'</td>';
+                  html += '<td style="vertical-align: middle;"><a href="/enq/'+response.contents[i].job.sequenceId+'">Update Status</a></td>';
+                  html += '<td style="vertical-align: middle;">'+response.contents[i].status+'</td>';
+                  html += '<td style="vertical-align: middle;">'+response.contents[i].status+'<br>'+getDateTimeFormat(response.contents[i].updatedOn)+'</td>';
                   html += '</tr>';
               }
               html += '</table>';
@@ -93,6 +97,20 @@ export class DashboardComponent implements OnInit {
       }
       
     });
+    function getDateTimeFormat(date){
+      var d = new Date(date+ 'Z');
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      date = d.getDate()+" "+months[d.getMonth()]+" "+d.getFullYear()+" ; "+tConv24(d.toLocaleTimeString());
+      function tConv24(time24) {
+        var ts = time24;
+        var H = +ts.substr(0, 2);
+        var h = (H % 12) || 12;
+        var ampm = H < 12 ? " AM" : " PM";
+        ts = h + ts.substr(2, 3) + ampm;
+        return ts;
+      };
+      return date;
+    }
     $("#editProfile").click(function(){
       $('.registrationDiv').css("display","none");
       $('.allNavElements').css('display','none');

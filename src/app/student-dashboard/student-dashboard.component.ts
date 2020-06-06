@@ -74,7 +74,7 @@ export class StudentDashboardComponent implements OnInit {
                 learningNeed += ", "+response.contents[i].board;
               }
               html += '<tr><td colspan="2"><b>'+learningNeed+'</b></td></tr>';
-              html += '<tr style="text-align:center"><td class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white" href="/enquiry/'+response.contents[i].id+'">Veiw Details</a></td><td class="action-td" style="background: #f26832;color: white;font-weight: bold"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white" data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="updateStatusBtn">Cancle</a></td></tr>';
+              html += '<tr style="text-align:center"><td class="action-td" style="background: #0d2151;color: white;font-weight: bold"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white" href="/enquiry/'+response.contents[i].id+'">Veiw Details</a></td><td class="action-td" style="background: #f26832;color: white;font-weight: bold"><a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" style="color:white" data-id="'+response.contents[i].id+'" href="javascript:void(0)" class="updateStatusBtn">Cancel</a></td></tr>';
               if(response.contents[i].applications.length > 0){
               var data = JSON.stringify(response.contents[i].applications)
               html += "<tr style='text-align:center'><td class='action-td viewJobDetailBtn' colspan='2' style='background: #006153;color: white;font-weight: bold' data='"+data+"' data-toggle='modal' data-target='#viewJobApplicationModal'>Response By Tutors<div style='float:right;background: #f9e608;border-radius: 50%;padding: 2px 10px;color: black;'>"+response.contents[i].applications.length+"</div></td></tr>";
@@ -112,7 +112,7 @@ export class StudentDashboardComponent implements OnInit {
             if (status == null || status == "") {
               showToast("Please select one status.");
             } else if($("#statusRemark").is(":visible") && (statusRemark == null || statusRemark == "")){
-              showToast("Reason for cancle is Mandatory.");
+              showToast("Reason for cancel is Mandatory.");
             }else {
               $.ajax({
                 type: 'PUT',
