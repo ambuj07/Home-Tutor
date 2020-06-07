@@ -55,6 +55,7 @@ import { RedirectComponent } from './redirect/redirect.component';
 import { HttpRequestInterceptor } from './services/HttpRequestInterceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { CanonicalService } from './services/canonical.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { CanonicalService } from './services/canonical.service';
     FindTutorComponent,
     TutorPublicComponent,
     MenuComponent,
-    RedirectComponent
+    RedirectComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

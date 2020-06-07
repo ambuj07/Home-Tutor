@@ -1,0 +1,34 @@
+footer {
+    color: #fff;
+    background-color: #020151;
+    background-position: bottom;
+    font-size: 14px;
+}
+
+footer h3 {
+    color: #fff;
+    font-size: 1.2rem;
+}
+footer a {
+    color: #fff;
+}
+footer p {
+    font-size: 12px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+}
+
+.text-underline {
+    text-decoration: underline !important;
+}
+
+.social-icon {
+    font-size: 25px;
+    margin: 0 10px;
+}
