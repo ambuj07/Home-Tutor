@@ -3,40 +3,41 @@
 
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3>Why Us</h3>
+        <h3><span class="main-bg">Why Us</span></h3>
         <p><strong><a href="http://www.hansatutor.com">hansatutor.com</a></strong> It is absolutely Free for Learners.
           Post your learning Requirements, Book Demo Class, and Hire trusted, tested & verified professional home
-          tuition tutor online teacher trainers coaching institute for all your learning needs. You can also search,
-          find faculties for your school, college, coaching institute, tuition center
+          tuition tutor online teacher...
           <a class="text-underline" href="why-us">Read more</a></p>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3>About Us</h3>
-        <p><strong><a href="http://www.hansatutor.com">hansatutor.com</a></strong> is worlds's
-          biggest network of most trusted tutors and students. Over 25 lakh students rely on
-          hansatutor.com, to fulfill their learning requirements across 2,000+ categories.
-          Using hansatutor.com, tutors, and students can compare multiple Tutors and Institutes and
-          choose the one that best suits their requirements.
+        <h3><span class="main-bg">About Us</span></h3>
+        <p><strong><a href="http://www.hansatutor.com">hansatutor.com</a></strong> is an online automated platform 
+          to connect Educators and Learners throughout the country for all their learning need...
           <a class="text-underline" href="about-us">Read more</a></p>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-
+    <div class="parent">
+      <div class="child">
         <div class="icon">
-          <a href="" target="_blank"><i
-              class="fa fa-facebook-square social-icon"></i></a>
-          <a href="" target="_blank"><i class="fa fa-pinterest social-icon"></i></a>
-          <a href="" target="_blank"><i class="fa fa-reddit social-icon"></i></a>
-          <a href="" target="_blank"><i class="fa fa-twitter social-icon"></i></a>
+          <a href="https://www.facebook.com/hansatutor/" target="_blank">
+            <i class="fa fa-facebook-square social-icon"></i></a>
+          <a href="https://wa.me/919555222377" target="_blank"><i class="fa fa-whatsapp social-icon"></i></a>
+          <a *ngIf="isMobile" href="tel:9555222377" target="_blank"><i class="fa fa-phone social-icon"></i></a>
+          <div class="popup" *ngIf="!isMobile" (click)="myFunction()">
+            <i class="fa fa-phone social-icon"></i>
+            <span class="popuptext" id="myPopup">9555222377</span>
+          </div>
+          <a href="http://hansatutor.com/contactus" target="_blank"><i class="fa fa-address-card social-icon"></i></a>
+          <a href="https://www.youtube.com/user/MYTA377" target="_blank">
+            <i class="fa fa-youtube-play social-icon"></i></a>
         </div>
-
+      
       </div>
-    </div>
+   </div>
 
   </div>
 

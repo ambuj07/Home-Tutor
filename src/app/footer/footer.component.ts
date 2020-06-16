@@ -7,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   pageTitle = 'hansa';
+  isMobile: any;
 
   constructor() { }
 
   ngOnInit() {
+    this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   }
+
+  myFunction() {
+    let popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
+
+
 
 }
