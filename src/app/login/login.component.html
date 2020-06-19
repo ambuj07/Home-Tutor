@@ -11,52 +11,87 @@
                     </div>
                     <div class="form-bottom">
                         <div class="form-group">
-                            <input type="tel" placeholder="Registerd Mobile Number(only 10 digit)"  name="mobileNumber" class="form-control" id="mobileNumber">
+                            <input type="tel" placeholder="Registerd Mobile Number(only 10 digit)" name="mobileNumber"
+                                class="form-control" id="mobileNumber">
                         </div>
                         <div class="form-group">
-                                <div class="input-group" id="show_hide_password">
-                                    <input type="password" style="border-right: none;" placeholder="Enter Your password"  name="password" class="form-control" id="password">
-                                    <div class="input-group-addon">
-                                        <a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" href="" style="color:#058472"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                                    </div>
+                            <div class="input-group" id="show_hide_password">
+                                <input type="password" style="border-right: none;" placeholder="Enter Your password"
+                                    name="password" class="form-control" id="password">
+                                <div class="input-group-addon">
+                                    <a rel="nofollow"
+                                        title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor"
+                                        href="" style="color:#058472"><i class="fa fa-eye-slash"
+                                            aria-hidden="true"></i></a>
                                 </div>
+                            </div>
                         </div>
                         <div style="text-align:right">
                             <button type="button" id="login" class="btn btn-login">Login</button>
                         </div>
+                        <div
+                            style="text-align:center;font-size: 18px;font-weight: bold;color: #4a4a4a;margin-top: 10px;">
+                            <a rel="nofollow"
+                                title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor"
+                                href="#" data-toggle="modal" data-target="#forgotModal"
+                                style="color: #e85c0a;text-decoration: underline !important;">Forgot Password?</a>
+                        </div>
                     </div>
+
                 </div>
             </form>
-            <div style="text-align:center;font-size: 18px;font-weight: bold;color: #4a4a4a;margin-top: 10px;">
-                <span> Are you new ?</span> <a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" href="#" data-toggle="modal" data-target="#myModal" style="color: #e85c0a;text-decoration: underline !important;">Click Here</a>
+        </div>
+        <div class="col-md-6 offset-md-3 text-center" style="margin-top: 30px;margin-bottom: 30px;">
+            <div
+                style="text-align:center;font-size: 18px;font-weight: bold;color: #4a4a4a;margin-bottom: 10px;margin-top: 10px;">
+                <span> Are you new ?</span>
+            </div>
+            <br>
+            <a rel="nofollow" class="btn-register"
+                title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor"
+                href="/post">
+                Register As Student
+            </a>
+            <a rel="nofollow" class="btn-register"
+                title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor"
+                href="/edureg">
+                Register As Tutor
+            </a>
+            <br>
+            <br>
+        </div>
+    </div>
+
+</div>
+
+<!-- Forgot password The Modal -->
+<div class="modal fade" id="forgotModal">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header reg-heading">
+                Forgot Password
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col p-0">
+                        <form role="form" class="registration-form" action="javascript:void(0);">
+                            <div class="fieldset">
+                                <div class="form-bottom">
+                                    <div class="form-group">
+                                        Your password is your registerd Mobile Number.                                        
+                                    </div>
+                                    <div style="text-align:right">
+                                        <button type="button" id="forgotbtn" (click)="forgotPwd()"
+                                            class="btn btn-login" data-dismiss="modal">Submit</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-     <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">×</button>
-          </div>
-          <div class="modal-body">
-              <br>
-              <div class="row">
-                  <div class="col" style="border-right: 1px solid black;">
-                    <a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" href="/post">
-                        <button class="btn btn-register">Register As Student</button>
-                    </a>
-                  </div>
-                  <div class="col">
-                      <a rel="nofollow" title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor" href="/edureg">
-                      <button class="btn btn-register">Register As Tutor</button>
-                      </a>
-                  </div>
-              </div>
-          </div>
-          <br>
-        </div>
-      </div>
-    </div>
-     
+</div>

@@ -1,3 +1,6 @@
+<h1 id="page-heading" class="main-heading" *ngIf="pageTitle">
+    {{pageTitle}}
+</h1>
 <app-header></app-header>
 <h2 class="main-heading" *ngIf="pageTitle">
     {{pageTitle}}
@@ -5,8 +8,76 @@
 <div class="container-fluid">
     <router-outlet></router-outlet>
 </div>
+<div class="container">
+    <p class="main-heading" *ngIf="pageTitle">
+        Home Tutor, Online Trainer, Institutes, and Faculties. Our online tutoring platform makes connecting with
+        students simple, convenient, and flexible. Find online tutoring opportunities. Apply now and earn extra money
+        working part-time from home.
+        Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes.
+    </p>
+    <app-footer></app-footer>
+</div>
+<footer style="background:#1c2960">
+    <div class="container">
+        <!-- <div class="row d-flex justify-content-center pt-md-4">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="course-list2">
+                            <li><a href="#" class="link-black">About Hansa Tutor</a></li>
+                            <li><a href="#" class="link-black">Why Hansa Tutor</a></li>
+                            <li><a href="#" class="link-black">Find Nearer Teacher</a></li>
+                            <li><a href="#" class="link-black">Search Tutor Job</a></li>
+                            <li><a href="#" class="link-black">Customer Reviews</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="course-list2">
+                            <li><a href="/post" class="link-black">Post your learning need</a></li>
+                            <li><a href="/edureg" class="link-black">Join as a Teacher / Trainer</a></li>
+                            <li><a href="#" class="link-black">Careers at Hansa Tutor</a></li>
+                            <li><a href="#" class="link-black">Read Our Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="course-list2">
+                            <li><a href="#" class="link-black">How it works for teachers</a></li>
+                            <li><a href="#" class="link-black">How it works for students</a></li>
+                            <li><a href="#" class="link-black">Help Centre</a></li>
+                            <li><a href="#" class="link-black">FAQ</a></li>
+                            <li><a href="#" class="link-black">Terms of use</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="course-list2">
+                            <li><a href="/contactus" class="link-black">Request a Callback</a></li>
+                            <li>Email: <a href="#" class="link-black">info@hansatutor.com</a></li>
+                            <li><i class="fa fa-whatsapp"></i> +91-9876543210</li>
+                            <li>Help Centre: <a href="#" class="link-black">011-4123456</a></li>
+                            <li></li>
+                            <li><a href="#" class="link-black"><i class="fa fa-facebook-square"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="container" style="padding: 8px">
+            <div style="display: inline-block;" class="text-white">
+                &copy; Hansa Tutor
+            </div>
+            <div style="float: right;">
+                <a rel="nofollow"
+                    title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor"
+                    href="/privacy-policy" class="link-white" style="font-size: 12px;color: #fff;">Cookies & Privacy
+                    Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
 <p class="main-heading" *ngIf="pageTitle">
-    Home Tutor, Online Trainer, Institutes, and Faculties. Our online tutoring platform makes connecting with students simple, convenient, and flexible. Find online tutoring opportunities. Apply now and earn extra money working part-time from home.
+    Home Tutor, Online Trainer, Institutes, and Faculties. Our online tutoring platform makes connecting with
+    students
+    simple, convenient, and flexible. Find online tutoring opportunities. Apply now and earn extra money working
+    part-time from home.
     Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes.
 </p>
-<app-footer></app-footer>

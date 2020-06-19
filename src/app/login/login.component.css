@@ -4,8 +4,10 @@
 }
 .btn-register{
     border-radius: 50px;
-    min-width: 200px;
-    margin: 20px 0 !important;
+    background: #020151;
+    padding: 10px 15px;
+    margin: 0 5px;
+    color: #fff;
 }
 .modal-header {
     background: #058472;

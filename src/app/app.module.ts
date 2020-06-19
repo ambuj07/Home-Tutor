@@ -56,6 +56,7 @@ import { HttpRequestInterceptor } from './services/HttpRequestInterceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { CanonicalService } from './services/canonical.service';
 import { FooterComponent } from './footer/footer.component';
+import { GlobalService } from './services/global.service';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,7 @@ import { FooterComponent } from './footer/footer.component';
     TutorPublicComponent,
     MenuComponent,
     RedirectComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -117,7 +118,7 @@ import { FooterComponent } from './footer/footer.component';
     OwlNativeDateTimeModule,
   ],
   providers: [
-    Title, SeoService, CanonicalService,
+    Title, SeoService, CanonicalService, GlobalService,
     { provide: OWL_DATE_TIME_LOCALE, useValue: 'en-SG' },
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
   ],

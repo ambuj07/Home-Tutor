@@ -42,6 +42,9 @@ export class AppComponent implements OnInit {
           this._seoService.updateOgImage(event['ogImage']);
           this._seoService.updateOgTitle(event['title']);
           this._seoService.updateOgDesc(event['description']);
+          if (window.location.href.match('about-us')) {
+      
+          }
         }
       });
   }

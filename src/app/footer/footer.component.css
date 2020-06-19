@@ -2,7 +2,7 @@
     width: 100%;
 }
 .child {
-    width: 250px;
+    width: 300px;
     height: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -18,7 +18,7 @@ footer {
 
 footer h3 {
     color: #020151;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 footer .main-bg {
@@ -28,9 +28,6 @@ footer .main-bg {
     border-radius: 5px;
 }
 
-footer a {
-    color: #020151;
-}
 footer p {
     font-size: 12px;
 }
@@ -48,8 +45,17 @@ footer p {
 }
 
 .social-icon {
+    width: 30px;
     font-size: 25px;
     margin: 0 10px;
+}
+
+.social-icon.call-icon {
+    width: 40px;
+}
+
+.social-icon.youtube-icon {
+    color: #ff0000;
 }
 
 /* Popup container - can be anything you want */

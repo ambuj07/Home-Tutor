@@ -14,7 +14,7 @@
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <h3><span class="main-bg">About Us</span></h3>
-        <p><strong><a href="http://www.hansatutor.com">hansatutor.com</a></strong> is an online automated platform 
+        <p><strong><a href="http://www.hansatutor.com">hansatutor.com</a></strong> is an online automated platform
           to connect Educators and Learners throughout the country for all their learning need...
           <a class="text-underline" href="about-us">Read more</a></p>
       </div>
@@ -24,85 +24,29 @@
       <div class="child">
         <div class="icon">
           <a href="https://www.facebook.com/hansatutor/" target="_blank">
-            <i class="fa fa-facebook-square social-icon"></i></a>
-          <a href="https://wa.me/919555222377" target="_blank"><i class="fa fa-whatsapp social-icon"></i></a>
-          <a *ngIf="isMobile" href="tel:9555222377" target="_blank"><i class="fa fa-phone social-icon"></i></a>
+            <img src="assets/facebook.svg" alt="Share on facebook" class="social-icon">
+          </a>
+          <a href="https://wa.me/919555222377" target="_blank">
+            <img src="assets/whatsapp.svg" alt="Share on WhatsApp" class="social-icon">
+          </a>
+          <a *ngIf="isMobile" href="tel:9555222377" target="_blank">
+            <img src="assets/call-start.svg" alt="Share on WhatsApp" class="social-icon call-icon">
+          </a>
           <div class="popup" *ngIf="!isMobile" (click)="myFunction()">
-            <i class="fa fa-phone social-icon"></i>
-            <span class="popuptext" id="myPopup">9555222377</span>
+            <img src="assets/call-start.svg" alt="call" class="social-icon call-icon">
+            <span class="popuptext" id="myPopup">+91 9555222377</span>
           </div>
-          <a href="http://hansatutor.com/contactus" target="_blank"><i class="fa fa-address-card social-icon"></i></a>
           <a href="https://www.youtube.com/user/MYTA377" target="_blank">
-            <i class="fa fa-youtube-play social-icon"></i></a>
+            <img src="assets/youtube.svg" alt="call" class="social-icon">
+          </a>
+          <a href="http://hansatutor.com/contactus" target="_self">
+            <img src="assets/contact.svg" alt="call" class="social-icon">
+          </a>
         </div>
-      
-      </div>
-   </div>
 
-  </div>
-
-</footer>
-
-<footer style="background:#1c2960">
-  <div class="container">
-    <!-- <div class="row d-flex justify-content-center pt-md-4">
-          <div class="col-md-12">
-              <div class="row">
-                  <div class="col-md-3">
-                      <ul class="course-list2">
-                          <li><a href="#" class="link-black">About Hansa Tutor</a></li>
-                          <li><a href="#" class="link-black">Why Hansa Tutor</a></li>
-                          <li><a href="#" class="link-black">Find Nearer Teacher</a></li>
-                          <li><a href="#" class="link-black">Search Tutor Job</a></li>
-                          <li><a href="#" class="link-black">Customer Reviews</a></li>
-                      </ul>
-                  </div>
-                  <div class="col-md-3">
-                      <ul class="course-list2">
-                          <li><a href="/post" class="link-black">Post your learning need</a></li>
-                          <li><a href="/edureg" class="link-black">Join as a Teacher / Trainer</a></li>
-                          <li><a href="#" class="link-black">Careers at Hansa Tutor</a></li>
-                          <li><a href="#" class="link-black">Read Our Blog</a></li>
-                      </ul>
-                  </div>
-                  <div class="col-md-3">
-                      <ul class="course-list2">
-                          <li><a href="#" class="link-black">How it works for teachers</a></li>
-                          <li><a href="#" class="link-black">How it works for students</a></li>
-                          <li><a href="#" class="link-black">Help Centre</a></li>
-                          <li><a href="#" class="link-black">FAQ</a></li>
-                          <li><a href="#" class="link-black">Terms of use</a></li>
-                      </ul>
-                  </div>
-                  <div class="col-md-3">
-                      <ul class="course-list2">
-                          <li><a href="/contactus" class="link-black">Request a Callback</a></li>
-                          <li>Email: <a href="#" class="link-black">info@hansatutor.com</a></li>
-                          <li><i class="fa fa-whatsapp"></i> +91-9876543210</li>
-                          <li>Help Centre: <a href="#" class="link-black">011-4123456</a></li>
-                          <li></li>
-                          <li><a href="#" class="link-black"><i class="fa fa-facebook-square"></i></a></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div> -->
-    <div class="container" style="padding: 8px">
-      <div style="display: inline-block;" class="text-white">
-        &copy; Hansa Tutor
-      </div>
-      <div style="float: right;">
-        <a rel="nofollow"
-          title="Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes | hansa tutor"
-          href="/privacy-policy" class="link-white">Cookies & Privacy Policy</a>
       </div>
     </div>
+
   </div>
+
 </footer>
-<p class="main-heading" *ngIf="pageTitle">
-  Home Tutor, Online Trainer, Institutes, and Faculties. Our online tutoring platform makes connecting with
-  students
-  simple, convenient, and flexible. Find online tutoring opportunities. Apply now and earn extra money working
-  part-time from home.
-  Tutoring Services - Personal Home Tuition Tutor Online Teacher Trainer Group Classes Coaching Centre Institutes.
-</p>
